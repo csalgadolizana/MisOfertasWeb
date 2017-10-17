@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Mis Ofertas</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/compiled.min.css" rel="stylesheet">
+        <style>
+            .mi-select{
+                font-size: 18px;
+                font-family: inherit;
+                padding: 10px 16px;
+                border-radius:6px;
+                width: auto;
+                background-color: #fff;
+                border: 1px solid #ccc;
+            }
+            @media (max-width : 776px) {
+                .select-derecho{
+                    margin: auto!important;
+                    float: none !important;
+                    margin-bottom: 1rem!important;
+                }
+                .select-izquerdo{
+                    /*margin-top: 2rem;*/
+                    margin: auto!important;
+                    float: none !important;
+                }
+            }
+        </style>
+    </head>
+
+
+    <body>
+
+        <header style="padding-bottom: 55px">
+            <!--<header >-->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-red scrolling-navbar">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><strong>Mis Ofertas</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="accesoCliente.html">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto nav-flex-icons">
+                            <!--                            <li class="nav-item">
+                                                            <a class="nav-link waves-effect waves-light"><i class="fa fa-twitter"></i></a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+                                                        </li>-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false"><i class="fa fa-user"></i> Sesion 
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+
+        </header>
+        <!--Main Layout-->
+        <main>
+
+            <hr class="featurette-divider">
+
+            <!--formulario de test-->
+
+            <!--<section class="section text-center">-->
+            <section class="text-center">
+                <h3 >Filtro por : </h3>
+                <div class="row text-center" style="margin-bottom: 100px">
+                    <div class="col-md-6"  style="">
+                        <select name="selectTienda" class="pull-right browser-default mi-select select-derecho" >
+                            <option selected="selected" disabled>Tiendas</option>
+                            <option>Sucursal Puente Alto</option>
+                            <option>Sucursal La Florida</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select name="selectCategoria" class="pull-left browser-default mi-select select-izquerdo" >
+                            <option selected="selected" disabled>Categorias</option>
+                            <option>Ropa</option>
+                            <option>Electrodomesticos</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <!-- fin caja de filtros-->
+
+            <!-- Marketing messaging and featurettes
+              ================================================== -->
+            <!-- Wrap the rest of the page in another container to center all the content. -->
+
+            <div class="container marketing">
+
+                <!-- Three columns of text below the carousel -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="http://www.santaisabel.cl/wp-content/uploads/2017/10/vinos-frontera-210x210.jpg" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Lleva 3 y paga 2 en licores</h2>
+                        <p>Solo pagando con tarjeta MisOfertas</p>
+                        <p><a class="btn btn-default" href="detalleOferta.html" role="button">Ver mas detalles &raquo;</a></p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="http://www.santaisabel.cl/wp-content/uploads/2017/10/minuto-verde-210x210.jpg" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Minuto verde 30% Dcto.</h2>
+                        <p>Todas las hortalizas y fruta Minuto Verde congelado</p>
+                        <p><a class="btn btn-default" href="detalleOferta.html" role="button">Ver mas detalles &raquo;</a></p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="http://www.dijon.cl/wp-content/uploads/2017/08/T_Q317RI404261878_J_Q317NU406311407_B_Q317RI306182335_Z_SKU1026808900006-21.jpg" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Ropa Mujer</h2>
+                        <p>Descuentos de 10% en Vestiario mujer</p>
+                        <p><a class="btn btn-default" href="detalleOferta.html" role="button">Ver mas detalles &raquo;</a></p>
+                    </div><!-- /.col-lg-4 -->
+                </div><!-- /.row -->
+            </div>
+
+
+            <!--modal inicia sesion-->
+            <div class="modal fade" id="modalRegistrerForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="card" style="">
+                            <div class="card-body">
+
+                                <!--Header-->
+                                <div class="form-header default-color">
+                                    <h3><i class="fa fa-lock"></i> Login:</h3>
+                                </div>
+
+                                <!--Body-->
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="text" id="defaultForm-email" class="form-control">
+                                    <label for="defaultForm-email">Tu correo o nombre de usuario</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" id="defaultForm-pass" class="form-control">
+                                    <label for="defaultForm-pass">Tu contraseña</label>
+                                </div>
+
+                                <div class="text-center">
+                                    <button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>
+                                    <button class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="">
+                                    <div class="row">
+                                        <div style="margin-right: 10px">
+                                            <p>Sin cuenta? <a href="#" data-toggle="modal" data-target="#modalSubscriptionForm"> Registrate aqui</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="pull-right">
+                                            <p>Olvidaste tu <a href="#">contraseña?</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin modal inicia sesion-->
+
+            <!--Modal registrate-->
+            <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-bold">Registrate</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form">
+                                <i class="fa fa-envelope  prefix"></i>
+                                <input type="email" id="txtCorreoRegistro" class="form-control validate">
+                                <label data-error="Error" data-success="Correcto" for="txtCorreoRegistro">Ingrese su correo</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock  prefix"></i>
+                                <input type="password" id="txtContraseñaRegistro" class="form-control validate">
+                                <label data-error="Error" data-success="Correcto" for="txtContraseñaRegistro">Su contraseña</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock  prefix"></i>
+                                <input type="password" id="txtContraseñaRegistro2" class="form-control validate">
+                                <label data-error="Error" data-success="Correcto" for="txtContraseñaRegistro2">Repita su contraseña</label>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin Modal registrate-->
+
+            <button id="btnRegistrarForm" class="btn btn-default btn-rounded mb-4 waves-effect waves-light" 
+                    data-toggle="modal" data-target="#modalRegistrerForm"
+                    data-backdrop="static"
+                    data-keyboard="false">Launch Modal Login Form</button>
+
+
+            <hr class="featurette-divider">
+        </main>
+
+
+
+
+        <!--Footer-->
+        <footer class="page-footer indigo center-on-small-only pt-0">
+
+            <!--Footer Links-->
+            <div class="container">
+
+                <!--First row-->
+                <div class="row">
+
+                    <!--First column-->
+                    <div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
+
+                        <div class="text-center d-flex justify-content-center my-4">
+
+                            <!--Facebook-->
+                            <a class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
+                            <!--Twitter-->
+                            <a class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>
+                            <!--Google +-->
+                            <a class="icons-sm gplus-ic"><i class="fa fa-google-plus white-text fa-lg pr-md-4"> </i></a>
+                            <!--Linkedin-->
+                            <a class="icons-sm li-ic"><i class="fa fa-linkedin white-text fa-lg pr-md-4"> </i></a>
+                            <!--Instagram-->
+                            <a class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>
+                            <!--Pinterest-->
+                            <a class="icons-sm pin-ic"><i class="fa fa-pinterest white-text fa-lg pr-md-4"> </i></a>
+                        </div>
+
+                    </div>
+                    <!--/First column-->
+
+                </div>
+                <!--/First row-->
+
+            </div>
+            <!--/Footer Links-->
+
+            <!--Copyright-->
+            <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
+                <div class="container-fluid">
+                    Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+
+                </div>
+            </div>
+            <!--/Copyright-->
+
+        </footer>
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script>
+            $(document).ready(function () {
+//                $('#modalLoginForm').show();
+//                $("#modalRegistrarForm");
+//                $("#btnIniciar").click(function () {
+//                    console.log("Hizo click");
+                $("#btnRegistrarForm").hide();
+                $("#btnRegistrarForm").trigger('click');
+//                $('#modalRegistrerForm').modal({
+//                    backdrop: 'static',
+//                    keyboard: false
+//                });
+            });
+        </script>
+
+
+    </body>
+</html>

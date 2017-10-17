@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Carousel Template for Bootstrap</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/i e8-responsive-file-warning.js"></script><![endif]-->
+        <script src="js/ie-emulation-modes-warning.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom styles for this template -->
+        <link href="css/carousel.css" rel="stylesheet">
+    </head>
+    <!-- NAVBAR
+    ================================================== -->
+    <body>
+        <div class="navbar-wrapper">
+            <div class="container">
+
+                <nav class="navbar navbar-default navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Mis Ofertas</a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="active"><a href="#Ofertas">Ofertas</a></li>
+                                <!--<li><a href="#Tiendas">Tiendas</a></li>-->
+                                <!--<li><a href="#Contacto">Contacto</a></li>-->
+                                <li><a href="descargaCupon.html">Mis Cupones</a></li>
+                                <!--                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Action</a></li>
+                                                            <li><a href="#">Another action</a></li>
+                                                            <li><a href="#">Something else here</a></li>
+                                                            <li role="separator" class="divider"></li>
+                                                            <li class="dropdown-header">Nav header</li>
+                                                            <li><a href="#">Separated link</a></li>
+                                                            <li><a href="#">One more separated link</a></li>
+                                                        </ul>
+                                                    </li>-->
+                                <!--<li class="pull-right"><a class=" btn btn-info" href="#contact">Iniciar sesión</a></li>-->
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalSesion" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Inicie Sesión</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="frmInicioSesion" method="POST" action="UsuarioServlet" class="form-group">
+                            <center>
+                                <table class="table-responsive">
+                                    <tr>
+                                        <td><input name="username" class="input-lg" type="text" placeholder="Nombre de usuario" required="" maxlength="15" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input name="password" class="input-lg" type="password" placeholder="Ingrese su contraseña" required="" maxlength="15" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button style="display: none" type="submit" class="btn btn-lg btn-primary pull-right" id="btnIniciarReal" >Iniciar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </center>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-lg btn-primary pull-right" id="btnIniciar" >Iniciar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Fin Modal-->
+
+
+        <!-- Espacio entre menu y cuerpo -->
+        <!--<div class="row" style="margin-top: 100px"></div>-->
+        <!-- fin de espacio -->
+
+        <hr class="featurette-divider">
+
+        <!-- Filtros de busqueda -->
+        <div class="row" style="margin-bottom: 100px">
+            <div class="div">
+                <form class="form-group-lg">
+                    <center>
+                        <h3 >Filtro por : </h3>
+                        <select name="selectTienda"  class="input-lg">
+                            <option>Tiendas</option>
+                            <option>Sucursal Puente Alto</option>
+                            <option>Sucursal La Florida</option>
+                        </select>
+                        <select name="selectCategoria" class="input-lg" >
+                            <option>Categorias</option>
+                            <option>Ropa</option>
+                            <option>Electrodomesticos</option>
+                        </select>
+                    </center>
+                </form>
+            </div>
+        </div>
+        <!-- fin caja de filtros-->
+
+        <!-- Marketing messaging and featurettes
+          ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="img-circle" src="http://www.santaisabel.cl/wp-content/uploads/2017/10/vinos-frontera-210x210.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Lleva 3 y paga 2 en licores</h2>
+                    <p>Solo pagando con tarjeta MisOfertas</p>
+                    <p><a class="btn btn-default" href="detalleOferta.html" role="button">Ver mas detalles &raquo;</a></p>
+                </div>
+
+                <div class="col-lg-4">
+                    <img class="img-circle" src="http://www.santaisabel.cl/wp-content/uploads/2017/10/minuto-verde-210x210.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Minuto verde 30% Dcto.</h2>
+                    <p>Todas las hortalizas y fruta Minuto Verde congelado</p>
+                    <p><a class="btn btn-default" href="detalleOferta.html" role="button">Ver mas detalles &raquo;</a></p>
+                </div>
+
+                <div class="col-lg-4">
+                    <img class="img-circle" src="http://www.dijon.cl/wp-content/uploads/2017/08/T_Q317RI404261878_J_Q317NU406311407_B_Q317RI306182335_Z_SKU1026808900006-21.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Ropa Mujer</h2>
+                    <p>Descuentos de 10% en Vestiario mujer</p>
+                    <p><a class="btn btn-default" href="detalleOferta.html" role="button">Ver mas detalles &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <hr class="featurette-divider">
+
+            <!-- FOOTER -->
+            <footer>
+                <p class="pull-right"><a href="#">Subir</a></p>
+                <p>&copy; 2017 MisOfertas. &middot; <a href="#Suscribete">Suscribete</a> &middot; <a href="#TerminosyCondiciones">Terminos y Condiciones</a></p>
+            </footer>
+
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="js/ie10-viewport-bug-workaround.js"></script>
+        <script src="js/usuario/home.js" type="text/javascript"></script>
+    </body>
+</html>
