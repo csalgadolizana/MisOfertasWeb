@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -53,7 +52,7 @@
     <body>
 
         <header style="padding-bottom: 55px">
-            <!--<header >-->
+            <!--Navbar-->
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-red scrolling-navbar">
                 <div class="container">
                     <a class="navbar-brand" href="#"><strong>Mis Ofertas</strong></a>
@@ -73,12 +72,6 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
-                            <!--                            <li class="nav-item">
-                                                            <a class="nav-link waves-effect waves-light"><i class="fa fa-twitter"></i></a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
-                                                        </li>-->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
@@ -92,22 +85,15 @@
                     </div>
                 </div>
             </nav>
-
-
-
+            <!--Fin Navbar-->
         </header>
-        <!--Main Layout-->
         <main>
             <hr class="featurette-divider" style="margin-bottom: 50px">
 
-            <!-- Marketing messaging and featurettes
-              ================================================== -->
-            <!-- Wrap the rest of the page in another container to center all the content. -->
-
             <section>
-                <!--<div class="author-box mt-5 py-4 wow fadeIn" data-wow-delay="0.3s">-->
                 <div class="container marketing">
-                    <div id="modal" class="col-md-8 formEditDatos">
+                    <!--Form Editar Datos-->
+                    <div id="formEditDatos" class="col-md-8 formEditDatos">
                         <div class="" >
                             <div class="">
                                 <div class="card" style="">
@@ -115,8 +101,6 @@
                                         <div class="form-header default-color">
                                             <h3><i class="fa fa-address-card"></i> Sus Datos</h3>
                                         </div>
-
-                                        <!--Body-->
                                         <div class="md-form">
                                             <i class="fa fa-envelope prefix"></i>
                                             <input type="text" id="defaultForm-email" class="form-control" value="csalgadolizana@gmail.com" readonly="">
@@ -137,24 +121,14 @@
                                             <input type="number" id="defaultForm-email" class="form-control" value="21">
                                             <label for="defaultForm-email">Su edad</label>
                                         </div>
-                                        <!--                                            <section>
-                                        -->                                        <div class="md-form">
+                                        <div class="md-form">
                                             <i class="fa fa-venus-mars prefix"></i>
                                             <select name="selectSexo" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 20%">
                                                 <option>Hombre</option>
                                                 <option>Mujer</option>
                                             </select>
-                                            <!--                                                <div class="btn-group" data-toggle="buttons">
-                                                                                                <label class="btn btn-default">
-                                                                                                    <input type="radio" autocomplete="off"> Hombre
-                                                                                                </label>
-                                                                                                <label class="btn btn-default">
-                                                                                                    <input type="radio" autocomplete="off"> Mujer
-                                                                                                </label>
-                                                                                            </div>-->
                                             <label for="rad">Sexo</label>
-                                        </div><!--
-                                            </section>-->
+                                        </div>
                                         <div class="md-form">
                                             <i class="fa fa-calendar prefix"></i>
                                             <input type="checkbox" id="check" class="form-control" value="21">
@@ -187,9 +161,8 @@
                             </div>
                         </div>
                     </div>
-
+                    <!--fin Form Editar Datos-->
                 </div>
-                <!--</div>-->
             </section>
 
             <hr class="featurette-divider" style="margin-bottom: 120px">
@@ -273,8 +246,7 @@
                 $("#check").change(function () {
                     if ($(this).prop('checked')) {
                         $("#contenedor_contras").show();
-                    }
-                    else{
+                    } else {
                         $("#contenedor_contras").hide();
                     }
 //                    console.log("Cambio!! "+$(this).prop('checked'));
