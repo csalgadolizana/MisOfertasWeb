@@ -27,7 +27,8 @@
             .formEditDatos{
                 left: 16%;
             }
-            @media (max-width : 777px) {
+            /*@media (max-width : 777px) {*/
+            @media (max-width : 767px) {
                 .formEditDatos{
                     left: 0!important;
                 }
@@ -134,7 +135,7 @@
                                             <input type="checkbox" id="check" class="form-control" value="21">
                                             <label for="check">¿Cambiar contraseña?</label>
                                         </div>
-                                        <div id="contenedor_contras" style="display:none">
+                                        <div id="contenedor_contras" class="collapse" style="/*display:none*/">
                                             <div class="md-form">
                                                 <i class="fa fa-lock prefix"></i>
                                                 <input type="password" id="defaultForm-pass" class="form-control" value="">
@@ -219,6 +220,7 @@
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">-->
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="js/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
@@ -231,9 +233,17 @@
                 //max-width : 776px
 //                var width = $(window).width();
                 var max_width = 776;
+                if ($(window).width() < max_width) {
+//                    width = $(this).width();
+                    $("#btnCancelar").addClass("btn-sm");
+                    $("#btnAceptar").addClass("btn-sm");
+                } else {
+                    $("#btnCancelar").removeClass("btn-sm");
+                    $("#btnAceptar").removeClass("btn-sm");
+                }
                 $(window).on('resize', function () {
 //                    console.log("Largo ->" + $(this).width() + " Comparado con -> " + max_width);
-                    if ($(this).width() <= max_width) {
+                    if ($(this).width() < max_width) {
                         width = $(this).width();
                         $("#btnCancelar").addClass("btn-sm");
                         $("#btnAceptar").addClass("btn-sm");
@@ -244,10 +254,12 @@
                 });
 
                 $("#check").change(function () {
+                    $("#contenedor_contras").collapse('toggle');
+//                     collapse
                     if ($(this).prop('checked')) {
-                        $("#contenedor_contras").show();
+//                        $("#contenedor_contras").show();
                     } else {
-                        $("#contenedor_contras").hide();
+//                        $("#contenedor_contras").hide();
                     }
 //                    console.log("Cambio!! "+$(this).prop('checked'));
                 });
