@@ -18,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.io.FilenameUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -137,6 +139,26 @@ public class OfertaServlet extends HttpServlet {
         }
         System.out.println("*******************RETORNOOOOOOO------------------------------------------------------------------");
 //        return modelAndView;
+    }
+    
+    public void ApiRes(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+
+//        reservacionDAO = new ReservacionDAO();
+//        List<Reservacion> lisres = reservacionDAO.listar();
+//        modelAndView.addObject("misRes", lisres);
+        response.setContentType("application/json");
+        JSONArray jsonarray = new JSONArray();
+//        for (Reservacion object : lisres) {
+//            JSONObject obj = new JSONObject();
+//            if (object != null) {
+//                obj.put("reservacion", object.getIdReservacion());
+//                obj.put("n° ", object.getHabitacion().getNumero());
+//                obj.put("res", object.getEstado());
+//                jsonarray.add(obj);
+//            }
+//        }
+        out.println(jsonarray);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
