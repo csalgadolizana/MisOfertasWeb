@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Autenticacion_QNAME = new QName("http://Servicios/", "Autenticacion");
+    private final static QName _AutenticacionResponse_QNAME = new QName("http://Servicios/", "AutenticacionResponse");
     private final static QName _CrearCliente_QNAME = new QName("http://Servicios/", "Crear_cliente");
     private final static QName _CrearClienteResponse_QNAME = new QName("http://Servicios/", "Crear_clienteResponse");
     private final static QName _EliminarCliente_QNAME = new QName("http://Servicios/", "Eliminar_cliente");
@@ -44,6 +46,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link Autenticacion }
+     * 
+     */
+    public Autenticacion createAutenticacion() {
+        return new Autenticacion();
+    }
+
+    /**
+     * Create an instance of {@link AutenticacionResponse }
+     * 
+     */
+    public AutenticacionResponse createAutenticacionResponse() {
+        return new AutenticacionResponse();
     }
 
     /**
@@ -156,6 +174,24 @@ public class ObjectFactory {
      */
     public Sexo createSexo() {
         return new Sexo();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Autenticacion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Autenticacion")
+    public JAXBElement<Autenticacion> createAutenticacion(Autenticacion value) {
+        return new JAXBElement<Autenticacion>(_Autenticacion_QNAME, Autenticacion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutenticacionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "AutenticacionResponse")
+    public JAXBElement<AutenticacionResponse> createAutenticacionResponse(AutenticacionResponse value) {
+        return new JAXBElement<AutenticacionResponse>(_AutenticacionResponse_QNAME, AutenticacionResponse.class, null, value);
     }
 
     /**

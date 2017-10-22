@@ -5,16 +5,21 @@
  */
 package Servlets;
 
+import Services.Cliente;
 import Services.ClienteService_Service;
 import Services.Persona;
 import Services.PersonaService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -52,11 +57,12 @@ public class ClienteServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, DatatypeConfigurationException {
+            throws ServletException, IOException, DatatypeConfigurationException, ParseException {
 //        PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
 //        response.setContentType("Content-Type: application/json");
         String btnAccion = request.getParameter("btnAccion");
+        System.err.println(btnAccion);
         switch (btnAccion) {
             case "primerRegistro":
                 returnToFormRegister(request, response);
@@ -67,6 +73,12 @@ public class ClienteServlet extends HttpServlet {
             case "quieroDatos":
                 returnRegister(request, response);
                 break;
+            case "comprobarCorreo":
+                existeCorreo(request, response);
+                break;
+            case "iniciarSesion":
+                inicioSesion(request, response);
+                break;
             default:
                 returnRegister(request, response);
                 break;
@@ -74,6 +86,39 @@ public class ClienteServlet extends HttpServlet {
 
         /* TODO output your page here. You may use following sample code. */
 //        out.println(jObj);
+    }
+
+    public void inicioSesion(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        correo = request.getParameter("mail");
+        pass1 = request.getParameter("pass");
+        Cliente cli = autenticacion(correo, pass1);
+        jObj = new JSONObject();
+//        En el caso de no encontrar nada retornará 0 en estado
+        jObj.put("estado", cli.getIdCliente().floatValue());
+        PrintWriter out = response.getWriter();
+        response.setContentType("Content-Type: application/json");
+        out.println(jObj);
+    }
+
+    public void existeCorreo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        correo = request.getParameter("mail");
+        Cliente cli = listadoClientes().stream().filter((c) -> c.getCorreo().equals(correo.trim().toLowerCase())).findAny().orElse(null);
+        jObj = new JSONObject();
+        if (cli == null) {
+//            if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
+            jObj.put("correo", "");
+//            }
+        } else {
+//            if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
+            jObj.put("correo", cli.getCorreo());
+//            }
+        }
+        PrintWriter out = response.getWriter();
+        response.setContentType("Content-Type: application/json");
+        out.println(jObj);
+
     }
 
     public void returnToFormRegister(HttpServletRequest request, HttpServletResponse response)
@@ -91,35 +136,38 @@ public class ClienteServlet extends HttpServlet {
     }
 
     public void registrarPersonaCliente(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, DatatypeConfigurationException {
+            throws ServletException, IOException, DatatypeConfigurationException, ParseException {
         String nombre, apellidos, rut;
         Date fechaNac;
         int sexo, telefono, recibirNoticias, ciudad;
-        correo = request.getParameter("txtCorreo");
+        correo = request.getParameter("txtCorreo").trim().toLowerCase();
         pass1 = request.getParameter("txtPasswd");
         pass2 = request.getParameter("txtPasswd2");
         nombre = request.getParameter("txtNombre");
         apellidos = request.getParameter("txtApellido");
         rut = request.getParameter("txtRut");
-        System.err.println(request.getParameter("txtFechaNacimiento"));
-//        fechaNac = new Date(request.getParameter("txtFechaNacimiento"));
+        System.err.println("Fecha naci" + request.getParameter("txtFechaNacimiento"));
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        fechaNac = sdf.parse(request.getParameter("txtFechaNacimiento"));
+
         sexo = Integer.parseInt(request.getParameter("selectSexo"));
         telefono = Integer.parseInt(request.getParameter("txtTelefono"));
         recibirNoticias = (request.getParameter("checAceptaInformativo") == null) ? 0 : 1;
         ciudad = Integer.parseInt(request.getParameter("selectCiudades"));
-        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         crearPersona(0, nombre, apellidos, rut, sexo);
-        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         GregorianCalendar c = new GregorianCalendar();
-        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         GregorianCalendar fechaHoy = new GregorianCalendar();
-        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         try {
             fechaHoy.setTime(new Date());
-            System.err.println("La fecha que está pasando es ");
-            System.err.println(new Date());
-            System.err.println(fechaHoy);
-            c.setTime(new Date());
+//            System.err.println("La fecha que está pasando es ");
+//            System.err.println(new Date());
+//            System.err.println(fechaHoy);
+            c.setTime(fechaNac);
+            System.err.println("Fecha naci " + c);
         } catch (Exception e) {
             System.err.println("Error<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.err.println(e.getMessage());
@@ -165,6 +213,8 @@ public class ClienteServlet extends HttpServlet {
             processRequest(request, response);
         } catch (DatatypeConfigurationException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -182,6 +232,8 @@ public class ClienteServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (DatatypeConfigurationException ex) {
+            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -215,6 +267,20 @@ public class ClienteServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.ClienteService port = service_1.getClienteServicePort();
         return port.crearCliente(id, fechaNacimiento, correo, password, telefono, aceptaInformativo, fechaInicio, fechaActualizacion, idCiudad, idEstado, idPersona);
+    }
+
+    private java.util.List<Services.Cliente> listadoClientes() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.ClienteService port = service_1.getClienteServicePort();
+        return port.listadoClientes();
+    }
+
+    private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.ClienteService port = service_1.getClienteServicePort();
+        return port.autenticacion(correo, contrasena);
     }
 
 }

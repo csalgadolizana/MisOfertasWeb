@@ -525,31 +525,30 @@
                     <div class="modal-content">
 
                         <div class="card" style="">
-                            <div class="card-body">
-
-                                <!--Header-->
-                                <div class="form-header default-color">
-                                    <h3><i class="fa fa-lock"></i> Login:</h3>
+                            <form id="formIniciarSesion" method="POST" action="ClienteServlet">
+                                <div class="card-body">
+                                    <!--Header-->
+                                    <div class="form-header default-color">
+                                        <h3><i class="fa fa-lock"></i> Login:</h3>
+                                    </div>
+                                    <!--Body-->
+                                    <div class="md-form">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input type="email" id="txtCorreoIniciar" class="form-control" required="">
+                                        <label for="defaultForm-email">Tu correo</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <i class="fa fa-lock prefix"></i>
+                                        <input type="password" id="txtPasswdIniciar" class="form-control" required="">
+                                        <label for="defaultForm-pass">Tu contraseña</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>
+                                        <button type="button" id="btnIniciarSesionFake" class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
+                                        <button type="submit" id="btnIniciarSesionReal" name="btnAccion" value="inicioSesion" class="pull-right btn btn-default waves-effect waves-float" style="display: none">Ingresar</button>
+                                    </div>
                                 </div>
-
-                                <!--Body-->
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="defaultForm-email" class="form-control">
-                                    <label for="defaultForm-email">Tu correo o nombre de usuario</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <i class="fa fa-lock prefix"></i>
-                                    <input type="password" id="defaultForm-pass" class="form-control">
-                                    <label for="defaultForm-pass">Tu contraseña</label>
-                                </div>
-
-                                <div class="text-center">
-                                    <button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>
-                                    <button class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
-                                </div>
-                            </div>
+                            </form>
                             <!--Footer-->
                             <div class="modal-footer">
                                 <div class="">
@@ -709,16 +708,60 @@
                         }
                     }
                 });
-//                $("#formRegistrarse").on('submit', function (evt) {
-//                    evt.preventDefault();
-//                    if ($("#txtContraseñaRegistro").val() != $("#txtContraseñaRegistro2").val()) {
-//                        $("#centralModalError").modal('show');
-//                    } else {
-//                        $("#formRegistrarse").submit();
-////                        $("#contenedor_masDatos").collapse('show');
-////                        $("#txtfechaNacimiento").prop("required", true);
-//                    }
-//                });
+                $("#btnIniciarSesionFake").click(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "ClienteServlet",
+                        data: {"btnAccion": "comprobarCorreo", "mail": $("#txtCorreoIniciar").val().trim()},
+                        dataType: "json",
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.correo != "") {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "ClienteServlet",
+                                    data: {
+                                        "btnAccion": "iniciarSesion",
+                                        "mail": $("#txtCorreoIniciar").val().trim(),
+                                        "pass": $("#txtPasswdIniciar").val().trim()
+                                    },
+                                    dataType: "json",
+                                    success: function (data, textStatus, jqXHR) {
+                                        if (data.estado != 0) {
+                                            location.href = "http://localhost:17225/MisOfertasWeb/accesoCliente.html?status=1";
+                                        } else {
+                                            $("#centralModalError").modal('show');
+                                            $("#divTextoAlerta").find("p").html("<strong>Su Correo o Contraseña no estan correctas!!.</strong> <br>");
+                                        }
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log("error");
+                                        console.log(jqXHR);
+                                        console.log(textStatus);
+                                        console.log(errorThrown);
+                                    }
+                                });
+                            } else {
+
+                            }
+                            console.log("success:");
+                            console.log(data);
+                            console.log(textStatus);
+                            console.log(jqXHR);
+//                            if (data != null) {
+//                                $("#txtCorreo").val(data.correo);
+//                                $("#txtPasswd").val(data.password1);
+//                                $("#txtPasswd2").val(data.password2);
+//                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log("error");
+                            console.log(jqXHR);
+                            console.log(textStatus);
+                            console.log(errorThrown);
+                        }
+                    });
+                    $("#txtNombre").focus();
+                });
                 $('#centralModalError').on('hidden.bs.modal', function (e) {
                     $("#txtContrasenaRegistro").focus();
                 });

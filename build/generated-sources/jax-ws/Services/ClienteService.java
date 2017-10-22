@@ -28,6 +28,84 @@ public interface ClienteService {
 
     /**
      * 
+     * @param aceptaInformativo
+     * @param password
+     * @param idEstado
+     * @param fechaNacimiento
+     * @param fechaInicio
+     * @param correo
+     * @param fechaActualizacion
+     * @param id
+     * @param telefono
+     * @param idCiudad
+     * @param idPersona
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Modificar_cliente")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Modificar_cliente", targetNamespace = "http://Servicios/", className = "Services.ModificarCliente")
+    @ResponseWrapper(localName = "Modificar_clienteResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarClienteResponse")
+    @Action(input = "http://Servicios/ClienteService/Modificar_clienteRequest", output = "http://Servicios/ClienteService/Modificar_clienteResponse")
+    public String modificarCliente(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "fecha_nacimiento", targetNamespace = "")
+        XMLGregorianCalendar fechaNacimiento,
+        @WebParam(name = "correo", targetNamespace = "")
+        String correo,
+        @WebParam(name = "password", targetNamespace = "")
+        String password,
+        @WebParam(name = "telefono", targetNamespace = "")
+        int telefono,
+        @WebParam(name = "acepta_informativo", targetNamespace = "")
+        String aceptaInformativo,
+        @WebParam(name = "fecha_inicio", targetNamespace = "")
+        XMLGregorianCalendar fechaInicio,
+        @WebParam(name = "fecha_actualizacion", targetNamespace = "")
+        XMLGregorianCalendar fechaActualizacion,
+        @WebParam(name = "id_ciudad", targetNamespace = "")
+        int idCiudad,
+        @WebParam(name = "id_estado", targetNamespace = "")
+        int idEstado,
+        @WebParam(name = "id_persona", targetNamespace = "")
+        int idPersona);
+
+    /**
+     * 
+     * @param correo
+     * @param contrasena
+     * @return
+     *     returns Services.Cliente
+     */
+    @WebMethod(operationName = "Autenticacion")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Autenticacion", targetNamespace = "http://Servicios/", className = "Services.Autenticacion")
+    @ResponseWrapper(localName = "AutenticacionResponse", targetNamespace = "http://Servicios/", className = "Services.AutenticacionResponse")
+    @Action(input = "http://Servicios/ClienteService/AutenticacionRequest", output = "http://Servicios/ClienteService/AutenticacionResponse")
+    public Cliente autenticacion(
+        @WebParam(name = "correo", targetNamespace = "")
+        String correo,
+        @WebParam(name = "contrasena", targetNamespace = "")
+        String contrasena);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_cliente")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_cliente", targetNamespace = "http://Servicios/", className = "Services.EliminarCliente")
+    @ResponseWrapper(localName = "Eliminar_clienteResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarClienteResponse")
+    @Action(input = "http://Servicios/ClienteService/Eliminar_clienteRequest", output = "http://Servicios/ClienteService/Eliminar_clienteResponse")
+    public String eliminarCliente(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<Services.Cliente>
      */
@@ -82,65 +160,5 @@ public interface ClienteService {
         int idEstado,
         @WebParam(name = "id_persona", targetNamespace = "")
         int idPersona);
-
-    /**
-     * 
-     * @param aceptaInformativo
-     * @param password
-     * @param idEstado
-     * @param fechaNacimiento
-     * @param fechaInicio
-     * @param correo
-     * @param fechaActualizacion
-     * @param id
-     * @param telefono
-     * @param idCiudad
-     * @param idPersona
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Modificar_cliente")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Modificar_cliente", targetNamespace = "http://Servicios/", className = "Services.ModificarCliente")
-    @ResponseWrapper(localName = "Modificar_clienteResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarClienteResponse")
-    @Action(input = "http://Servicios/ClienteService/Modificar_clienteRequest", output = "http://Servicios/ClienteService/Modificar_clienteResponse")
-    public String modificarCliente(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "fecha_nacimiento", targetNamespace = "")
-        XMLGregorianCalendar fechaNacimiento,
-        @WebParam(name = "correo", targetNamespace = "")
-        String correo,
-        @WebParam(name = "password", targetNamespace = "")
-        String password,
-        @WebParam(name = "telefono", targetNamespace = "")
-        int telefono,
-        @WebParam(name = "acepta_informativo", targetNamespace = "")
-        String aceptaInformativo,
-        @WebParam(name = "fecha_inicio", targetNamespace = "")
-        XMLGregorianCalendar fechaInicio,
-        @WebParam(name = "fecha_actualizacion", targetNamespace = "")
-        XMLGregorianCalendar fechaActualizacion,
-        @WebParam(name = "id_ciudad", targetNamespace = "")
-        int idCiudad,
-        @WebParam(name = "id_estado", targetNamespace = "")
-        int idEstado,
-        @WebParam(name = "id_persona", targetNamespace = "")
-        int idPersona);
-
-    /**
-     * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_cliente")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_cliente", targetNamespace = "http://Servicios/", className = "Services.EliminarCliente")
-    @ResponseWrapper(localName = "Eliminar_clienteResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarClienteResponse")
-    @Action(input = "http://Servicios/ClienteService/Eliminar_clienteRequest", output = "http://Servicios/ClienteService/Eliminar_clienteResponse")
-    public String eliminarCliente(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
 
 }

@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://Servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servicios/">
 
+<xs:element name="Autenticacion" type="tns:Autenticacion"/>
+
+<xs:element name="AutenticacionResponse" type="tns:AutenticacionResponse"/>
+
 <xs:element name="Crear_cliente" type="tns:Crear_cliente"/>
 
 <xs:element name="Crear_clienteResponse" type="tns:Crear_clienteResponse"/>
@@ -62,13 +66,16 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="Listado_clientes">
-<xs:sequence/>
+<xs:complexType name="Autenticacion">
+<xs:sequence>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="Listado_clientesResponse">
+<xs:complexType name="AutenticacionResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:cliente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -125,6 +132,16 @@
 <xs:sequence>
 <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
 <xs:element name="idSexo" type="xs:decimal" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Listado_clientes">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="Listado_clientesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
