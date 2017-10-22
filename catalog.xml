@@ -2,4 +2,10 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:17225/WSMisOfertas/UsuarioService?wsdl" uri="src/conf/xml-resources/web-service-references/UsuarioService/wsdl/localhost_17225/WSMisOfertas/UsuarioService.wsdl"/>
     <system systemId="http://localhost:17225/WSMisOfertas/UsuarioService?xsd=1" uri="src/conf/xml-resources/web-service-references/UsuarioService/wsdl/localhost_17225/WSMisOfertas/UsuarioService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/CiudadService?wsdl" uri="src/conf/xml-resources/web-service-references/CiudadService/wsdl/localhost_17225/MisOfertasWebService/CiudadService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/CiudadService?xsd=1" uri="src/conf/xml-resources/web-service-references/CiudadService/wsdl/localhost_17225/MisOfertasWebService/CiudadService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/PersonaService?WSDL" uri="src/conf/xml-resources/web-service-references/PersonaService/wsdl/localhost_17225/MisOfertasWebService/PersonaService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/PersonaService?xsd=1" uri="src/conf/xml-resources/web-service-references/PersonaService/wsdl/localhost_17225/MisOfertasWebService/PersonaService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/ClienteService?WSDL" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_17225/MisOfertasWebService/ClienteService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/ClienteService?xsd=1" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_17225/MisOfertasWebService/ClienteService.xsd_1.xsd"/>
 </catalog>

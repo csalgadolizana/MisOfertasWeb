@@ -8,6 +8,14 @@
         <servlet-name>OfertaServlet</servlet-name>
         <servlet-class>Servlets.OfertaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClienteServlet</servlet-name>
+        <servlet-class>Servlets.ClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CiudadesServlet</servlet-name>
+        <servlet-class>Servlets.CiudadesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>OfertaServlet</servlet-name>
         <url-pattern>/OfertaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteServlet</servlet-name>
+        <url-pattern>/ClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CiudadesServlet</servlet-name>
+        <url-pattern>/CiudadesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

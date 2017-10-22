@@ -1,0 +1,328 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Mis Ofertas</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/compiled.min.css" rel="stylesheet">
+        <style>
+            .mi-select{
+                font-size: 18px;
+                font-family: inherit;
+                padding: 10px 16px;
+                border-radius:6px;
+                width: auto;
+                background-color: #fff;
+                border: 1px solid #ccc;
+            }
+            .formEditDatos{
+                left: 16%;
+            }
+            /*@media (max-width : 777px) {*/
+            @media (max-width : 767px) {
+                .formEditDatos{
+                    left: 0!important;
+                }
+                .select-derecho{
+                    margin: auto!important;
+                    float: none !important;
+                    margin-bottom: 1rem!important;
+                }
+                .select-izquerdo{
+                    /*margin-top: 2rem;*/
+                    margin: auto!important;
+                    float: none !important;
+                }
+                h2{
+                    padding: 1rem!important;
+                }
+            }
+        </style>
+    </head>
+
+
+    <body>
+
+        <header style="padding-bottom: 55px">
+            <!--Navbar-->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-red scrolling-navbar">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><strong>Mis Ofertas</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="accesoCliente.html">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto nav-flex-icons">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false"><i class="fa fa-user"></i> Sesion 
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a class="dropdown-item waves-effect waves-light" href="#" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--Fin Navbar-->
+        </header>
+        <main>
+            <hr class="featurette-divider" style="margin-bottom: 50px">
+
+            <section>
+                <div class="container marketing">
+                    <!--Form Editar Datos-->
+                    <form  id="formRegistrarse" method="POST" action="ClienteServlet">
+                        <div id="formEditDatos" class="col-md-8 formEditDatos">
+                            <div class="" >
+                                <div class="">
+                                    <div class="card" style="">
+                                        <div class="card-body">
+                                            <div class="form-header default-color">
+                                                <h3><i class="fa fa-address-card"></i> Registre Sus Datos</h3>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-envelope prefix"></i>
+                                                <input type="email" id="txtCorreo" name="txtCorreo" class="form-control" value="csalgadolizana@gmail.com" required="">
+                                                <label for="txtCorreo">Su correo</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-lock prefix"></i>
+                                                <input type="password" id="txtPasswd" name="txtPasswd" class="form-control" value="22"  required="">
+                                                <label for="txtPasswd">Tu contraseña</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-lock prefix"></i>
+                                                <input type="password" id="txtPasswd2" name="txtPasswd2" class="form-control" value="22" required="">
+                                                <label for="txtPasswd2">Repite tu contraseña</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix"></i>
+                                                <input type="text" id="txtNombre" name="txtNombre" class="form-control" required="" maxlength="30">
+                                                <label for="txtNombre">Su nombre</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix"></i>
+                                                <input type="text" id="txtApellido" name="txtApellido" class="form-control" required="" maxlength="45">
+                                                <label for="txtApellido">Sus apellidos</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix"></i>
+                                                <input type="text" id="txtRut" name="txtRut" class="form-control" value="" required="" maxlength="17">
+                                                <label for="txtRut">Su rut</label>
+                                            </div>
+
+                                            <div class="md-form input-group">
+                                                <span class="input-group-addon" id="basic-addon3"><i class="fa fa-birthday-cake"></i>fecha nacimiento</span>
+                                                <input type="date" id="txtFechaNacimiento" name="txtFechaNacimiento" class="form-control" value="" required="">
+                                            </div>
+
+                                            <div class="md-form">
+                                                <i class="fa fa-venus-mars prefix"></i>
+                                                <select name="selectSexo" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 20%">
+                                                    <option value="1">Hombre</option>
+                                                    <option value="2">Mujer</option>
+                                                </select>
+                                                <label for="selectSexo">Sexo</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-phone prefix"></i>
+                                                <input type="number" id="txtTelefono" name="txtTelefono" class="form-control" min="1" max="999999999" required="">
+                                                <label for="txtTelefono">Telefono</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="checkbox" id="checAceptaInformativo" name="checAceptaInformativo" class="form-control" value="1">
+                                                <label for="checAceptaInformativo">¿Recibir noticias?</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectCiudades" id="selectCiudades" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%">
+                                                    <option value="1">Ciudad01</option>
+                                                </select>
+                                                <label for="selectCiudades">Ciudad</label>
+                                            </div>
+                                            <div class="text-center">
+                                                <a id="btnCancelar" class="pull-left btn btn-grey waves-effect waves-light" href="index.html">Volver</a>
+                                                <button type="submit" name="btnAccion" value="segundoRegistro" id="btnRegistrarse" class="pull-right btn btn-default waves-effect waves-float">Registrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--fin Form Editar Datos-->
+                </div>
+            </section>
+
+            <hr class="featurette-divider" style="margin-bottom: 120px">
+        </main>
+
+
+
+
+        <!--Footer-->
+        <footer class="page-footer indigo center-on-small-only pt-0">
+            <div class="container">
+
+                <!--First row-->
+                <div class="row">
+
+                    <!--First column-->
+                    <div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
+
+                        <div class="text-center d-flex justify-content-center my-4">
+
+                            <!--Facebook-->
+                            <a class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
+                            <!--Twitter-->
+                            <a class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>
+                            <!--Google +-->
+                            <a class="icons-sm gplus-ic"><i class="fa fa-google-plus white-text fa-lg pr-md-4"> </i></a>
+                            <!--Linkedin-->
+                            <a class="icons-sm li-ic"><i class="fa fa-linkedin white-text fa-lg pr-md-4"> </i></a>
+                            <!--Instagram-->
+                            <a class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>
+                            <!--Pinterest-->
+                            <a class="icons-sm pin-ic"><i class="fa fa-pinterest white-text fa-lg pr-md-4"> </i></a>
+                        </div>
+
+                    </div>
+                    <!--/First column-->
+
+                </div>
+                <!--/First row-->
+
+            </div>
+            <!--/Footer Links-->
+            <!--Copyright-->
+            <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
+                <div class="container-fluid">
+                    Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+
+                </div>
+            </div>
+            <!--/Copyright-->
+
+        </footer>
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">-->
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                pedirDatosDeRegistro();
+                listarCiudades();
+                //max-width : 776px
+//                var width = $(window).width();
+                var max_width = 776;
+                if ($(window).width() < max_width) {
+//                    width = $(this).width();
+                    $("#btnCancelar").addClass("btn-sm");
+                    $("#btnRegistrarse").addClass("btn-sm");
+                } else {
+                    $("#btnCancelar").removeClass("btn-sm");
+                    $("#btnRegistrarse").removeClass("btn-sm");
+                }
+                $(window).on('resize', function () {
+//                    console.log("Largo ->" + $(this).width() + " Comparado con -> " + max_width);
+                    if ($(this).width() < max_width) {
+                        width = $(this).width();
+                        $("#btnCancelar").addClass("btn-sm");
+                        $("#btnRegistrarse").addClass("btn-sm");
+                    } else {
+                        $("#btnCancelar").removeClass("btn-sm");
+                        $("#btnRegistrarse").removeClass("btn-sm");
+                    }
+                });
+
+                $("#check").change(function () {
+                    $("#contenedor_contras").collapse('toggle');
+//                     collapse
+                    if ($(this).prop('checked')) {
+//                        $("#contenedor_contras").show();
+                    } else {
+//                        $("#contenedor_contras").hide();
+                    }
+//                    console.log("Cambio!! "+$(this).prop('checked'));
+                });
+            });
+            function pedirDatosDeRegistro() {
+                $.ajax({
+                    type: "POST",
+                    url: "ClienteServlet",
+                    data: {"btnAccion": "quieroDatos"},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        console.log("Secces");
+                        console.log(data);
+                        console.log(textStatus);
+                        console.log(jqXHR);
+                        if (data != null) {
+                            $("#txtCorreo").val(data.correo);
+                            $("#txtPasswd").val(data.password1);
+                            $("#txtPasswd2").val(data.password2);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("error");
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+                $("#txtNombre").focus();
+            }
+            function listarCiudades() {
+                $.ajax({
+                    type: "POST",
+                    url: "CiudadesServlet",
+                    data: {"accion": "listaCiudades"},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        $("#selectCiudades").html("");
+                        var options;
+                        $(data).each(function (a, objeto, c) {
+                            options = options + '<option value="' + objeto.idc + '">' + objeto.nombre + '</option>';
+                        });
+                        $("#selectCiudades").html(options);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("error");
+                    }
+                });
+            }
+        </script>
+
+    </body>
+</html>
