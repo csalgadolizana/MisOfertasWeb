@@ -54,6 +54,21 @@ public interface PersonaService {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_persona")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_persona", targetNamespace = "http://Servicios/", className = "Services.EliminarPersona")
+    @ResponseWrapper(localName = "Eliminar_personaResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarPersonaResponse")
+    @Action(input = "http://Servicios/PersonaService/Eliminar_personaRequest", output = "http://Servicios/PersonaService/Eliminar_personaResponse")
+    public String eliminarPersona(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
      * @param rut
      * @param apellido
      * @param id
@@ -78,21 +93,6 @@ public interface PersonaService {
         String rut,
         @WebParam(name = "sexo", targetNamespace = "")
         int sexo);
-
-    /**
-     * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_persona")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_persona", targetNamespace = "http://Servicios/", className = "Services.EliminarPersona")
-    @ResponseWrapper(localName = "Eliminar_personaResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarPersonaResponse")
-    @Action(input = "http://Servicios/PersonaService/Eliminar_personaRequest", output = "http://Servicios/PersonaService/Eliminar_personaResponse")
-    public String eliminarPersona(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
 
     /**
      * 

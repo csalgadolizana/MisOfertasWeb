@@ -10,17 +10,17 @@
 <message name="Crear_personaResponse">
 <part name="parameters" element="tns:Crear_personaResponse"/>
 </message>
-<message name="Modificar_persona">
-<part name="parameters" element="tns:Modificar_persona"/>
-</message>
-<message name="Modificar_personaResponse">
-<part name="parameters" element="tns:Modificar_personaResponse"/>
-</message>
 <message name="Eliminar_persona">
 <part name="parameters" element="tns:Eliminar_persona"/>
 </message>
 <message name="Eliminar_personaResponse">
 <part name="parameters" element="tns:Eliminar_personaResponse"/>
+</message>
+<message name="Modificar_persona">
+<part name="parameters" element="tns:Modificar_persona"/>
+</message>
+<message name="Modificar_personaResponse">
+<part name="parameters" element="tns:Modificar_personaResponse"/>
 </message>
 <message name="Listado_personas">
 <part name="parameters" element="tns:Listado_personas"/>
@@ -33,13 +33,13 @@
 <input wsam:Action="http://Servicios/PersonaService/Crear_personaRequest" message="tns:Crear_persona"/>
 <output wsam:Action="http://Servicios/PersonaService/Crear_personaResponse" message="tns:Crear_personaResponse"/>
 </operation>
-<operation name="Modificar_persona">
-<input wsam:Action="http://Servicios/PersonaService/Modificar_personaRequest" message="tns:Modificar_persona"/>
-<output wsam:Action="http://Servicios/PersonaService/Modificar_personaResponse" message="tns:Modificar_personaResponse"/>
-</operation>
 <operation name="Eliminar_persona">
 <input wsam:Action="http://Servicios/PersonaService/Eliminar_personaRequest" message="tns:Eliminar_persona"/>
 <output wsam:Action="http://Servicios/PersonaService/Eliminar_personaResponse" message="tns:Eliminar_personaResponse"/>
+</operation>
+<operation name="Modificar_persona">
+<input wsam:Action="http://Servicios/PersonaService/Modificar_personaRequest" message="tns:Modificar_persona"/>
+<output wsam:Action="http://Servicios/PersonaService/Modificar_personaResponse" message="tns:Modificar_personaResponse"/>
 </operation>
 <operation name="Listado_personas">
 <input wsam:Action="http://Servicios/PersonaService/Listado_personasRequest" message="tns:Listado_personas"/>
@@ -57,7 +57,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="Modificar_persona">
+<operation name="Eliminar_persona">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -66,7 +66,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="Eliminar_persona">
+<operation name="Modificar_persona">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
