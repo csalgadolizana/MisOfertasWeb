@@ -53,11 +53,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="index.html">Home </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="accesoCliente.html">Ofertas</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Ofertas <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contacto</a>
@@ -71,12 +71,12 @@
                                                             <a class="nav-link waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
                                                         </li>-->
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarNombreSesion">
                                     <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
-                                    <a class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
                                 </div>
                             </li>
                         </ul>
@@ -99,14 +99,14 @@
                 <h3 >Filtro por : </h3>
                 <div class="row text-center" style="margin-bottom: 100px">
                     <div class="col-md-6"  style="">
-                        <select name="selectTienda" class="pull-right browser-default mi-select select-derecho" >
+                        <select id="selectTienda" name="selectTienda" class="pull-right browser-default mi-select select-derecho" >
                             <option selected="selected" disabled>Tiendas</option>
                             <option>Sucursal Puente Alto</option>
                             <option>Sucursal La Florida</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <select name="selectCategoria" class="pull-left browser-default mi-select select-izquerdo" >
+                        <select id="selectCategoria" name="selectCategoria" class="pull-left browser-default mi-select select-izquerdo" >
                             <option selected="selected" disabled>Categorias</option>
                             <option>Ropa</option>
                             <option>Electrodomesticos</option>
@@ -149,36 +149,35 @@
 
 
             <!--modal inicia sesion-->
-            <div class="modal fade" id="modalRegistrerForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-controls-modal="your_div_id" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
 
                         <div class="card" style="">
-                            <div class="card-body">
-
-                                <!--Header-->
-                                <div class="form-header default-color">
-                                    <h3><i class="fa fa-lock"></i> Login:</h3>
+                            <form id="formIniciarSesion" method="POST" action="ClienteServlet">
+                                <div class="card-body">
+                                    <!--Header-->
+                                    <div class="form-header default-color">
+                                        <h3><i class="fa fa-lock"></i> Login:</h3>
+                                    </div>
+                                    <!--Body-->
+                                    <div class="md-form">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input type="email" id="txtCorreoIniciar" class="form-control validate" required="">
+                                        <label for="txtCorreoIniciar" data-success="Correcto" data-error="Error" >Tu correo</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <i class="fa fa-lock prefix"></i>
+                                        <input type="password" id="txtPasswdIniciar" class="form-control validate" required="">
+                                        <label for="txtPasswdIniciar" data-success="Correcto" data-error="Error">Tu contraseña</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <!--<button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>-->
+                                        <button type="button" id="btnIniciarSesionFake" class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
+                                        <button type="submit" id="btnIniciarSesionReal" name="btnAccion" value="inicioSesion" class="" style="display: none">Ingresar</button>
+                                    </div>
                                 </div>
-
-                                <!--Body-->
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="defaultForm-email" class="form-control">
-                                    <label for="defaultForm-email">Tu correo o nombre de usuario</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <i class="fa fa-lock prefix"></i>
-                                    <input type="password" id="defaultForm-pass" class="form-control">
-                                    <label for="defaultForm-pass">Tu contraseña</label>
-                                </div>
-
-                                <div class="text-center">
-                                    <button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>
-                                    <button class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
-                                </div>
-                            </div>
+                            </form>
                             <!--Footer-->
                             <div class="modal-footer">
                                 <div class="">
@@ -187,11 +186,11 @@
                                             <p>Sin cuenta? <a href="#" data-toggle="modal" data-target="#modalSubscriptionForm"> Registrate aqui</a></p>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="pull-right">
-                                            <p>Olvidaste tu <a href="#">contraseña?</a></p>
-                                        </div>
-                                    </div>
+                                    <!--                                    <div class="row">
+                                                                            <div class="pull-right">
+                                                                                <p>Olvidaste tu <a href="#">contraseña?</a></p>
+                                                                            </div>
+                                                                        </div>-->
                                 </div>
 
                             </div>
@@ -205,43 +204,60 @@
             <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-bold">Registrate</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body mx-3">
-                            <div class="md-form">
-                                <i class="fa fa-envelope  prefix"></i>
-                                <input type="email" id="txtCorreoRegistro" class="form-control validate">
-                                <label data-error="Error" data-success="Correcto" for="txtCorreoRegistro">Ingrese su correo</label>
+                        <form id="formRegistrarse" method="POST" action="ClienteServlet">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-bold">Registrate</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="md-form">
-                                <i class="fa fa-lock  prefix"></i>
-                                <input type="password" id="txtContraseñaRegistro" class="form-control validate">
-                                <label data-error="Error" data-success="Correcto" for="txtContraseñaRegistro">Su contraseña</label>
-                            </div>
-                            <div class="md-form">
-                                <i class="fa fa-lock  prefix"></i>
-                                <input type="password" id="txtContraseñaRegistro2" class="form-control validate">
-                                <label data-error="Error" data-success="Correcto" for="txtContraseñaRegistro2">Repita su contraseña</label>
-                            </div>
+                            <div class="modal-body mx-3">
+                                <div class="md-form">
+                                    <i class="fa fa-envelope  prefix"></i>
+                                    <input type="email" id="txtCorreoRegistro" name="txtCorreoRegistro" class="form-control validate" required="">
+                                    <label data-error="Error" data-success="Correcto" for="txtCorreoRegistro">Ingrese su correo</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-lock  prefix"></i>
+                                    <input type="password" id="txtContrasenaRegistro" name="txtContrasenaRegistro" class="form-control validate" required="">
+                                    <label data-error="Error" data-success="Correcto" for="txtContrasenaRegistro">Su contraseña</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-lock  prefix"></i>
+                                    <input type="password" id="txtContrasenaRegistro2" name="txtContrasenaRegistro2" class="form-control validate" required="">
+                                    <label data-error="Error" data-success="Correcto" for="txtContrasenaRegistro2">Repita su contraseña</label>
+                                </div>
+
+                                <div id="contenedor_masDatos" class="collapse" style="/*display:none*/">
+                                    <div class="md-form">
+                                        <i class="fa fa-calendar  prefix"></i>
+                                        <input type="date" id="txtfechaNacimiento" class="form-control validate" placeholder="Su fecha de nacimiento" >
+                                        <!--<input type="date" id="cajaFecha" class="form-control" value="02-16-2012">-->
+                                        <label data-error="Error" data-success="Correcto" for="txtfechaNacimiento"></label>
+                                    </div>
+                                    <!--<div class="md-form">-->
+                                    <label for="date-picker-example">Try me...
+                                        <i class="fa fa-calendar  prefix"></i>
+                                        <input placeholder="" type="date" id="date-picker-example" class="form-control datepicker">
+                                    </label>
+                                    <!--</div>-->
+                                    <div class="md-form input-group">
+                                        <span class="input-group-addon" id="basic-addon3">fecha nacimiento</span>
+                                        <input type="date" class="form-control pt-0" id="basic-url" aria-describedby="basic-addon3" placeholder="Fecha">
+                                    </div>
+                                </div>
 
 
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
-                        </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="button" id="btnRegistrarForm" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
+                                <button type="submit" id="btnRealRegistrarForm" name="btnAccion" value="primerRegistro" style="display: none" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
             <!--Fin Modal registrate-->
-
-            <button id="btnRegistrarForm" class="btn btn-default btn-rounded mb-4 waves-effect waves-light" 
-                    data-toggle="modal" data-target="#modalRegistrerForm"
-                    data-backdrop="static"
-                    data-keyboard="false">Launch Modal Login Form</button>
 
 
             <hr class="featurette-divider">
@@ -307,19 +323,103 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+
+        <!--js para rececionar parametros de la url-->
+        <!--Ejemplo: getParameterByName('x') x es un parametro-->
+        <script type="text/javascript" src="js/commons.js"></script>
+
+        <!--js para usar modal-form login y registrate-->
+        <script type="text/javascript" src="js/control-login-registrer.js"></script>
+
         <script>
+            var param = getParameterByName('d');
             $(document).ready(function () {
-//                $('#modalLoginForm').show();
-//                $("#modalRegistrarForm");
-//                $("#btnIniciar").click(function () {
-//                    console.log("Hizo click");
                 $("#btnRegistrarForm").hide();
-                $("#btnRegistrarForm").trigger('click');
-//                $('#modalRegistrerForm').modal({
-//                    backdrop: 'static',
-//                    keyboard: false
-//                });
+                console.log(param);
+                if (param == null) {
+                    console.log("enotro");
+                    $("#modalLoginForm").modal('show');
+                } else {
+                    pedirDatosDeUsuario();
+                }
+//                listarLocales();
+                listarCategorias();
+                $("#selectTienda,#selectCategoria").change(function () {
+                    console.log("cambio el cboTiendads");
+                });
             });
+            function listarCategorias() {
+                console.log(" listarCategorias listarCategorias()");
+
+                $.ajax({
+                    type: "POST",
+                    url: "CategoriaServlet",
+                    data: {"accion": "listaCategorias"},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        console.log(" success: listarCategorias()");
+
+                        $("#selectCategoria").html("");
+                        var options = '<option selected="selected" disabled="">Categorias</option>';
+                        $(data).each(function (a, objeto, c) {
+                            options = options + '<option value="' + objeto.idcat + '">' + objeto.nombre + '</option>';
+                        });
+                        $("#selectCategoria").html(options);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(" eer listarCategorias()");
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            }
+            function listarLocales() {
+                $.ajax({
+                    type: "POST",
+                    url: "LocalServlet",
+                    data: {"accion": "listaLocales"},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        $("#selectTienda").html("");
+                        var options = '<option selected="selected" disabled="">Tiendas</option>';
+                        $(data).each(function (a, objeto, c) {
+                            options = options + '<option value="' + objeto.idl + '">' + objeto.nombre + '</option>';
+                        });
+                        $("#selectTienda").html(options);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(" eer listarLocales()");
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            }
+            function pedirDatosDeUsuario() {
+                $.ajax({
+                    type: "POST",
+                    url: "ClienteServlet",
+                    data: {"btnAccion": "getDataClient", "idcli": param},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        console.log("Secces");
+                        console.log(data);
+                        console.log(textStatus);
+                        console.log(jqXHR);
+                        if (data != null) {
+                            $("#navbarNombreSesion").text(data.correo);
+                            $("#toEditarMisDatos").prop("href", "editarMisDatos.html?d=" + param);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("error pedirDatosDeUsuario()");
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            }
         </script>
 
 

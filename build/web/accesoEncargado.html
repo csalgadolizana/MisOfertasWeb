@@ -258,11 +258,11 @@
                                         </div>
                                         <div class="md-form form-sm">
                                             <i class="fa fa-map prefix"></i>
-                                            <select name="selectLocal" id="selectLocal" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                            <select name="selectCiudades" id="selectCiudades" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
                                                 <option disabled="" selected="">Seleccione</option>
                                                 <option value="1">Mall tobalaba</option>
                                                 <option value="2">Parque Arauco</option></select>
-                                            <label for="selectLocal">Ciudad</label>
+                                            <label for="selectCiudades">Ciudad</label>
                                         </div>
                                         <div class="md-form form-sm">
                                             <i class="fa fa-sort-numeric-desc prefix"></i>
@@ -391,7 +391,7 @@
 
         <script>
             $(document).ready(function () {
-
+//                var arrPrecios = [];
                 $('#tabla-ofertas').DataTable({
                     "language": {
                         "lengthMenu": "",
@@ -405,8 +405,9 @@
                 $('select').addClass('mdb-select');
 //                $('.mdb-select').material_select();
 
-                pedirDatosDeRegistro();
+//                pedirDatosDeRegistro();
                 listarCiudades();
+                listarProductos();
                 comprobarSiCorreoExiste();
                 $('#centralModalError').on('hidden.bs.modal', function (e) {
                     $("#txtCorreo").focus();
@@ -524,6 +525,32 @@
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log("error");
+                    }
+                });
+            }
+            function listarProductos() {
+                alert("esta listando productos....");
+                $.ajax({
+                    type: "POST",
+                    url: "ProductoServlet",
+                    data: {"accion": "listaProductos"},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        console.log(data);
+                        $("#selectProducto").html("");
+                        var options;
+                        $(data).each(function (a, objeto, c) {
+                            console.log(objeto);
+                            options = options + '<option value="' + objeto.idpro + '">' + objeto.nombre + '</option>';
+//                            arrPrecios[objeto.idpro] = objeto.precio;
+                        });
+                        $("#selectProducto").html(options);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("error");
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
                     }
                 });
             }

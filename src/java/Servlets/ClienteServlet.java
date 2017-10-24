@@ -9,6 +9,10 @@ import Services.Cliente;
 import Services.ClienteService_Service;
 import Services.Persona;
 import Services.PersonaService_Service;
+import Services.Usuario;
+import Services.UsuarioService_Service;
+//import Services.Usuario;
+//import Services.UsuarioService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -38,6 +42,11 @@ import org.json.simple.JSONObject;
  */
 public class ClienteServlet extends HttpServlet {
 
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/UsuarioService.wsdl")
+    private UsuarioService_Service service_2;
+
+//    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/WSMisOfertas/UsuarioService.wsdl")
+//    private UsuarioService_Service service_2;
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/ClienteService.wsdl")
     private ClienteService_Service service_1;
 
@@ -62,7 +71,7 @@ public class ClienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 //        response.setContentType("Content-Type: application/json");
         String btnAccion = request.getParameter("btnAccion");
-        System.err.println(btnAccion);
+        System.err.println("ClienteServlet ->" + btnAccion);
         switch (btnAccion) {
             case "primerRegistro":
                 returnToFormRegister(request, response);
@@ -79,8 +88,11 @@ public class ClienteServlet extends HttpServlet {
             case "iniciarSesion":
                 inicioSesion(request, response);
                 break;
+            case "getDataClient":
+                returnClient(request, response);
+                break;
             default:
-                returnRegister(request, response);
+                existeCorreo(request, response);
                 break;
         }
 
@@ -95,10 +107,49 @@ public class ClienteServlet extends HttpServlet {
         Cliente cli = autenticacion(correo, pass1);
         jObj = new JSONObject();
 //        En el caso de no encontrar nada retornará 0 en estado
-        jObj.put("estado", cli.getIdCliente().floatValue());
+        int idCliente = cli.getIdCliente().intValue();
+        System.err.println("el id es -> " + idCliente);
+        if (idCliente == 0) {
+            System.err.println("if (idCliente == 0");
+            Usuario us = autenticarTrabajador(correo, pass1);
+            System.err.println("correo -> " + correo);
+            System.err.println("pass -> " + pass1);
+            System.err.println("valor de usuario -> " + us.getCorreo());
+            if (us.getIdUsuario().intValue() != 0) {
+//                response.sendRedirect("accesoEncargado.html?d=" + us.getIdUsuario().intValue());
+//                jObj.put("correo", correo);
+                jObj.put("estado", us.getIdUsuario().intValue() + "");
+                jObj.put("redirect", "accesoEncargado.html?d=" + us.getIdUsuario().intValue() + "");
+//                PrintWriter out = response.getWriter();
+//                response.setContentType("Content-Type: application/json");
+//                out.println(jObj);
+                System.err.println("Redirect");
+                PrintWriter out = response.getWriter();
+                response.setContentType("Content-Type: application/json");
+                out.println(jObj);
+            }
+        } else {
+            jObj.put("estado", idCliente);
+            PrintWriter out = response.getWriter();
+            response.setContentType("Content-Type: application/json");
+            out.println(jObj);
+        }
+    }
+
+    public void returnClient(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int idClie = Integer.parseInt(request.getParameter("idcli"));
+        Cliente cli = listadoClientes().stream().filter((c) -> c.getIdCliente().intValue() == idClie).findAny().orElse(null);
+        jObj = new JSONObject();
+        if (cli == null) {
+            jObj.put("correo", "");
+        } else {
+            jObj.put("correo", cli.getCorreo());
+        }
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
         out.println(jObj);
+
     }
 
     public void existeCorreo(HttpServletRequest request, HttpServletResponse response)
@@ -107,13 +158,14 @@ public class ClienteServlet extends HttpServlet {
         Cliente cli = listadoClientes().stream().filter((c) -> c.getCorreo().equals(correo.trim().toLowerCase())).findAny().orElse(null);
         jObj = new JSONObject();
         if (cli == null) {
-//            if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
-            jObj.put("correo", "");
-//            }
+            Usuario us = listadoUsuarios().stream().filter((u) -> u.getCorreo().equals(correo.trim().toLowerCase())).findAny().orElse(null);
+            if (us != null && us.getCargoIdcargo().getIdcargo().intValue() == 3) {
+                jObj.put("correo", us.getCorreo());
+            } else {
+                jObj.put("correo", "");
+            }
         } else {
-//            if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
             jObj.put("correo", cli.getCorreo());
-//            }
         }
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
@@ -154,32 +206,25 @@ public class ClienteServlet extends HttpServlet {
         telefono = Integer.parseInt(request.getParameter("txtTelefono"));
         recibirNoticias = (request.getParameter("checAceptaInformativo") == null) ? 0 : 1;
         ciudad = Integer.parseInt(request.getParameter("selectCiudades"));
-//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         crearPersona(0, nombre, apellidos, rut, sexo);
-//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         GregorianCalendar c = new GregorianCalendar();
-//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         GregorianCalendar fechaHoy = new GregorianCalendar();
-//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         try {
             fechaHoy.setTime(new Date());
-//            System.err.println("La fecha que está pasando es ");
-//            System.err.println(new Date());
-//            System.err.println(fechaHoy);
             c.setTime(fechaNac);
-            System.err.println("Fecha naci " + c);
         } catch (Exception e) {
-            System.err.println("Error<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.err.println(e.getMessage());
             c.setTime(new Date());
-            System.err.println("Error<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         }
         XMLGregorianCalendar fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
         XMLGregorianCalendar fechaHoyXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaHoy);
 
         Persona p = Collections.max(listadoPersonas(), Comparator.comparing(Persona::getIdpersona));
+        Cliente clitemp = Collections.max(listadoClientes(), Comparator.comparing(Cliente::getIdCliente));
 
-        String ret = crearCliente(0, fecha, correo, pass1, telefono, recibirNoticias + "", fechaHoyXml, fechaHoyXml, ciudad, 1, p.getIdpersona().intValue());
+        String ret = crearCliente(clitemp.getIdCliente().intValue() + 1, fecha, correo, pass1, telefono, recibirNoticias + "", fechaHoyXml, fechaHoyXml, ciudad, 1, p.getIdpersona().intValue());
+
+        Cliente cli = Collections.max(listadoClientes(), Comparator.comparing(Cliente::getIdCliente));
         System.err.println(ret);
         jObj = new JSONObject();
         if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
@@ -187,7 +232,7 @@ public class ClienteServlet extends HttpServlet {
             jObj.put("correo", correo);
             jObj.put("nombre", nombre);
         }
-        response.sendRedirect("registrarCliente.html");
+        response.sendRedirect("accesoCliente.html?d=" + cli.getIdCliente().toString());
     }
 
     public void returnRegister(HttpServletRequest request, HttpServletResponse response)
@@ -281,6 +326,20 @@ public class ClienteServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.ClienteService port = service_1.getClienteServicePort();
         return port.autenticacion(correo, contrasena);
+    }
+
+    private Usuario autenticarTrabajador(java.lang.String correo, java.lang.String contrasena) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.UsuarioService port = service_2.getUsuarioServicePort();
+        return port.autenticarTrabajador(correo, contrasena);
+    }
+
+    private java.util.List<Services.Usuario> listadoUsuarios() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.UsuarioService port = service_2.getUsuarioServicePort();
+        return port.listadoUsuarios();
     }
 
 }

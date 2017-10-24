@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>UsuarioServlet</servlet-name>
-        <servlet-class>Servlets.UsuarioServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>OfertaServlet</servlet-name>
         <servlet-class>Servlets.OfertaServlet</servlet-class>
     </servlet>
@@ -16,10 +12,18 @@
         <servlet-name>CiudadesServlet</servlet-name>
         <servlet-class>Servlets.CiudadesServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>UsuarioServlet</servlet-name>
-        <url-pattern>/UsuarioServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>LocalServlet</servlet-name>
+        <servlet-class>Servlets.LocalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoriaServlet</servlet-name>
+        <servlet-class>Servlets.CategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductoServlet</servlet-name>
+        <servlet-class>Servlets.ProductoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OfertaServlet</servlet-name>
         <url-pattern>/OfertaServlet</url-pattern>
@@ -31,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>CiudadesServlet</servlet-name>
         <url-pattern>/CiudadesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LocalServlet</servlet-name>
+        <url-pattern>/LocalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriaServlet</servlet-name>
+        <url-pattern>/CategoriaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductoServlet</servlet-name>
+        <url-pattern>/ProductoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

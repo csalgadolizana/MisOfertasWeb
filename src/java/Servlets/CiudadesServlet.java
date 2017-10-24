@@ -58,7 +58,6 @@ public class CiudadesServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
-        System.err.println("etrsjfshn");
         listaJson = new JSONArray();
         List<Ciudad> list = listadoCiudades();
         if (list != null) {
@@ -69,7 +68,6 @@ public class CiudadesServlet extends HttpServlet {
                     jObj.put("idc", ciu.getIdCiudad().toString());
                     jObj.put("desc", ciu.getDescripcion());
                     listaJson.add(jObj);
-                    System.err.println("Pasooo");
                 }
             }
         }

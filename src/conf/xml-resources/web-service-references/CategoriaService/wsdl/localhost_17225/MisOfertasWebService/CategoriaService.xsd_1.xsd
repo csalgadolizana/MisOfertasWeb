@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://Servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servicios/">
+
+<xs:element name="Crear_categoria" type="tns:Crear_categoria"/>
+
+<xs:element name="Crear_categoriaResponse" type="tns:Crear_categoriaResponse"/>
+
+<xs:element name="Eliminar_categoria" type="tns:Eliminar_categoria"/>
+
+<xs:element name="Eliminar_categoriaResponse" type="tns:Eliminar_categoriaResponse"/>
+
+<xs:element name="Listado_categorias" type="tns:Listado_categorias"/>
+
+<xs:element name="Listado_categoriasResponse" type="tns:Listado_categoriasResponse"/>
+
+<xs:element name="Modificar_categoria" type="tns:Modificar_categoria"/>
+
+<xs:element name="Modificar_categoriaResponse" type="tns:Modificar_categoriaResponse"/>
+
+<xs:element name="categoria" type="tns:categoria"/>
+
+<xs:complexType name="Modificar_categoria">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="desc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Modificar_categoriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Listado_categorias">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="Listado_categoriasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoria" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="categoria">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idCategoria" type="xs:decimal" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Crear_categoria">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="desc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Crear_categoriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Eliminar_categoria">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Eliminar_categoriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

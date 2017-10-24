@@ -75,12 +75,12 @@
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarNombreSesion">
                                     <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <!--<a class="dropdown-item waves-effect waves-light" href="#" > Mis datos  <i class="fa fa-address-card-o"></i></a>-->
                                 </div>
                             </li>
                         </ul>
@@ -90,7 +90,7 @@
             <!--Fin Navbar-->
         </header>
         <!--Fin de Header-->
-        
+
         <!--Main-->
         <main>
             <hr class="featurette-divider" style="margin-bottom: 50px">
@@ -173,7 +173,7 @@
             <hr class="featurette-divider" style="margin-bottom: 120px">
         </main>
         <!--Fin Main-->
-        
+
         <!--Footer-->
         <footer class="page-footer indigo center-on-small-only pt-0">
             <div class="container">
@@ -219,7 +219,7 @@
 
         </footer>
         <!--Fin Footer-->
-        
+
         <!-- SCRIPTS -->
         <!-- JQuery -->
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -230,6 +230,8 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        
+        <script type="text/javascript" src="js/commons.js"></script>
 
         <script>
             $(document).ready(function () {
@@ -267,6 +269,47 @@
 //                    console.log("Cambio!! "+$(this).prop('checked'));
                 });
             });
+        </script>
+
+        <script>
+            var param = getParameterByName('d');
+            $(document).ready(function () {
+//                $("#btnRegistrarForm").hide();
+                console.log(param);
+                if (param == null) {
+                    console.log("enotro");
+                    location.href = "index.html";
+//                    $("#modalLoginForm").modal('show');
+                } else {
+                    pedirDatosDeUsuario();
+                }
+
+            });
+            function pedirDatosDeUsuario() {
+                $.ajax({
+                    type: "POST",
+                    url: "ClienteServlet",
+                    data: {"btnAccion": "getDataClient", "idcli": param},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        console.log("Secces");
+                        console.log(data);
+                        console.log(textStatus);
+                        console.log(jqXHR);
+                        if (data != null) {
+                            $("#navbarNombreSesion").text(data.correo);
+                            $("#toEditarMisDatos").prop("href", "editarMisDatos.html?d=" + param);
+                            $("#btnCancelar").prop("href", "accesoCliente.html?d=" + param);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("error");
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            }
         </script>
 
     </body>
