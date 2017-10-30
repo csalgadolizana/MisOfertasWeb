@@ -186,5 +186,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
         <delete dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-CiudadService, wsimport-client-PersonaService, wsimport-client-ClienteService, wsimport-client-LocalService, wsimport-client-CategoriaService, wsimport-client-UsuarioService, wsimport-client-ProductoService, wsimport-client-OfertaService, wsimport-client-OfertaLocalService, wsimport-client-DetalleOfertaService"/>
+    <target name="wsimport-client-OfertaVisitaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaVisitaService" destdir="${build.generated.dir}/jax-wsCache/OfertaVisitaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:17225/MisOfertasWebService/OfertaVisitaService?wsdl" xnocompile="true" xendorsed="true" package="Services">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-OfertaVisitaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-CiudadService, wsimport-client-PersonaService, wsimport-client-ClienteService, wsimport-client-LocalService, wsimport-client-CategoriaService, wsimport-client-UsuarioService, wsimport-client-ProductoService, wsimport-client-OfertaService, wsimport-client-OfertaLocalService, wsimport-client-DetalleOfertaService, wsimport-client-OfertaVisitaService"/>
 </project>

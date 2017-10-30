@@ -23,4 +23,6 @@
     <system systemId="http://localhost:17225/MisOfertasWebService/OfertaLocalService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaLocalService.xsd_1.xsd"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?WSDL" uri="wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaVisitaService?wsdl" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaVisitaService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.xsd_1.xsd"/>
 </catalog>
