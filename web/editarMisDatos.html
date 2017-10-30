@@ -67,7 +67,7 @@
                                 <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="accesoCliente.html">Ofertas</a>
+                                <a class="nav-link" href="accesoCliente.html?d=41">Ofertas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contacto</a>
@@ -98,74 +98,99 @@
             <section>
                 <div class="container marketing">
                     <!--Form Editar Datos-->
-                    <div id="formEditDatos" class="col-md-8 formEditDatos">
-                        <div class="" >
-                            <div class="">
-                                <div class="card" style="">
-                                    <div class="card-body">
-                                        <div class="form-header default-color">
-                                            <h3><i class="fa fa-address-card"></i> Sus Datos</h3>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-envelope prefix"></i>
-                                            <input type="text" id="defaultForm-email" class="form-control" value="csalgadolizana@gmail.com" readonly="">
-                                            <label for="defaultForm-email">Su correo</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-user prefix"></i>
-                                            <input type="text" id="defaultForm-email" class="form-control" value="Cristopher">
-                                            <label for="defaultForm-email">Su nombre</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-user prefix"></i>
-                                            <input type="text" id="defaultForm-email" class="form-control" value="Salgado">
-                                            <label for="defaultForm-email">Su apellido</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-birthday-cake prefix"></i>
-                                            <input type="number" id="defaultForm-email" class="form-control" value="21">
-                                            <label for="defaultForm-email">Su edad</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-venus-mars prefix"></i>
-                                            <select name="selectSexo" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 20%">
-                                                <option>Hombre</option>
-                                                <option>Mujer</option>
-                                            </select>
-                                            <label for="rad">Sexo</label>
-                                        </div>
-                                        <div class="md-form">
-                                            <i class="fa fa-calendar prefix"></i>
-                                            <input type="checkbox" id="check" class="form-control" value="21">
-                                            <label for="check">¿Cambiar contraseña?</label>
-                                        </div>
-                                        <div id="contenedor_contras" class="collapse" style="/*display:none*/">
-                                            <div class="md-form">
-                                                <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="defaultForm-pass" class="form-control" value="">
-                                                <label for="defaultForm-pass">Tu contraseña actual</label>
+                    <form  id="formEditarDatos" method="POST" action="ClienteServlet">
+                        <div id="formEditDatos" class="col-md-8 formEditDatos">
+                            <div class="" >
+                                <div class="">
+                                    <div class="card" style="">
+                                        <div class="card-body">
+                                            <div class="form-header default-color">
+                                                <h3><i class="fa fa-address-card"></i> Modifique sus datos</h3>
                                             </div>
                                             <div class="md-form">
-                                                <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="pass-new" class="form-control">
-                                                <label for="pass-new">Tu <strong>nueva</strong> contraseña</label>
+                                                <i class="fa fa-envelope prefix"></i>
+                                                <input type="email" id="txtCorreo" name="txtCorreo" class="form-control" value="csalgadolizana@gmail.com" required="">
+                                                <label for="txtCorreo" >Su correo</label>
                                             </div>
                                             <div class="md-form">
-                                                <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="pass-repeat" class="form-control">
-                                                <label for="pass-repeat">Repite tu nueva contraseña</label>
+                                                <i class="fa fa-calendar prefix"></i>
+                                                <input id="check" class="form-control" value="21" type="checkbox">
+                                                <label for="check">¿Cambiar contraseña?</label>
                                             </div>
-                                        </div>
+                                            <div id="contenedor-contras" class="collapse">
+                                                <div class="md-form">
+                                                    <i class="fa fa-lock prefix"></i>
+                                                    <input type="password" id="txtPasswdActual" name="txtPasswdActual" class="form-control" value=""  required="">
+                                                    <label for="txtPasswdActual">Tu contraseña</label>
+                                                </div>
+                                                <div class="md-form">
+                                                    <i class="fa fa-lock prefix"></i>
+                                                    <input type="password" id="txtPasswd" name="txtPasswd" class="form-control" value=""  required="">
+                                                    <label for="txtPasswd">Tu contraseña</label>
+                                                </div>
+                                                <div class="md-form">
+                                                    <i class="fa fa-lock prefix"></i>
+                                                    <input type="password" id="txtPasswd2" name="txtPasswd2" class="form-control" value="" required="">
+                                                    <label for="txtPasswd2">Repite tu contraseña</label>
+                                                </div>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix"></i>
+                                                <input type="text" id="txtNombre" name="txtNombre" class="form-control" required="" maxlength="30">
+                                                <label for="txtNombre">Su nombre</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix"></i>
+                                                <input type="text" id="txtApellido" name="txtApellido" class="form-control" required="" maxlength="45">
+                                                <label for="txtApellido">Sus apellidos</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix"></i>
+                                                <input type="text" id="txtRut" name="txtRut" class="form-control" value="" required="" maxlength="17">
+                                                <label for="txtRut">Su rut</label>
+                                            </div>
 
-                                        <div class="text-center">
-                                            <a id="btnCancelar" class="pull-left btn btn-grey waves-effect waves-light" href="accesoCliente.html">Cancelar</a>
-                                            <button id="btnAceptar" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
+                                            <div class="md-form input-group">
+                                                <span class="input-group-addon" id="basic-addon3"><i class="fa fa-birthday-cake"></i>fecha nacimiento</span>
+                                                <input type="date" id="txtFechaNacimiento" name="txtFechaNacimiento" class="form-control" value="" required="">
+                                            </div>
+
+                                            <div class="md-form">
+                                                <i class="fa fa-venus-mars prefix"></i>
+                                                <select name="selectSexo" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 20%">
+                                                    <option value="1">Hombre</option>
+                                                    <option value="2">Mujer</option>
+                                                </select>
+                                                <label for="selectSexo">Sexo</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-phone prefix"></i>
+                                                <input type="number" id="txtTelefono" name="txtTelefono" class="form-control" min="1" max="999999999" required="">
+                                                <label for="txtTelefono">Telefono</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="checkbox" id="checAceptaInformativo" name="checAceptaInformativo" class="form-control" value="1">
+                                                <label for="checAceptaInformativo">¿Recibir noticias?</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectCiudades" id="selectCiudades" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%">
+                                                    <option value="1">Ciudad01</option>
+                                                </select>
+                                                <label for="selectCiudades">Ciudad</label>
+                                            </div>
+                                            <div class="text-center">
+                                                <a id="btnCancelar" class="pull-left btn btn-grey waves-effect waves-light" href="index.html">Volver</a>
+                                                <button type="button"  value="btnRegistroFalso" id="btnRegistroFalso" class="pull-right btn btn-default waves-effect waves-float">Registrar</button>
+                                                <button type="submit" name="btnAccion" value="segundoRegistro" id="btnRegistrarse" style="display: none" class="pull-right btn btn-default waves-effect waves-float">Registrar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <!--fin Form Editar Datos-->
                 </div>
             </section>
@@ -230,83 +255,84 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
-        
+
         <script type="text/javascript" src="js/commons.js"></script>
 
-        <script>
-            $(document).ready(function () {
-                //max-width : 776px
-//                var width = $(window).width();
-                var max_width = 776;
-                if ($(window).width() < max_width) {
-//                    width = $(this).width();
-                    $("#btnCancelar").addClass("btn-sm");
-                    $("#btnAceptar").addClass("btn-sm");
-                } else {
-                    $("#btnCancelar").removeClass("btn-sm");
-                    $("#btnAceptar").removeClass("btn-sm");
-                }
-                $(window).on('resize', function () {
-//                    console.log("Largo ->" + $(this).width() + " Comparado con -> " + max_width);
-                    if ($(this).width() < max_width) {
-                        width = $(this).width();
-                        $("#btnCancelar").addClass("btn-sm");
-                        $("#btnAceptar").addClass("btn-sm");
-                    } else {
-                        $("#btnCancelar").removeClass("btn-sm");
-                        $("#btnAceptar").removeClass("btn-sm");
-                    }
-                });
 
-                $("#check").change(function () {
-                    $("#contenedor_contras").collapse('toggle');
-//                     collapse
-                    if ($(this).prop('checked')) {
-//                        $("#contenedor_contras").show();
-                    } else {
-//                        $("#contenedor_contras").hide();
-                    }
-//                    console.log("Cambio!! "+$(this).prop('checked'));
-                });
-            });
-        </script>
 
         <script>
             var param = getParameterByName('d');
+            var idCiudad;
             $(document).ready(function () {
-//                $("#btnRegistrarForm").hide();
-                console.log(param);
-                if (param == null) {
-                    console.log("enotro");
-                    location.href = "index.html";
-//                    $("#modalLoginForm").modal('show');
-                } else {
-                    pedirDatosDeUsuario();
-                }
+//                $("#check").click();
+                $("#check").change(function () {
+                    console.log("Entro al cambioo");
+                    $("#contenedor-contras").collapse('toggle');
+                });
+                listarCiudades();
+                getMisDatos();
 
             });
-            function pedirDatosDeUsuario() {
+            function getMisDatos() {
                 $.ajax({
                     type: "POST",
-                    url: "ClienteServlet",
-                    data: {"btnAccion": "getDataClient", "idcli": param},
+                    url: "UsuarioServlet",
+                    data: {"accion": "getDataSession"},
                     dataType: "json",
                     success: function (data, textStatus, jqXHR) {
-                        console.log("Secces");
+                        console.log(" success: getMisDatos()");
                         console.log(data);
-                        console.log(textStatus);
-                        console.log(jqXHR);
-                        if (data != null) {
+                        if (data.sesion == 1) {
                             $("#navbarNombreSesion").text(data.correo);
-                            $("#toEditarMisDatos").prop("href", "editarMisDatos.html?d=" + param);
-                            $("#btnCancelar").prop("href", "accesoCliente.html?d=" + param);
+                            $("#txtCorreo").val(data.correo);
+                            $("#txtCorreo").focus();
+                            $("#txtNombre").val(data.nombre);
+                            $("#txtNombre").focus();
+                            $("#txtApellido").val(data.apellido);
+                            $("#txtApellido").focus();
+                            $("#txtRut").val(data.rut);
+                            $("#txtRut").focus();
+                            $("#txtFechaNacimiento").val(data.fecha);
+                            $("#txtFechaNacimiento").val(data.fecha);
+                            $("#selectCiudades").val(data.idCiudad);
+                            $("#selectSexo").val(data.sexo);
+                            idCiudad = data.idCiudad;
+                            $("#txtTelefono").val(data.telefono);
+                            $("#txtTelefono").focus();
+                            if (data.aceptaInformativo == 1) {
+                                $("#checAceptaInformativo").click();
+                            }
+                            $("#txtNombre").focus();
+                            $("#txtCorreo").prop("readonly", true);
+                        } else {
+                            location.href = "index.html";
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("error");
+                        console.log(" eer getMisDatos()");
                         console.log(jqXHR);
                         console.log(textStatus);
                         console.log(errorThrown);
+                    }
+                });
+            }
+            function listarCiudades() {
+                $.ajax({
+                    type: "POST",
+                    url: "CiudadesServlet",
+                    data: {"accion": "listaCiudades"},
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        $("#selectCiudades").html("");
+                        var options;
+                        $(data).each(function (a, objeto, c) {
+                            options = options + '<option value="' + objeto.idc + '">' + objeto.nombre + '</option>';
+                        });
+                        $("#selectCiudades").html(options);
+                        $("#selectCiudades").val(idCiudad);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("error");
                     }
                 });
             }

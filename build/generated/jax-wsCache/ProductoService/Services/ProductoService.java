@@ -39,54 +39,6 @@ public interface ProductoService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(operationName = "Modificar_producto")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Modificar_producto", targetNamespace = "http://Servicios/", className = "Services.ModificarProducto")
-    @ResponseWrapper(localName = "Modificar_productoResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarProductoResponse")
-    @Action(input = "http://Servicios/ProductoService/Modificar_productoRequest", output = "http://Servicios/ProductoService/Modificar_productoResponse")
-    public String modificarProducto(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "nombre", targetNamespace = "")
-        String nombre,
-        @WebParam(name = "descripcion", targetNamespace = "")
-        String descripcion,
-        @WebParam(name = "precio", targetNamespace = "")
-        int precio,
-        @WebParam(name = "fecha_inicio", targetNamespace = "")
-        XMLGregorianCalendar fechaInicio,
-        @WebParam(name = "fecha_actualizacion", targetNamespace = "")
-        XMLGregorianCalendar fechaActualizacion,
-        @WebParam(name = "ruta_imagen", targetNamespace = "")
-        String rutaImagen,
-        @WebParam(name = "id_cagegoria", targetNamespace = "")
-        int idCagegoria);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Producto>
-     */
-    @WebMethod(operationName = "Listado_productos")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_productos", targetNamespace = "http://Servicios/", className = "Services.ListadoProductos")
-    @ResponseWrapper(localName = "Listado_productosResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoProductosResponse")
-    @Action(input = "http://Servicios/ProductoService/Listado_productosRequest", output = "http://Servicios/ProductoService/Listado_productosResponse")
-    public List<Producto> listadoProductos();
-
-    /**
-     * 
-     * @param descripcion
-     * @param precio
-     * @param fechaInicio
-     * @param idCagegoria
-     * @param fechaActualizacion
-     * @param id
-     * @param rutaImagen
-     * @param nombre
-     * @return
-     *     returns java.lang.String
-     */
     @WebMethod(operationName = "Crear_producto")
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "Crear_producto", targetNamespace = "http://Servicios/", className = "Services.CrearProducto")
@@ -124,5 +76,53 @@ public interface ProductoService {
     public String eliminarProducto(
         @WebParam(name = "id", targetNamespace = "")
         int id);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<Services.Producto>
+     */
+    @WebMethod(operationName = "Listado_productos")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_productos", targetNamespace = "http://Servicios/", className = "Services.ListadoProductos")
+    @ResponseWrapper(localName = "Listado_productosResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoProductosResponse")
+    @Action(input = "http://Servicios/ProductoService/Listado_productosRequest", output = "http://Servicios/ProductoService/Listado_productosResponse")
+    public List<Producto> listadoProductos();
+
+    /**
+     * 
+     * @param descripcion
+     * @param precio
+     * @param fechaInicio
+     * @param idCagegoria
+     * @param fechaActualizacion
+     * @param id
+     * @param rutaImagen
+     * @param nombre
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Modificar_producto")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Modificar_producto", targetNamespace = "http://Servicios/", className = "Services.ModificarProducto")
+    @ResponseWrapper(localName = "Modificar_productoResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarProductoResponse")
+    @Action(input = "http://Servicios/ProductoService/Modificar_productoRequest", output = "http://Servicios/ProductoService/Modificar_productoResponse")
+    public String modificarProducto(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "nombre", targetNamespace = "")
+        String nombre,
+        @WebParam(name = "descripcion", targetNamespace = "")
+        String descripcion,
+        @WebParam(name = "precio", targetNamespace = "")
+        int precio,
+        @WebParam(name = "fecha_inicio", targetNamespace = "")
+        XMLGregorianCalendar fechaInicio,
+        @WebParam(name = "fecha_actualizacion", targetNamespace = "")
+        XMLGregorianCalendar fechaActualizacion,
+        @WebParam(name = "ruta_imagen", targetNamespace = "")
+        String rutaImagen,
+        @WebParam(name = "id_cagegoria", targetNamespace = "")
+        int idCagegoria);
 
 }

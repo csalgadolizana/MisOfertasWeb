@@ -11,25 +11,22 @@ import Services.Persona;
 import Services.PersonaService_Service;
 import Services.Usuario;
 import Services.UsuarioService_Service;
-//import Services.Usuario;
-//import Services.UsuarioService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -110,29 +107,30 @@ public class ClienteServlet extends HttpServlet {
         int idCliente = cli.getIdCliente().intValue();
         System.err.println("el id es -> " + idCliente);
         if (idCliente == 0) {
-            System.err.println("if (idCliente == 0");
+//            System.err.println("if (idCliente == 0");
             Usuario us = autenticarTrabajador(correo, pass1);
-            System.err.println("correo -> " + correo);
-            System.err.println("pass -> " + pass1);
-            System.err.println("valor de usuario -> " + us.getCorreo());
+//            System.err.println("correo -> " + correo);
+//            System.err.println("pass -> " + pass1);
+//            System.err.println("valor de usuario -> " + us.getCorreo());
             if (us.getIdUsuario().intValue() != 0) {
-//                response.sendRedirect("accesoEncargado.html?d=" + us.getIdUsuario().intValue());
-//                jObj.put("correo", correo);
                 jObj.put("estado", us.getIdUsuario().intValue() + "");
                 jObj.put("redirect", "accesoEncargado.html?d=" + us.getIdUsuario().intValue() + "");
-//                PrintWriter out = response.getWriter();
-//                response.setContentType("Content-Type: application/json");
-//                out.println(jObj);
                 System.err.println("Redirect");
                 PrintWriter out = response.getWriter();
                 response.setContentType("Content-Type: application/json");
                 out.println(jObj);
+                HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(300);
+                session.setAttribute("trabajador", us);
             }
         } else {
             jObj.put("estado", idCliente);
             PrintWriter out = response.getWriter();
             response.setContentType("Content-Type: application/json");
             out.println(jObj);
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(300);
+            session.setAttribute("cliente", cli);
         }
     }
 
@@ -166,6 +164,7 @@ public class ClienteServlet extends HttpServlet {
             }
         } else {
             jObj.put("correo", cli.getCorreo());
+            jObj.put("idcli", cli.getIdCliente().intValue());
         }
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
@@ -232,6 +231,8 @@ public class ClienteServlet extends HttpServlet {
             jObj.put("correo", correo);
             jObj.put("nombre", nombre);
         }
+        HttpSession session = request.getSession(true);
+        session.setAttribute("cliente", cli);
         response.sendRedirect("accesoCliente.html?d=" + cli.getIdCliente().toString());
     }
 

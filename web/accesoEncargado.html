@@ -69,19 +69,19 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="accesoCliente.html">Ofertas</a>
+                            <li id="liAdminOfertas" class="nav-item">
+                                <a id="aAdminOfertas" class="nav-link"  href="#">Ofertas</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contacto</a>
+                            <li id="liAdminProductos" class="nav-item">
+                                <a id="aAdminProductos" class="nav-link"  href="#">Productos</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
@@ -103,63 +103,83 @@
 
             <section>
                 <div class="container marketing">
+                    <div class="tab-content">
+                        <div id="tabAdminOfertas" >
+                            <div class="text-left">
+                                <button class="btn btn-default btn-rounded waves-effect waves-light" onclick="crearOfertaModal()">Crear Oferta <i class="fa fa-eye ml-1"></i></button>
+                            </div>
 
-                    <div class="text-left">
-                        <button class="btn btn-default btn-rounded waves-effect waves-light" data-toggle="modal" data-target="#ModalCrearOferta">Crear Oferta <i class="fa fa-eye ml-1"></i></button>
+                            <table id="tabla-ofertas" class="table table-striped table-bordered table-responsive text-center" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descricion</th>
+                                        <th>Precio Normal</th>
+                                        <th>Precio Oferta</th>
+                                        <th>Numero de Visitas</th>
+                                        <th>Min. de compra</th>
+                                        <th>Max. de compra</th>
+                                        <th>Publicada</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descricion</th>
+                                        <th>Precio Normal</th>
+                                        <th>Precio Oferta</th>
+                                        <th>Numero de Visitas</th>
+                                        <th>Min. de compra</th>
+                                        <th>Max. de compra</th>
+                                        <th>Publicada</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="tabAdminProductos">
+                            <div class="text-left">
+                                <button class="btn btn-default btn-rounded waves-effect waves-light" onclick="crearProductoModal()">Crear Producto <i class="fa fa-eye ml-1"></i></button>
+                            </div>
+                            <table id="tabla-productos" class="table table-striped table-bordered table-responsive text-center" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descricion</th>
+                                        <th>Precio</th>
+                                        <th>Fecha creación</th>
+                                        <th>Ultima modificación</th>
+                                        <th>Imagen</th>
+                                        <th>Categoria</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descricion</th>
+                                        <th>Precio</th>
+                                        <th>Fecha creación</th>
+                                        <th>Ultima modificación</th>
+                                        <th>Imagen</th>
+                                        <th>Categoria</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
-
-                    <table id="tabla-ofertas" class="table table-striped table-bordered table-responsive text-center" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Descricion</th>
-                                <th>Precio Normal</th>
-                                <th>Precio Oferta</th>
-                                <th>Numero de Visitas</th>
-                                <th>Min. de compra</th>
-                                <th>Max. de compra</th>
-                                <th>Publicada</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Descricion</th>
-                                <th>Precio Normal</th>
-                                <th>Precio Oferta</th>
-                                <th>Numero de Visitas</th>
-                                <th>Min. de compra</th>
-                                <th>Max. de compra</th>
-                                <th>Publicada</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>22</td>
-                                <td>2X1 en licores</td>
-                                <td>Oferta en licores...</td>
-                                <td>N/A</td>
-                                <td>N/A</td>
-                                <td>800</td>
-                                <td>1</td>
-                                <td>1000</td>
-                                <td><i class="fa fa-check fa-2x mb-3 animated rotateIn active" style="color: #01d36b"></i></td>
-                            </tr>
-                            <tr>
-                                <td>23</td>
-                                <td>2X1 en licores</td>
-                                <td>Oferta en licores...</td>
-                                <td>N/A</td>
-                                <td>N/A</td>
-                                <td>800</td>
-                                <td>1</td>
-                                <td>1000</td>
-                                <td><i class="fa fa-times fa-2x mb-3 animated rotateIn active" style="color: #ff4b4b"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </section>
 
@@ -200,6 +220,7 @@
                     <!--/.Content-->
                 </div>
             </div>
+
             <!-- Modal Medium Danger-->
 
             <!--Modal Administrar ofertas-->
@@ -213,10 +234,10 @@
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
-                                <li class="nav-item">
+                                <li id="navItem1" class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#formCrearOferta" role="tab"><i class="fa fa-user mr-1"></i> Crear Oferta</a>
                                 </li>
-                                <li class="nav-item">
+                                <li id="navItem2" class="nav-item" style="display: none">
                                     <a class="nav-link" data-toggle="tab" href="#formEditarOferta" role="tab"><i class="fa fa-user-plus mr-1"></i> Editar Oferta</a>
                                 </li>
                             </ul>
@@ -225,97 +246,137 @@
                             <div class="tab-content">
                                 <!--formCrearOferta-->
                                 <div class="tab-pane fade in show active" id="formCrearOferta" role="tabpanel">
+                                    <form action="OfertaServlet" enctype="multipart/form-data" method="POST">
 
-                                    <!--Body-->
-                                    <div class="modal-body mb-1" >
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-newspaper-o prefix"></i>
-                                            <input type="text" id="nombreOferta" name="nombreOferta" class="form-control my-inputs" >
-                                            <label for="nombreOferta">Nombre de Oferta</label>
+                                        <!--Body-->
+                                        <div class="modal-body mb-1" >
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="nombreOferta" name="nombreOferta" class="form-control my-inputs"  required="">
+                                                <label for="nombreOferta">Nombre de Oferta</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="descripcionOferta" name="descripcionOferta" class="form-control my-inputs"  required="">
+                                                <label for="descripcionOferta">Descripcion de la Oferta</label>
+                                            </div>
+                                            <!--                                            <div class="md-form form-sm" style="height: 70px">
+                                                                                            <i class="fa fa-file-image-o prefix"></i>
+                                                                                            <input type="text" id="descripcionOferta" name="descripcionOferta" class="form-control my-inputs"  required="">
+                                                                                            <input type="file" name="inputImagen" id="inputImagen" accept="image/*" class=" my-inputs"  placeholder="Upload your file" required="" style="margin-left: 30%;height: 40px">
+                                                                                            <label for="inputImagen">Suba la foto del producto</label>
+                                                                                        </div>-->
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-product-hunt prefix"></i>
+                                                <select name="selectProducto" id="selectProducto" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%;padding: o" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Chocman</option>
+                                                    <option value="2">Super 8</option></select>
+                                                <label for="selectProducto">Producto</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-money prefix active"></i>
+                                                <input type="number" id="txtPrecioNormal" name="txtPrecioNormal" class="form-control my-inputs" readonly="" value="0">
+                                                <label class="active" for="txtPrecioNormal">Precio Normal</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-money prefix"></i>
+                                                <input type="number" id="txtPrecioOferta" name="txtPrecioOferta" class="form-control my-inputs"  required="" min="0">
+                                                <label for="txtPrecioOferta">Precio oferta</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectTiendas" id="selectTiendas" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Mall tobalaba</option>
+                                                    <option value="2">Parque Arauco</option></select>
+                                                <label for="selectTiendas">Local</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-sort-numeric-desc prefix"></i>
+                                                <input type="number" id="txtCantMaxima" name="txtCantMaxima" class="form-control  my-inputs" required="">
+                                                <label for="txtCantMaxima">Cantidad maxima</label>
+                                            </div>
                                         </div>
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-newspaper-o prefix"></i>
-                                            <input type="text" id="descripcionOferta" name="descripcionOferta" class="form-control my-inputs">
-                                            <label for="descripcionOferta">Descripcion de la Oferta</label>
+                                        <!--Footer-->
+                                        <div class="text-center display-footer modal-footer">
+                                            <button type="button" class="pull-left btn btn-outline-info waves-effect ml-auto" data-dismiss="modal" style="left: 0">Cerrar</button>
+                                            <button type="submit" name="btnAction" value="btnCrear" class="pull-right btn btn-info waves-effect ml-auto" >Crear oferta</button>
                                         </div>
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-product-hunt prefix"></i>
-                                            <select name="selectProducto" id="selectProducto" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
-                                                <option disabled="" selected="">Seleccione</option>
-                                                <option value="1">Chocman</option>
-                                                <option value="2">Super 8</option></select>
-                                            <label for="selectProducto">Producto</label>
-                                        </div>
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-money prefix"></i>
-                                            <input type="number" id="txtPrecioNormal" name="txtPrecioNormal" class="form-control my-inputs" readonly="">
-                                            <label for="txtPrecioNormal">Precio Normal</label>
-                                        </div>
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-money prefix"></i>
-                                            <input type="number" id="txtPrecioOferta" name="txtPrecioOferta" class="form-control my-inputs">
-                                            <label for="txtPrecioOferta">Precio oferta</label>
-                                        </div>
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-map prefix"></i>
-                                            <select name="selectCiudades" id="selectCiudades" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
-                                                <option disabled="" selected="">Seleccione</option>
-                                                <option value="1">Mall tobalaba</option>
-                                                <option value="2">Parque Arauco</option></select>
-                                            <label for="selectCiudades">Ciudad</label>
-                                        </div>
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-sort-numeric-desc prefix"></i>
-                                            <input type="number" id="txtCantMaxima" name="txtCantMaxima" class="form-control  my-inputs">
-                                            <label for="txtCantMaxima">Cantidad maxima</label>
-                                        </div>
-                                    </div>
-                                    <!--Footer-->
-                                    <div class="modal-footer display-footer">
-                                        <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-                                    </div>
-                                    <!--Fin footer-->
-
+                                        <!--Fin footer-->
+                                    </form>
                                 </div>
                                 <!-- Fin formCrearOferta 7-->
 
-                                <!--Panel 8-->
-                                <div class="tab-pane fade" id="formEditarOferta" role="tabpanel">
 
-                                    <!--Body-->
-                                    <div class="modal-body">
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-envelope prefix"></i>
-                                            <input type="text" id="form24" class="form-control">
-                                            <label for="form24">Your email</label>
-                                        </div>
+                                <!--formModificarOferta-->
+                                <div class="tab-pane fade in show" id="formEditarOferta" role="tabpanel">
+                                    <form action="OfertaServlet" enctype="multipart/form-data" method="POST">
 
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-lock prefix"></i>
-                                            <input type="password" id="form25" class="form-control">
-                                            <label for="form25">Your password</label>
+                                        <!--Body-->
+                                        <div class="modal-body mb-1" >
+                                            <input type="number" id="idOferta2" name="idOferta2">
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="nombreOferta2" name="nombreOferta2" class="form-control my-inputs"  required="">
+                                                <label for="nombreOferta2">Nombre de Oferta</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="descripcionOferta2" name="descripcionOferta2" class="form-control my-inputs"  required="">
+                                                <label for="descripcionOferta2">Descripcion de la Oferta</label>
+                                            </div>
+                                            <!--                                            <div class="md-form form-sm" style="height: 70px">
+                                                                                            <i class="fa fa-file-image-o prefix active"></i>
+                                                                                            <input type="file" name="inputImagen2" id="inputImagen2" accept="image/*" class=" my-inputs"  placeholder="Upload your file" required="" style="margin-left: 30%;height: 70px">
+                                                                                            <label class="active" for="inputImagen2">Suba la foto del producto</label>
+                                                                                        </div>-->
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-product-hunt prefix active"></i>
+                                                <input type="number" id="idProducto" name="idProducto" value="0" hidden="">
+                                                <select name="selectProducto2" id="selectProducto2" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%;padding: o" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Chocman</option>
+                                                    <option value="2">Super 8</option></select>
+                                                <label class="active" for="selectProducto2">Producto</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-money prefix active"></i>
+                                                <input type="number" id="txtPrecioNormal2" name="txtPrecioNormal2" class="form-control my-inputs" readonly="" value="0">
+                                                <label class="active" for="txtPrecioNormal2">Precio Normal</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-money prefix active"></i>
+                                                <input type="number" id="txtPrecioOferta2" name="txtPrecioOferta2" class="form-control my-inputs"  required="" min="0">
+                                                <label class="active" for="txtPrecioOferta2">Precio oferta</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix active"></i>
+                                                <select name="selectTiendas2" id="selectTiendas2" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Mall tobalaba</option>
+                                                    <option value="2">Parque Arauco</option></select>
+                                                <label class="active" for="selectTiendas2">Local</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-sort-numeric-desc prefix active"></i>
+                                                <input type="number" id="txtCantMaxima2" name="txtCantMaxima2" class="form-control  my-inputs" required="">
+                                                <label class="active" for="txtCantMaxima2">Cantidad maxima</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <!--<i class="fa fa-sort-numeric-desc prefix active"></i>-->
+                                                <img id="img_anterior" src="img/productos/1274277-impresora_officejet-pro-6230_l.png" width="100" height="100" alt=""/>
+                                            </div>
                                         </div>
-
-                                        <div class="md-form form-sm">
-                                            <i class="fa fa-lock prefix"></i>
-                                            <input type="password" id="form26" class="form-control">
-                                            <label for="form26">Repeat password</label>
+                                        <!--Footer-->
+                                        <div class="modal-footer display-footer">
+                                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
+                                            <button type="submit" name="btnAction" value="btnModificar" class="btn btn-info waves-effect ml-auto" >Modificar</button>
                                         </div>
-
-                                        <div class="text-center form-sm mt-2">
-                                            <button class="btn btn-info">Sign up <i class="fa fa-sign-in ml-1"></i></button>
-                                        </div>
-
-                                    </div>
-                                    <!--Footer-->
-                                    <div class="modal-footer">
-                                        <div class="options text-right">
-                                            <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
-                                        </div>
-                                        <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-                                    </div>
+                                        <!--Fin footer-->
+                                    </form>
                                 </div>
-                                <!--/.Panel 8-->
+                                <!--Fin formModificarOferta-->
                             </div>
 
                         </div>
@@ -324,6 +385,174 @@
                 </div>
             </div>
             <!--Fin Modal Administrar ofertas-->
+            <!--Modal Administrar Productos-->
+            <div class="modal fade" id="ModalCrearProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top: 1px!important ; padding: 0!important" aria-hidden="true">
+                <div class="modal-dialog modal-lg cascading-modal modal-notify" style="margin-top: 5%!important;"  role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+
+                        <!--Modal cascading tabs-->
+                        <div class="modal-c-tabs">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+                                <li id="navItemProd1" class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#formCrearProducto" role="tab"><i class="fa fa-user mr-1"></i> Crear Producto</a>
+                                </li>
+                                <li id="navItemProd2" class="nav-item" style="display: none">
+                                    <a class="nav-link" data-toggle="tab" href="#formEditarProducto" role="tab"><i class="fa fa-user-plus mr-1"></i> Editar Producto</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panels -->
+                            <div class="tab-content">
+                                <!--formCrearProducto-->
+                                <div class="tab-pane fade in show active" id="formCrearProducto" role="tabpanel">
+                                    <form action="ProductoServlet" enctype="multipart/form-data" method="POST">
+
+                                        <!--Body-->
+                                        <div class="modal-body mb-1" >
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="nombreProducto" name="nombreProducto" class="form-control my-inputs"  required="">
+                                                <label for="nombreProducto">Nombre de Producto</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="descripcionProducto" name="descripcionProducto" class="form-control my-inputs"  required="">
+                                                <label for="descripcionProducto">Descripcion del Producto</label>
+                                            </div>
+                                            <div class="md-form form-sm" style="height: 70px">
+                                                <i class="fa fa-file-image-o prefix"></i>
+                                                <!--<input type="text" id="descripcionProducto" name="descripcionProducto" class="form-control my-inputs"  required="">-->
+                                                <input type="file" name="inputImagen" id="inputImagen" accept="image/*" class=" my-inputs"  placeholder="Upload your file" required="" style="margin-left: 30%;height: 40px">
+                                                <label for="inputImagen">Suba la foto del producto</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-money prefix active"></i>
+                                                <input type="number" id="txtPrecio" name="txtPrecio" class="form-control my-inputs"  value="0" min="1" required="">
+                                                <label class="active" for="txtPrecio">Precio</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectCategoria" id="selectCategoria" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                </select>
+                                                <label for="selectCategoria">Categoria</label>
+                                            </div>
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="text-center display-footer modal-footer">
+                                            <button type="button" class="pull-left btn btn-outline-info waves-effect ml-auto" data-dismiss="modal" style="left: 0">Cerrar</button>
+                                            <button type="submit" name="btnAction" value="btnCrear" class="pull-right btn btn-info waves-effect ml-auto" >Crear Producto</button>
+                                        </div>
+                                        <!--Fin footer-->
+                                    </form>
+                                </div>
+                                <!-- Fin formCrearProducto 7-->
+
+
+                                <!--formModificarProducto-->
+                                <div class="tab-pane fade in show" id="formEditarProducto" role="tabpanel">
+                                    <form action="ProductoServlet" enctype="multipart/form-data" method="POST">
+
+                                        <!--Body-->
+                                        <div class="modal-body mb-1" >
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="number" id="idProducto2" name="idProducto2" style="display: " required="">
+                                                <input type="text" id="nombreProducto2" name="nombreProducto2" class="form-control my-inputs"  required="">
+                                                <label for="nombreProducto2">Nombre de Producto</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-newspaper-o prefix"></i>
+                                                <input type="text" id="descripcionProducto2" name="descripcionProducto2" class="form-control my-inputs"  required="">
+                                                <label for="descripcionProducto2">Descripcion del Producto</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-photo prefix"></i>
+                                                <center>
+                                                    <img id="imgActual" class="img-responsive img-circle" src="img/productos/1274277-impresora_officejet-pro-6230_l.png" alt="" height="100" width="100">
+                                                </center>
+                                                <label for="imgActual">Foto actual</label>
+                                            </div>
+                                            <div class="form-group checkbox-secondary">
+                                                <i class="fa fa-photo prefix"></i>
+                                                <input id="checkCambiarFoto" name="checkCambiarFoto" class="form-control" value="1" type="checkbox">
+                                                <label for="checkCambiarFoto">¿Desea cambiar la foto?</label>
+                                            </div>
+                                            <div id="contenedor_foto" class="collapse" >
+                                                <div class="md-form form-sm" style="height: 70px">
+                                                    <i class="fa fa-file-image-o prefix"></i>
+                                                    <!--<input type="text" id="descripcionProducto" name="descripcionProducto" class="form-control my-inputs"  required="">-->
+                                                    <input type="file" name="inputImagenProd2" id="inputImagenProd2" accept="image/*" class=" my-inputs"  placeholder="Upload your file" style="margin-left: 30%;height: 40px">
+                                                    <label for="inputImagenProd2">Suba la foto del producto</label>
+                                                </div>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-money prefix active"></i>
+                                                <input type="number" id="txtPrecio2" name="txtPrecio2" class="form-control my-inputs"  value="0" min="1" required="">
+                                                <label class="active" for="txtPrecio2">Precio</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectCategoria2" id="selectCategoria2" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                </select>
+                                                <label for="selectCategoria2">Categoria</label>
+                                            </div>
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer display-footer">
+                                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
+                                            <button type="submit" name="btnAction" value="btnModificar" class="btn btn-info waves-effect ml-auto" >Modificar</button>
+                                        </div>
+                                        <!--Fin footer-->
+                                    </form>
+                                </div>
+                                <!--Fin formModificarProducto-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <!--Fin Modal Administrar Productos-->
+
+            <div class="modal fade" id="modalPublicarOferta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <form action="OfertaServlet" method="POST">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <p class="heading lead">Realmente desea publicar la oferta</p>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                </button>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="text-center" id="divTextoAlerta">
+                                    <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+                                    <p id="pIdOferta"></p>
+                                    <input id="inputIdOferta" name="inputIdOferta" type="number" style="display: none">
+                                </div>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
+                                <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Cancelar <i class="fa fa-hand-paper-o  ml-1"></i></a>
+                                <button name="accion" value="btnPublicar" type="submit" class="btn btn-outline-secondary-modal waves-effect">Publicar! <i class="fa fa-hand-paper-o  ml-1"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
         </section>
         <!--Fin Section of Modal-->
 
@@ -390,170 +619,430 @@
         <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
         <script>
-            $(document).ready(function () {
-//                var arrPrecios = [];
-                $('#tabla-ofertas').DataTable({
-                    "language": {
-                        "lengthMenu": "",
-                        "search": "Buscar : ",
-                        "zeroRecords": "Ningun dato encontrado - Lo sentimos",
-                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
-                        "infoEmpty": "No hay datos disponibles",
-                        "infoFiltered": "(filtered from _MAX_ total records)"
-                    }
-                });
-                $('select').addClass('mdb-select');
-//                $('.mdb-select').material_select();
+                                    var arrayPrecios = new Array;
+                                    $(document).ready(function () {
+                                        getMisDatos();
+//                                        $("#checkCambiarFoto").click();
+                                        $("#tabAdminOfertas").show();
+                                        $("#tabAdminProductos").hide();
+                                        $("#liAdminOfertas").toggleClass("active");
+                                        $("#aAdminProductos").click(function () {
+                                            $("#tabAdminProductos").show();
+                                            $("#tabAdminOfertas").hide();
+                                            $("#liAdminOfertas").toggleClass("active");
+                                            $("#liAdminProductos").toggleClass("active");
+//                                            $(this).parent()
+                                        });
+                                        $("#aAdminOfertas").click(function () {
+                                            $("#tabAdminProductos").hide();
+                                            $("#tabAdminOfertas").show();
+                                            $("#liAdminOfertas").toggleClass("active");
+                                            $("#liAdminProductos").toggleClass("active");
+                                        });
+                                        $('select').addClass('mdb-select');
+                                        $('#centralModalError').on('hidden.bs.modal', function (e) {
+                                            $("#txtCorreo").focus();
+                                        });
 
-//                pedirDatosDeRegistro();
-                listarCiudades();
-                listarProductos();
-                comprobarSiCorreoExiste();
-                $('#centralModalError').on('hidden.bs.modal', function (e) {
-                    $("#txtCorreo").focus();
-                });
-                //max-width : 776px
+                                        clickOnCheckFoto();
+                                        listarOfertas();
+                                        listarLocales();
+                                        listarCategorias();
+                                        listarProductos();
+                                        comprobarSiCorreoExiste();
+                                        //max-width : 776px
 //                var width = $(window).width();
-                var max_width = 776;
-                if ($(window).width() < max_width) {
+                                        var max_width = 776;
+                                        if ($(window).width() < max_width) {
 //                    width = $(this).width();
-                    $("#btnCancelar").addClass("btn-sm");
-                    $("#btnRegistrarse").addClass("btn-sm");
-                } else {
-                    $("#btnCancelar").removeClass("btn-sm");
-                    $("#btnRegistrarse").removeClass("btn-sm");
-                }
-                $(window).on('resize', function () {
+                                            $("#btnCancelar").addClass("btn-sm");
+                                            $("#btnRegistrarse").addClass("btn-sm");
+                                        } else {
+                                            $("#btnCancelar").removeClass("btn-sm");
+                                            $("#btnRegistrarse").removeClass("btn-sm");
+                                        }
+                                        $(window).on('resize', function () {
 //                    console.log("Largo ->" + $(this).width() + " Comparado con -> " + max_width);
-                    if ($(this).width() < max_width) {
-                        width = $(this).width();
-                        $("#btnCancelar").addClass("btn-sm");
-                        $("#btnRegistrarse").addClass("btn-sm");
-                    } else {
-                        $("#btnCancelar").removeClass("btn-sm");
-                        $("#btnRegistrarse").removeClass("btn-sm");
-                    }
-                });
-
-                $("#check").change(function () {
-                    $("#contenedor_contras").collapse('toggle');
+                                            if ($(this).width() < max_width) {
+                                                width = $(this).width();
+                                                $("#btnCancelar").addClass("btn-sm");
+                                                $("#btnRegistrarse").addClass("btn-sm");
+                                            } else {
+                                                $("#btnCancelar").removeClass("btn-sm");
+                                                $("#btnRegistrarse").removeClass("btn-sm");
+                                            }
+                                        });
+                                        $("#selectProducto").change(function () {
+                                            $("#txtPrecioNormal").val($("#selectProducto option:selected").attr("precio"));
+                                            $("#txtPrecioOferta").attr("max", $("#txtPrecioNormal").val());
+                                        });
+                                        $("#selectProducto2").change(function () {
+                                            $("#txtPrecioNormal2").val($("#selectProducto2 option:selected").attr("precio"));
+                                            $("#txtPrecioOferta2").attr("max", $("#txtPrecioNormal2").val());
+                                        });
+                                        $("#check").change(function () {
+                                            $("#contenedor_contras").collapse('toggle');
 //                     collapse
-                    if ($(this).prop('checked')) {
+                                            if ($(this).prop('checked')) {
 //                        $("#contenedor_contras").show();
-                    } else {
+                                            } else {
 //                        $("#contenedor_contras").hide();
-                    }
+                                            }
 //                    console.log("Cambio!! "+$(this).prop('checked'));
-                });
-            });
-            function comprobarSiCorreoExiste() {
-                $("#btnRegistroFalso").click(function (evt) {
-                    $.ajax({
-                        type: "POST",
-                        url: "ClienteServlet",
-                        data: {"btnAccion": "comprobarCorreo", "mail": $("#txtCorreo").val().trim()},
-                        dataType: "json",
-                        success: function (data, textStatus, jqXHR) {
-                            if (data.correo != "") {
-                                $("#centralModalError").modal('show');
-                                $("#divTextoAlerta").find("p").html("<strong>El Correo ya existe!!.</strong> <br>" +
-                                        "ingrese con uno nuevo o inicie sesion");
-                                $("#txtCorreo").parent().find("label").addClass("active");
-                            } else {
-                                $("#btnRegistrarse").click();
-                            }
-                            console.log("Secces");
-                            console.log(data);
-                            console.log(textStatus);
-                            console.log(jqXHR);
+                                        });
+                                    });
+                                    function getMisDatos() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "UsuarioServlet",
+                                            data: {"accion": "getDataSession"},
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                if (data.sesion == 1) {
+                                                    console.log(" success: getMisDatos()");
+                                                    console.log(data);
+                                                    $("#navbarNombreSesion").text(data.correo);
+                                                } else {
+                                                    location.href = "index.html";
+                                                }
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log(" eer getMisDatos()");
+                                                console.log(jqXHR);
+                                                console.log(textStatus);
+                                                console.log(errorThrown);
+                                            }
+                                        });
+                                    }
+                                    function comprobarSiCorreoExiste() {
+                                        $("#btnRegistroFalso").click(function (evt) {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "ClienteServlet",
+                                                data: {"btnAccion": "comprobarCorreo", "mail": $("#txtCorreo").val().trim()},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    if (data.correo != "") {
+                                                        $("#centralModalError").modal('show');
+                                                        $("#divTextoAlerta").find("p").html("<strong>El Correo ya existe!!.</strong> <br>" +
+                                                                "ingrese con uno nuevo o inicie sesion");
+                                                        $("#txtCorreo").parent().find("label").addClass("active");
+                                                    } else {
+                                                        $("#btnRegistrarse").click();
+                                                    }
+                                                    console.log("Secces");
+                                                    console.log(data);
+                                                    console.log(textStatus);
+                                                    console.log(jqXHR);
 //                            if (data != null) {
 //                                $("#txtCorreo").val(data.correo);
 //                                $("#txtPasswd").val(data.password1);
 //                                $("#txtPasswd2").val(data.password2);
 //                            }
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            console.log("error");
-                            console.log(jqXHR);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                        }
-                    });
-                    $("#txtNombre").focus();
-                    // tu codigo aqui
-                });
-            }
-            function pedirDatosDeRegistro() {
-                $.ajax({
-                    type: "POST",
-                    url: "ClienteServlet",
-                    data: {"btnAccion": "quieroDatos"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        console.log("Secces");
-                        console.log(data);
-                        console.log(textStatus);
-                        console.log(jqXHR);
-                        if (data != null) {
-                            $("#txtCorreo").val(data.correo);
-                            $("#txtPasswd").val(data.password1);
-                            $("#txtPasswd2").val(data.password2);
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("error");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-                $("#txtNombre").focus();
-            }
-            function listarCiudades() {
-                $.ajax({
-                    type: "POST",
-                    url: "CiudadesServlet",
-                    data: {"accion": "listaCiudades"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        $("#selectCiudades").html("");
-                        var options;
-                        $(data).each(function (a, objeto, c) {
-                            options = options + '<option value="' + objeto.idc + '">' + objeto.nombre + '</option>';
-                        });
-                        $("#selectCiudades").html(options);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("error");
-                    }
-                });
-            }
-            function listarProductos() {
-                alert("esta listando productos....");
-                $.ajax({
-                    type: "POST",
-                    url: "ProductoServlet",
-                    data: {"accion": "listaProductos"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        console.log(data);
-                        $("#selectProducto").html("");
-                        var options;
-                        $(data).each(function (a, objeto, c) {
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log("error");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                            $("#txtNombre").focus();
+                                            // tu codigo aqui
+                                        });
+                                    }
+                                    function pedirDatosDeRegistro() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "ClienteServlet",
+                                            data: {"btnAccion": "quieroDatos"},
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                console.log("Secces");
+                                                console.log(data);
+                                                console.log(textStatus);
+                                                console.log(jqXHR);
+                                                if (data != null) {
+                                                    $("#txtCorreo").val(data.correo);
+                                                    $("#txtPasswd").val(data.password1);
+                                                    $("#txtPasswd2").val(data.password2);
+                                                }
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                                console.log(jqXHR);
+                                                console.log(textStatus);
+                                                console.log(errorThrown);
+                                            }
+                                        });
+                                        $("#txtNombre").focus();
+                                    }
+                                    function listarLocales() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "LocalServlet",
+                                            data: {"accion": "listaLocales"},
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                $("#selectTiendas").html("");
+                                                $("#selectTiendas2").html("");
+                                                var options;
+                                                $(data).each(function (a, objeto, c) {
+                                                    options = options + '<option value="' + objeto.idl + '">' + objeto.nombre + '</option>';
+                                                });
+                                                $("#selectTiendas").html(options);
+                                                $("#selectTiendas2").html(options);
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                            }
+                                        });
+                                    }
+                                    function listarCategorias() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "CategoriaServlet",
+                                            data: {"accion": "listaCategorias"},
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                $("#selectCategoria").html('<option selected="selected" disabled="">Seleccione Categoria</option>');
+                                                $("#selectCategoria2").html("");
+                                                var options = "";
+                                                $(data).each(function (a, objeto, c) {
+                                                    options = options + '<option value="' + objeto.idcat + '">' + objeto.nombre + '</option>';
+                                                });
+                                                $("#selectCategoria2").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
+                                                $("#selectCategoria").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
+                                                console.log(options);
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                            }
+                                        });
+                                    }
+
+//                                    funciones Productos
+                                    var cambia = 1;
+                                    function clickOnCheckFoto() {
+                                        $("#checkCambiarFoto").change(function () {
+                                            $("#contenedor_foto").collapse('toggle');
+                                            if (cambia == 1) {
+                                                $("#inputImagenProd2").prop("required", true);
+                                                cambia = 0;
+                                            } else {
+                                                $("#inputImagenProd2").prop("required", false);
+                                                cambia = 1;
+                                            }
+                                        });
+                                    }
+                                    function listarProductos() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "ProductoServlet",
+                                            data: {"accion": "listaProductos"},
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                console.log(data);
+                                                $("#selectProducto").html("");
+                                                $("#selectProducto2").html("");
+                                                var options;
+                                                options = '<option selected="selected" disabled="">Seleccione Producto</option>';
+                                                $(data).each(function (a, objeto, c) {
                             console.log(objeto);
-                            options = options + '<option value="' + objeto.idpro + '">' + objeto.nombre + '</option>';
-//                            arrPrecios[objeto.idpro] = objeto.precio;
-                        });
-                        $("#selectProducto").html(options);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("error");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            }
+                                                    options = options + '<option value="' + objeto.idpro + '" precio="' + objeto.precio + '">' + objeto.nombre + '</option>';
+                                                    arrayPrecios.push(objeto.precio);
+                                                });
+                                                $("#selectProducto").html(options);
+                                                $("#selectProducto2").html(options);
+
+
+                                                $("#tabla-productos > tbody").html("");
+                                                var TRs;
+                                                var icono_equis = '<i class="fa fa-times fa-2x mb-3 animated rotateIn active" style="color: #ff4b4b"></i>';
+                                                var icono_check = '<i class="fa fa-check fa-2x mb-3 animated rotateIn active" style="color: #01d36b"></i>';
+                                                $(data).each(function (a, td, c) {
+                                                    console.log(td);
+                                                    var img = '<img id="img_anterior" src="' + td.imagen + '" alt="Super descuento Apple" height="50" width="50">';
+                                                    var tag_img = td.imagen == "-" ? icono_equis : img;
+//                                                    var tag = td.estado == 2 ? icono_equis : icono_check;
+                                                    var callFuncEdiOferta = "'" + td.idpro + "','" + td.nombre + "','" + td.desc + "','" + td.precio + "','" + td.imagen + "','" + td.idcat + "'";
+                                                    var accion = '\
+                                            <a><i class="fa fa-share-alt fa-2x mb-3" aria-hidden="true" style="color: #33b5e5"></i></a>   \n\
+\n                                          <a style="margin-left:2px" onclick="editarProductoModal(' + callFuncEdiOferta + ')"><i class="fa fa fa-cog fa-2x mb-3" aria-hidden="true" style="color: #c2c4b8"></i></a>';
+                                                    TRs = TRs + "<tr>";
+                                                    TRs = TRs +
+                                                            '<td>' + td.idpro + '</td>' +
+                                                            '<td>' + td.nombre + '</td>' +
+                                                            '<td>' + td.desc + '</td>' +
+                                                            '<td>' + td.precio + '</td>' +
+                                                            '<td>' + td.fecha_cre + '</td>' +
+                                                            '<td>' + td.fecha_act + '</td>' +
+                                                            '<td>' + tag_img + '</td>' +
+                                                            '<td>' + td.nombre_cat + '</td>' +
+                                                            '<td>' + accion + '</td>';
+                                                    TRs = TRs + "</tr>";
+                                                });
+                                                $("#tabla-productos > tbody").html(TRs);
+                                                $('#tabla-productos').DataTable({
+                                                    "pageLength": 5,
+                                                    "language": {
+                                                        "lengthMenu": "",
+                                                        "search": "Buscar : ",
+                                                        "zeroRecords": "Ningun dato encontrado - Lo sentimos",
+                                                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                                                        "infoEmpty": "No hay datos disponibles",
+                                                        "infoFiltered": "(filtered from _MAX_ total records)"
+                                                    }
+                                                });
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                                console.log(jqXHR);
+                                                console.log(textStatus);
+                                                console.log(errorThrown);
+                                            }
+                                        });
+                                    }
+                                    function editarProductoModal(idpro, nom, desc, precio, ruta_img, idcat) {
+                                        console.log("id -> " + idpro);
+                                        console.log("nom -> " + nom);
+                                        console.log("desc -> " + desc);
+                                        console.log("precio -> " + precio);
+                                        console.log("ruta_img -> " + ruta_img);
+                                        console.log("idcat -> " + idcat);
+                                        console.log("ruta_img -> " + ruta_img);
+
+                                        $("#idProducto2").val(idpro);
+                                        $("#nombreProducto2").val(nom);
+                                        $("#descripcionProducto2").val(desc);
+                                        $("#txtPrecio2").val(precio);
+                                        $("#selectCategoria2").val(idcat);
+                                        if (ruta_img != "-") {
+                                            console.log(ruta_img);
+                                            ruta_img = ruta_img.replace("\\", "/");
+                                            console.log(ruta_img);
+                                            ruta_img = ruta_img.replace("\\", "/");
+                                            console.log(ruta_img);
+                                            $("#imgActual").attr("src", ruta_img);
+                                            $("#imgActual").attr("alt", nom);
+                                            $("#imgActual").parent().parent().show();
+                                        } else {
+                                            $("#imgActual").parent().parent().hide();
+                                        }
+
+
+                                        $("#navItemProd1").hide();
+                                        $("#formEditarProducto").show();
+                                        $("#navItemProd2").show();
+                                        $("#navItemProd2 > a").click();
+                                        $("#ModalCrearProducto").modal("show");
+                                    }
+                                    function crearProductoModal() {
+                                        $("#formEditarProducto").hide();
+                                        $("#navItemProd2").hide();
+                                        $("#navItemProd1").show();
+                                        $("#navItemProd1 > a").click();
+                                        $("#ModalCrearProducto").modal("show");
+                                    }
+//                                    Fin funciones Productos
+
+//                                    funciones OFertas
+                                    function listarOfertas() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "OfertaServlet",
+                                            data: {"accion": "listaOfertas"},
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+//                        console.log(data);
+                                                $("#tabla-ofertas > tbody").html("");
+                                                var TRs;
+                                                var icono_equis = '<i class="fa fa-times fa-2x mb-3 animated rotateIn active" style="color: #ff4b4b"></i>';
+                                                var icono_check = '<i class="fa fa-check fa-2x mb-3 animated rotateIn active" style="color: #01d36b"></i>';
+                                                $(data).each(function (a, td, c) {
+//                                                    console.log(td);
+                                                    var tag = td.estado == 2 ? icono_equis : icono_check;
+                                                    var callFuncEdiOferta = "'" + td.idof + "','" + td.nombre + "','" + td.desc + "','" + td.precio_normal + "','" + td.precio_oferta + "','" + td.num_visitas + "','" + td.min_compras + "','" + td.max_compras + "','" + td.idprod + "','" + td.estado + "','" + td.ruta_img + "','" + td.id_local + "'";
+                                                    var callFuncPublicarOferta = "'" + td.idof + "'";
+                                                    var accion = td.estado == 2 ? '\
+                        <a onclick="publicarOfertaModal(' + callFuncPublicarOferta + ')"><i class="fa fa-share-alt fa-2x mb-3" aria-hidden="true" style="color: #33b5e5"></i></a>   \n\
+                        <a style="margin-left:2px" onclick="editarOfertaModal(' + callFuncEdiOferta + ')"><i class="fa fa fa-cog fa-2x mb-3" aria-hidden="true" style="color: #c2c4b8"></i></a>'
+                                                            : '<a style="margin-left:2px" onclick="dejarDePublicar()"><i class="fa fa-eye-slash fa-2x mb-3" aria-hidden="true" style="color: #eda45c"></i></a>';
+                                                    TRs = TRs + "<tr>";
+                                                    TRs = TRs +
+                                                            '<td>' + td.idof + '</td>' +
+                                                            '<td>' + td.nombre + '</td>' +
+                                                            '<td>' + td.desc + '</td>' +
+                                                            '<td>' + td.precio_normal + '</td>' +
+                                                            '<td>' + td.precio_oferta + '</td>' +
+                                                            '<td>' + td.num_visitas + '</td>' +
+                                                            '<td>' + td.min_compras + '</td>' +
+                                                            '<td>' + td.max_compras + '</td>' +
+                                                            '<td>' + tag + '</td>' +
+                                                            '<td>' + accion + '</td>';
+                                                    TRs = TRs + "</tr>";
+                                                });
+                                                $("#tabla-ofertas > tbody").html(TRs);
+                                                $('#tabla-ofertas').DataTable({
+                                                    "pageLength": 5,
+                                                    "language": {
+                                                        "lengthMenu": "",
+                                                        "search": "Buscar : ",
+                                                        "zeroRecords": "Ningun dato encontrado - Lo sentimos",
+                                                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                                                        "infoEmpty": "No hay datos disponibles",
+                                                        "infoFiltered": "(filtered from _MAX_ total records)"
+                                                    }
+                                                });
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                                console.log(jqXHR.responseText);
+                                                console.log(textStatus);
+                                                console.log(errorThrown);
+                                            }
+                                        });
+                                    }
+                                    function publicarOfertaModal(id) {
+                                        $("#inputIdOferta").val(id);
+                                        $("#modalPublicarOferta").modal("show");
+                                        $("#pIdOferta").text(id);
+                                    }
+                                    function editarOfertaModal(id, nom, desc, pre_nor, pre_ofer, num_visi, min_com, max_com, idprod, publicada, ruta_img, id_local) {
+                                        $("#idOferta2").val(id);
+                                        $("#nombreOferta2").val(nom);
+                                        $("#descripcionOferta2").val(desc);
+                                        $("#selectProducto2").attr("disabled", false);
+                                        $("#selectProducto2").val(idprod).trigger('change');
+                                        $("#idProducto").val(idprod);
+                                        $("#selectProducto2").attr("disabled", true);
+                                        $("#txtPrecioOferta2").val(pre_ofer);
+                                        $("#selectTiendas2").val(id_local).trigger('change');
+                                        $("#txtCantMaxima2").val(max_com);
+                                        console.log(ruta_img);
+                                        ruta_img = ruta_img.replace("\\", "/");
+                                        console.log(ruta_img);
+                                        ruta_img = ruta_img.replace("\\", "/");
+                                        console.log(ruta_img);
+                                        $("#img_anterior").attr("src", ruta_img);
+                                        $("#img_anterior").attr("alt", nom);
+
+
+                                        $("#navItem1").hide();
+                                        $("#formEditarOferta").show();
+                                        $("#navItem2").show();
+                                        $("#navItem2 > a").click();
+                                        $("#ModalCrearOferta").modal("show");
+                                    }
+                                    function crearOfertaModal() {
+                                        $("#formEditarOferta").hide();
+                                        $("#navItem2").hide();
+                                        $("#navItem1").show();
+                                        $("#navItem1 > a").click();
+                                        $("#ModalCrearOferta").modal("show");
+                                    }
+//                                    Fin funciones Ofertas
+
         </script>
 
     </body>

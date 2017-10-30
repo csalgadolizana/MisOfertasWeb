@@ -37,8 +37,11 @@ public class ObjectFactory {
     private final static QName _ModificarUSUARIO_QNAME = new QName("http://Servicios/", "Modificar_USUARIO");
     private final static QName _ModificarUSUARIOResponse_QNAME = new QName("http://Servicios/", "Modificar_USUARIOResponse");
     private final static QName _Cargo_QNAME = new QName("http://Servicios/", "cargo");
+    private final static QName _Ciudad_QNAME = new QName("http://Servicios/", "ciudad");
+    private final static QName _Cliente_QNAME = new QName("http://Servicios/", "cliente");
     private final static QName _Estado_QNAME = new QName("http://Servicios/", "estado");
     private final static QName _Persona_QNAME = new QName("http://Servicios/", "persona");
+    private final static QName _Region_QNAME = new QName("http://Servicios/", "region");
     private final static QName _Sexo_QNAME = new QName("http://Servicios/", "sexo");
     private final static QName _Usuario_QNAME = new QName("http://Servicios/", "usuario");
 
@@ -154,6 +157,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Ciudad }
+     * 
+     */
+    public Ciudad createCiudad() {
+        return new Ciudad();
+    }
+
+    /**
+     * Create an instance of {@link Cliente }
+     * 
+     */
+    public Cliente createCliente() {
+        return new Cliente();
+    }
+
+    /**
      * Create an instance of {@link Estado }
      * 
      */
@@ -167,6 +186,14 @@ public class ObjectFactory {
      */
     public Persona createPersona() {
         return new Persona();
+    }
+
+    /**
+     * Create an instance of {@link Region }
+     * 
+     */
+    public Region createRegion() {
+        return new Region();
     }
 
     /**
@@ -303,6 +330,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Ciudad }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "ciudad")
+    public JAXBElement<Ciudad> createCiudad(Ciudad value) {
+        return new JAXBElement<Ciudad>(_Ciudad_QNAME, Ciudad.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Cliente }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "cliente")
+    public JAXBElement<Cliente> createCliente(Cliente value) {
+        return new JAXBElement<Cliente>(_Cliente_QNAME, Cliente.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Estado }{@code >}}
      * 
      */
@@ -318,6 +363,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://Servicios/", name = "persona")
     public JAXBElement<Persona> createPersona(Persona value) {
         return new JAXBElement<Persona>(_Persona_QNAME, Persona.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Region }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "region")
+    public JAXBElement<Region> createRegion(Region value) {
+        return new JAXBElement<Region>(_Region_QNAME, Region.class, null, value);
     }
 
     /**

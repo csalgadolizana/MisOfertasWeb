@@ -17,4 +17,10 @@
     <system systemId="http://localhost:17225/MisOfertasWebService/UsuarioService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/UsuarioService.xsd_1.xsd"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/ProductoService?WSDL" uri="wsdl/localhost_17225/MisOfertasWebService/ProductoService.wsdl"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/ProductoService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/ProductoService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaService?WSDL" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaLocalService?WSDL" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaLocalService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaLocalService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/OfertaLocalService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?WSDL" uri="wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?xsd=1" uri="wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.xsd_1.xsd"/>
 </catalog>

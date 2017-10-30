@@ -5,18 +5,37 @@
  */
 package Servlets;
 
+import Services.DetalleOferta;
+import Services.DetalleOfertaService_Service;
+import Services.Oferta;
+import Services.OfertaLocalService_Service;
+import Services.OfertaService_Service;
+import Services.Ofertalocal;
+import Services.Producto;
+import Services.ProductoService_Service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.WebServiceRef;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -27,10 +46,26 @@ import org.json.simple.JSONObject;
  */
 public class OfertaServlet extends HttpServlet {
 
+    JSONObject jObj;
+    JSONArray listaJson;
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl")
+    private DetalleOfertaService_Service service_3;
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/OfertaLocalService.wsdl")
+    private OfertaLocalService_Service service_2;
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/OfertaService.wsdl")
+    private OfertaService_Service service_1;
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/ProductoService.wsdl")
+    private ProductoService_Service service;
+
     private String rutaFiles;
     private String rutaForDB;
-    private final String rutaForDBDefaul = "folder\\img\\Usuarios\\";
-    private final String rutaDefaulRaiz = "D:\\trabajoHotelyCentro\\web\\";
+
+    private final String rutaForDBDefaul = "img\\productos\\";
+    private final String rutaDefaulRaiz = "C:\\Users\\PC-Cristopher\\Documents\\NetBeansProjects\\MisOfertasWeb\\web\\";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,123 +77,193 @@ public class OfertaServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet OfertaServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet OfertaServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+            throws ServletException, IOException, Exception {
 
-    private void btnCrear(HttpServletRequest request, HttpServletResponse response, List<FileItem> items) throws FileUploadException, IOException, Exception {
-        int intputNumeroHabitacion = 0, intputMetrosCuadrados = 0, intputPrecioDia = 0, intputPrecioNoche = 0, intputCantPersonas = 0;
-        HttpSession session = request.getSession();
-//        usuario = (Usuario) session.getAttribute("usuario");
-//        rutaFiles = rutaDefaulRaiz + rutaForDBDefaul + usuario.getIdUsuario() + "-" + usuario.getUsername();
-//        rutaForDB = rutaForDBDefaul + usuario.getIdUsuario() + "-" + usuario.getUsername() + "\\";
-        File file = new File(rutaFiles);
-        if (!file.exists()) {
-            System.err.println("Directory is not created!");
-            if (file.mkdir()) {
-                System.err.println("Directory is created!");
-            } else {
-                System.err.println("Failed to create directory!");
-            }
-        }
-        String intputNombreSucursal = "", intputDireccion = "";
-        int intputTelefono = 0;
-        for (FileItem item : items) {
-            System.err.println("+++++++ entro for");
-            if (item.isFormField()) {
-                switch (item.getFieldName()) {
-                    case "intputNumeroHabitacion":
-                        intputNumeroHabitacion = Integer.parseInt(item.getString());
-                        System.err.println("intputNumeroHabitacion : " + intputNumeroHabitacion);
-                        break;
-                    case "intputMetrosCuadrados":
-                        intputMetrosCuadrados = Integer.parseInt(item.getString());
-                        System.err.println("intputMetrosCuadrados : " + intputMetrosCuadrados);
-                        break;
-                    case "intputPrecioDia":
-                        intputPrecioDia = Integer.parseInt(item.getString());
-                        System.err.println("intputPrecioDia : " + intputPrecioDia);
-                        break;
-                    case "intputPrecioNoche":
-                        intputPrecioNoche = Integer.parseInt(item.getString());
-                        System.err.println("intputPrecioNoche : " + intputPrecioNoche);
-                        break;
-                    case "intputCantPersonas":
-                        intputCantPersonas = Integer.parseInt(item.getString());
-                        System.err.println("intputCantPersonas : " + intputCantPersonas);
-                        break;
-                }
-            } else {
-                if (item.getFieldName().equals("inputImagen")) {
-                    System.err.println("+++++++ item.getFieldName().equals(\"inputImagen\")");
-                    System.err.println("____----_- " + rutaFiles);
-
-                }
-                System.err.println("+++++++ itfgdf");
-                String fieldname = item.getFieldName();
-                String conte = item.getContentType();
-                String filename = FilenameUtils.getName(item.getName());
-                System.err.println("************fieldname : " + fieldname + " fieldvalue : " + filename + " conte : " + conte);
-                InputStream filecontent = item.getInputStream();
-                File f = new File(rutaFiles, item.getName());
-                rutaForDB = rutaForDB + item.getName();
-                System.out.println("Ruta 11 :  " + rutaFiles);
-                System.out.println("Ruta 22 :  " + rutaForDB);
-                item.write(f);
-                Thread.sleep(2000);
-            }
-        }
-//        habitacionDAO = new HabitacionDAO();
         try {
-            //empresa = (Empresa) session.getAttribute("empresa");
-//            habitacion = new Habitacion(intputNumeroHabitacion, intputMetrosCuadrados, intputPrecioDia, intputPrecioNoche, intputCantPersonas, 1, rutaForDB);
-//            habitacionDAO.grabar(habitacion);
-//            List<Habitacion> lis = habitacionDAO.listar();
-//            modelAndView.setViewName("MantenedorAdministrador");
-//            if (lis != null) {
-////                modelAndView.addObject("lis", lis);
-//                request.setAttribute("listEmpresa", lis);
-//            } else {
-////                modelAndView.getModel().put("errorMensaje", "Datos incorectos");
-////                modelAndView.setViewName("error");
-//            }
+            String bnt = "";
+            List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+            for (FileItem item : items) {
+                if (item.isFormField() && item.getFieldName().equals("btnAction")) {
+                    bnt = item.getString();
+                    System.out.println(item.getFieldName() + " " + item.getString());
+                    break;
+                }
+            }
+            System.err.println("1 OfertaServlet ->" + bnt);
+            switch (bnt) {
+                case "btnCrear":
+                    crearOferta(request, response, items);
+                    break;
+                case "btnModificar":
+                    actualizarferta(request, response, items);
+                case "listaOfertas":
+                    returnListOfertas(request, response);
+                    break;
+            }
         } catch (Exception e) {
-            System.err.println("Error : " + e.getMessage() + "  ++++++++++++++++++++++++++++++++++++++++++++++++++");
+            String accion = request.getParameter("accion");
+            System.err.println("2OfertaServlet -> " + accion);
+            switch (accion) {
+                case "listaOfertas":
+                    returnListOfertas(request, response);
+                    break;
+                case "btnPublicar":
+                    publicarOferta(request, response);
+                    break;
+                default:
+                    System.err.println("Fue al Defaul en ProductosServlet");
+//                existeCorreo(request, response);
+                    break;
+            }
         }
-        System.out.println("*******************RETORNOOOOOOO------------------------------------------------------------------");
-//        return modelAndView;
     }
-    
-    public void ApiRes(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
 
-//        reservacionDAO = new ReservacionDAO();
-//        List<Reservacion> lisres = reservacionDAO.listar();
-//        modelAndView.addObject("misRes", lisres);
-        response.setContentType("application/json");
-        JSONArray jsonarray = new JSONArray();
-//        for (Reservacion object : lisres) {
-//            JSONObject obj = new JSONObject();
-//            if (object != null) {
-//                obj.put("reservacion", object.getIdReservacion());
-//                obj.put("n° ", object.getHabitacion().getNumero());
-//                obj.put("res", object.getEstado());
-//                jsonarray.add(obj);
-//            }
-//        }
-        out.println(jsonarray);
+    private void publicarOferta(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idOferta = Integer.parseInt(request.getParameter("inputIdOferta").trim());
+        try {
+            System.err.println("El id que se quiere piblicar es ->" + idOferta);
+            //            Oferta of= lis
+            DetalleOferta detalleOferta = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == idOferta).findFirst().orElse(null);
+            publicarOferta_1(detalleOferta.getOferta().getIdOferta().intValue());
+            response.sendRedirect("accesoEncargado.html?ope=pub&sta=true&tipo=offer");
+        } catch (Exception e) {
+            response.sendRedirect("accesoEncargado.html?ope=pub&sta=false&tipo=offer");
+            System.err.println("Error en OfertaServlet -> publicarOferta() " + e.getMessage());
+        }
+    }
+
+    private void returnListOfertas(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        response.setContentType("Content-Type: application/json");
+        listaJson = new JSONArray();
+        List<DetalleOferta> listODetalle = listadoDetalleOferta();
+        if (listODetalle != null) {
+            for (DetalleOferta dtof : listODetalle) {
+                if (dtof != null) {
+                    jObj = new JSONObject();
+                    jObj.put("idof", dtof.getDetalleOfertaPK().getIdDetOferta().intValue());
+                    jObj.put("nombre", dtof.getOferta().getNombre());
+                    jObj.put("estado", dtof.getOferta().getEstadoIdEstado());
+                    jObj.put("idcat", dtof.getProducto().getCategoriaIdCategoria().getIdCategoria().intValue());
+                    jObj.put("desc", dtof.getOferta().getDescripcion());
+                    jObj.put("precio_normal", dtof.getOferta().getPrecioNormal());
+                    jObj.put("idprod", dtof.getProducto().getIdProducto().intValue());
+                    jObj.put("precio_oferta", dtof.getOferta().getPrecioOferta());
+                    jObj.put("num_visitas", dtof.getOferta().getNumeroVisitas());
+                    jObj.put("min_compras", dtof.getOferta().getMinimoCompra());
+                    jObj.put("max_compras", dtof.getOferta().getMaximoCompra());
+                    jObj.put("estado", dtof.getOferta().getEstadoIdEstado().getIdEstado());
+                    jObj.put("ruta_img", dtof.getProducto().getImagen());
+                    Ofertalocal oferLoc = listadoOfertaLocal().stream().filter((ofl) -> ofl.getOferta().getIdOferta().intValue() == dtof.getOferta().getIdOferta().intValue()).findFirst().orElse(null);
+                    int id_local = oferLoc == null ? 0 : oferLoc.getLocal().getIdLocal().intValue();
+                    jObj.put("id_local", id_local);
+                    listaJson.add(jObj);
+                }
+            }
+        }
+        out.println(listaJson);
+    }
+
+    private void actualizarferta(HttpServletRequest request, HttpServletResponse response, List<FileItem> items) throws FileUploadException, IOException, Exception {
+        try {
+            int idOfertaa = 0, cantMax = 0, idProducto = 0, idProducto_input = 0, precioOferta = 0, idTienda = 0;
+            String nombreOferta = null, desOfert = null;
+            for (FileItem item : items) {
+                if (item.isFormField()) {
+                    System.err.println(item.getFieldName());
+                    switch (item.getFieldName()) {
+                        case "idOferta2":
+                            idOfertaa = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "nombreOferta2":
+                            nombreOferta = item.getString().trim();
+                            break;
+                        case "descripcionOferta2":
+                            desOfert = item.getString().trim();
+                            break;
+                        case "selectProducto2":
+                            System.err.println("Entro al case del Select");
+                            idProducto = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "idProducto":
+                            System.err.println("Entro al case del id Prodcutos");
+                            idProducto_input = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "txtPrecioOferta2":
+                            precioOferta = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "selectTiendas2":
+                            idTienda = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "txtCantMaxima2":
+                            cantMax = Integer.parseInt(item.getString().trim());
+                            break;
+                    }
+                }
+            }
+            idProducto = idProducto_input;
+            List<Producto> lista = listadoProductos();
+            int idpro = idProducto;
+            Producto p = lista.stream().filter((x) -> x.getIdProducto().intValue() == idpro).findFirst().orElse(null);
+            GregorianCalendar fechaHoy = new GregorianCalendar();
+            fechaHoy.setTime(new Date());
+            XMLGregorianCalendar fechaHoyXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaHoy);
+            int valor = idOfertaa;
+            DetalleOferta dto = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == valor).findFirst().orElse(null);
+            modificarOferta(dto.getOferta().getIdOferta().intValue(), nombreOferta.trim(), desOfert.trim(), precioOferta, 0, cantMax, fechaHoyXml);
+
+            response.sendRedirect("accesoEncargado.html?ope=mod&sta=true&tipo=offer");
+        } catch (Exception e) {
+            response.sendRedirect("accesoEncargado.html?ope=mod&sta=false&tipo=offer");
+            System.err.println("Error en OfertaServlet -> MoficarOferta() " + e.getMessage());
+        }
+    }
+
+    private void crearOferta(HttpServletRequest request, HttpServletResponse response, List<FileItem> items) throws FileUploadException, IOException, Exception {
+        try {
+            int cantMax = 0, idProducto = 0, precioOferta = 0, idTienda = 0;
+            String nombreOferta = null, desOfert = null;
+            for (FileItem item : items) {
+                if (item.isFormField()) {
+                    System.err.println(item.getFieldName());
+                    switch (item.getFieldName()) {
+                        case "nombreOferta":
+                            nombreOferta = item.getString().trim();
+                            break;
+                        case "descripcionOferta":
+                            desOfert = item.getString().trim();
+                            break;
+                        case "selectProducto":
+                            idProducto = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "txtPrecioOferta":
+                            precioOferta = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "selectTiendas":
+                            idTienda = Integer.parseInt(item.getString().trim());
+                            break;
+                        case "txtCantMaxima":
+                            cantMax = Integer.parseInt(item.getString().trim());
+                            break;
+                    }
+                }
+            }
+            List<Producto> lista = listadoProductos();
+            int idpro = idProducto;
+            Producto p = lista.stream().filter((x) -> x.getIdProducto().intValue() == idpro).findFirst().orElse(null);
+            GregorianCalendar fechaHoy = new GregorianCalendar();
+            fechaHoy.setTime(new Date());
+            XMLGregorianCalendar fechaHoyXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaHoy);
+            crearOferta(0, nombreOferta.trim(), desOfert.trim(), p.getPrecio().intValue(), precioOferta, 0, 1, cantMax, fechaHoyXml, fechaHoyXml, 2);
+            Oferta lastOferta = Collections.max(listadoOferta(), Comparator.comparing(Oferta::getIdOferta));
+            crearOfertaLocal(0, desOfert, lastOferta.getIdOferta().intValue(), idTienda);
+            crearDetalleOferta(0, idProducto, lastOferta.getIdOferta().intValue());
+
+            response.sendRedirect("accesoEncargado.html?ope=add&sta=false&tipo=offer");
+        } catch (Exception e) {
+            response.sendRedirect("accesoEncargado.html?ope=add&sta=true&tipo=offer");
+            System.err.println("Error en OfertaServlet -> crearOferta() " + e.getMessage());
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -173,7 +278,11 @@ public class OfertaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(OfertaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -187,7 +296,11 @@ public class OfertaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(OfertaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -199,5 +312,75 @@ public class OfertaServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String modificarProducto(int id, java.lang.String nombre, java.lang.String descripcion, int precio, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActualizacion, java.lang.String rutaImagen, int idCagegoria) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.ProductoService port = service.getProductoServicePort();
+        return port.modificarProducto(id, nombre, descripcion, precio, fechaInicio, fechaActualizacion, rutaImagen, idCagegoria);
+    }
+
+    private java.util.List<Services.Producto> listadoProductos() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.ProductoService port = service.getProductoServicePort();
+        return port.listadoProductos();
+    }
+
+    private String crearOferta(int id, java.lang.String nombre, java.lang.String descripcion, int precioNormal, int precioOferta, int numeroVisitas, int minCompras, int maxCompras, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActulizacion, int estadoId) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaService port = service_1.getOfertaServicePort();
+        return port.crearOferta(id, nombre, descripcion, precioNormal, precioOferta, numeroVisitas, minCompras, maxCompras, fechaInicio, fechaActulizacion, estadoId);
+    }
+
+    private String crearOfertaLocal(int id, java.lang.String descripcion, int ofertaId, int localId) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaLocalService port = service_2.getOfertaLocalServicePort();
+        return port.crearOfertaLocal(id, descripcion, ofertaId, localId);
+    }
+
+    private java.util.List<Services.Ofertalocal> listadoOfertaLocal() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaLocalService port = service_2.getOfertaLocalServicePort();
+        return port.listadoOfertaLocal();
+    }
+
+    private java.util.List<Services.Oferta> listadoOferta() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaService port = service_1.getOfertaServicePort();
+        return port.listadoOferta();
+    }
+
+    private String crearDetalleOferta(int idDetalleOferta, int productoId, int ofertaId) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
+        return port.crearDetalleOferta(idDetalleOferta, productoId, ofertaId);
+    }
+
+    private java.util.List<Services.DetalleOferta> listadoDetalleOferta() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
+        return port.listadoDetalleOferta();
+    }
+
+    private String modificarOferta(int id, java.lang.String nombre, java.lang.String descripcion, int precioOferta, int minCompras, int maxCompras, javax.xml.datatype.XMLGregorianCalendar fechaActulizacion) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaService port = service_1.getOfertaServicePort();
+        return port.modificarOferta(id, nombre, descripcion, precioOferta, minCompras, maxCompras, fechaActulizacion);
+    }
+
+    private String publicarOferta_1(int id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaService port = service_1.getOfertaServicePort();
+        return port.publicarOferta(id);
+    }
 
 }

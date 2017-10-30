@@ -24,6 +24,10 @@
         <servlet-name>ProductoServlet</servlet-name>
         <servlet-class>Servlets.ProductoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <servlet-class>Servlets.UsuarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OfertaServlet</servlet-name>
         <url-pattern>/OfertaServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ProductoServlet</servlet-name>
         <url-pattern>/ProductoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <url-pattern>/UsuarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
