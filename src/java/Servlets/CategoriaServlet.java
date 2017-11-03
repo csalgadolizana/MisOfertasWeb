@@ -50,6 +50,7 @@ public class CategoriaServlet extends HttpServlet {
                 break;
             default:
                 System.err.println("Fue al Defaul en CategoriaServlet");
+                returnListCategorias(request, response);
 //                existeCorreo(request, response);
                 break;
         }

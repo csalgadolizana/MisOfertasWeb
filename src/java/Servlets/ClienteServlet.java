@@ -64,9 +64,7 @@ public class ClienteServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, DatatypeConfigurationException, ParseException {
-//        PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-//        response.setContentType("Content-Type: application/json");
         String btnAccion = request.getParameter("btnAccion");
         System.err.println("ClienteServlet ->" + btnAccion);
         switch (btnAccion) {
@@ -92,9 +90,6 @@ public class ClienteServlet extends HttpServlet {
                 existeCorreo(request, response);
                 break;
         }
-
-        /* TODO output your page here. You may use following sample code. */
-//        out.println(jObj);
     }
 
     public void inicioSesion(HttpServletRequest request, HttpServletResponse response)
@@ -106,12 +101,9 @@ public class ClienteServlet extends HttpServlet {
 //        En el caso de no encontrar nada retornará 0 en estado
         int idCliente = cli.getIdCliente().intValue();
         System.err.println("el id es -> " + idCliente);
+        HttpSession session = request.getSession();
         if (idCliente == 0) {
-//            System.err.println("if (idCliente == 0");
             Usuario us = autenticarTrabajador(correo, pass1);
-//            System.err.println("correo -> " + correo);
-//            System.err.println("pass -> " + pass1);
-//            System.err.println("valor de usuario -> " + us.getCorreo());
             if (us.getIdUsuario().intValue() != 0) {
                 jObj.put("estado", us.getIdUsuario().intValue() + "");
                 jObj.put("redirect", "accesoEncargado.html?d=" + us.getIdUsuario().intValue() + "");
@@ -119,8 +111,6 @@ public class ClienteServlet extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 response.setContentType("Content-Type: application/json");
                 out.println(jObj);
-                HttpSession session = request.getSession();
-                session.setMaxInactiveInterval(300);
                 session.setAttribute("trabajador", us);
             }
         } else {
@@ -128,10 +118,9 @@ public class ClienteServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             response.setContentType("Content-Type: application/json");
             out.println(jObj);
-            HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(300);
             session.setAttribute("cliente", cli);
         }
+        session.setMaxInactiveInterval(1000);
     }
 
     public void returnClient(HttpServletRequest request, HttpServletResponse response)

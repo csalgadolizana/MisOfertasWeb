@@ -56,8 +56,6 @@ public class UsuarioServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         Cliente cliente = (Cliente) session.getAttribute("cliente");
         Usuario usuario = (Usuario) session.getAttribute("trabajador");
-//        int idClie = Integer.parseInt(request.getParameter("idcli"));
-
         jObj = new JSONObject();
         if (cliente != null) {
             System.out.println("cliente " + cliente.getPersonaIdpersona().getNombre());
@@ -77,14 +75,12 @@ public class UsuarioServlet extends HttpServlet {
             jObj.put("fecha", sdf.format(fecha));
         } else {
             if (usuario != null) {
-                System.out.println("usuario " + usuario.getPersonaIdpersona().getNombre());
                 jObj.put("sesion", "1");
                 jObj.put("nombre", usuario.getPersonaIdpersona().getNombre());
                 jObj.put("correo", usuario.getPersonaIdpersona().getApellidos());
                 jObj.put("sexo", usuario.getPersonaIdpersona().getSexoIdSexo().getIdSexo().intValue());
                 jObj.put("correo", usuario.getCorreo());
             } else {
-                System.out.println("Sesion nula!!!");
                 jObj.put("sesion", "nula");
             }
         }

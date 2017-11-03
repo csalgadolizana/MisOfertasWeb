@@ -4,6 +4,18 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:17225/MisOfertasWebService/OfertaService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="dejar_de_publicar_oferta">
+<part name="parameters" element="tns:dejar_de_publicar_oferta"/>
+</message>
+<message name="dejar_de_publicar_ofertaResponse">
+<part name="parameters" element="tns:dejar_de_publicar_ofertaResponse"/>
+</message>
+<message name="publicar_oferta">
+<part name="parameters" element="tns:publicar_oferta"/>
+</message>
+<message name="publicar_ofertaResponse">
+<part name="parameters" element="tns:publicar_ofertaResponse"/>
+</message>
 <message name="Modificar_oferta">
 <part name="parameters" element="tns:Modificar_oferta"/>
 </message>
@@ -28,13 +40,15 @@
 <message name="Crear_ofertaResponse">
 <part name="parameters" element="tns:Crear_ofertaResponse"/>
 </message>
-<message name="publicar_oferta">
-<part name="parameters" element="tns:publicar_oferta"/>
-</message>
-<message name="publicar_ofertaResponse">
-<part name="parameters" element="tns:publicar_ofertaResponse"/>
-</message>
 <portType name="OfertaService">
+<operation name="dejar_de_publicar_oferta">
+<input wsam:Action="http://Servicios/OfertaService/dejar_de_publicar_ofertaRequest" message="tns:dejar_de_publicar_oferta"/>
+<output wsam:Action="http://Servicios/OfertaService/dejar_de_publicar_ofertaResponse" message="tns:dejar_de_publicar_ofertaResponse"/>
+</operation>
+<operation name="publicar_oferta">
+<input wsam:Action="http://Servicios/OfertaService/publicar_ofertaRequest" message="tns:publicar_oferta"/>
+<output wsam:Action="http://Servicios/OfertaService/publicar_ofertaResponse" message="tns:publicar_ofertaResponse"/>
+</operation>
 <operation name="Modificar_oferta">
 <input wsam:Action="http://Servicios/OfertaService/Modificar_ofertaRequest" message="tns:Modificar_oferta"/>
 <output wsam:Action="http://Servicios/OfertaService/Modificar_ofertaResponse" message="tns:Modificar_ofertaResponse"/>
@@ -51,13 +65,27 @@
 <input wsam:Action="http://Servicios/OfertaService/Crear_ofertaRequest" message="tns:Crear_oferta"/>
 <output wsam:Action="http://Servicios/OfertaService/Crear_ofertaResponse" message="tns:Crear_ofertaResponse"/>
 </operation>
-<operation name="publicar_oferta">
-<input wsam:Action="http://Servicios/OfertaService/publicar_ofertaRequest" message="tns:publicar_oferta"/>
-<output wsam:Action="http://Servicios/OfertaService/publicar_ofertaResponse" message="tns:publicar_ofertaResponse"/>
-</operation>
 </portType>
 <binding name="OfertaServicePortBinding" type="tns:OfertaService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="dejar_de_publicar_oferta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="publicar_oferta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="Modificar_oferta">
 <soap:operation soapAction=""/>
 <input>
@@ -86,15 +114,6 @@
 </output>
 </operation>
 <operation name="Crear_oferta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="publicar_oferta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

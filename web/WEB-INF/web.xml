@@ -32,6 +32,10 @@
         <servlet-name>OfertaVisitaServlet</servlet-name>
         <servlet-class>Servlets.OfertaVisitaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CuponServlet</servlet-name>
+        <servlet-class>Servlets.CuponServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OfertaServlet</servlet-name>
         <url-pattern>/OfertaServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>OfertaVisitaServlet</servlet-name>
         <url-pattern>/OfertaVisitaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CuponServlet</servlet-name>
+        <url-pattern>/CuponServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

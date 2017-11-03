@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -52,6 +53,18 @@ public class OfertaVisitaServlet extends HttpServlet {
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
         System.err.println("OfertaVisitaServlet -> " + accion);
+
+        System.err.println("_______________________________________________________________________________________");
+        String textoSinEncriptar = "sergio";
+        textoSinEncriptar = "Perroni";
+        String textoEncriptadoConMD5 = DigestUtils.md5Hex(textoSinEncriptar);
+        String textoEncriptadoConSha512Hex = DigestUtils.sha512Hex(textoSinEncriptar);
+        String textoEncriptadoConSHA = DigestUtils.sha1Hex(textoSinEncriptar);
+        System.err.println("Texto Encriptado con MD5        : " + textoEncriptadoConMD5);
+        System.err.println("Texto Encriptado con sha512Hex  : " + textoEncriptadoConSha512Hex);
+        System.out.println("Texto Encriptado con SHA        : " + textoEncriptadoConSHA);
+        System.err.println();
+        System.err.println("_______________________________________________________________________________________");
         switch (accion) {
             case "registrarVisita":
                 registrarVisita(request, response);
@@ -66,9 +79,6 @@ public class OfertaVisitaServlet extends HttpServlet {
         try {
             jObj = new JSONObject();
             int idOferta = Integer.parseInt(request.getParameter("idDetalleOferta").trim());
-            System.err.println("El id que se quiere piblicar es ->" + idOferta);
-//            DetalleOferta detalleOferta = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == idOferta).findFirst().orElse(null);
-//            publicarOferta_1(detalleOferta.getOferta().getIdOferta().intValue());
             DetalleOferta dt = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == idOferta).findFirst().orElse(null);
             GregorianCalendar fechaHoy = new GregorianCalendar();
             fechaHoy.setTime(new Date());

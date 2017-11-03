@@ -28,6 +28,36 @@ public interface OfertaService {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "dejar_de_publicar_oferta")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "dejar_de_publicar_oferta", targetNamespace = "http://Servicios/", className = "Services.DejarDePublicarOferta")
+    @ResponseWrapper(localName = "dejar_de_publicar_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.DejarDePublicarOfertaResponse")
+    @Action(input = "http://Servicios/OfertaService/dejar_de_publicar_ofertaRequest", output = "http://Servicios/OfertaService/dejar_de_publicar_ofertaResponse")
+    public String dejarDePublicarOferta(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "publicar_oferta")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "publicar_oferta", targetNamespace = "http://Servicios/", className = "Services.PublicarOferta")
+    @ResponseWrapper(localName = "publicar_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.PublicarOfertaResponse")
+    @Action(input = "http://Servicios/OfertaService/publicar_ofertaRequest", output = "http://Servicios/OfertaService/publicar_ofertaResponse")
+    public String publicarOferta(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
      * @param descripcion
      * @param maxCompras
      * @param fechaActulizacion
@@ -130,20 +160,5 @@ public interface OfertaService {
         XMLGregorianCalendar fechaActulizacion,
         @WebParam(name = "estado_id", targetNamespace = "")
         int estadoId);
-
-    /**
-     * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "publicar_oferta")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "publicar_oferta", targetNamespace = "http://Servicios/", className = "Services.PublicarOferta")
-    @ResponseWrapper(localName = "publicar_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.PublicarOfertaResponse")
-    @Action(input = "http://Servicios/OfertaService/publicar_ofertaRequest", output = "http://Servicios/OfertaService/publicar_ofertaResponse")
-    public String publicarOferta(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
 
 }

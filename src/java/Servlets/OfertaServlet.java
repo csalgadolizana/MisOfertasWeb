@@ -22,7 +22,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -36,7 +35,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -102,13 +100,15 @@ public class OfertaServlet extends HttpServlet {
             }
         } catch (Exception e) {
             String accion = request.getParameter("accion");
-            System.err.println("2OfertaServlet -> " + accion);
             switch (accion) {
                 case "listaOfertas":
                     returnListOfertas(request, response);
                     break;
                 case "btnPublicar":
                     publicarOferta(request, response);
+                    break;
+                case "btnDejarDePublicar":
+                    dejarDePublicarOferta(request, response);
                     break;
                 default:
                     System.err.println("Fue al Defaul en ProductosServlet");
@@ -118,11 +118,21 @@ public class OfertaServlet extends HttpServlet {
         }
     }
 
+    private void dejarDePublicarOferta(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idOferta = Integer.parseInt(request.getParameter("inputIdOfertadej").trim());
+        try {
+            DetalleOferta detalleOferta = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == idOferta).findFirst().orElse(null);
+            dejarDePublicarOfertaServ(detalleOferta.getOferta().getIdOferta().intValue());
+            response.sendRedirect("accesoEncargado.html?ope=nopub&sta=true&tipo=offer");
+        } catch (Exception e) {
+            response.sendRedirect("accesoEncargado.html?ope=nopub&sta=false&tipo=offer");
+            System.err.println("Error en OfertaServlet -> publicarOferta() " + e.getMessage());
+        }
+    }
+
     private void publicarOferta(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int idOferta = Integer.parseInt(request.getParameter("inputIdOferta").trim());
         try {
-            System.err.println("El id que se quiere piblicar es ->" + idOferta);
-            //            Oferta of= lis
             DetalleOferta detalleOferta = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == idOferta).findFirst().orElse(null);
             publicarOferta_1(detalleOferta.getOferta().getIdOferta().intValue());
             response.sendRedirect("accesoEncargado.html?ope=pub&sta=true&tipo=offer");
@@ -381,6 +391,13 @@ public class OfertaServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.OfertaService port = service_1.getOfertaServicePort();
         return port.publicarOferta(id);
+    }
+
+    private String dejarDePublicarOfertaServ(int id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.OfertaService port = service_1.getOfertaServicePort();
+        return port.dejarDePublicarOferta(id);
     }
 
 }

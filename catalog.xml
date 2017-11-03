@@ -22,8 +22,8 @@
     <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?wsdl" uri="src/conf/xml-resources/web-service-references/DetalleOfertaService_1/wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?WSDL" uri="src/conf/xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/DetalleOfertaService?xsd=1" uri="src/conf/xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.xsd_1.xsd"/>
-    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaService?WSDL" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_17225/MisOfertasWebService/OfertaService.wsdl"/>
-    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaService?xsd=1" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_17225/MisOfertasWebService/OfertaService.xsd_1.xsd"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/OfertaVisitaService?wsdl" uri="src/conf/xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.wsdl"/>
     <system systemId="http://localhost:17225/MisOfertasWebService/OfertaVisitaService?xsd=1" uri="src/conf/xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.xsd_1.xsd"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaService?WSDL" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_17225/MisOfertasWebService/OfertaService.wsdl"/>
+    <system systemId="http://localhost:17225/MisOfertasWebService/OfertaService?xsd=1" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_17225/MisOfertasWebService/OfertaService.xsd_1.xsd"/>
 </catalog>

@@ -57,7 +57,7 @@ $(document).ready(function () {
                                 location.href = dataa.redirect;
                             } else {
                                 if (dataa.estado != 0) {
-                                    location.href = "http://localhost:17225/MisOfertasWeb/accesoCliente.html?d=" + dataa.estado;
+                                    location.href = "accesoCliente.html?d=" + dataa.estado;
                                 } else {
                                     $("#centralModalError").modal('show');
                                     $("#divTextoAlerta").find("p").html("<strong>Su Correo o Contraseña no estan correctas!!.</strong> <br>");

@@ -315,7 +315,7 @@
 
                                         <!--Body-->
                                         <div class="modal-body mb-1" >
-                                            <input type="number" id="idOferta2" name="idOferta2">
+                                            <input type="number" id="idOferta2" name="idOferta2" hidden="">
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-newspaper-o prefix"></i>
                                                 <input type="text" id="nombreOferta2" name="nombreOferta2" class="form-control my-inputs"  required="">
@@ -460,7 +460,7 @@
                                         <div class="modal-body mb-1" >
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-newspaper-o prefix"></i>
-                                                <input type="number" id="idProducto2" name="idProducto2" style="display: " required="">
+                                                <input type="number" id="idProducto2" name="idProducto2" hidden="" required="">
                                                 <input type="text" id="nombreProducto2" name="nombreProducto2" class="form-control my-inputs"  required="">
                                                 <label for="nombreProducto2">Nombre de Producto</label>
                                             </div>
@@ -547,6 +547,40 @@
                                 <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
                                 <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Cancelar <i class="fa fa-hand-paper-o  ml-1"></i></a>
                                 <button name="accion" value="btnPublicar" type="submit" class="btn btn-outline-secondary-modal waves-effect">Publicar! <i class="fa fa-hand-paper-o  ml-1"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <div class="modal fade" id="modalDejarDePublicarOferta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <form action="OfertaServlet" method="POST">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <p class="heading lead">Realmente desea dejar de publicar la oferta</p>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                </button>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="text-center" id="divTextoAlerta">
+                                    <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+                                    <p id="pIdOfertadej"></p>
+                                    <input id="inputIdOfertadej" name="inputIdOfertadej" type="number" style="display: none">
+                                </div>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
+                                <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Cancelar <i class="fa fa-hand-paper-o  ml-1"></i></a>
+                                <button name="accion" value="btnDejarDePublicar" type="submit" class="btn btn-outline-secondary-modal waves-effect">Dejar de publicar <i class="fa fa-hand-paper-o  ml-1"></i></button>
                             </div>
                         </form>
                     </div>
@@ -915,7 +949,9 @@
                                         $("#idProducto2").val(idpro);
                                         $("#nombreProducto2").val(nom);
                                         $("#descripcionProducto2").val(desc);
+                                        $("#descripcionProducto2").focus();
                                         $("#txtPrecio2").val(precio);
+                                        $("#txtPrecio2").focus();
                                         $("#selectCategoria2").val(idcat);
                                         if (ruta_img != "-") {
                                             console.log(ruta_img);
@@ -936,6 +972,7 @@
                                         $("#navItemProd2").show();
                                         $("#navItemProd2 > a").click();
                                         $("#ModalCrearProducto").modal("show");
+                                        $("#nombreProducto2").focus();
                                     }
                                     function crearProductoModal() {
                                         $("#formEditarProducto").hide();
@@ -967,7 +1004,7 @@
                                                     var accion = td.estado == 2 ? '\
                         <a onclick="publicarOfertaModal(' + callFuncPublicarOferta + ')"><i class="fa fa-share-alt fa-2x mb-3" aria-hidden="true" style="color: #33b5e5"></i></a>   \n\
                         <a style="margin-left:2px" onclick="editarOfertaModal(' + callFuncEdiOferta + ')"><i class="fa fa fa-cog fa-2x mb-3" aria-hidden="true" style="color: #c2c4b8"></i></a>'
-                                                            : '<a style="margin-left:2px" onclick="dejarDePublicar()"><i class="fa fa-eye-slash fa-2x mb-3" aria-hidden="true" style="color: #eda45c"></i></a>';
+                                                            : '<a style="margin-left:2px" onclick="dejarDePublicar('+ td.idof +')"><i class="fa fa-eye-slash fa-2x mb-3" aria-hidden="true" style="color: #eda45c"></i></a>';
                                                     TRs = TRs + "<tr>";
                                                     TRs = TRs +
                                                             '<td>' + td.idof + '</td>' +
@@ -1007,6 +1044,11 @@
                                         $("#inputIdOferta").val(id);
                                         $("#modalPublicarOferta").modal("show");
                                         $("#pIdOferta").text(id);
+                                    }
+                                    function dejarDePublicar(id) {
+                                        $("#inputIdOfertadej").val(id);
+                                        $("#modalDejarDePublicarOferta").modal("show");
+                                        $("#pIdOfertadej").text(id);
                                     }
                                     function editarOfertaModal(id, nom, desc, pre_nor, pre_ofer, num_visi, min_com, max_com, idprod, publicada, ruta_img, id_local) {
                                         $("#idOferta2").val(id);

@@ -32,6 +32,8 @@ public class ObjectFactory {
     private final static QName _ListadoOfertaResponse_QNAME = new QName("http://Servicios/", "Listado_ofertaResponse");
     private final static QName _ModificarOferta_QNAME = new QName("http://Servicios/", "Modificar_oferta");
     private final static QName _ModificarOfertaResponse_QNAME = new QName("http://Servicios/", "Modificar_ofertaResponse");
+    private final static QName _DejarDePublicarOferta_QNAME = new QName("http://Servicios/", "dejar_de_publicar_oferta");
+    private final static QName _DejarDePublicarOfertaResponse_QNAME = new QName("http://Servicios/", "dejar_de_publicar_ofertaResponse");
     private final static QName _Estado_QNAME = new QName("http://Servicios/", "estado");
     private final static QName _Oferta_QNAME = new QName("http://Servicios/", "oferta");
     private final static QName _PublicarOferta_QNAME = new QName("http://Servicios/", "publicar_oferta");
@@ -106,6 +108,22 @@ public class ObjectFactory {
      */
     public ModificarOfertaResponse createModificarOfertaResponse() {
         return new ModificarOfertaResponse();
+    }
+
+    /**
+     * Create an instance of {@link DejarDePublicarOferta }
+     * 
+     */
+    public DejarDePublicarOferta createDejarDePublicarOferta() {
+        return new DejarDePublicarOferta();
+    }
+
+    /**
+     * Create an instance of {@link DejarDePublicarOfertaResponse }
+     * 
+     */
+    public DejarDePublicarOfertaResponse createDejarDePublicarOfertaResponse() {
+        return new DejarDePublicarOfertaResponse();
     }
 
     /**
@@ -210,6 +228,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://Servicios/", name = "Modificar_ofertaResponse")
     public JAXBElement<ModificarOfertaResponse> createModificarOfertaResponse(ModificarOfertaResponse value) {
         return new JAXBElement<ModificarOfertaResponse>(_ModificarOfertaResponse_QNAME, ModificarOfertaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DejarDePublicarOferta }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "dejar_de_publicar_oferta")
+    public JAXBElement<DejarDePublicarOferta> createDejarDePublicarOferta(DejarDePublicarOferta value) {
+        return new JAXBElement<DejarDePublicarOferta>(_DejarDePublicarOferta_QNAME, DejarDePublicarOferta.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DejarDePublicarOfertaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "dejar_de_publicar_ofertaResponse")
+    public JAXBElement<DejarDePublicarOfertaResponse> createDejarDePublicarOfertaResponse(DejarDePublicarOfertaResponse value) {
+        return new JAXBElement<DejarDePublicarOfertaResponse>(_DejarDePublicarOfertaResponse_QNAME, DejarDePublicarOfertaResponse.class, null, value);
     }
 
     /**
