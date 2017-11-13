@@ -27,27 +27,6 @@ public interface DetalleOfertaService {
 
     /**
      * 
-     * @param idDetalleOferta
-     * @param productoId
-     * @param ofertaId
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Crear_detalle_oferta")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Crear_detalle_oferta", targetNamespace = "http://Servicios/", className = "Services.CrearDetalleOferta")
-    @ResponseWrapper(localName = "Crear_detalle_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.CrearDetalleOfertaResponse")
-    @Action(input = "http://Servicios/DetalleOfertaService/Crear_detalle_ofertaRequest", output = "http://Servicios/DetalleOfertaService/Crear_detalle_ofertaResponse")
-    public String crearDetalleOferta(
-        @WebParam(name = "id_detalle_oferta", targetNamespace = "")
-        int idDetalleOferta,
-        @WebParam(name = "producto_id", targetNamespace = "")
-        int productoId,
-        @WebParam(name = "oferta_id", targetNamespace = "")
-        int ofertaId);
-
-    /**
-     * 
      * @param id
      * @return
      *     returns java.lang.String
@@ -72,5 +51,26 @@ public interface DetalleOfertaService {
     @ResponseWrapper(localName = "Listado_detalle_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoDetalleOfertaResponse")
     @Action(input = "http://Servicios/DetalleOfertaService/Listado_detalle_ofertaRequest", output = "http://Servicios/DetalleOfertaService/Listado_detalle_ofertaResponse")
     public List<DetalleOferta> listadoDetalleOferta();
+
+    /**
+     * 
+     * @param idDetalleOferta
+     * @param productoId
+     * @param ofertaId
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Crear_detalle_oferta")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Crear_detalle_oferta", targetNamespace = "http://Servicios/", className = "Services.CrearDetalleOferta")
+    @ResponseWrapper(localName = "Crear_detalle_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.CrearDetalleOfertaResponse")
+    @Action(input = "http://Servicios/DetalleOfertaService/Crear_detalle_ofertaRequest", output = "http://Servicios/DetalleOfertaService/Crear_detalle_ofertaResponse")
+    public String crearDetalleOferta(
+        @WebParam(name = "id_detalle_oferta", targetNamespace = "")
+        int idDetalleOferta,
+        @WebParam(name = "producto_id", targetNamespace = "")
+        int productoId,
+        @WebParam(name = "oferta_id", targetNamespace = "")
+        int ofertaId);
 
 }

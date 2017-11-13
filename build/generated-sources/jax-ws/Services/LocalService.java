@@ -27,33 +27,6 @@ public interface LocalService {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<Services.Local>
-     */
-    @WebMethod(operationName = "Listado_local")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_local", targetNamespace = "http://Servicios/", className = "Services.ListadoLocal")
-    @ResponseWrapper(localName = "Listado_localResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoLocalResponse")
-    @Action(input = "http://Servicios/LocalService/Listado_localRequest", output = "http://Servicios/LocalService/Listado_localResponse")
-    public List<Local> listadoLocal();
-
-    /**
-     * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_local")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_local", targetNamespace = "http://Servicios/", className = "Services.EliminarLocal")
-    @ResponseWrapper(localName = "Eliminar_localResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarLocalResponse")
-    @Action(input = "http://Servicios/LocalService/Eliminar_localRequest", output = "http://Servicios/LocalService/Eliminar_localResponse")
-    public String eliminarLocal(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
-
-    /**
-     * 
      * @param direccion
      * @param idEmpresa
      * @param id
@@ -81,6 +54,18 @@ public interface LocalService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<Services.Local>
+     */
+    @WebMethod(operationName = "Listado_local")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_local", targetNamespace = "http://Servicios/", className = "Services.ListadoLocal")
+    @ResponseWrapper(localName = "Listado_localResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoLocalResponse")
+    @Action(input = "http://Servicios/LocalService/Listado_localRequest", output = "http://Servicios/LocalService/Listado_localResponse")
+    public List<Local> listadoLocal();
+
+    /**
+     * 
      * @param direccion
      * @param idEmpresa
      * @param id
@@ -105,5 +90,20 @@ public interface LocalService {
         int idEmpresa,
         @WebParam(name = "id_ciudad", targetNamespace = "")
         int idCiudad);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_local")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_local", targetNamespace = "http://Servicios/", className = "Services.EliminarLocal")
+    @ResponseWrapper(localName = "Eliminar_localResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarLocalResponse")
+    @Action(input = "http://Servicios/LocalService/Eliminar_localRequest", output = "http://Servicios/LocalService/Eliminar_localResponse")
+    public String eliminarLocal(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
 
 }

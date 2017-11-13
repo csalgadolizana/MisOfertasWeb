@@ -378,7 +378,7 @@ public class OfertaServlet extends HttpServlet {
         Services.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
         return port.listadoDetalleOferta();
     }
-
+    
     private String modificarOferta(int id, java.lang.String nombre, java.lang.String descripcion, int precioOferta, int minCompras, int maxCompras, javax.xml.datatype.XMLGregorianCalendar fechaActulizacion) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -400,4 +400,4 @@ public class OfertaServlet extends HttpServlet {
         return port.dejarDePublicarOferta(id);
     }
 
-}
+    }

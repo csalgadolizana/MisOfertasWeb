@@ -46,10 +46,23 @@ public class UsuarioServlet extends HttpServlet {
             case "getDataSession":
                 getMyData(request, response);
                 break;
+            case "destroySession":
+                destroySession(request, response);
+                break;
             default:
-                response.sendRedirect("index.html");
+//                response.sendRedirect("index.html");
                 break;
         }
+    }
+
+    private void destroySession(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession(true);
+        session.invalidate();
+        jObj = new JSONObject();
+        jObj.put("sesion", "destroyed");
+        PrintWriter out = response.getWriter();
+        response.setContentType("Content-Type: application/json");
+        out.println(jObj);
     }
 
     private void getMyData(HttpServletRequest request, HttpServletResponse response) throws IOException {

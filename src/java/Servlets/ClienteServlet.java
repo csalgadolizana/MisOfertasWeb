@@ -315,7 +315,7 @@ public class ClienteServlet extends HttpServlet {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.ClienteService port = service_1.getClienteServicePort();
-        return port.autenticacion(correo, contrasena);
+        return (Cliente) port.autenticacion(correo, contrasena);
     }
 
     private Usuario autenticarTrabajador(java.lang.String correo, java.lang.String contrasena) {
@@ -332,4 +332,4 @@ public class ClienteServlet extends HttpServlet {
         return port.listadoUsuarios();
     }
 
-}
+    }

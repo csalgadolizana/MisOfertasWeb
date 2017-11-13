@@ -28,36 +28,6 @@ public interface UsuarioService {
 
     /**
      * 
-     * @param correo
-     * @param contrasena
-     * @return
-     *     returns Services.Usuario
-     */
-    @WebMethod(operationName = "AutenticarTrabajador")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "AutenticarTrabajador", targetNamespace = "http://Servicios/", className = "Services.AutenticarTrabajador")
-    @ResponseWrapper(localName = "AutenticarTrabajadorResponse", targetNamespace = "http://Servicios/", className = "Services.AutenticarTrabajadorResponse")
-    @Action(input = "http://Servicios/UsuarioService/AutenticarTrabajadorRequest", output = "http://Servicios/UsuarioService/AutenticarTrabajadorResponse")
-    public Usuario autenticarTrabajador(
-        @WebParam(name = "correo", targetNamespace = "")
-        String correo,
-        @WebParam(name = "contrasena", targetNamespace = "")
-        String contrasena);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Usuario>
-     */
-    @WebMethod(operationName = "Listado_usuarios")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_usuarios", targetNamespace = "http://Servicios/", className = "Services.ListadoUsuarios")
-    @ResponseWrapper(localName = "Listado_usuariosResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoUsuariosResponse")
-    @Action(input = "http://Servicios/UsuarioService/Listado_usuariosRequest", output = "http://Servicios/UsuarioService/Listado_usuariosResponse")
-    public List<Usuario> listadoUsuarios();
-
-    /**
-     * 
      * @param idCargo
      * @param password
      * @param idEstado
@@ -97,21 +67,6 @@ public interface UsuarioService {
 
     /**
      * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_usuario")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_usuario", targetNamespace = "http://Servicios/", className = "Services.EliminarUsuario")
-    @ResponseWrapper(localName = "Eliminar_usuarioResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarUsuarioResponse")
-    @Action(input = "http://Servicios/UsuarioService/Eliminar_usuarioRequest", output = "http://Servicios/UsuarioService/Eliminar_usuarioResponse")
-    public String eliminarUsuario(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
-
-    /**
-     * 
      * @param password
      * @param fechaInicio
      * @param correo
@@ -145,14 +100,59 @@ public interface UsuarioService {
      * @param correo
      * @param contrasena
      * @return
-     *     returns Services.Cliente
+     *     returns java.lang.Object
      */
     @WebMethod(operationName = "Autenticacion")
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "Autenticacion", targetNamespace = "http://Servicios/", className = "Services.Autenticacion")
     @ResponseWrapper(localName = "AutenticacionResponse", targetNamespace = "http://Servicios/", className = "Services.AutenticacionResponse")
     @Action(input = "http://Servicios/UsuarioService/AutenticacionRequest", output = "http://Servicios/UsuarioService/AutenticacionResponse")
-    public Cliente autenticacion(
+    public Object autenticacion(
+        @WebParam(name = "correo", targetNamespace = "")
+        String correo,
+        @WebParam(name = "contrasena", targetNamespace = "")
+        String contrasena);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_usuario")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_usuario", targetNamespace = "http://Servicios/", className = "Services.EliminarUsuario")
+    @ResponseWrapper(localName = "Eliminar_usuarioResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarUsuarioResponse")
+    @Action(input = "http://Servicios/UsuarioService/Eliminar_usuarioRequest", output = "http://Servicios/UsuarioService/Eliminar_usuarioResponse")
+    public String eliminarUsuario(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<Services.Usuario>
+     */
+    @WebMethod(operationName = "Listado_usuarios")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_usuarios", targetNamespace = "http://Servicios/", className = "Services.ListadoUsuarios")
+    @ResponseWrapper(localName = "Listado_usuariosResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoUsuariosResponse")
+    @Action(input = "http://Servicios/UsuarioService/Listado_usuariosRequest", output = "http://Servicios/UsuarioService/Listado_usuariosResponse")
+    public List<Usuario> listadoUsuarios();
+
+    /**
+     * 
+     * @param correo
+     * @param contrasena
+     * @return
+     *     returns Services.Usuario
+     */
+    @WebMethod(operationName = "AutenticarTrabajador")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "AutenticarTrabajador", targetNamespace = "http://Servicios/", className = "Services.AutenticarTrabajador")
+    @ResponseWrapper(localName = "AutenticarTrabajadorResponse", targetNamespace = "http://Servicios/", className = "Services.AutenticarTrabajadorResponse")
+    @Action(input = "http://Servicios/UsuarioService/AutenticarTrabajadorRequest", output = "http://Servicios/UsuarioService/AutenticarTrabajadorResponse")
+    public Usuario autenticarTrabajador(
         @WebParam(name = "correo", targetNamespace = "")
         String correo,
         @WebParam(name = "contrasena", targetNamespace = "")

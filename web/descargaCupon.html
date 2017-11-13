@@ -117,9 +117,47 @@
                         </div>
                     </div>
                     <!--</center>-->
-
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="text-center">
+                            <button type="button" id="btnPDF" class="pull-left btn btn-default waves-effect waves-float">Pdf</button>
+                            <!--<div id="divCupon" class="row" style='position: absolute;border: 1px solid red;padding: 3px;margin-top: 2rem;' >-->
+                            <div id="divCupon" class="row"  style="border: 1px solid red;padding: 3px;">
+                                <!--<center>-->
+                                <div class="col-md-9">
+                                    <table id="tabla-tabla" >
+                                        <tr>
+                                            <td colspan="3"><h1 class="h1">Cupon MisOfertas</h1></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Articulo</td>
+                                            <td>Descripcion</td>
+                                            <td>Descuento</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Computador portable</td>
+                                            <td>Note Lenovo G40</td>
+                                            <td>10%</td>
+                                        </tr>
+                                        <td colspan="3">
+                                        <center>
+                                            <canvas id="barcode"></canvas>
+                                        </center>
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!--</center>-->
+                                <div class="col-md-1 ">
+                                    <img class="img-circle" src="img/productos/note-lenovo.jpg" alt="Generic placeholder image" width="130" height="140">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+
 
             <!--<hr class="featurette-divider" style="margin-bottom: 120px">-->
         </main>
@@ -184,11 +222,61 @@
 
         <script type="text/javascript" src="js/commons.js"></script>
 
+        <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+        <script src='jsPDF/dist/jspdf.debug.js'></script>
+        <script src='jsPDF/libs/html2pdf.js'></script>
+
         <script>
             var param = getParameterByName('idof');
             $(document).ready(function () {
                 getMisDatos();
-                registrarVisita();
+//                registrarVisita();
+
+                JsBarcode("#barcode", "19220903-k", {
+                    //                JsBarcode("#barcode", "29012343", {
+                    //                    format: "EAN8",
+                    marginLeft: 3,
+                    marginTop: 3,
+                    width: 2,
+                    height: 25,
+                    displayValue: false
+                            //                    background: "#ffaa56"
+                });
+
+                //                JsBarcode(".barcode").init();
+                $("#btnPDF").click(function () {
+                    alert("enfgdhbdf");
+                    $(this).hide();
+                    var pdf = new jsPDF('p', 'pt', 'letter');
+                    var canvas = pdf.canvas;
+                    canvas.height = 72 * 11;
+                    canvas.width = 72 * 8.5;
+                    ;
+                    // var width = 400;
+//                    html2pdf(document.getElementById("divCupon"), pdf, function (pdf) {
+                    html2pdf($("#divCupon"), pdf, function (pdf) {
+//                        var iframe = document.createElement('iframe');
+//                        iframe.setAttribute('style', 'position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
+//                        document.body.appendChild(iframe);
+//                        iframe.src = pdf.output('datauristring');
+//                        
+                        pdf.save('Test.pdf');
+//                        
+                        //var div = document.createElement('pre');
+                        //div.innerText=pdf.output();
+                        //document.body.appendChild(div);
+                    }
+                    );
+                    $(this).show();
+                });
+
+                //Caja de 610 de ancho
+                console.log($("#divCupon").width());
+                $("#divCupon").css('width', "600px");
+                $("#divCupon").css('margin-left', "5px");
+                console.log($("#divCupon").width());
+
+
             });
             function getMisDatos() {
                 $.ajax({
@@ -214,7 +302,7 @@
                     }
                 });
             }
-            
+
         </script>
 
     </body>

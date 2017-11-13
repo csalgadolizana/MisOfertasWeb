@@ -28,6 +28,18 @@ public interface ProductoService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<Services.Producto>
+     */
+    @WebMethod(operationName = "Listado_productos")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_productos", targetNamespace = "http://Servicios/", className = "Services.ListadoProductos")
+    @ResponseWrapper(localName = "Listado_productosResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoProductosResponse")
+    @Action(input = "http://Servicios/ProductoService/Listado_productosRequest", output = "http://Servicios/ProductoService/Listado_productosResponse")
+    public List<Producto> listadoProductos();
+
+    /**
+     * 
      * @param descripcion
      * @param precio
      * @param fechaInicio
@@ -76,18 +88,6 @@ public interface ProductoService {
     public String eliminarProducto(
         @WebParam(name = "id", targetNamespace = "")
         int id);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Producto>
-     */
-    @WebMethod(operationName = "Listado_productos")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_productos", targetNamespace = "http://Servicios/", className = "Services.ListadoProductos")
-    @ResponseWrapper(localName = "Listado_productosResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoProductosResponse")
-    @Action(input = "http://Servicios/ProductoService/Listado_productosRequest", output = "http://Servicios/ProductoService/Listado_productosResponse")
-    public List<Producto> listadoProductos();
 
     /**
      * 

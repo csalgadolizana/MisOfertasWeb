@@ -7,15 +7,52 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Mis Ofertas</title>
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="img/IconoMisOfertas.png">
+        <link href="css/bootstrap.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/compiled.min.css" rel="stylesheet">
         <style>
+            .catalog-discount-tag {
+                position: absolute;
+                text-align: center;
+                background: #e75353;
+                top: 5px;
+                right: 5px;
+                margin: 0;
+                padding: 5px 5px 4px 0;
+                color: white;
+                font-size: 14px;
+                min-width: 40px;
+                z-index: 2;
+            }
+            .catalog-discount-tag::after {
+                right: 100%;
+                top: 50%;
+                border: solid transparent;
+                border-top-width: medium;
+                border-right-width: medium;
+                border-bottom-width: medium;
+                border-left-width: medium;
+                border-top-color: transparent;
+                border-right-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+                content: ' ';
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-color: rgba(231,83,83,0);
+                border-right-color: rgba(231, 83, 83, 0);
+                border-right-color: #e75353;
+                border-width: 15px;
+                margin-top: -15px;
+            }
             .mi-select{
                 font-size: 18px;
                 font-family: inherit;
@@ -124,7 +161,7 @@
 
                 <!-- Three columns of text below the carousel -->
                 <div class="row" id="divCatalogo">
-                    
+
                 </div>
             </div>
 
@@ -349,7 +386,7 @@
                             console.log(data);
                             $("#navbarNombreSesion").text(data.correo);
                         } else {
-                            $("#modalLoginForm").modal('show');
+//                            $("#modalLoginForm").modal('show');
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -421,11 +458,12 @@
                         $(data).each(function (a, objeto, c) {
                             console.log(objeto);
                             if (objeto.estado == 1) {
-                                var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="140" height="140">';
+                                var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="200" height="200">';
                                 var titulo = '<h2>' + objeto.nombre + '</h2>';
                                 var texto = '<p>' + objeto.desc + '</p>';
                                 var btn = '<p><a class="btn btn-default" href="detalleOferta.html?idof=' + objeto.idof + '" role="button">Ver mas detalles &raquo;</a></p>';
-                                caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + img + titulo + texto + btn + '</div>';
+                                var porcentajeDecuento = '<span class="catalog-discount-tag">-' + Math.round((objeto.precio_oferta / objeto.precio_normal) * 100) + '%</span>';
+                                caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + porcentajeDecuento + img + titulo + texto + btn + '</div>';
                             }
                         });
                         $("#divCatalogo").html(caja);

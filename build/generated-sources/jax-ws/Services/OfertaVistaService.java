@@ -28,6 +28,18 @@ public interface OfertaVistaService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<Services.Ofertavisi>
+     */
+    @WebMethod(operationName = "Listado_oferta_visitas")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_oferta_visitas", targetNamespace = "http://Servicios/", className = "Services.ListadoOfertaVisitas")
+    @ResponseWrapper(localName = "Listado_oferta_visitasResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoOfertaVisitasResponse")
+    @Action(input = "http://Servicios/OfertaVistaService/Listado_oferta_visitasRequest", output = "http://Servicios/OfertaVistaService/Listado_oferta_visitasResponse")
+    public List<Ofertavisi> listadoOfertaVisitas();
+
+    /**
+     * 
      * @param id
      * @return
      *     returns java.lang.String
@@ -40,18 +52,6 @@ public interface OfertaVistaService {
     public String eliminarOfertaVisitas(
         @WebParam(name = "id", targetNamespace = "")
         int id);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Ofertavisi>
-     */
-    @WebMethod(operationName = "Listado_oferta_visitas")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_oferta_visitas", targetNamespace = "http://Servicios/", className = "Services.ListadoOfertaVisitas")
-    @ResponseWrapper(localName = "Listado_oferta_visitasResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoOfertaVisitasResponse")
-    @Action(input = "http://Servicios/OfertaVistaService/Listado_oferta_visitasRequest", output = "http://Servicios/OfertaVistaService/Listado_oferta_visitasResponse")
-    public List<Ofertavisi> listadoOfertaVisitas();
 
     /**
      * 

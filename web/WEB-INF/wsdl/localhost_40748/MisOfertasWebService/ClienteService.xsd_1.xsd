@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://Servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servicios/">
+
+<xs:element name="Autenticacion" type="tns:Autenticacion"/>
+
+<xs:element name="AutenticacionResponse" type="tns:AutenticacionResponse"/>
+
+<xs:element name="Crear_cliente" type="tns:Crear_cliente"/>
+
+<xs:element name="Crear_clienteResponse" type="tns:Crear_clienteResponse"/>
+
+<xs:element name="Eliminar_cliente" type="tns:Eliminar_cliente"/>
+
+<xs:element name="Eliminar_clienteResponse" type="tns:Eliminar_clienteResponse"/>
+
+<xs:element name="Listado_clientes" type="tns:Listado_clientes"/>
+
+<xs:element name="Listado_clientesResponse" type="tns:Listado_clientesResponse"/>
+
+<xs:element name="Modificar_cliente" type="tns:Modificar_cliente"/>
+
+<xs:element name="Modificar_clienteResponse" type="tns:Modificar_clienteResponse"/>
+
+<xs:element name="ciudad" type="tns:ciudad"/>
+
+<xs:element name="cliente" type="tns:cliente"/>
+
+<xs:element name="estado" type="tns:estado"/>
+
+<xs:element name="persona" type="tns:persona"/>
+
+<xs:element name="region" type="tns:region"/>
+
+<xs:element name="sexo" type="tns:sexo"/>
+
+<xs:complexType name="Eliminar_cliente">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Eliminar_clienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Crear_cliente">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="fecha_nacimiento" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:int"/>
+<xs:element name="acepta_informativo" type="xs:string" minOccurs="0"/>
+<xs:element name="fecha_inicio" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fecha_actualizacion" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id_ciudad" type="xs:int"/>
+<xs:element name="id_estado" type="xs:int"/>
+<xs:element name="id_persona" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Crear_clienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Autenticacion">
+<xs:sequence>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AutenticacionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Listado_clientes">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="Listado_clientesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cliente">
+<xs:sequence>
+<xs:element name="aceptaInformativo" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="actualizacion" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="ciudadIdCiudad" type="tns:ciudad" minOccurs="0"/>
+<xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="estadoIdEstado" type="tns:estado" minOccurs="0"/>
+<xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idCliente" type="xs:decimal" minOccurs="0"/>
+<xs:element name="inicio" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="personaIdpersona" type="tns:persona" minOccurs="0"/>
+<xs:element name="telefono" type="xs:integer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ciudad">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idCiudad" type="xs:decimal" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="regionIdRegion" type="tns:region" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="region">
+<xs:sequence>
+<xs:element name="idRegion" type="xs:long" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="estado">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idEstado" type="xs:decimal" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="persona">
+<xs:sequence>
+<xs:element name="apellidos" type="xs:string" minOccurs="0"/>
+<xs:element name="idpersona" type="xs:decimal" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+<xs:element name="sexoIdSexo" type="tns:sexo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sexo">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idSexo" type="xs:decimal" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Modificar_cliente">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="fecha_nacimiento" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:int"/>
+<xs:element name="acepta_informativo" type="xs:string" minOccurs="0"/>
+<xs:element name="fecha_inicio" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fecha_actualizacion" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id_ciudad" type="xs:int"/>
+<xs:element name="id_estado" type="xs:int"/>
+<xs:element name="id_persona" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Modificar_clienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

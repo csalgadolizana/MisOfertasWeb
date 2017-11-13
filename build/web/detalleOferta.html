@@ -16,6 +16,19 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/compiled.min.css" rel="stylesheet">
         <style>
+            .catalog-discount-tag {
+                position: absolute;
+                text-align: center;
+                background: #e75353;
+                top: 5px;
+                right: 5px;
+                margin: 0;
+                padding: 5px 5px 4px 0;
+                color: white;
+                font-size: 14px;
+                min-width: 40px;
+                z-index: 2;
+            }
             .mi-select{
                 font-size: 18px;
                 font-family: inherit;
@@ -206,7 +219,7 @@
                             $("#navbarNombreSesion").text(data.correo);
                         } else {
 //                            $("#modalLoginForm").modal('show');
-                            location.href = "accesoCliente.html";
+//                            location.href = "accesoCliente.html";
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {

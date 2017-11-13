@@ -43,17 +43,18 @@ public class LocalServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String accion = request.getParameter("accion");
-//        System.err.println(accion);
-        switch (accion) {
-            case "listaLocales":
-                returnListLocales(request, response);
-                break;
-            default:
-                System.err.println("Fue al Defaul en LocalServlet");
-//                existeCorreo(request, response);
-                break;
-        }
+//        String accion = request.getParameter("accion");
+////        System.err.println(accion);
+//        switch (accion) {
+//            case "listaLocales":
+//                returnListLocales(request, response);
+//                break;
+//            default:
+//                System.err.println("Fue al Defaul en LocalServlet");
+////                existeCorreo(request, response);
+//                break;
+//        }
+        returnListLocales(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -106,11 +107,13 @@ public class LocalServlet extends HttpServlet {
                     jObj = new JSONObject();
                     jObj.put("nombre", loc.getNombre());
                     jObj.put("idl", loc.getIdLocal().toString());
+                    jObj.put("idcom", loc.getCiudadIdCiudad().getIdCiudad().intValue());
+                    jObj.put("idreg", loc.getCiudadIdCiudad().getRegionIdRegion().getIdRegion().intValue());
                     listaJson.add(jObj);
                 }
             }
         }
-        response.setContentType("Content-Type: application/json");
+        response.setContentType("text/html;charset=UTF-8");
         out.println(listaJson);
     }
 

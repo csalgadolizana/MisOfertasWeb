@@ -3,8 +3,8 @@
   <services/>
   <clients>
     <client name="CiudadService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/CiudadService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/CiudadService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/CiudadService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/CiudadService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/CiudadService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/CiudadService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -39,8 +39,8 @@
       </wsimport-options>
     </client>
     <client name="PersonaService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/PersonaService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/PersonaService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/PersonaService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/PersonaService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -58,43 +58,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/PersonaService?WSDL</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>Services</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
-    <client name="ClienteService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/ClienteService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/ClienteService.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">Services</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/ClienteService?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/PersonaService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -111,8 +75,8 @@
       </wsimport-options>
     </client>
     <client name="LocalService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/LocalService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/LocalService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/LocalService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/LocalService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -130,43 +94,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/LocalService?wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>Services</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
-    <client name="CategoriaService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/CategoriaService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/CategoriaService.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">Services</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/CategoriaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/LocalService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -183,8 +111,8 @@
       </wsimport-options>
     </client>
     <client name="UsuarioService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/UsuarioService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/UsuarioService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/UsuarioService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/UsuarioService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -202,7 +130,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/UsuarioService?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/UsuarioService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -219,8 +147,8 @@
       </wsimport-options>
     </client>
     <client name="ProductoService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/ProductoService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/ProductoService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/ProductoService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/ProductoService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -238,7 +166,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/ProductoService?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/ProductoService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -255,8 +183,8 @@
       </wsimport-options>
     </client>
     <client name="OfertaService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/OfertaService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/OfertaService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/OfertaService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/OfertaService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -274,7 +202,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/OfertaService?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/OfertaService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -291,8 +219,8 @@
       </wsimport-options>
     </client>
     <client name="OfertaLocalService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/OfertaLocalService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/OfertaLocalService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/OfertaLocalService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/OfertaLocalService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -310,7 +238,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/OfertaLocalService?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/OfertaLocalService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -327,8 +255,8 @@
       </wsimport-options>
     </client>
     <client name="DetalleOfertaService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/DetalleOfertaService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/DetalleOfertaService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/DetalleOfertaService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -346,7 +274,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/DetalleOfertaService?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/DetalleOfertaService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -363,8 +291,8 @@
       </wsimport-options>
     </client>
     <client name="OfertaVisitaService">
-      <wsdl-url>http://localhost:17225/MisOfertasWebService/OfertaVisitaService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_17225/MisOfertasWebService/OfertaVisitaService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/OfertaVisitaService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/OfertaVisitaService.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -382,7 +310,115 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:17225/MisOfertasWebService/OfertaVisitaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/OfertaVisitaService?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>Services</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="RegionService">
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/RegionService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/RegionService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">Services</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/RegionService?WSDL</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>Services</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="CategoriaService">
+      <wsdl-url>http://127.0.0.1:43339/MisOfertasWebService/CategoriaService?WSDL</wsdl-url>
+      <local-wsdl-file>127.0.0.1_43339/MisOfertasWebService/CategoriaService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">Services</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://127.0.0.1:43339/MisOfertasWebService/CategoriaService?WSDL</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>Services</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="ClienteService">
+      <wsdl-url>http://localhost:43339/MisOfertasWebService/ClienteService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_43339/MisOfertasWebService/ClienteService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">Services</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:43339/MisOfertasWebService/ClienteService?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>

@@ -1,11 +1,13 @@
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <!--<meta charset="utf-8">-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Mis Ofertas</title>
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="img/IconoMisOfertas.png">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
         <!-- Bootstrap core CSS -->
         <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
         <!-- Material Design Bootstrap -->
@@ -14,7 +16,8 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/compiled.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">-->
+        <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" type="text/css" href="css/md-datatables-pagination.css">
 
         <style>
@@ -85,7 +88,7 @@
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
                                     <a class="dropdown-item waves-effect waves-light" href="#" > Mis datos  <i class="fa fa-address-card-o"></i></a>
                                 </div>
                             </li>
@@ -286,6 +289,22 @@
                                             </div>
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-map prefix"></i>
+                                                <select name="selectRegion" id="selectRegion" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Region 1</option>
+                                                    <option value="2">Region 2</option></select>
+                                                <label for="selectRegion">Region</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectComuna" id="selectComuna" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Comuna 1</option>
+                                                    <option value="2">Comuna 2</option></select>
+                                                <label for="selectComuna">Comuna</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix"></i>
                                                 <select name="selectTiendas" id="selectTiendas" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
                                                     <option disabled="" selected="">Seleccione</option>
                                                     <option value="1">Mall tobalaba</option>
@@ -349,6 +368,22 @@
                                                 <i class="fa fa-money prefix active"></i>
                                                 <input type="number" id="txtPrecioOferta2" name="txtPrecioOferta2" class="form-control my-inputs"  required="" min="0">
                                                 <label class="active" for="txtPrecioOferta2">Precio oferta</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix active"></i>
+                                                <select name="selectRegion2" id="selectRegion2" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Region 1</option>
+                                                    <option value="2">Region 2</option></select>
+                                                <label class="active" for="selectRegion2">Region</label>
+                                            </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix active"></i>
+                                                <select name="selectComuna2" id="selectComuna2" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Comuna 1</option>
+                                                    <option value="2">Comuna 2</option></select>
+                                                <label class="active" for="selectComuna2">Comuna</label>
                                             </div>
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-map prefix active"></i>
@@ -649,13 +684,68 @@
 
 
 
-        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+        <script src="DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="DataTables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
-        <script>
+        <script type="text/javascript" charset="UTF-8">
                                     var arrayPrecios = new Array;
                                     $(document).ready(function () {
-                                        getMisDatos();
+                                        $("#selectRegion").change(function () {
+                                            $("#selectComuna").children().each(function (i, div) {
+                                                if ($(this).attr("idreg") != $("#selectRegion").val()) {
+                                                    $(this).hide();
+                                                } else {
+                                                    $(this).show();
+                                                }
+                                                if ($("#selectRegion").val() == -1) {
+                                                    $(this).show();
+                                                }
+                                            });
+                                        });
+                                        $("#selectComuna").change(function () {
+                                            if ($(this).val() != -1) {
+                                                $("#selectRegion").val($(this).find("option:selected").attr("idreg"));
+                                            } else {
+                                                $("#selectRegion").val(-1);
+                                            }
+                                            $("#selectRegion").change();
+                                        });
+                                        $("#selectComuna2").change(function () {
+                                            if ($(this).val() != -1) {
+                                                $("#selectRegion2").val($(this).find("option:selected").attr("idreg"));
+                                            } else {
+                                                $("#selectRegion2").val(-1);
+                                            }
+                                            $("#selectRegion2").change();
+                                        });
+                                        $("#selectRegion2").change(function () {
+                                            $("#selectComuna2").children().each(function (i, div) {
+                                                if ($(this).attr("idreg") != $("#selectRegion2").val()) {
+                                                    $(this).hide();
+                                                } else {
+                                                    $(this).show();
+                                                }
+                                                if ($("#selectRegion2").val() == -1) {
+                                                    $(this).show();
+                                                }
+                                            });
+                                        });
+                                        $("#selectTiendas").change(function () {
+                                            if ($(this).val() != -1) {
+                                                $("#selectComuna").val($(this).find("option:selected").attr("idcom"));
+                                            } else {
+                                                $("#selectComuna").val(-1);
+                                            }
+                                            $("#selectComuna").change();
+                                        });
+                                        $("#selectTiendas2").change(function () {
+                                            if ($(this).val() != -1) {
+                                                $("#selectComuna2").val($(this).find("option:selected").attr("idcom"));
+                                            } else {
+                                                $("#selectComuna2").val(-1);
+                                            }
+                                            $("#selectComuna2").change();
+                                        });
 //                                        $("#checkCambiarFoto").click();
                                         $("#tabAdminOfertas").show();
                                         $("#tabAdminProductos").hide();
@@ -677,13 +767,6 @@
                                         $('#centralModalError').on('hidden.bs.modal', function (e) {
                                             $("#txtCorreo").focus();
                                         });
-
-                                        clickOnCheckFoto();
-                                        listarOfertas();
-                                        listarLocales();
-                                        listarCategorias();
-                                        listarProductos();
-                                        comprobarSiCorreoExiste();
                                         //max-width : 776px
 //                var width = $(window).width();
                                         var max_width = 776;
@@ -724,6 +807,10 @@
                                             }
 //                    console.log("Cambio!! "+$(this).prop('checked'));
                                         });
+                                        clickOnCheckFoto();
+                                        getMisDatos();
+                                        comprobarSiCorreoExiste();
+
                                     });
                                     function getMisDatos() {
                                         $.ajax({
@@ -736,6 +823,7 @@
                                                     console.log(" success: getMisDatos()");
                                                     console.log(data);
                                                     $("#navbarNombreSesion").text(data.correo);
+                                                    listarOfertas();
                                                 } else {
                                                     location.href = "index.html";
                                                 }
@@ -811,6 +899,49 @@
                                         });
                                         $("#txtNombre").focus();
                                     }
+                                    function listarRegiones() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "RegionServlet",
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                $("#selectRegion").html("");
+                                                $("#selectRegion2").html("");
+                                                var options = '<option selected="selected" value="-1">Regiones</option>';
+                                                $(data).each(function (a, objeto, c) {
+                                                    options = options + '<option value="' + objeto.idreg + '">' + objeto.nombre + '</option>';
+                                                });
+                                                $("#selectRegion").html(options);
+                                                $("#selectRegion2").html(options);
+                                                listarComunas();
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                            }
+                                        });
+                                    }
+                                    function listarComunas() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "ComunaServlet",
+                                            dataType: "json",
+                                            success: function (data, textStatus, jqXHR) {
+                                                $("#selectComuna").html("");
+                                                $("#selectComuna2").html("");
+                                                var options = '<option selected="selected" value="-1">Comunas</option>';
+                                                $(data).each(function (a, objeto, c) {
+                                                    options = options + '<option idreg="' + objeto.idreg + '" value="' + objeto.idcom + '">' + objeto.nombre + '</option>';
+                                                });
+                                                $("#selectComuna").html(options);
+                                                $("#selectComuna2").html(options);
+                                                return true;
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log("error");
+                                                return false;
+                                            }
+                                        });
+                                    }
                                     function listarLocales() {
                                         $.ajax({
                                             type: "POST",
@@ -820,12 +951,13 @@
                                             success: function (data, textStatus, jqXHR) {
                                                 $("#selectTiendas").html("");
                                                 $("#selectTiendas2").html("");
-                                                var options;
+                                                var options = '<option selected="selected" value="-1">Local</option>';
                                                 $(data).each(function (a, objeto, c) {
-                                                    options = options + '<option value="' + objeto.idl + '">' + objeto.nombre + '</option>';
+                                                    options = options + '<option idreg="' + objeto.idl + '"  idcom="' + objeto.idcom + '"  value="' + objeto.idl + '">' + objeto.nombre + '</option>';
                                                 });
                                                 $("#selectTiendas").html(options);
                                                 $("#selectTiendas2").html(options);
+                                                listarCategorias();
                                             },
                                             error: function (jqXHR, textStatus, errorThrown) {
                                                 console.log("error");
@@ -847,7 +979,8 @@
                                                 });
                                                 $("#selectCategoria2").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
                                                 $("#selectCategoria").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
-                                                console.log(options);
+//                                                console.log(options);
+                                                listarProductos();
                                             },
                                             error: function (jqXHR, textStatus, errorThrown) {
                                                 console.log("error");
@@ -876,26 +1009,24 @@
                                             data: {"accion": "listaProductos"},
                                             dataType: "json",
                                             success: function (data, textStatus, jqXHR) {
-                                                console.log(data);
+//                                                console.log(data);
                                                 $("#selectProducto").html("");
                                                 $("#selectProducto2").html("");
                                                 var options;
                                                 options = '<option selected="selected" disabled="">Seleccione Producto</option>';
                                                 $(data).each(function (a, objeto, c) {
-                            console.log(objeto);
+//                                                    console.log(objeto);
                                                     options = options + '<option value="' + objeto.idpro + '" precio="' + objeto.precio + '">' + objeto.nombre + '</option>';
                                                     arrayPrecios.push(objeto.precio);
                                                 });
                                                 $("#selectProducto").html(options);
                                                 $("#selectProducto2").html(options);
-
-
                                                 $("#tabla-productos > tbody").html("");
                                                 var TRs;
                                                 var icono_equis = '<i class="fa fa-times fa-2x mb-3 animated rotateIn active" style="color: #ff4b4b"></i>';
                                                 var icono_check = '<i class="fa fa-check fa-2x mb-3 animated rotateIn active" style="color: #01d36b"></i>';
                                                 $(data).each(function (a, td, c) {
-                                                    console.log(td);
+//                                                    console.log(td);
                                                     var img = '<img id="img_anterior" src="' + td.imagen + '" alt="Super descuento Apple" height="50" width="50">';
                                                     var tag_img = td.imagen == "-" ? icono_equis : img;
 //                                                    var tag = td.estado == 2 ? icono_equis : icono_check;
@@ -928,6 +1059,7 @@
                                                         "infoFiltered": "(filtered from _MAX_ total records)"
                                                     }
                                                 });
+                                                listarRegiones();
                                             },
                                             error: function (jqXHR, textStatus, errorThrown) {
                                                 console.log("error");
@@ -945,7 +1077,6 @@
                                         console.log("ruta_img -> " + ruta_img);
                                         console.log("idcat -> " + idcat);
                                         console.log("ruta_img -> " + ruta_img);
-
                                         $("#idProducto2").val(idpro);
                                         $("#nombreProducto2").val(nom);
                                         $("#descripcionProducto2").val(desc);
@@ -1004,7 +1135,7 @@
                                                     var accion = td.estado == 2 ? '\
                         <a onclick="publicarOfertaModal(' + callFuncPublicarOferta + ')"><i class="fa fa-share-alt fa-2x mb-3" aria-hidden="true" style="color: #33b5e5"></i></a>   \n\
                         <a style="margin-left:2px" onclick="editarOfertaModal(' + callFuncEdiOferta + ')"><i class="fa fa fa-cog fa-2x mb-3" aria-hidden="true" style="color: #c2c4b8"></i></a>'
-                                                            : '<a style="margin-left:2px" onclick="dejarDePublicar('+ td.idof +')"><i class="fa fa-eye-slash fa-2x mb-3" aria-hidden="true" style="color: #eda45c"></i></a>';
+                                                            : '<a style="margin-left:2px" onclick="dejarDePublicar(' + td.idof + ')"><i class="fa fa-eye-slash fa-2x mb-3" aria-hidden="true" style="color: #eda45c"></i></a>';
                                                     TRs = TRs + "<tr>";
                                                     TRs = TRs +
                                                             '<td>' + td.idof + '</td>' +
@@ -1031,6 +1162,7 @@
                                                         "infoFiltered": "(filtered from _MAX_ total records)"
                                                     }
                                                 });
+                                                listarLocales();
                                             },
                                             error: function (jqXHR, textStatus, errorThrown) {
                                                 console.log("error");
@@ -1068,8 +1200,6 @@
                                         console.log(ruta_img);
                                         $("#img_anterior").attr("src", ruta_img);
                                         $("#img_anterior").attr("alt", nom);
-
-
                                         $("#navItem1").hide();
                                         $("#formEditarOferta").show();
                                         $("#navItem2").show();
@@ -1085,6 +1215,20 @@
                                     }
 //                                    Fin funciones Ofertas
 
+                                    function cerrarSesion() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "UsuarioServlet",
+                                            data: {"accion": "destroySession"},
+                                            dataType: "json",
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log(" eer cerrarSesion()");
+                                                console.log(jqXHR);
+                                                console.log(textStatus);
+                                                console.log(errorThrown);
+                                            }
+                                        });
+                                    }
         </script>
 
     </body>

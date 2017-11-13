@@ -63,6 +63,18 @@ public interface CategoriaService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<Services.Categoria>
+     */
+    @WebMethod(operationName = "Listado_categorias")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_categorias", targetNamespace = "http://Servicios/", className = "Services.ListadoCategorias")
+    @ResponseWrapper(localName = "Listado_categoriasResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoCategoriasResponse")
+    @Action(input = "http://Servicios/CategoriaService/Listado_categoriasRequest", output = "http://Servicios/CategoriaService/Listado_categoriasResponse")
+    public List<Categoria> listadoCategorias();
+
+    /**
+     * 
      * @param id
      * @return
      *     returns java.lang.String
@@ -75,17 +87,5 @@ public interface CategoriaService {
     public String eliminarCategoria(
         @WebParam(name = "id", targetNamespace = "")
         int id);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Categoria>
-     */
-    @WebMethod(operationName = "Listado_categorias")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_categorias", targetNamespace = "http://Servicios/", className = "Services.ListadoCategorias")
-    @ResponseWrapper(localName = "Listado_categoriasResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoCategoriasResponse")
-    @Action(input = "http://Servicios/CategoriaService/Listado_categoriasRequest", output = "http://Servicios/CategoriaService/Listado_categoriasResponse")
-    public List<Categoria> listadoCategorias();
 
 }

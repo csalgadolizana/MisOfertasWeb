@@ -27,6 +27,21 @@ public interface OfertaLocalService {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_oferta_local")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_oferta_local", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaLocal")
+    @ResponseWrapper(localName = "Eliminar_oferta_localResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaLocalResponse")
+    @Action(input = "http://Servicios/OfertaLocalService/Eliminar_oferta_localRequest", output = "http://Servicios/OfertaLocalService/Eliminar_oferta_localResponse")
+    public String eliminarOfertaLocal(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
      * @param descripcion
      * @param ofertaId
      * @param id
@@ -48,21 +63,6 @@ public interface OfertaLocalService {
         int ofertaId,
         @WebParam(name = "local_id", targetNamespace = "")
         int localId);
-
-    /**
-     * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_oferta_local")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_oferta_local", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaLocal")
-    @ResponseWrapper(localName = "Eliminar_oferta_localResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaLocalResponse")
-    @Action(input = "http://Servicios/OfertaLocalService/Eliminar_oferta_localRequest", output = "http://Servicios/OfertaLocalService/Eliminar_oferta_localResponse")
-    public String eliminarOfertaLocal(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
 
     /**
      * 

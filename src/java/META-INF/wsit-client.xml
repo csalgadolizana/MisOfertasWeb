@@ -6,4 +6,15 @@
  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="mainclientconfig" 
  >
     <import location="PersonaService.xml" namespace="http://Servicios/"/>
+    <import location="CiudadService.xml" namespace="http://Servicios/"/>
+    <import location="ClienteService.xml" namespace="http://Servicios/"/>
+    <import location="LocalService.xml" namespace="http://Servicios/"/>
+    <import location="CategoriaService.xml" namespace="http://Servicios/"/>
+    <import location="UsuarioService.xml" namespace="http://Servicios/"/>
+    <import location="ProductoService.xml" namespace="http://Servicios/"/>
+    <import location="OfertaService.xml" namespace="http://Servicios/"/>
+    <import location="OfertaLocalService.xml" namespace="http://Servicios/"/>
+    <import location="OfertaVisitaService.xml" namespace="http://Servicios/"/>
+    <import location="RegionService.xml" namespace="http://Servicios/"/>
+    <import location="DetalleOfertaService.xml" namespace="http://Servicios/"/>
 </definitions>

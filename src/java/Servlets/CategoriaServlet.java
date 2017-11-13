@@ -113,6 +113,13 @@ public class CategoriaServlet extends HttpServlet {
         out.println(listaJson);
     }
 
+//    private java.util.List<Services.Categoria> listadoCategorias() {
+//        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+//        // If the calling of port operations may lead to race condition some synchronization is required.
+//        Services.CategoriaService port = service.getCategoriaServicePort();
+//        return port.listadoCategorias();
+//    }
+
     private java.util.List<Services.Categoria> listadoCategorias() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.

@@ -24,20 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _CrearOferta_QNAME = new QName("http://Servicios/", "Crear_oferta");
-    private final static QName _CrearOfertaResponse_QNAME = new QName("http://Servicios/", "Crear_ofertaResponse");
-    private final static QName _EliminarOferta_QNAME = new QName("http://Servicios/", "Eliminar_oferta");
-    private final static QName _EliminarOfertaResponse_QNAME = new QName("http://Servicios/", "Eliminar_ofertaResponse");
-    private final static QName _ListadoOferta_QNAME = new QName("http://Servicios/", "Listado_oferta");
-    private final static QName _ListadoOfertaResponse_QNAME = new QName("http://Servicios/", "Listado_ofertaResponse");
-    private final static QName _ModificarOferta_QNAME = new QName("http://Servicios/", "Modificar_oferta");
-    private final static QName _ModificarOfertaResponse_QNAME = new QName("http://Servicios/", "Modificar_ofertaResponse");
-    private final static QName _DejarDePublicarOferta_QNAME = new QName("http://Servicios/", "dejar_de_publicar_oferta");
-    private final static QName _DejarDePublicarOfertaResponse_QNAME = new QName("http://Servicios/", "dejar_de_publicar_ofertaResponse");
+    private final static QName _Autenticacion_QNAME = new QName("http://Servicios/", "Autenticacion");
+    private final static QName _AutenticacionResponse_QNAME = new QName("http://Servicios/", "AutenticacionResponse");
+    private final static QName _CrearCliente_QNAME = new QName("http://Servicios/", "Crear_cliente");
+    private final static QName _CrearClienteResponse_QNAME = new QName("http://Servicios/", "Crear_clienteResponse");
+    private final static QName _EliminarCliente_QNAME = new QName("http://Servicios/", "Eliminar_cliente");
+    private final static QName _EliminarClienteResponse_QNAME = new QName("http://Servicios/", "Eliminar_clienteResponse");
+    private final static QName _ListadoClientes_QNAME = new QName("http://Servicios/", "Listado_clientes");
+    private final static QName _ListadoClientesResponse_QNAME = new QName("http://Servicios/", "Listado_clientesResponse");
+    private final static QName _ModificarCliente_QNAME = new QName("http://Servicios/", "Modificar_cliente");
+    private final static QName _ModificarClienteResponse_QNAME = new QName("http://Servicios/", "Modificar_clienteResponse");
+    private final static QName _Ciudad_QNAME = new QName("http://Servicios/", "ciudad");
+    private final static QName _Cliente_QNAME = new QName("http://Servicios/", "cliente");
     private final static QName _Estado_QNAME = new QName("http://Servicios/", "estado");
-    private final static QName _Oferta_QNAME = new QName("http://Servicios/", "oferta");
-    private final static QName _PublicarOferta_QNAME = new QName("http://Servicios/", "publicar_oferta");
-    private final static QName _PublicarOfertaResponse_QNAME = new QName("http://Servicios/", "publicar_ofertaResponse");
+    private final static QName _Persona_QNAME = new QName("http://Servicios/", "persona");
+    private final static QName _Region_QNAME = new QName("http://Servicios/", "region");
+    private final static QName _Sexo_QNAME = new QName("http://Servicios/", "sexo");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: Services
@@ -47,83 +49,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CrearOferta }
+     * Create an instance of {@link Autenticacion }
      * 
      */
-    public CrearOferta createCrearOferta() {
-        return new CrearOferta();
+    public Autenticacion createAutenticacion() {
+        return new Autenticacion();
     }
 
     /**
-     * Create an instance of {@link CrearOfertaResponse }
+     * Create an instance of {@link AutenticacionResponse }
      * 
      */
-    public CrearOfertaResponse createCrearOfertaResponse() {
-        return new CrearOfertaResponse();
+    public AutenticacionResponse createAutenticacionResponse() {
+        return new AutenticacionResponse();
     }
 
     /**
-     * Create an instance of {@link EliminarOferta }
+     * Create an instance of {@link CrearCliente }
      * 
      */
-    public EliminarOferta createEliminarOferta() {
-        return new EliminarOferta();
+    public CrearCliente createCrearCliente() {
+        return new CrearCliente();
     }
 
     /**
-     * Create an instance of {@link EliminarOfertaResponse }
+     * Create an instance of {@link CrearClienteResponse }
      * 
      */
-    public EliminarOfertaResponse createEliminarOfertaResponse() {
-        return new EliminarOfertaResponse();
+    public CrearClienteResponse createCrearClienteResponse() {
+        return new CrearClienteResponse();
     }
 
     /**
-     * Create an instance of {@link ListadoOferta }
+     * Create an instance of {@link EliminarCliente }
      * 
      */
-    public ListadoOferta createListadoOferta() {
-        return new ListadoOferta();
+    public EliminarCliente createEliminarCliente() {
+        return new EliminarCliente();
     }
 
     /**
-     * Create an instance of {@link ListadoOfertaResponse }
+     * Create an instance of {@link EliminarClienteResponse }
      * 
      */
-    public ListadoOfertaResponse createListadoOfertaResponse() {
-        return new ListadoOfertaResponse();
+    public EliminarClienteResponse createEliminarClienteResponse() {
+        return new EliminarClienteResponse();
     }
 
     /**
-     * Create an instance of {@link ModificarOferta }
+     * Create an instance of {@link ListadoClientes }
      * 
      */
-    public ModificarOferta createModificarOferta() {
-        return new ModificarOferta();
+    public ListadoClientes createListadoClientes() {
+        return new ListadoClientes();
     }
 
     /**
-     * Create an instance of {@link ModificarOfertaResponse }
+     * Create an instance of {@link ListadoClientesResponse }
      * 
      */
-    public ModificarOfertaResponse createModificarOfertaResponse() {
-        return new ModificarOfertaResponse();
+    public ListadoClientesResponse createListadoClientesResponse() {
+        return new ListadoClientesResponse();
     }
 
     /**
-     * Create an instance of {@link DejarDePublicarOferta }
+     * Create an instance of {@link ModificarCliente }
      * 
      */
-    public DejarDePublicarOferta createDejarDePublicarOferta() {
-        return new DejarDePublicarOferta();
+    public ModificarCliente createModificarCliente() {
+        return new ModificarCliente();
     }
 
     /**
-     * Create an instance of {@link DejarDePublicarOfertaResponse }
+     * Create an instance of {@link ModificarClienteResponse }
      * 
      */
-    public DejarDePublicarOfertaResponse createDejarDePublicarOfertaResponse() {
-        return new DejarDePublicarOfertaResponse();
+    public ModificarClienteResponse createModificarClienteResponse() {
+        return new ModificarClienteResponse();
+    }
+
+    /**
+     * Create an instance of {@link Ciudad }
+     * 
+     */
+    public Ciudad createCiudad() {
+        return new Ciudad();
+    }
+
+    /**
+     * Create an instance of {@link Cliente }
+     * 
+     */
+    public Cliente createCliente() {
+        return new Cliente();
     }
 
     /**
@@ -135,117 +153,135 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Oferta }
+     * Create an instance of {@link Persona }
      * 
      */
-    public Oferta createOferta() {
-        return new Oferta();
+    public Persona createPersona() {
+        return new Persona();
     }
 
     /**
-     * Create an instance of {@link PublicarOferta }
+     * Create an instance of {@link Region }
      * 
      */
-    public PublicarOferta createPublicarOferta() {
-        return new PublicarOferta();
+    public Region createRegion() {
+        return new Region();
     }
 
     /**
-     * Create an instance of {@link PublicarOfertaResponse }
+     * Create an instance of {@link Sexo }
      * 
      */
-    public PublicarOfertaResponse createPublicarOfertaResponse() {
-        return new PublicarOfertaResponse();
+    public Sexo createSexo() {
+        return new Sexo();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CrearOferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Autenticacion }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Crear_oferta")
-    public JAXBElement<CrearOferta> createCrearOferta(CrearOferta value) {
-        return new JAXBElement<CrearOferta>(_CrearOferta_QNAME, CrearOferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Autenticacion")
+    public JAXBElement<Autenticacion> createAutenticacion(Autenticacion value) {
+        return new JAXBElement<Autenticacion>(_Autenticacion_QNAME, Autenticacion.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CrearOfertaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutenticacionResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Crear_ofertaResponse")
-    public JAXBElement<CrearOfertaResponse> createCrearOfertaResponse(CrearOfertaResponse value) {
-        return new JAXBElement<CrearOfertaResponse>(_CrearOfertaResponse_QNAME, CrearOfertaResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "AutenticacionResponse")
+    public JAXBElement<AutenticacionResponse> createAutenticacionResponse(AutenticacionResponse value) {
+        return new JAXBElement<AutenticacionResponse>(_AutenticacionResponse_QNAME, AutenticacionResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarOferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearCliente }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Eliminar_oferta")
-    public JAXBElement<EliminarOferta> createEliminarOferta(EliminarOferta value) {
-        return new JAXBElement<EliminarOferta>(_EliminarOferta_QNAME, EliminarOferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Crear_cliente")
+    public JAXBElement<CrearCliente> createCrearCliente(CrearCliente value) {
+        return new JAXBElement<CrearCliente>(_CrearCliente_QNAME, CrearCliente.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarOfertaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearClienteResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Eliminar_ofertaResponse")
-    public JAXBElement<EliminarOfertaResponse> createEliminarOfertaResponse(EliminarOfertaResponse value) {
-        return new JAXBElement<EliminarOfertaResponse>(_EliminarOfertaResponse_QNAME, EliminarOfertaResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Crear_clienteResponse")
+    public JAXBElement<CrearClienteResponse> createCrearClienteResponse(CrearClienteResponse value) {
+        return new JAXBElement<CrearClienteResponse>(_CrearClienteResponse_QNAME, CrearClienteResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListadoOferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarCliente }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Listado_oferta")
-    public JAXBElement<ListadoOferta> createListadoOferta(ListadoOferta value) {
-        return new JAXBElement<ListadoOferta>(_ListadoOferta_QNAME, ListadoOferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Eliminar_cliente")
+    public JAXBElement<EliminarCliente> createEliminarCliente(EliminarCliente value) {
+        return new JAXBElement<EliminarCliente>(_EliminarCliente_QNAME, EliminarCliente.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListadoOfertaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarClienteResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Listado_ofertaResponse")
-    public JAXBElement<ListadoOfertaResponse> createListadoOfertaResponse(ListadoOfertaResponse value) {
-        return new JAXBElement<ListadoOfertaResponse>(_ListadoOfertaResponse_QNAME, ListadoOfertaResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Eliminar_clienteResponse")
+    public JAXBElement<EliminarClienteResponse> createEliminarClienteResponse(EliminarClienteResponse value) {
+        return new JAXBElement<EliminarClienteResponse>(_EliminarClienteResponse_QNAME, EliminarClienteResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModificarOferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListadoClientes }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Modificar_oferta")
-    public JAXBElement<ModificarOferta> createModificarOferta(ModificarOferta value) {
-        return new JAXBElement<ModificarOferta>(_ModificarOferta_QNAME, ModificarOferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Listado_clientes")
+    public JAXBElement<ListadoClientes> createListadoClientes(ListadoClientes value) {
+        return new JAXBElement<ListadoClientes>(_ListadoClientes_QNAME, ListadoClientes.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModificarOfertaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListadoClientesResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "Modificar_ofertaResponse")
-    public JAXBElement<ModificarOfertaResponse> createModificarOfertaResponse(ModificarOfertaResponse value) {
-        return new JAXBElement<ModificarOfertaResponse>(_ModificarOfertaResponse_QNAME, ModificarOfertaResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Listado_clientesResponse")
+    public JAXBElement<ListadoClientesResponse> createListadoClientesResponse(ListadoClientesResponse value) {
+        return new JAXBElement<ListadoClientesResponse>(_ListadoClientesResponse_QNAME, ListadoClientesResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DejarDePublicarOferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModificarCliente }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "dejar_de_publicar_oferta")
-    public JAXBElement<DejarDePublicarOferta> createDejarDePublicarOferta(DejarDePublicarOferta value) {
-        return new JAXBElement<DejarDePublicarOferta>(_DejarDePublicarOferta_QNAME, DejarDePublicarOferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Modificar_cliente")
+    public JAXBElement<ModificarCliente> createModificarCliente(ModificarCliente value) {
+        return new JAXBElement<ModificarCliente>(_ModificarCliente_QNAME, ModificarCliente.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DejarDePublicarOfertaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModificarClienteResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "dejar_de_publicar_ofertaResponse")
-    public JAXBElement<DejarDePublicarOfertaResponse> createDejarDePublicarOfertaResponse(DejarDePublicarOfertaResponse value) {
-        return new JAXBElement<DejarDePublicarOfertaResponse>(_DejarDePublicarOfertaResponse_QNAME, DejarDePublicarOfertaResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "Modificar_clienteResponse")
+    public JAXBElement<ModificarClienteResponse> createModificarClienteResponse(ModificarClienteResponse value) {
+        return new JAXBElement<ModificarClienteResponse>(_ModificarClienteResponse_QNAME, ModificarClienteResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Ciudad }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "ciudad")
+    public JAXBElement<Ciudad> createCiudad(Ciudad value) {
+        return new JAXBElement<Ciudad>(_Ciudad_QNAME, Ciudad.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Cliente }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://Servicios/", name = "cliente")
+    public JAXBElement<Cliente> createCliente(Cliente value) {
+        return new JAXBElement<Cliente>(_Cliente_QNAME, Cliente.class, null, value);
     }
 
     /**
@@ -258,30 +294,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Oferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Persona }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "oferta")
-    public JAXBElement<Oferta> createOferta(Oferta value) {
-        return new JAXBElement<Oferta>(_Oferta_QNAME, Oferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "persona")
+    public JAXBElement<Persona> createPersona(Persona value) {
+        return new JAXBElement<Persona>(_Persona_QNAME, Persona.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PublicarOferta }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Region }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "publicar_oferta")
-    public JAXBElement<PublicarOferta> createPublicarOferta(PublicarOferta value) {
-        return new JAXBElement<PublicarOferta>(_PublicarOferta_QNAME, PublicarOferta.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "region")
+    public JAXBElement<Region> createRegion(Region value) {
+        return new JAXBElement<Region>(_Region_QNAME, Region.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PublicarOfertaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Sexo }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://Servicios/", name = "publicar_ofertaResponse")
-    public JAXBElement<PublicarOfertaResponse> createPublicarOfertaResponse(PublicarOfertaResponse value) {
-        return new JAXBElement<PublicarOfertaResponse>(_PublicarOfertaResponse_QNAME, PublicarOfertaResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://Servicios/", name = "sexo")
+    public JAXBElement<Sexo> createSexo(Sexo value) {
+        return new JAXBElement<Sexo>(_Sexo_QNAME, Sexo.class, null, value);
     }
 
 }
