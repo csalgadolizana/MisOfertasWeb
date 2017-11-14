@@ -28,17 +28,44 @@ public interface ClienteService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<Services.Cliente>
+     */
+    @WebMethod(operationName = "Listado_clientes")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_clientes", targetNamespace = "http://Servicios/", className = "Services.ListadoClientes")
+    @ResponseWrapper(localName = "Listado_clientesResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoClientesResponse")
+    @Action(input = "http://Servicios/ClienteService/Listado_clientesRequest", output = "http://Servicios/ClienteService/Listado_clientesResponse")
+    public List<Cliente> listadoClientes();
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_cliente")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_cliente", targetNamespace = "http://Servicios/", className = "Services.EliminarCliente")
+    @ResponseWrapper(localName = "Eliminar_clienteResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarClienteResponse")
+    @Action(input = "http://Servicios/ClienteService/Eliminar_clienteRequest", output = "http://Servicios/ClienteService/Eliminar_clienteResponse")
+    public String eliminarCliente(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
+
+    /**
+     * 
      * @param correo
      * @param contrasena
      * @return
-     *     returns java.lang.Object
+     *     returns Services.Cliente
      */
     @WebMethod(operationName = "Autenticacion")
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "Autenticacion", targetNamespace = "http://Servicios/", className = "Services.Autenticacion")
     @ResponseWrapper(localName = "AutenticacionResponse", targetNamespace = "http://Servicios/", className = "Services.AutenticacionResponse")
     @Action(input = "http://Servicios/ClienteService/AutenticacionRequest", output = "http://Servicios/ClienteService/AutenticacionResponse")
-    public Object autenticacion(
+    public Cliente autenticacion(
         @WebParam(name = "correo", targetNamespace = "")
         String correo,
         @WebParam(name = "contrasena", targetNamespace = "")
@@ -88,33 +115,6 @@ public interface ClienteService {
         int idEstado,
         @WebParam(name = "id_persona", targetNamespace = "")
         int idPersona);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Cliente>
-     */
-    @WebMethod(operationName = "Listado_clientes")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_clientes", targetNamespace = "http://Servicios/", className = "Services.ListadoClientes")
-    @ResponseWrapper(localName = "Listado_clientesResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoClientesResponse")
-    @Action(input = "http://Servicios/ClienteService/Listado_clientesRequest", output = "http://Servicios/ClienteService/Listado_clientesResponse")
-    public List<Cliente> listadoClientes();
-
-    /**
-     * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_cliente")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_cliente", targetNamespace = "http://Servicios/", className = "Services.EliminarCliente")
-    @ResponseWrapper(localName = "Eliminar_clienteResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarClienteResponse")
-    @Action(input = "http://Servicios/ClienteService/Eliminar_clienteRequest", output = "http://Servicios/ClienteService/Eliminar_clienteResponse")
-    public String eliminarCliente(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
 
     /**
      * 

@@ -35,33 +35,6 @@ public interface PersonaService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(operationName = "Crear_persona")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Crear_persona", targetNamespace = "http://Servicios/", className = "Services.CrearPersona")
-    @ResponseWrapper(localName = "Crear_personaResponse", targetNamespace = "http://Servicios/", className = "Services.CrearPersonaResponse")
-    @Action(input = "http://Servicios/PersonaService/Crear_personaRequest", output = "http://Servicios/PersonaService/Crear_personaResponse")
-    public String crearPersona(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "nombre", targetNamespace = "")
-        String nombre,
-        @WebParam(name = "apellido", targetNamespace = "")
-        String apellido,
-        @WebParam(name = "rut", targetNamespace = "")
-        String rut,
-        @WebParam(name = "sexo", targetNamespace = "")
-        int sexo);
-
-    /**
-     * 
-     * @param rut
-     * @param apellido
-     * @param id
-     * @param sexo
-     * @param nombre
-     * @return
-     *     returns java.lang.String
-     */
     @WebMethod(operationName = "Modificar_persona")
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "Modificar_persona", targetNamespace = "http://Servicios/", className = "Services.ModificarPersona")
@@ -93,6 +66,33 @@ public interface PersonaService {
     public String eliminarPersona(
         @WebParam(name = "id", targetNamespace = "")
         int id);
+
+    /**
+     * 
+     * @param rut
+     * @param apellido
+     * @param id
+     * @param sexo
+     * @param nombre
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Crear_persona")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Crear_persona", targetNamespace = "http://Servicios/", className = "Services.CrearPersona")
+    @ResponseWrapper(localName = "Crear_personaResponse", targetNamespace = "http://Servicios/", className = "Services.CrearPersonaResponse")
+    @Action(input = "http://Servicios/PersonaService/Crear_personaRequest", output = "http://Servicios/PersonaService/Crear_personaResponse")
+    public String crearPersona(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "nombre", targetNamespace = "")
+        String nombre,
+        @WebParam(name = "apellido", targetNamespace = "")
+        String apellido,
+        @WebParam(name = "rut", targetNamespace = "")
+        String rut,
+        @WebParam(name = "sexo", targetNamespace = "")
+        int sexo);
 
     /**
      * 

@@ -66,16 +66,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="Autenticacion">
-<xs:sequence>
-<xs:element name="correo" type="xs:string" minOccurs="0"/>
-<xs:element name="contrasena" type="xs:string" minOccurs="0"/>
-</xs:sequence>
+<xs:complexType name="Listado_clientes">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="AutenticacionResponse">
+<xs:complexType name="Listado_clientesResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:cliente" minOccurs="0"/>
+<xs:element name="return" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -135,13 +132,16 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="Listado_clientes">
-<xs:sequence/>
+<xs:complexType name="Autenticacion">
+<xs:sequence>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="Listado_clientesResponse">
+<xs:complexType name="AutenticacionResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:cliente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

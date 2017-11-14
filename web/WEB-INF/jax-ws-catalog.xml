@@ -109,4 +109,7 @@
     <system systemId="http://127.0.0.1:43339/MisOfertasWebService/CategoriaService?xsd=1" uri="wsdl/127.0.0.1_43339/MisOfertasWebService/CategoriaService.xsd_1.xsd"/>
     <system systemId="http://localhost:43339/MisOfertasWebService/ClienteService?WSDL" uri="wsdl/localhost_43339/MisOfertasWebService/ClienteService.wsdl"/>
     <system systemId="http://localhost:43339/MisOfertasWebService/ClienteService?xsd=1" uri="wsdl/localhost_43339/MisOfertasWebService/ClienteService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/CiudadService?WSDL" uri="wsdl/localhost_8080/MisOfertasWebService/CiudadService.wsdl"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/LocalService?WSDL" uri="wsdl/localhost_8080/MisOfertasWebService/LocalService.wsdl"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/OfertaVisitaService?WSDL" uri="wsdl/localhost_8080/MisOfertasWebService/OfertaVisitaService.wsdl"/>
 </catalog>

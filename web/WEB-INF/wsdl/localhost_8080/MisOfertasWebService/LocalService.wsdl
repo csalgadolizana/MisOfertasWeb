@@ -4,12 +4,6 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:8080/MisOfertasWebService/LocalService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="Listado_local">
-<part name="parameters" element="tns:Listado_local"/>
-</message>
-<message name="Listado_localResponse">
-<part name="parameters" element="tns:Listado_localResponse"/>
-</message>
 <message name="Crear_local">
 <part name="parameters" element="tns:Crear_local"/>
 </message>
@@ -28,11 +22,13 @@
 <message name="Modificar_localResponse">
 <part name="parameters" element="tns:Modificar_localResponse"/>
 </message>
+<message name="Listado_local">
+<part name="parameters" element="tns:Listado_local"/>
+</message>
+<message name="Listado_localResponse">
+<part name="parameters" element="tns:Listado_localResponse"/>
+</message>
 <portType name="LocalService">
-<operation name="Listado_local">
-<input wsam:Action="http://Servicios/LocalService/Listado_localRequest" message="tns:Listado_local"/>
-<output wsam:Action="http://Servicios/LocalService/Listado_localResponse" message="tns:Listado_localResponse"/>
-</operation>
 <operation name="Crear_local">
 <input wsam:Action="http://Servicios/LocalService/Crear_localRequest" message="tns:Crear_local"/>
 <output wsam:Action="http://Servicios/LocalService/Crear_localResponse" message="tns:Crear_localResponse"/>
@@ -45,18 +41,13 @@
 <input wsam:Action="http://Servicios/LocalService/Modificar_localRequest" message="tns:Modificar_local"/>
 <output wsam:Action="http://Servicios/LocalService/Modificar_localResponse" message="tns:Modificar_localResponse"/>
 </operation>
+<operation name="Listado_local">
+<input wsam:Action="http://Servicios/LocalService/Listado_localRequest" message="tns:Listado_local"/>
+<output wsam:Action="http://Servicios/LocalService/Listado_localResponse" message="tns:Listado_localResponse"/>
+</operation>
 </portType>
 <binding name="LocalServicePortBinding" type="tns:LocalService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="Listado_local">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="Crear_local">
 <soap:operation soapAction=""/>
 <input>
@@ -76,6 +67,15 @@
 </output>
 </operation>
 <operation name="Modificar_local">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="Listado_local">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

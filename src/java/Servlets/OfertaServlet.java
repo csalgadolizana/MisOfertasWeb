@@ -47,16 +47,16 @@ public class OfertaServlet extends HttpServlet {
     JSONObject jObj;
     JSONArray listaJson;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl")
     private DetalleOfertaService_Service service_3;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/OfertaLocalService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/OfertaLocalService.wsdl")
     private OfertaLocalService_Service service_2;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/OfertaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl")
     private OfertaService_Service service_1;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/ProductoService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl")
     private ProductoService_Service service;
 
     private String rutaFiles;

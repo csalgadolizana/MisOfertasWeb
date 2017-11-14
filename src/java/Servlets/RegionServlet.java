@@ -24,7 +24,7 @@ import org.json.simple.JSONObject;
  */
 public class RegionServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/RegionService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/RegionService.wsdl")
     private RegionService_Service service;
 
     JSONObject jObj;

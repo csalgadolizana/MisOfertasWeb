@@ -7,7 +7,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Mis Ofertas</title>
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="img/IconoMisOfertas.png">
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
@@ -87,8 +87,10 @@
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
-                                    <a class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <a id="aCerrarSesion" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <a id="aIniciarSesion" data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
+                                    <a id="aRegistrate" class="dropdown-item waves-effect waves-light" href="#" data-toggle="modal" data-target="#modalSubscriptionForm">Registrate</a>
                                 </div>
                             </li>
                         </ul>
@@ -102,6 +104,117 @@
         <!--Main Layout-->
         <main>
             <hr class="featurette-divider" style="margin-bottom: 120px">
+
+            <!--modal inicia sesion-->
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="card" style="">
+                            <form id="formIniciarSesion" method="POST" action="ClienteServlet">
+                                <div class="card-body">
+                                    <!--Header-->
+                                    <div class="form-header default-color">
+                                        <h3><i class="fa fa-lock"></i> Login:</h3>
+                                    </div>
+                                    <!--Body-->
+                                    <div class="md-form">
+                                        <i class="fa fa-envelope prefix"></i>
+                                        <input type="email" id="txtCorreoIniciar" class="form-control validate" required="">
+                                        <label for="txtCorreoIniciar" data-success="Correcto" data-error="Error" >Tu correo</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <i class="fa fa-lock prefix"></i>
+                                        <input type="password" id="txtPasswdIniciar" class="form-control validate" required="">
+                                        <label for="txtPasswdIniciar" data-success="Correcto" data-error="Error">Tu contraseña</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>
+                                        <button type="button" id="btnIniciarSesionFake" class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
+                                        <button type="submit" id="btnIniciarSesionReal" name="btnAccion" value="inicioSesion" class="" style="display: none">Ingresar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="">
+                                    <div class="row">
+                                        <div style="margin-right: 10px">
+                                            <p>Sin cuenta? <a href="#" data-toggle="modal" data-target="#modalSubscriptionForm"> Registrate aqui</a></p>
+                                        </div>
+                                    </div>
+                                    <!--                                    <div class="row">
+                                                                            <div class="pull-right">
+                                                                                <p>Olvidaste tu <a href="#">contraseña?</a></p>
+                                                                            </div>
+                                                                        </div>-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin modal inicia sesion-->
+
+            <!--Modal registrate-->
+            <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="formRegistrarse" method="POST" action="ClienteServlet">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-bold">Registrate</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-3">
+                                <div class="md-form">
+                                    <i class="fa fa-envelope  prefix"></i>
+                                    <input type="email" id="txtCorreoRegistro" name="txtCorreoRegistro" class="form-control validate" required="">
+                                    <label data-error="Error" data-success="Correcto" for="txtCorreoRegistro">Ingrese su correo</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-lock  prefix"></i>
+                                    <input type="password" id="txtContrasenaRegistro" name="txtContrasenaRegistro" class="form-control validate" required="">
+                                    <label data-error="Error" data-success="Correcto" for="txtContrasenaRegistro">Su contraseña</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-lock  prefix"></i>
+                                    <input type="password" id="txtContrasenaRegistro2" name="txtContrasenaRegistro2" class="form-control validate" required="">
+                                    <label data-error="Error" data-success="Correcto" for="txtContrasenaRegistro2">Repita su contraseña</label>
+                                </div>
+
+                                <div id="contenedor_masDatos" class="collapse" style="/*display:none*/">
+                                    <div class="md-form">
+                                        <i class="fa fa-calendar  prefix"></i>
+                                        <input type="date" id="txtfechaNacimiento" class="form-control validate" placeholder="Su fecha de nacimiento" >
+                                        <!--<input type="date" id="cajaFecha" class="form-control" value="02-16-2012">-->
+                                        <label data-error="Error" data-success="Correcto" for="txtfechaNacimiento"></label>
+                                    </div>
+                                    <!--<div class="md-form">-->
+                                    <label for="date-picker-example">Try me...
+                                        <i class="fa fa-calendar  prefix"></i>
+                                        <input placeholder="" type="date" id="date-picker-example" class="form-control datepicker">
+                                    </label>
+                                    <!--</div>-->
+                                    <div class="md-form input-group">
+                                        <span class="input-group-addon" id="basic-addon3">fecha nacimiento</span>
+                                        <input type="date" class="form-control pt-0" id="basic-url" aria-describedby="basic-addon3" placeholder="Fecha">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="button" id="btnRegistrarForm" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
+                                <button type="submit" id="btnRealRegistrarForm" name="btnAccion" value="primerRegistro" style="display: none" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Fin Modal registrate-->
 
             <!-- Marketing messaging and featurettes
               ================================================== -->
@@ -127,7 +240,7 @@
                                         <p style="font-size: 15px">El stock disponible puede variar en cada tienda.</p>
                                         </br>
                                         <!--<a href="#" role="button">Ver &Tau;ienda </a>-->
-                                        <p><a id="aCupon" class="btn btn-default" href="descargaCupon.html" role="button">Solicitar Cupón &raquo;</a></p>
+                                        <p id="pAcupon"><a id="aCupon" class="btn btn-default" href="descargaCupon.html" role="button">Solicitar Cupón &raquo;</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -198,9 +311,12 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
 
         <script type="text/javascript" src="js/commons.js"></script>
+        
+        <script type="text/javascript" src="js/control-login-registrer.js"></script>
 
         <script>
             var param = getParameterByName('idof');
+            var estaLogueado = false;
             $(document).ready(function () {
                 getMisDatos();
                 crearCatalogo();
@@ -217,7 +333,10 @@
                             console.log(" success: getMisDatos()");
                             console.log(data);
                             $("#navbarNombreSesion").text(data.correo);
+                            estaLogueado = true;
                         } else {
+                            $("#aCerrarSesion").hide();
+                            $("#toEditarMisDatos").hide();
 //                            $("#modalLoginForm").modal('show');
 //                            location.href = "accesoCliente.html";
                         }
@@ -245,17 +364,27 @@
                                 $("#img-oferta").attr("src", "");
                                 $("#divTituloOferta").find("h2").text("");
                                 $("#texto").text("");
-                                $("#aCupon").attr("href", "descargaCupon.html");
                                 if (objeto.estado == 1) {
                                     $("#divRow").show();
                                     $("#img-oferta").attr("src", objeto.ruta_img);
                                     $("#divTituloOferta").find("h2").text(objeto.nombre);
-                                    $("#texto").text(objeto.desc);
                                     $("#aCupon").attr("href", "descargaCupon.html?idof=" + objeto.idof);
-                                    var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="140" height="140">';
-                                    var titulo = '<h2>' + objeto.nombre + '</h2>';
-                                    var texto = '<p>' + objeto.desc + '</p>';
-                                    var btn = '<p><a class="btn btn-default" href="detalleOferta.html?idof=' + objeto.idof + '" role="button">Ver mas detalles &raquo;</a></p>';
+//                                    var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="140" height="140">';
+//                                    var titulo = '<h2>' + objeto.nombre + '</h2>';
+//                                    var texto = '<p>' + objeto.desc + '</p>';
+//                                    var btn = '';
+
+                                    var porcentajeDecuento = '<span style="color: #000000;font-size:1.1rem"> Ahorras &raquo; $' + (objeto.precio_normal - objeto.precio_oferta).toLocaleString() + '</>';
+                                    var texto = '<p>' + objeto.desc + '</p><p style="font-size:1rem">Antes :  $ ' + objeto.precio_normal.toLocaleString() + '</p><p style="color: #e4022d;" >Ahora :  $ ' + objeto.precio_oferta.toLocaleString() + "  " + porcentajeDecuento + ' </p>';
+//                                    var btn = '<p><a class="btn btn-default" href="detalleOferta.html?idof=' + objeto.idof + '" role="button">Ver mas detalles &raquo;</a></p>';
+                                    $("#texto").html(texto);
+                                    console.log(estaLogueado);
+                                    if (estaLogueado) {
+                                        btn = '<a class="btn btn-default" href="descargaCupon.html?idof=' + objeto.idof + '" role="button">Obtener descuento &raquo;</a>';
+                                    } else {
+                                        btn = '<a data-toggle="modal" data-target="#modalLoginForm" class="btn btn-info btn-lg" href="#">Obtener descuento &raquo;</a>';
+                                    }
+                                    $("#pAcupon").html(btn);
                                     caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + img + titulo + texto + btn + '</div>';
                                 } else {
                                     alert("Oferta no disponible");

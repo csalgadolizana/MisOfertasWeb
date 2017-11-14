@@ -42,18 +42,6 @@ public interface DetalleOfertaService {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<Services.DetalleOferta>
-     */
-    @WebMethod(operationName = "Listado_detalle_oferta")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_detalle_oferta", targetNamespace = "http://Servicios/", className = "Services.ListadoDetalleOferta")
-    @ResponseWrapper(localName = "Listado_detalle_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoDetalleOfertaResponse")
-    @Action(input = "http://Servicios/DetalleOfertaService/Listado_detalle_ofertaRequest", output = "http://Servicios/DetalleOfertaService/Listado_detalle_ofertaResponse")
-    public List<DetalleOferta> listadoDetalleOferta();
-
-    /**
-     * 
      * @param idDetalleOferta
      * @param productoId
      * @param ofertaId
@@ -72,5 +60,17 @@ public interface DetalleOfertaService {
         int productoId,
         @WebParam(name = "oferta_id", targetNamespace = "")
         int ofertaId);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<Services.DetalleOferta>
+     */
+    @WebMethod(operationName = "Listado_detalle_oferta")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_detalle_oferta", targetNamespace = "http://Servicios/", className = "Services.ListadoDetalleOferta")
+    @ResponseWrapper(localName = "Listado_detalle_ofertaResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoDetalleOfertaResponse")
+    @Action(input = "http://Servicios/DetalleOfertaService/Listado_detalle_ofertaRequest", output = "http://Servicios/DetalleOfertaService/Listado_detalle_ofertaResponse")
+    public List<DetalleOferta> listadoDetalleOferta();
 
 }

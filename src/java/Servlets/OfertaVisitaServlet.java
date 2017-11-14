@@ -31,10 +31,10 @@ import org.json.simple.JSONObject;
  */
 public class OfertaVisitaServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/DetalleOfertaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl")
     private DetalleOfertaService_Service service_1;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/OfertaVisitaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/OfertaVisitaService.wsdl")
     private OfertaVisitaService service;
 
     JSONObject jObj;

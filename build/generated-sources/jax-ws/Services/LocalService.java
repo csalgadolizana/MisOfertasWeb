@@ -35,45 +35,6 @@ public interface LocalService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(operationName = "Modificar_local")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Modificar_local", targetNamespace = "http://Servicios/", className = "Services.ModificarLocal")
-    @ResponseWrapper(localName = "Modificar_localResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarLocalResponse")
-    @Action(input = "http://Servicios/LocalService/Modificar_localRequest", output = "http://Servicios/LocalService/Modificar_localResponse")
-    public String modificarLocal(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "direccion", targetNamespace = "")
-        String direccion,
-        @WebParam(name = "nombre", targetNamespace = "")
-        String nombre,
-        @WebParam(name = "id_empresa", targetNamespace = "")
-        int idEmpresa,
-        @WebParam(name = "id_ciudad", targetNamespace = "")
-        int idCiudad);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<Services.Local>
-     */
-    @WebMethod(operationName = "Listado_local")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Listado_local", targetNamespace = "http://Servicios/", className = "Services.ListadoLocal")
-    @ResponseWrapper(localName = "Listado_localResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoLocalResponse")
-    @Action(input = "http://Servicios/LocalService/Listado_localRequest", output = "http://Servicios/LocalService/Listado_localResponse")
-    public List<Local> listadoLocal();
-
-    /**
-     * 
-     * @param direccion
-     * @param idEmpresa
-     * @param id
-     * @param nombre
-     * @param idCiudad
-     * @return
-     *     returns java.lang.String
-     */
     @WebMethod(operationName = "Crear_local")
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "Crear_local", targetNamespace = "http://Servicios/", className = "Services.CrearLocal")
@@ -105,5 +66,44 @@ public interface LocalService {
     public String eliminarLocal(
         @WebParam(name = "id", targetNamespace = "")
         int id);
+
+    /**
+     * 
+     * @param direccion
+     * @param idEmpresa
+     * @param id
+     * @param nombre
+     * @param idCiudad
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Modificar_local")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Modificar_local", targetNamespace = "http://Servicios/", className = "Services.ModificarLocal")
+    @ResponseWrapper(localName = "Modificar_localResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarLocalResponse")
+    @Action(input = "http://Servicios/LocalService/Modificar_localRequest", output = "http://Servicios/LocalService/Modificar_localResponse")
+    public String modificarLocal(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "direccion", targetNamespace = "")
+        String direccion,
+        @WebParam(name = "nombre", targetNamespace = "")
+        String nombre,
+        @WebParam(name = "id_empresa", targetNamespace = "")
+        int idEmpresa,
+        @WebParam(name = "id_ciudad", targetNamespace = "")
+        int idCiudad);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<Services.Local>
+     */
+    @WebMethod(operationName = "Listado_local")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Listado_local", targetNamespace = "http://Servicios/", className = "Services.ListadoLocal")
+    @ResponseWrapper(localName = "Listado_localResponse", targetNamespace = "http://Servicios/", className = "Services.ListadoLocalResponse")
+    @Action(input = "http://Servicios/LocalService/Listado_localRequest", output = "http://Servicios/LocalService/Listado_localResponse")
+    public List<Local> listadoLocal();
 
 }

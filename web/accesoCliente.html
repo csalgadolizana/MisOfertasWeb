@@ -101,19 +101,15 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
-                            <!--                            <li class="nav-item">
-                                                            <a class="nav-link waves-effect waves-light"><i class="fa fa-twitter"></i></a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
-                                                        </li>-->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarNombreSesion">
-                                    <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a id="aCerrarSesion" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
                                     <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <a id="aIniciarSesion" data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
+                                    <a id="aRegistrate" class="dropdown-item waves-effect waves-light" href="#" data-toggle="modal" data-target="#modalSubscriptionForm">Registrate</a>
                                 </div>
                             </li>
                         </ul>
@@ -167,7 +163,7 @@
 
 
             <!--modal inicia sesion-->
-            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-controls-modal="your_div_id" data-backdrop="static" data-keyboard="false">
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
 
@@ -190,7 +186,7 @@
                                         <label for="txtPasswdIniciar" data-success="Correcto" data-error="Error">Tu contraseña</label>
                                     </div>
                                     <div class="text-center">
-                                        <!--<button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>-->
+                                        <button data-dismiss="modal" class="pull-left btn btn-grey waves-effect waves-light">Cancelar</button>
                                         <button type="button" id="btnIniciarSesionFake" class="pull-right btn btn-default waves-effect waves-float">Ingresar</button>
                                         <button type="submit" id="btnIniciarSesionReal" name="btnAccion" value="inicioSesion" class="" style="display: none">Ingresar</button>
                                     </div>
@@ -359,7 +355,7 @@
                 });
                 $("#selectCategoria").change(function () {
                     $("#divCatalogo").children().each(function (i, div) {
-                        console.log($(this).attr("categoria"));
+//                        console.log($(this).attr("categoria"));
                         if ($(this).attr("categoria") != $("#selectCategoria").val()) {
                             $(this).hide();
                         } else {
@@ -387,6 +383,8 @@
                             $("#navbarNombreSesion").text(data.correo);
                         } else {
 //                            $("#modalLoginForm").modal('show');
+                            $("#aCerrarSesion").hide();
+                            $("#toEditarMisDatos").hide();
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -398,8 +396,7 @@
                 });
             }
             function listarCategorias() {
-                console.log(" listarCategorias listarCategorias()");
-
+                //console.log(" listarCategorias listarCategorias()");
                 $.ajax({
                     type: "POST",
                     url: "CategoriaServlet",
@@ -456,13 +453,13 @@
                         $("#divCatalogo").html("");
                         var caja = '';
                         $(data).each(function (a, objeto, c) {
-                            console.log(objeto);
+//                            console.log(objeto);
                             if (objeto.estado == 1) {
                                 var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="200" height="200">';
                                 var titulo = '<h2>' + objeto.nombre + '</h2>';
-                                var texto = '<p>' + objeto.desc + '</p>';
+                                var texto = '<p>' + objeto.desc + '</p><p>Antes :  $ ' + objeto.precio_normal.toLocaleString() + '</p><p style="color: #e4022d;" >Ahora :  $ ' + objeto.precio_oferta.toLocaleString() + '</p>';
                                 var btn = '<p><a class="btn btn-default" href="detalleOferta.html?idof=' + objeto.idof + '" role="button">Ver mas detalles &raquo;</a></p>';
-                                var porcentajeDecuento = '<span class="catalog-discount-tag">-' + Math.round((objeto.precio_oferta / objeto.precio_normal) * 100) + '%</span>';
+                                var porcentajeDecuento = '<span class="catalog-discount-tag">-' + Math.round(((objeto.precio_oferta * 100) / objeto.precio_normal)-100) + '%</span>';
                                 caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + porcentajeDecuento + img + titulo + texto + btn + '</div>';
                             }
                         });

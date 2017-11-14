@@ -40,21 +40,6 @@ public interface OfertaVistaService {
 
     /**
      * 
-     * @param id
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Eliminar_oferta_visitas")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Eliminar_oferta_visitas", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaVisitas")
-    @ResponseWrapper(localName = "Eliminar_oferta_visitasResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaVisitasResponse")
-    @Action(input = "http://Servicios/OfertaVistaService/Eliminar_oferta_visitasRequest", output = "http://Servicios/OfertaVistaService/Eliminar_oferta_visitasResponse")
-    public String eliminarOfertaVisitas(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
-
-    /**
-     * 
      * @param fechaVista
      * @param idCliente
      * @param idOferta
@@ -73,5 +58,20 @@ public interface OfertaVistaService {
         int idCliente,
         @WebParam(name = "id_oferta", targetNamespace = "")
         int idOferta);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Eliminar_oferta_visitas")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Eliminar_oferta_visitas", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaVisitas")
+    @ResponseWrapper(localName = "Eliminar_oferta_visitasResponse", targetNamespace = "http://Servicios/", className = "Services.EliminarOfertaVisitasResponse")
+    @Action(input = "http://Servicios/OfertaVistaService/Eliminar_oferta_visitasRequest", output = "http://Servicios/OfertaVistaService/Eliminar_oferta_visitasResponse")
+    public String eliminarOfertaVisitas(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
 
 }

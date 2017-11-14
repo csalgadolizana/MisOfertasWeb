@@ -27,42 +27,6 @@ public interface CategoriaService {
 
     /**
      * 
-     * @param id
-     * @param desc
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Modificar_categoria")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Modificar_categoria", targetNamespace = "http://Servicios/", className = "Services.ModificarCategoria")
-    @ResponseWrapper(localName = "Modificar_categoriaResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarCategoriaResponse")
-    @Action(input = "http://Servicios/CategoriaService/Modificar_categoriaRequest", output = "http://Servicios/CategoriaService/Modificar_categoriaResponse")
-    public String modificarCategoria(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "desc", targetNamespace = "")
-        String desc);
-
-    /**
-     * 
-     * @param id
-     * @param desc
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "Crear_categoria")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Crear_categoria", targetNamespace = "http://Servicios/", className = "Services.CrearCategoria")
-    @ResponseWrapper(localName = "Crear_categoriaResponse", targetNamespace = "http://Servicios/", className = "Services.CrearCategoriaResponse")
-    @Action(input = "http://Servicios/CategoriaService/Crear_categoriaRequest", output = "http://Servicios/CategoriaService/Crear_categoriaResponse")
-    public String crearCategoria(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "desc", targetNamespace = "")
-        String desc);
-
-    /**
-     * 
      * @return
      *     returns java.util.List<Services.Categoria>
      */
@@ -87,5 +51,41 @@ public interface CategoriaService {
     public String eliminarCategoria(
         @WebParam(name = "id", targetNamespace = "")
         int id);
+
+    /**
+     * 
+     * @param id
+     * @param desc
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Crear_categoria")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Crear_categoria", targetNamespace = "http://Servicios/", className = "Services.CrearCategoria")
+    @ResponseWrapper(localName = "Crear_categoriaResponse", targetNamespace = "http://Servicios/", className = "Services.CrearCategoriaResponse")
+    @Action(input = "http://Servicios/CategoriaService/Crear_categoriaRequest", output = "http://Servicios/CategoriaService/Crear_categoriaResponse")
+    public String crearCategoria(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "desc", targetNamespace = "")
+        String desc);
+
+    /**
+     * 
+     * @param id
+     * @param desc
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "Modificar_categoria")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Modificar_categoria", targetNamespace = "http://Servicios/", className = "Services.ModificarCategoria")
+    @ResponseWrapper(localName = "Modificar_categoriaResponse", targetNamespace = "http://Servicios/", className = "Services.ModificarCategoriaResponse")
+    @Action(input = "http://Servicios/CategoriaService/Modificar_categoriaRequest", output = "http://Servicios/CategoriaService/Modificar_categoriaResponse")
+    public String modificarCategoria(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "desc", targetNamespace = "")
+        String desc);
 
 }

@@ -38,18 +38,18 @@ import org.json.simple.JSONObject;
  * @author PC-Cristopher
  */
 public class ClienteServlet extends HttpServlet {
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/UsuarioService.wsdl")
+    
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/UsuarioService.wsdl")
     private UsuarioService_Service service_2;
 
 //    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/WSMisOfertas/UsuarioService.wsdl")
 //    private UsuarioService_Service service_2;
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/ClienteService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl")
     private ClienteService_Service service_1;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/MisOfertasWebService/PersonaService.wsdl")
+    
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/PersonaService.wsdl")
     private PersonaService_Service service;
-
+    
     String correo, pass1, pass2;
     JSONObject jObj;
 
@@ -91,11 +91,15 @@ public class ClienteServlet extends HttpServlet {
                 break;
         }
     }
-
+    
     public void inicioSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         correo = request.getParameter("mail");
         pass1 = request.getParameter("pass");
+        System.out.println("correo " + correo);
+        System.out.println("pass1 " + pass1);
+        
+//        Cliente cli = listadoClientes().stream().filter((x) -> x.getCorreo().equals(correo) && x.getContrasena().equals(pass1)).findFirst().orElse(null);
         Cliente cli = autenticacion(correo, pass1);
         jObj = new JSONObject();
 //        En el caso de no encontrar nada retornará 0 en estado
@@ -122,7 +126,7 @@ public class ClienteServlet extends HttpServlet {
         }
         session.setMaxInactiveInterval(1000);
     }
-
+    
     public void returnClient(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int idClie = Integer.parseInt(request.getParameter("idcli"));
@@ -136,12 +140,13 @@ public class ClienteServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
         out.println(jObj);
-
+        
     }
-
+    
     public void existeCorreo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         correo = request.getParameter("mail");
+        System.out.println("correo "+correo);
         Cliente cli = listadoClientes().stream().filter((c) -> c.getCorreo().equals(correo.trim().toLowerCase())).findAny().orElse(null);
         jObj = new JSONObject();
         if (cli == null) {
@@ -158,9 +163,9 @@ public class ClienteServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
         out.println(jObj);
-
+        
     }
-
+    
     public void returnToFormRegister(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         correo = request.getParameter("txtCorreoRegistro");
@@ -174,7 +179,7 @@ public class ClienteServlet extends HttpServlet {
         }
         response.sendRedirect("registrarCliente.html");
     }
-
+    
     public void registrarPersonaCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, DatatypeConfigurationException, ParseException {
         String nombre, apellidos, rut;
@@ -189,7 +194,7 @@ public class ClienteServlet extends HttpServlet {
         System.err.println("Fecha naci" + request.getParameter("txtFechaNacimiento"));
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         fechaNac = sdf.parse(request.getParameter("txtFechaNacimiento"));
-
+        
         sexo = Integer.parseInt(request.getParameter("selectSexo"));
         telefono = Integer.parseInt(request.getParameter("txtTelefono"));
         recibirNoticias = (request.getParameter("checAceptaInformativo") == null) ? 0 : 1;
@@ -206,12 +211,12 @@ public class ClienteServlet extends HttpServlet {
         }
         XMLGregorianCalendar fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
         XMLGregorianCalendar fechaHoyXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaHoy);
-
+        
         Persona p = Collections.max(listadoPersonas(), Comparator.comparing(Persona::getIdpersona));
         Cliente clitemp = Collections.max(listadoClientes(), Comparator.comparing(Cliente::getIdCliente));
-
+        
         String ret = crearCliente(clitemp.getIdCliente().intValue() + 1, fecha, correo, pass1, telefono, recibirNoticias + "", fechaHoyXml, fechaHoyXml, ciudad, 1, p.getIdpersona().intValue());
-
+        
         Cliente cli = Collections.max(listadoClientes(), Comparator.comparing(Cliente::getIdCliente));
         System.err.println(ret);
         jObj = new JSONObject();
@@ -224,7 +229,7 @@ public class ClienteServlet extends HttpServlet {
         session.setAttribute("cliente", cli);
         response.sendRedirect("accesoCliente.html?d=" + cli.getIdCliente().toString());
     }
-
+    
     public void returnRegister(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
@@ -289,21 +294,21 @@ public class ClienteServlet extends HttpServlet {
         Services.PersonaService port = service.getPersonaServicePort();
         return port.crearPersona(id, nombre, apellido, rut, sexo);
     }
-
+    
     private java.util.List<Services.Persona> listadoPersonas() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.PersonaService port = service.getPersonaServicePort();
         return port.listadoPersonas();
     }
-
+    
     private String crearCliente(int id, javax.xml.datatype.XMLGregorianCalendar fechaNacimiento, java.lang.String correo, java.lang.String password, int telefono, java.lang.String aceptaInformativo, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActualizacion, int idCiudad, int idEstado, int idPersona) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.ClienteService port = service_1.getClienteServicePort();
         return port.crearCliente(id, fechaNacimiento, correo, password, telefono, aceptaInformativo, fechaInicio, fechaActualizacion, idCiudad, idEstado, idPersona);
     }
-
+    
     private java.util.List<Services.Cliente> listadoClientes() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -311,25 +316,31 @@ public class ClienteServlet extends HttpServlet {
         return port.listadoClientes();
     }
 
-    private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ClienteService port = service_1.getClienteServicePort();
-        return (Cliente) port.autenticacion(correo, contrasena);
-    }
-
+//    private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
+//        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+//        // If the calling of port operations may lead to race condition some synchronization is required.
+//        Services.ClienteService port = service_1.getClienteServicePort();
+//        return (Cliente) port.autenticacion(correo, contrasena);
+//    }
     private Usuario autenticarTrabajador(java.lang.String correo, java.lang.String contrasena) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.UsuarioService port = service_2.getUsuarioServicePort();
         return port.autenticarTrabajador(correo, contrasena);
     }
-
+    
     private java.util.List<Services.Usuario> listadoUsuarios() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         Services.UsuarioService port = service_2.getUsuarioServicePort();
         return port.listadoUsuarios();
     }
-
+    
+    private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        Services.ClienteService port = service_1.getClienteServicePort();
+        return port.autenticacion(correo, contrasena);
     }
+    
+}
