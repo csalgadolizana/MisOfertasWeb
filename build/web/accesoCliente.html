@@ -106,7 +106,7 @@
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarNombreSesion">
-                                    <a id="aCerrarSesion" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a id="aCerrarSesion" onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
                                     <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
                                     <a id="aIniciarSesion" data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
                                     <a id="aRegistrate" class="dropdown-item waves-effect waves-light" href="#" data-toggle="modal" data-target="#modalSubscriptionForm">Registrate</a>
@@ -347,132 +347,134 @@
 
         <script>
 //            var param = getParameterByName('d');
-            $(document).ready(function () {
-                $("#btnRegistrarForm").hide();
-                listarCategorias();
-                $("#selectTienda").change(function () {
-                    console.log("cambio el cboTiendads");
-                });
-                $("#selectCategoria").change(function () {
-                    $("#divCatalogo").children().each(function (i, div) {
+                                        $(document).ready(function () {
+                                            $("#btnRegistrarForm").hide();
+                                            listarCategorias();
+                                            $("#selectTienda").change(function () {
+                                                console.log("cambio el cboTiendads");
+                                            });
+                                            $("#selectCategoria").change(function () {
+                                                $("#divCatalogo").children().each(function (i, div) {
 //                        console.log($(this).attr("categoria"));
-                        if ($(this).attr("categoria") != $("#selectCategoria").val()) {
-                            $(this).hide();
-                        } else {
-                            $(this).show();
-                        }
-                        if ($("#selectCategoria").val() == -1) {
-                            $(this).show();
-                        }
-                    });
-                });
-                getMisDatos();
-                crearCatalogo();
-                listarLocales();
-            });
-            function getMisDatos() {
-                $.ajax({
-                    type: "POST",
-                    url: "UsuarioServlet",
-                    data: {"accion": "getDataSession"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        if (data.sesion == 1) {
-                            console.log(" success: getMisDatos()");
-                            console.log(data);
-                            $("#navbarNombreSesion").text(data.correo);
-                        } else {
+                                                    if ($(this).attr("categoria") != $("#selectCategoria").val()) {
+                                                        $(this).hide();
+                                                    } else {
+                                                        $(this).show();
+                                                    }
+                                                    if ($("#selectCategoria").val() == -1) {
+                                                        $(this).show();
+                                                    }
+                                                });
+                                            });
+                                            getMisDatos();
+                                            crearCatalogo();
+                                            listarLocales();
+                                        });
+                                        function getMisDatos() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "UsuarioServlet",
+                                                data: {"accion": "getDataSession"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    if (data.sesion == 1) {
+                                                        console.log(" success: getMisDatos()");
+                                                        console.log(data);
+                                                        $("#navbarNombreSesion").text(data.correo);
+                                                        $("#toEditarMisDatos").hide();
+                                                        $("#aIniciarSesion").hide();
+                                                    } else {
 //                            $("#modalLoginForm").modal('show');
-                            $("#aCerrarSesion").hide();
-                            $("#toEditarMisDatos").hide();
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(" eer getMisDatos()");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            }
-            function listarCategorias() {
-                //console.log(" listarCategorias listarCategorias()");
-                $.ajax({
-                    type: "POST",
-                    url: "CategoriaServlet",
-                    data: {"accion": "listaCategorias"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        console.log(" success: listarCategorias()");
+                                                        $("#aCerrarSesion").hide();
+                                                        $("#toEditarMisDatos").hide();
+                                                    }
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer getMisDatos()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
+                                        function listarCategorias() {
+                                            //console.log(" listarCategorias listarCategorias()");
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "CategoriaServlet",
+                                                data: {"accion": "listaCategorias"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    console.log(" success: listarCategorias()");
 
-                        $("#selectCategoria").html("");
-                        var options = '<option selected="selected" value="-1" >Categorias</option>';
-                        $(data).each(function (a, objeto, c) {
-                            options = options + '<option value="' + objeto.idcat + '">' + objeto.nombre + '</option>';
-                        });
-                        $("#selectCategoria").html(options);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(" eer listarCategorias()");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            }
-            function listarLocales() {
-                $.ajax({
-                    type: "POST",
-                    url: "LocalServlet",
-                    data: {"accion": "listaLocales"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
+                                                    $("#selectCategoria").html("");
+                                                    var options = '<option selected="selected" value="-1" >Categorias</option>';
+                                                    $(data).each(function (a, objeto, c) {
+                                                        options = options + '<option value="' + objeto.idcat + '">' + objeto.nombre + '</option>';
+                                                    });
+                                                    $("#selectCategoria").html(options);
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer listarCategorias()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
+                                        function listarLocales() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "LocalServlet",
+                                                data: {"accion": "listaLocales"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
 //                        console.log("Esta entrando");
-                        $("#selectTienda").html("");
-                        var options = '<option selected="selected" disabled="">Tiendas</option>';
-                        $(data).each(function (a, objeto, c) {
-                            options = options + '<option value="' + objeto.idl + '">' + objeto.nombre + '</option>';
-                        });
-                        $("#selectTienda").html(options);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(" eer listarLocales()");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            }
-            function crearCatalogo() {
-                $.ajax({
-                    type: "POST",
-                    url: "OfertaServlet",
-                    data: {"accion": "listaOfertas"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        $("#divCatalogo").html("");
-                        var caja = '';
-                        $(data).each(function (a, objeto, c) {
+                                                    $("#selectTienda").html("");
+                                                    var options = '<option selected="selected" disabled="">Tiendas</option>';
+                                                    $(data).each(function (a, objeto, c) {
+                                                        options = options + '<option value="' + objeto.idl + '">' + objeto.nombre + '</option>';
+                                                    });
+                                                    $("#selectTienda").html(options);
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer listarLocales()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
+                                        function crearCatalogo() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "OfertaServlet",
+                                                data: {"accion": "listaOfertas"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    $("#divCatalogo").html("");
+                                                    var caja = '';
+                                                    $(data).each(function (a, objeto, c) {
 //                            console.log(objeto);
-                            if (objeto.estado == 1) {
-                                var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="200" height="200">';
-                                var titulo = '<h2>' + objeto.nombre + '</h2>';
-                                var texto = '<p>' + objeto.desc + '</p><p>Antes :  $ ' + objeto.precio_normal.toLocaleString() + '</p><p style="color: #e4022d;" >Ahora :  $ ' + objeto.precio_oferta.toLocaleString() + '</p>';
-                                var btn = '<p><a class="btn btn-default" href="detalleOferta.html?idof=' + objeto.idof + '" role="button">Ver mas detalles &raquo;</a></p>';
-                                var porcentajeDecuento = '<span class="catalog-discount-tag">-' + Math.round(((objeto.precio_oferta * 100) / objeto.precio_normal)-100) + '%</span>';
-                                caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + porcentajeDecuento + img + titulo + texto + btn + '</div>';
-                            }
-                        });
-                        $("#divCatalogo").html(caja);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(" eer listarLocales()");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            }
+                                                        if (objeto.estado == 1) {
+                                                            var img = '<img class="img-circle" src="' + objeto.ruta_img + '" alt="Generic placeholder image" width="200" height="200">';
+                                                            var titulo = '<h2>' + objeto.nombre + '</h2>';
+                                                            var texto = '<p>' + objeto.desc + '</p><p>Antes :  $ ' + objeto.precio_normal.toLocaleString() + '</p><p style="color: #e4022d;" >Ahora :  $ ' + objeto.precio_oferta.toLocaleString() + '</p>';
+                                                            var btn = '<p><a class="btn btn-default" href="detalleOferta.html?idof=' + objeto.idof + '" role="button">Ver mas detalles &raquo;</a></p>';
+                                                            var porcentajeDecuento = '<span class="catalog-discount-tag">-' + Math.round(((objeto.precio_oferta * 100) / objeto.precio_normal) - 100) + '%</span>';
+                                                            caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + porcentajeDecuento + img + titulo + texto + btn + '</div>';
+                                                        }
+                                                    });
+                                                    $("#divCatalogo").html(caja);
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer listarLocales()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
         </script>
 
 

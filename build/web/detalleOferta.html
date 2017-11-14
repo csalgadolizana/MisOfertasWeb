@@ -87,7 +87,7 @@
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
-                                    <a id="aCerrarSesion" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a id="aCerrarSesion" onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
                                     <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
                                     <a id="aIniciarSesion" data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
                                     <a id="aRegistrate" class="dropdown-item waves-effect waves-light" href="#" data-toggle="modal" data-target="#modalSubscriptionForm">Registrate</a>
@@ -331,9 +331,11 @@
                     success: function (data, textStatus, jqXHR) {
                         if (data.sesion == 1) {
                             console.log(" success: getMisDatos()");
-                            console.log(data);
+//                            console.log(data);
                             $("#navbarNombreSesion").text(data.correo);
                             estaLogueado = true;
+                            $("#aRegistrate").hide();
+                            $("#aIniciarSesion").hide();
                         } else {
                             $("#aCerrarSesion").hide();
                             $("#toEditarMisDatos").hide();

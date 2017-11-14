@@ -57,7 +57,8 @@ $(document).ready(function () {
                                 location.href = dataa.redirect;
                             } else {
                                 if (dataa.estado != 0) {
-                                    location.href = "accesoCliente.html?d=" + dataa.estado;
+//                                    location.href = "accesoCliente.html?d=" + dataa.estado;
+                                    location.reload();
                                 } else {
                                     $("#centralModalError").modal('show');
                                     $("#divTextoAlerta").find("p").html("<strong>Su Correo o Contraseña no estan correctas!!.</strong> <br>");
@@ -92,5 +93,21 @@ $(document).ready(function () {
     $('#centralModalError').on('hidden.bs.modal', function (e) {
         $("#txtContrasenaRegistro").focus();
     });
+
 });
 
+
+function cerrarSesion() {
+    $.ajax({
+        type: "POST",
+        url: "UsuarioServlet",
+        data: {"accion": "destroySession"},
+        dataType: "json",
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(" eer cerrarSesion()");
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+}
