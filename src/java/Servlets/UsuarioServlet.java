@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Services.Cliente;
-import Services.Persona;
-import Services.Usuario;
+import servicios.Cliente;
+import servicios.Persona;
+import servicios.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;

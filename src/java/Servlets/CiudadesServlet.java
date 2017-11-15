@@ -5,8 +5,8 @@
  */
 package Servlets;
 
-import Services.Ciudad;
-import Services.CiudadService_Service;
+import servicios.Ciudad;
+import servicios.CiudadService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -113,10 +113,10 @@ public class CiudadesServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private java.util.List<Services.Ciudad> listadoCiudades() {
+    private java.util.List<servicios.Ciudad> listadoCiudades() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.CiudadService port = service.getCiudadServicePort();
+        servicios.CiudadService port = service.getCiudadServicePort();
         return port.listadoCiudades();
     }
 

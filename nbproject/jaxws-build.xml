@@ -26,42 +26,26 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-CiudadService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/CiudadService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CiudadService" destdir="${build.generated.dir}/jax-wsCache/CiudadService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CiudadService/wsdl/localhost_8080/MisOfertasWebService/CiudadService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/CiudadService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CiudadService/wsdl/localhost_8080/MisOfertasWebService/CiudadService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/CiudadService"/>
+    <target name="wsimport-client-CargarPuntosService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CargarPuntosService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CargarPuntosService" destdir="${build.generated.dir}/jax-wsCache/CargarPuntosService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CargarPuntosService/wsdl/localhost_21823/MisOfertasWebService/CargarPuntosService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/CargarPuntosService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CargarPuntosService/wsdl/localhost_21823/MisOfertasWebService/CargarPuntosService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CargarPuntosService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/CiudadService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CargarPuntosService">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-CiudadService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/CiudadService"/>
-    </target>
-    <target name="wsimport-client-PersonaService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/PersonaService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PersonaService" destdir="${build.generated.dir}/jax-wsCache/PersonaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PersonaService/wsdl/localhost_8080/MisOfertasWebService/PersonaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/PersonaService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PersonaService/wsdl/localhost_8080/MisOfertasWebService/PersonaService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/PersonaService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/PersonaService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-PersonaService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/PersonaService"/>
+    <target name="wsimport-client-clean-CargarPuntosService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CargarPuntosService"/>
     </target>
     <target name="wsimport-client-UsuarioService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/UsuarioService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/UsuarioService" destdir="${build.generated.dir}/jax-wsCache/UsuarioService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/UsuarioService/wsdl/localhost_8080/MisOfertasWebService/UsuarioService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/UsuarioService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/UsuarioService/wsdl/localhost_8080/MisOfertasWebService/UsuarioService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/UsuarioService" destdir="${build.generated.dir}/jax-wsCache/UsuarioService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/UsuarioService/wsdl/localhost_21823/MisOfertasWebService/UsuarioService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/UsuarioService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/UsuarioService/wsdl/localhost_21823/MisOfertasWebService/UsuarioService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/UsuarioService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -71,109 +55,13 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-UsuarioService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
         <delete dir="${build.generated.dir}/jax-wsCache/UsuarioService"/>
-    </target>
-    <target name="wsimport-client-ProductoService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/ProductoService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProductoService" destdir="${build.generated.dir}/jax-wsCache/ProductoService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProductoService/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/ProductoService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProductoService/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/ProductoService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/ProductoService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-ProductoService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/ProductoService"/>
-    </target>
-    <target name="wsimport-client-OfertaService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaService" destdir="${build.generated.dir}/jax-wsCache/OfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/OfertaService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-OfertaService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
-    </target>
-    <target name="wsimport-client-OfertaLocalService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaLocalService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaLocalService" destdir="${build.generated.dir}/jax-wsCache/OfertaLocalService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaLocalService/wsdl/localhost_8080/MisOfertasWebService/OfertaLocalService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/OfertaLocalService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaLocalService/wsdl/localhost_8080/MisOfertasWebService/OfertaLocalService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/OfertaLocalService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaLocalService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-OfertaLocalService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/OfertaLocalService"/>
-    </target>
-    <target name="wsimport-client-DetalleOfertaService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DetalleOfertaService" destdir="${build.generated.dir}/jax-wsCache/DetalleOfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/DetalleOfertaService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-DetalleOfertaService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
-    </target>
-    <target name="wsimport-client-OfertaVisitaService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaVisitaService" destdir="${build.generated.dir}/jax-wsCache/OfertaVisitaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_8080/MisOfertasWebService/OfertaVisitaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/OfertaVisitaService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_8080/MisOfertasWebService/OfertaVisitaService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-OfertaVisitaService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
-    </target>
-    <target name="wsimport-client-RegionService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/RegionService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/RegionService" destdir="${build.generated.dir}/jax-wsCache/RegionService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/RegionService/wsdl/localhost_8080/MisOfertasWebService/RegionService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/RegionService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/RegionService/wsdl/localhost_8080/MisOfertasWebService/RegionService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/RegionService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/RegionService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-RegionService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/RegionService"/>
     </target>
     <target name="wsimport-client-CategoriaService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/CategoriaService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CategoriaService" destdir="${build.generated.dir}/jax-wsCache/CategoriaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CategoriaService/wsdl/localhost_8080/MisOfertasWebService/CategoriaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/CategoriaService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CategoriaService/wsdl/localhost_8080/MisOfertasWebService/CategoriaService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CategoriaService" destdir="${build.generated.dir}/jax-wsCache/CategoriaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CategoriaService/wsdl/localhost_21823/MisOfertasWebService/CategoriaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/CategoriaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CategoriaService/wsdl/localhost_21823/MisOfertasWebService/CategoriaService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/CategoriaService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -183,29 +71,13 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-CategoriaService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
         <delete dir="${build.generated.dir}/jax-wsCache/CategoriaService"/>
-    </target>
-    <target name="wsimport-client-LocalService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/LocalService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LocalService" destdir="${build.generated.dir}/jax-wsCache/LocalService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LocalService/wsdl/localhost_8080/MisOfertasWebService/LocalService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/LocalService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/LocalService/wsdl/localhost_8080/MisOfertasWebService/LocalService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/LocalService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/LocalService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-LocalService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/LocalService"/>
     </target>
     <target name="wsimport-client-ClienteService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/ClienteService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ClienteService" destdir="${build.generated.dir}/jax-wsCache/ClienteService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/ClienteService?WSDL" xnocompile="true" xendorsed="true" package="Services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ClienteService" destdir="${build.generated.dir}/jax-wsCache/ClienteService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ClienteService/wsdl/localhost_21823/MisOfertasWebService/ClienteService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/ClienteService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ClienteService/wsdl/localhost_21823/MisOfertasWebService/ClienteService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/ClienteService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -215,8 +87,264 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-ClienteService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
         <delete dir="${build.generated.dir}/jax-wsCache/ClienteService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-CiudadService, wsimport-client-PersonaService, wsimport-client-UsuarioService, wsimport-client-ProductoService, wsimport-client-OfertaService, wsimport-client-OfertaLocalService, wsimport-client-DetalleOfertaService, wsimport-client-OfertaVisitaService, wsimport-client-RegionService, wsimport-client-CategoriaService, wsimport-client-LocalService, wsimport-client-ClienteService"/>
+    <target name="wsimport-client-DescuentoService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/DescuentoService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DescuentoService" destdir="${build.generated.dir}/jax-wsCache/DescuentoService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/DescuentoService/wsdl/localhost_21823/MisOfertasWebService/DescuentoService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/DescuentoService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/DescuentoService/wsdl/localhost_21823/MisOfertasWebService/DescuentoService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/DescuentoService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/DescuentoService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-DescuentoService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/DescuentoService"/>
+    </target>
+    <target name="wsimport-client-DetalleOfertaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DetalleOfertaService" destdir="${build.generated.dir}/jax-wsCache/DetalleOfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_21823/MisOfertasWebService/DetalleOfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/DetalleOfertaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_21823/MisOfertasWebService/DetalleOfertaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-DetalleOfertaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/DetalleOfertaService"/>
+    </target>
+    <target name="wsimport-client-EmpresaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EmpresaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EmpresaService" destdir="${build.generated.dir}/jax-wsCache/EmpresaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EmpresaService/wsdl/localhost_21823/MisOfertasWebService/EmpresaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/EmpresaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EmpresaService/wsdl/localhost_21823/MisOfertasWebService/EmpresaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EmpresaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EmpresaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EmpresaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EmpresaService"/>
+    </target>
+    <target name="wsimport-client-LocalService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/LocalService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LocalService" destdir="${build.generated.dir}/jax-wsCache/LocalService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LocalService/wsdl/localhost_21823/MisOfertasWebService/LocalService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/LocalService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/LocalService/wsdl/localhost_21823/MisOfertasWebService/LocalService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/LocalService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/LocalService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-LocalService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/LocalService"/>
+    </target>
+    <target name="wsimport-client-OfertaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaService" destdir="${build.generated.dir}/jax-wsCache/OfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_21823/MisOfertasWebService/OfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/OfertaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_21823/MisOfertasWebService/OfertaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-OfertaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
+    </target>
+    <target name="wsimport-client-OfertaLocalService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaLocalService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaLocalService" destdir="${build.generated.dir}/jax-wsCache/OfertaLocalService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaLocalService/wsdl/localhost_21823/MisOfertasWebService/OfertaLocalService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/OfertaLocalService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaLocalService/wsdl/localhost_21823/MisOfertasWebService/OfertaLocalService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/OfertaLocalService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaLocalService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-OfertaLocalService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/OfertaLocalService"/>
+    </target>
+    <target name="wsimport-client-OfertaVisitaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaVisitaService" destdir="${build.generated.dir}/jax-wsCache/OfertaVisitaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_21823/MisOfertasWebService/OfertaVisitaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/OfertaVisitaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaVisitaService/wsdl/localhost_21823/MisOfertasWebService/OfertaVisitaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-OfertaVisitaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/OfertaVisitaService"/>
+    </target>
+    <target name="wsimport-client-PersonaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/PersonaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PersonaService" destdir="${build.generated.dir}/jax-wsCache/PersonaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PersonaService/wsdl/localhost_21823/MisOfertasWebService/PersonaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/PersonaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PersonaService/wsdl/localhost_21823/MisOfertasWebService/PersonaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/PersonaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/PersonaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-PersonaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/PersonaService"/>
+    </target>
+    <target name="wsimport-client-ProductoService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ProductoService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProductoService" destdir="${build.generated.dir}/jax-wsCache/ProductoService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProductoService/wsdl/localhost_21823/MisOfertasWebService/ProductoService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/ProductoService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProductoService/wsdl/localhost_21823/MisOfertasWebService/ProductoService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ProductoService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ProductoService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ProductoService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ProductoService"/>
+    </target>
+    <target name="wsimport-client-PuntosService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/PuntosService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PuntosService" destdir="${build.generated.dir}/jax-wsCache/PuntosService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PuntosService/wsdl/localhost_21823/MisOfertasWebService/PuntosService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/PuntosService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PuntosService/wsdl/localhost_21823/MisOfertasWebService/PuntosService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/PuntosService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/PuntosService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-PuntosService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/PuntosService"/>
+    </target>
+    <target name="wsimport-client-ReporteService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ReporteService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ReporteService" destdir="${build.generated.dir}/jax-wsCache/ReporteService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ReporteService/wsdl/localhost_21823/MisOfertasWebService/ReporteService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/ReporteService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ReporteService/wsdl/localhost_21823/MisOfertasWebService/ReporteService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ReporteService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ReporteService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ReporteService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ReporteService"/>
+    </target>
+    <target name="wsimport-client-UsuarioOfertaService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/UsuarioOfertaService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/UsuarioOfertaService" destdir="${build.generated.dir}/jax-wsCache/UsuarioOfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/UsuarioOfertaService/wsdl/localhost_21823/MisOfertasWebService/UsuarioOfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/UsuarioOfertaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/UsuarioOfertaService/wsdl/localhost_21823/MisOfertasWebService/UsuarioOfertaService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/UsuarioOfertaService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/UsuarioOfertaService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-UsuarioOfertaService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/UsuarioOfertaService"/>
+    </target>
+    <target name="wsimport-client-ValoracionService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ValoracionService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ValoracionService" destdir="${build.generated.dir}/jax-wsCache/ValoracionService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ValoracionService/wsdl/localhost_21823/MisOfertasWebService/ValoracionService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/ValoracionService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ValoracionService/wsdl/localhost_21823/MisOfertasWebService/ValoracionService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ValoracionService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ValoracionService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ValoracionService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ValoracionService"/>
+    </target>
+    <target name="wsimport-client-CargoService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CargoService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CargoService" destdir="${build.generated.dir}/jax-wsCache/CargoService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CargoService/wsdl/localhost_21823/MisOfertasWebService/CargoService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/CargoService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CargoService/wsdl/localhost_21823/MisOfertasWebService/CargoService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CargoService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CargoService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CargoService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CargoService"/>
+    </target>
+    <target name="wsimport-client-CiudadService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CiudadService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CiudadService" destdir="${build.generated.dir}/jax-wsCache/CiudadService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CiudadService/wsdl/localhost_21823/MisOfertasWebService/CiudadService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/CiudadService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CiudadService/wsdl/localhost_21823/MisOfertasWebService/CiudadService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CiudadService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CiudadService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CiudadService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CiudadService"/>
+    </target>
+    <target name="wsimport-client-RegionService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/RegionService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/RegionService" destdir="${build.generated.dir}/jax-wsCache/RegionService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/RegionService/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:21823/MisOfertasWebService/RegionService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/RegionService/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/RegionService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/RegionService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-RegionService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/servicios"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/RegionService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-CargarPuntosService, wsimport-client-UsuarioService, wsimport-client-CategoriaService, wsimport-client-ClienteService, wsimport-client-DescuentoService, wsimport-client-DetalleOfertaService, wsimport-client-EmpresaService, wsimport-client-LocalService, wsimport-client-OfertaService, wsimport-client-OfertaLocalService, wsimport-client-OfertaVisitaService, wsimport-client-PersonaService, wsimport-client-ProductoService, wsimport-client-PuntosService, wsimport-client-ReporteService, wsimport-client-UsuarioOfertaService, wsimport-client-ValoracionService, wsimport-client-CargoService, wsimport-client-CiudadService, wsimport-client-RegionService"/>
 </project>

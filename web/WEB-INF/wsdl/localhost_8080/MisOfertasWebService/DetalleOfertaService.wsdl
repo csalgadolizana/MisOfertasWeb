@@ -4,6 +4,12 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:8080/MisOfertasWebService/DetalleOfertaService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="Eliminar_detalle_oferta">
+<part name="parameters" element="tns:Eliminar_detalle_oferta"/>
+</message>
+<message name="Eliminar_detalle_ofertaResponse">
+<part name="parameters" element="tns:Eliminar_detalle_ofertaResponse"/>
+</message>
 <message name="Crear_detalle_oferta">
 <part name="parameters" element="tns:Crear_detalle_oferta"/>
 </message>
@@ -16,13 +22,11 @@
 <message name="Listado_detalle_ofertaResponse">
 <part name="parameters" element="tns:Listado_detalle_ofertaResponse"/>
 </message>
-<message name="Eliminar_detalle_oferta">
-<part name="parameters" element="tns:Eliminar_detalle_oferta"/>
-</message>
-<message name="Eliminar_detalle_ofertaResponse">
-<part name="parameters" element="tns:Eliminar_detalle_ofertaResponse"/>
-</message>
 <portType name="DetalleOfertaService">
+<operation name="Eliminar_detalle_oferta">
+<input wsam:Action="http://Servicios/DetalleOfertaService/Eliminar_detalle_ofertaRequest" message="tns:Eliminar_detalle_oferta"/>
+<output wsam:Action="http://Servicios/DetalleOfertaService/Eliminar_detalle_ofertaResponse" message="tns:Eliminar_detalle_ofertaResponse"/>
+</operation>
 <operation name="Crear_detalle_oferta">
 <input wsam:Action="http://Servicios/DetalleOfertaService/Crear_detalle_ofertaRequest" message="tns:Crear_detalle_oferta"/>
 <output wsam:Action="http://Servicios/DetalleOfertaService/Crear_detalle_ofertaResponse" message="tns:Crear_detalle_ofertaResponse"/>
@@ -31,13 +35,18 @@
 <input wsam:Action="http://Servicios/DetalleOfertaService/Listado_detalle_ofertaRequest" message="tns:Listado_detalle_oferta"/>
 <output wsam:Action="http://Servicios/DetalleOfertaService/Listado_detalle_ofertaResponse" message="tns:Listado_detalle_ofertaResponse"/>
 </operation>
-<operation name="Eliminar_detalle_oferta">
-<input wsam:Action="http://Servicios/DetalleOfertaService/Eliminar_detalle_ofertaRequest" message="tns:Eliminar_detalle_oferta"/>
-<output wsam:Action="http://Servicios/DetalleOfertaService/Eliminar_detalle_ofertaResponse" message="tns:Eliminar_detalle_ofertaResponse"/>
-</operation>
 </portType>
 <binding name="DetalleOfertaServicePortBinding" type="tns:DetalleOfertaService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="Eliminar_detalle_oferta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="Crear_detalle_oferta">
 <soap:operation soapAction=""/>
 <input>
@@ -48,15 +57,6 @@
 </output>
 </operation>
 <operation name="Listado_detalle_oferta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="Eliminar_detalle_oferta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

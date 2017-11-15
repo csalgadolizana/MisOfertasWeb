@@ -5,14 +5,14 @@
  */
 package Servlets;
 
-import Services.DetalleOferta;
-import Services.DetalleOfertaService_Service;
-import Services.Oferta;
-import Services.OfertaLocalService_Service;
-import Services.OfertaService_Service;
-import Services.Ofertalocal;
-import Services.Producto;
-import Services.ProductoService_Service;
+import servicios.DetalleOferta;
+import servicios.DetalleOfertaService_Service;
+import servicios.Oferta;
+import servicios.OfertaLocalService_Service;
+import servicios.OfertaService_Service;
+import servicios.Ofertalocal;
+import servicios.Producto;
+import servicios.ProductoService_Service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,16 +47,16 @@ public class OfertaServlet extends HttpServlet {
     JSONObject jObj;
     JSONArray listaJson;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/DetalleOfertaService.wsdl")
     private DetalleOfertaService_Service service_3;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/OfertaLocalService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/OfertaLocalService.wsdl")
     private OfertaLocalService_Service service_2;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/OfertaService.wsdl")
     private OfertaService_Service service_1;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/ProductoService.wsdl")
     private ProductoService_Service service;
 
     private String rutaFiles;
@@ -326,77 +326,77 @@ public class OfertaServlet extends HttpServlet {
     private String modificarProducto(int id, java.lang.String nombre, java.lang.String descripcion, int precio, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActualizacion, java.lang.String rutaImagen, int idCagegoria) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ProductoService port = service.getProductoServicePort();
+        servicios.ProductoService port = service.getProductoServicePort();
         return port.modificarProducto(id, nombre, descripcion, precio, fechaInicio, fechaActualizacion, rutaImagen, idCagegoria);
     }
 
-    private java.util.List<Services.Producto> listadoProductos() {
+    private java.util.List<servicios.Producto> listadoProductos() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ProductoService port = service.getProductoServicePort();
+        servicios.ProductoService port = service.getProductoServicePort();
         return port.listadoProductos();
     }
 
     private String crearOferta(int id, java.lang.String nombre, java.lang.String descripcion, int precioNormal, int precioOferta, int numeroVisitas, int minCompras, int maxCompras, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActulizacion, int estadoId) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaService port = service_1.getOfertaServicePort();
+        servicios.OfertaService port = service_1.getOfertaServicePort();
         return port.crearOferta(id, nombre, descripcion, precioNormal, precioOferta, numeroVisitas, minCompras, maxCompras, fechaInicio, fechaActulizacion, estadoId);
     }
 
     private String crearOfertaLocal(int id, java.lang.String descripcion, int ofertaId, int localId) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaLocalService port = service_2.getOfertaLocalServicePort();
+        servicios.OfertaLocalService port = service_2.getOfertaLocalServicePort();
         return port.crearOfertaLocal(id, descripcion, ofertaId, localId);
     }
 
-    private java.util.List<Services.Ofertalocal> listadoOfertaLocal() {
+    private java.util.List<servicios.Ofertalocal> listadoOfertaLocal() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaLocalService port = service_2.getOfertaLocalServicePort();
+        servicios.OfertaLocalService port = service_2.getOfertaLocalServicePort();
         return port.listadoOfertaLocal();
     }
 
-    private java.util.List<Services.Oferta> listadoOferta() {
+    private java.util.List<servicios.Oferta> listadoOferta() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaService port = service_1.getOfertaServicePort();
+        servicios.OfertaService port = service_1.getOfertaServicePort();
         return port.listadoOferta();
     }
 
     private String crearDetalleOferta(int idDetalleOferta, int productoId, int ofertaId) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
+        servicios.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
         return port.crearDetalleOferta(idDetalleOferta, productoId, ofertaId);
     }
 
-    private java.util.List<Services.DetalleOferta> listadoDetalleOferta() {
+    private java.util.List<servicios.DetalleOferta> listadoDetalleOferta() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
+        servicios.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
         return port.listadoDetalleOferta();
     }
     
     private String modificarOferta(int id, java.lang.String nombre, java.lang.String descripcion, int precioOferta, int minCompras, int maxCompras, javax.xml.datatype.XMLGregorianCalendar fechaActulizacion) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaService port = service_1.getOfertaServicePort();
+        servicios.OfertaService port = service_1.getOfertaServicePort();
         return port.modificarOferta(id, nombre, descripcion, precioOferta, minCompras, maxCompras, fechaActulizacion);
     }
 
     private String publicarOferta_1(int id) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaService port = service_1.getOfertaServicePort();
+        servicios.OfertaService port = service_1.getOfertaServicePort();
         return port.publicarOferta(id);
     }
 
     private String dejarDePublicarOfertaServ(int id) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaService port = service_1.getOfertaServicePort();
+        servicios.OfertaService port = service_1.getOfertaServicePort();
         return port.dejarDePublicarOferta(id);
     }
 

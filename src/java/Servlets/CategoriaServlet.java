@@ -5,8 +5,8 @@
  */
 package Servlets;
 
-import Services.Categoria;
-import Services.CategoriaService_Service;
+import servicios.Categoria;
+//import services.CategoriaService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import servicios.CategoriaService_Service;
 
 /**
  *
@@ -24,7 +25,10 @@ import org.json.simple.JSONObject;
  */
 public class CategoriaServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/CategoriaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/CategoriaService.wsdl")
+    private CategoriaService_Service service_1;
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/CategoriaService.wsdl")
     private CategoriaService_Service service;
 
     JSONObject jObj;
@@ -119,11 +123,15 @@ public class CategoriaServlet extends HttpServlet {
 //        Services.CategoriaService port = service.getCategoriaServicePort();
 //        return port.listadoCategorias();
 //    }
-
-    private java.util.List<Services.Categoria> listadoCategorias() {
+//    private java.util.List<Services.Categoria> listadoCategorias() {
+//        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+//        // If the calling of port operations may lead to race condition some synchronization is required.
+//        Services.CategoriaService port = service.getCategoriaServicePort();
+//        return port.listadoCategorias();
+    private java.util.List<servicios.Categoria> listadoCategorias() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.CategoriaService port = service.getCategoriaServicePort();
+        servicios.CategoriaService port = service_1.getCategoriaServicePort();
         return port.listadoCategorias();
     }
 

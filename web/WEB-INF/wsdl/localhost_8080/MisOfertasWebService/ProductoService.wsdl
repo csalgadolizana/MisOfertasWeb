@@ -4,17 +4,17 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:8080/MisOfertasWebService/ProductoService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="Modificar_producto">
+<part name="parameters" element="tns:Modificar_producto"/>
+</message>
+<message name="Modificar_productoResponse">
+<part name="parameters" element="tns:Modificar_productoResponse"/>
+</message>
 <message name="Listado_productos">
 <part name="parameters" element="tns:Listado_productos"/>
 </message>
 <message name="Listado_productosResponse">
 <part name="parameters" element="tns:Listado_productosResponse"/>
-</message>
-<message name="Eliminar_producto">
-<part name="parameters" element="tns:Eliminar_producto"/>
-</message>
-<message name="Eliminar_productoResponse">
-<part name="parameters" element="tns:Eliminar_productoResponse"/>
 </message>
 <message name="Crear_producto">
 <part name="parameters" element="tns:Crear_producto"/>
@@ -22,33 +22,33 @@
 <message name="Crear_productoResponse">
 <part name="parameters" element="tns:Crear_productoResponse"/>
 </message>
-<message name="Modificar_producto">
-<part name="parameters" element="tns:Modificar_producto"/>
+<message name="Eliminar_producto">
+<part name="parameters" element="tns:Eliminar_producto"/>
 </message>
-<message name="Modificar_productoResponse">
-<part name="parameters" element="tns:Modificar_productoResponse"/>
+<message name="Eliminar_productoResponse">
+<part name="parameters" element="tns:Eliminar_productoResponse"/>
 </message>
 <portType name="ProductoService">
+<operation name="Modificar_producto">
+<input wsam:Action="http://Servicios/ProductoService/Modificar_productoRequest" message="tns:Modificar_producto"/>
+<output wsam:Action="http://Servicios/ProductoService/Modificar_productoResponse" message="tns:Modificar_productoResponse"/>
+</operation>
 <operation name="Listado_productos">
 <input wsam:Action="http://Servicios/ProductoService/Listado_productosRequest" message="tns:Listado_productos"/>
 <output wsam:Action="http://Servicios/ProductoService/Listado_productosResponse" message="tns:Listado_productosResponse"/>
-</operation>
-<operation name="Eliminar_producto">
-<input wsam:Action="http://Servicios/ProductoService/Eliminar_productoRequest" message="tns:Eliminar_producto"/>
-<output wsam:Action="http://Servicios/ProductoService/Eliminar_productoResponse" message="tns:Eliminar_productoResponse"/>
 </operation>
 <operation name="Crear_producto">
 <input wsam:Action="http://Servicios/ProductoService/Crear_productoRequest" message="tns:Crear_producto"/>
 <output wsam:Action="http://Servicios/ProductoService/Crear_productoResponse" message="tns:Crear_productoResponse"/>
 </operation>
-<operation name="Modificar_producto">
-<input wsam:Action="http://Servicios/ProductoService/Modificar_productoRequest" message="tns:Modificar_producto"/>
-<output wsam:Action="http://Servicios/ProductoService/Modificar_productoResponse" message="tns:Modificar_productoResponse"/>
+<operation name="Eliminar_producto">
+<input wsam:Action="http://Servicios/ProductoService/Eliminar_productoRequest" message="tns:Eliminar_producto"/>
+<output wsam:Action="http://Servicios/ProductoService/Eliminar_productoResponse" message="tns:Eliminar_productoResponse"/>
 </operation>
 </portType>
 <binding name="ProductoServicePortBinding" type="tns:ProductoService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="Listado_productos">
+<operation name="Modificar_producto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -57,7 +57,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="Eliminar_producto">
+<operation name="Listado_productos">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -75,7 +75,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="Modificar_producto">
+<operation name="Eliminar_producto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

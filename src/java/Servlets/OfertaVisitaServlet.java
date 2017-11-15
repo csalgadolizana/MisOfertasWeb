@@ -5,10 +5,10 @@
  */
 package Servlets;
 
-import Services.Cliente;
-import Services.DetalleOferta;
-import Services.DetalleOfertaService_Service;
-import Services.OfertaVisitaService;
+import servicios.Cliente;
+import servicios.DetalleOferta;
+import servicios.DetalleOfertaService_Service;
+import servicios.OfertaVisitaService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -31,10 +31,10 @@ import org.json.simple.JSONObject;
  */
 public class OfertaVisitaServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/DetalleOfertaService.wsdl")
     private DetalleOfertaService_Service service_1;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/OfertaVisitaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/OfertaVisitaService.wsdl")
     private OfertaVisitaService service;
 
     JSONObject jObj;
@@ -140,14 +140,14 @@ public class OfertaVisitaServlet extends HttpServlet {
     private String crearOfertaVisitas(javax.xml.datatype.XMLGregorianCalendar fechaVista, int idCliente, int idOferta) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.OfertaVistaService port = service.getOfertaVistaServicePort();
+        servicios.OfertaVistaService port = service.getOfertaVistaServicePort();
         return port.crearOfertaVisitas(fechaVista, idCliente, idOferta);
     }
 
-    private java.util.List<Services.DetalleOferta> listadoDetalleOferta() {
+    private java.util.List<servicios.DetalleOferta> listadoDetalleOferta() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.DetalleOfertaService port = service_1.getDetalleOfertaServicePort();
+        servicios.DetalleOfertaService port = service_1.getDetalleOfertaServicePort();
         return port.listadoDetalleOferta();
     }
 

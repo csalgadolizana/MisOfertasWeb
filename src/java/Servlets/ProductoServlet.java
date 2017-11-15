@@ -5,8 +5,8 @@
  */
 package Servlets;
 
-import Services.Producto;
-import Services.ProductoService_Service;
+import servicios.Producto;
+import servicios.ProductoService_Service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +39,7 @@ import org.json.simple.JSONObject;
  */
 public class ProductoServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/ProductoService.wsdl")
     private ProductoService_Service service;
     JSONObject jObj;
     JSONArray listaJson;
@@ -315,24 +315,24 @@ public class ProductoServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private java.util.List<Services.Producto> listadoProductos() {
+    private java.util.List<servicios.Producto> listadoProductos() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ProductoService port = service.getProductoServicePort();
+        servicios.ProductoService port = service.getProductoServicePort();
         return port.listadoProductos();
     }
 
     private String insertarProducto(int id, java.lang.String nombre, java.lang.String descripcion, int precio, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActualizacion, java.lang.String rutaImagen, int idCagegoria) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ProductoService port = service.getProductoServicePort();
+        servicios.ProductoService port = service.getProductoServicePort();
         return port.crearProducto(id, nombre, descripcion, precio, fechaInicio, fechaActualizacion, rutaImagen, idCagegoria);
     }
 
     private String modificarProducto(int id, java.lang.String nombre, java.lang.String descripcion, int precio, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActualizacion, java.lang.String rutaImagen, int idCagegoria) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ProductoService port = service.getProductoServicePort();
+        servicios.ProductoService port = service.getProductoServicePort();
         return port.modificarProducto(id, nombre, descripcion, precio, fechaInicio, fechaActualizacion, rutaImagen, idCagegoria);
     }
 

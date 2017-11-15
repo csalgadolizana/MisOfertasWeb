@@ -5,8 +5,8 @@
  */
 package Servlets;
 
-import Services.Region;
-import Services.RegionService_Service;
+//import Services.Region;
+//import Services.RegionService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import servicios.Region;
+import servicios.RegionService_Service;
 
 /**
  *
@@ -24,7 +26,10 @@ import org.json.simple.JSONObject;
  */
 public class RegionServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/RegionService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl")
+    private RegionService_Service service_1;
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl")
     private RegionService_Service service;
 
     JSONObject jObj;
@@ -114,11 +119,18 @@ public class RegionServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private java.util.List<Services.Region> listadoRegiones() {
+//    private java.util.List<Services.Region> listadoRegiones() {
+//        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+//        // If the calling of port operations may lead to race condition some synchronization is required.
+//        Services.RegionService port = service.getRegionServicePort();
+//        return port.listadoRegiones();
+
+    private java.util.List<servicios.Region> listadoRegiones() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.RegionService port = service.getRegionServicePort();
+        servicios.RegionService port = service_1.getRegionServicePort();
         return port.listadoRegiones();
     }
+    
 
 }

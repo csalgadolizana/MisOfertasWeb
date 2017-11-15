@@ -5,12 +5,12 @@
  */
 package Servlets;
 
-import Services.Cliente;
-import Services.ClienteService_Service;
-import Services.Persona;
-import Services.PersonaService_Service;
-import Services.Usuario;
-import Services.UsuarioService_Service;
+import servicios.Cliente;
+import servicios.ClienteService_Service;
+import servicios.Persona;
+import servicios.PersonaService_Service;
+import servicios.Usuario;
+import servicios.UsuarioService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -39,15 +39,15 @@ import org.json.simple.JSONObject;
  */
 public class ClienteServlet extends HttpServlet {
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/UsuarioService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/UsuarioService.wsdl")
     private UsuarioService_Service service_2;
 
 //    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/WSMisOfertas/UsuarioService.wsdl")
 //    private UsuarioService_Service service_2;
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/ClienteService.wsdl")
     private ClienteService_Service service_1;
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/PersonaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/PersonaService.wsdl")
     private PersonaService_Service service;
     
     String correo, pass1, pass2;
@@ -291,55 +291,55 @@ public class ClienteServlet extends HttpServlet {
     private String crearPersona(int id, java.lang.String nombre, java.lang.String apellido, java.lang.String rut, int sexo) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.PersonaService port = service.getPersonaServicePort();
+        servicios.PersonaService port = service.getPersonaServicePort();
         return port.crearPersona(id, nombre, apellido, rut, sexo);
     }
     
-    private java.util.List<Services.Persona> listadoPersonas() {
+    private java.util.List<servicios.Persona> listadoPersonas() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.PersonaService port = service.getPersonaServicePort();
+        servicios.PersonaService port = service.getPersonaServicePort();
         return port.listadoPersonas();
     }
     
     private String crearCliente(int id, javax.xml.datatype.XMLGregorianCalendar fechaNacimiento, java.lang.String correo, java.lang.String password, int telefono, java.lang.String aceptaInformativo, javax.xml.datatype.XMLGregorianCalendar fechaInicio, javax.xml.datatype.XMLGregorianCalendar fechaActualizacion, int idCiudad, int idEstado, int idPersona) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ClienteService port = service_1.getClienteServicePort();
+        servicios.ClienteService port = service_1.getClienteServicePort();
         return port.crearCliente(id, fechaNacimiento, correo, password, telefono, aceptaInformativo, fechaInicio, fechaActualizacion, idCiudad, idEstado, idPersona);
     }
     
-    private java.util.List<Services.Cliente> listadoClientes() {
+    private java.util.List<servicios.Cliente> listadoClientes() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ClienteService port = service_1.getClienteServicePort();
+        servicios.ClienteService port = service_1.getClienteServicePort();
         return port.listadoClientes();
     }
 
 //    private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
 //        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
 //        // If the calling of port operations may lead to race condition some synchronization is required.
-//        Services.ClienteService port = service_1.getClienteServicePort();
+//        servicios.ClienteService port = service_1.getClienteServicePort();
 //        return (Cliente) port.autenticacion(correo, contrasena);
 //    }
     private Usuario autenticarTrabajador(java.lang.String correo, java.lang.String contrasena) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.UsuarioService port = service_2.getUsuarioServicePort();
+        servicios.UsuarioService port = service_2.getUsuarioServicePort();
         return port.autenticarTrabajador(correo, contrasena);
     }
     
-    private java.util.List<Services.Usuario> listadoUsuarios() {
+    private java.util.List<servicios.Usuario> listadoUsuarios() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.UsuarioService port = service_2.getUsuarioServicePort();
+        servicios.UsuarioService port = service_2.getUsuarioServicePort();
         return port.listadoUsuarios();
     }
     
     private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.ClienteService port = service_1.getClienteServicePort();
+        servicios.ClienteService port = service_1.getClienteServicePort();
         return port.autenticacion(correo, contrasena);
     }
     

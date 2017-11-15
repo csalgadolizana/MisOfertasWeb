@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Services.Cliente;
-import Services.Local;
-import Services.LocalService_Service;
+import servicios.Cliente;
+import servicios.Local;
+import servicios.LocalService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -25,7 +25,7 @@ import org.json.simple.JSONObject;
  */
 public class LocalServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/LocalService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/LocalService.wsdl")
     private LocalService_Service service;
 
     JSONObject jObj;
@@ -117,10 +117,10 @@ public class LocalServlet extends HttpServlet {
         out.println(listaJson);
     }
 
-    private java.util.List<Services.Local> listadoLocal() {
+    private java.util.List<servicios.Local> listadoLocal() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        Services.LocalService port = service.getLocalServicePort();
+        servicios.LocalService port = service.getLocalServicePort();
         return port.listadoLocal();
     }
 
