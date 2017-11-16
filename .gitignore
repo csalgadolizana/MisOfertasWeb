@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 imageness
 /dist/
 /build/
@@ -5,3 +6,12 @@ imageness
 /nbproject/
 /nbproject
 nbproject
+=======
+imageness
+/dist/
+/build/
+/nbproject/*
+/nbproject/
+/nbproject
+nbproject
+>>>>>>> fbd0bc2ad816be7ad0ff2e022124fc3629d856ab
