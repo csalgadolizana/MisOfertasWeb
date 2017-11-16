@@ -263,12 +263,14 @@
                                                 <input type="text" id="descripcionOferta" name="descripcionOferta" class="form-control my-inputs"  required="">
                                                 <label for="descripcionOferta">Descripcion de la Oferta</label>
                                             </div>
-                                            <!--                                            <div class="md-form form-sm" style="height: 70px">
-                                                                                            <i class="fa fa-file-image-o prefix"></i>
-                                                                                            <input type="text" id="descripcionOferta" name="descripcionOferta" class="form-control my-inputs"  required="">
-                                                                                            <input type="file" name="inputImagen" id="inputImagen" accept="image/*" class=" my-inputs"  placeholder="Upload your file" required="" style="margin-left: 30%;height: 40px">
-                                                                                            <label for="inputImagen">Suba la foto del producto</label>
-                                                                                        </div>-->
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-product-hunt prefix"></i>
+                                                <select name="selectCategoriaProd" id="selectCategoriaProd" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%;padding: o" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Categoria</option>
+                                                    <option value="2">Electrodomesticos</option></select>
+                                                <label for="selectCategoriaProd">Categoria</label>
+                                            </div>
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-product-hunt prefix"></i>
                                                 <select name="selectProducto" id="selectProducto" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%;padding: o" required="">
@@ -345,11 +347,6 @@
                                                 <input type="text" id="descripcionOferta2" name="descripcionOferta2" class="form-control my-inputs"  required="">
                                                 <label for="descripcionOferta2">Descripcion de la Oferta</label>
                                             </div>
-                                            <!--                                            <div class="md-form form-sm" style="height: 70px">
-                                                                                            <i class="fa fa-file-image-o prefix active"></i>
-                                                                                            <input type="file" name="inputImagen2" id="inputImagen2" accept="image/*" class=" my-inputs"  placeholder="Upload your file" required="" style="margin-left: 30%;height: 70px">
-                                                                                            <label class="active" for="inputImagen2">Suba la foto del producto</label>
-                                                                                        </div>-->
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-product-hunt prefix active"></i>
                                                 <input type="number" id="idProducto" name="idProducto" value="0" hidden="">
@@ -740,7 +737,7 @@
                                             }
                                             $("#selectComuna2").change();
                                         });
-//                                        $("#checkCambiarFoto").click();
+                                        //                                        $("#checkCambiarFoto").click();
                                         $("#tabAdminOfertas").show();
                                         $("#tabAdminProductos").hide();
                                         $("#liAdminOfertas").toggleClass("active");
@@ -784,12 +781,27 @@
                                             }
                                         });
                                         $("#selectProducto").change(function () {
+                                            var val = $(this).val();
                                             $("#txtPrecioNormal").val($("#selectProducto option:selected").attr("precio"));
                                             $("#txtPrecioOferta").attr("max", $("#txtPrecioNormal").val());
+                                            $("#selectCategoriaProd").val($(this).find("option:selected").attr("categoria"));
+                                            $("#selectCategoriaProd").change();
+                                            $("#selectProducto").val(val);
+                                        });
+                                        $("#selectCategoriaProd").change(function () {
+                                            $("#selectProducto option").each(function () {
+                                                if ($(this).attr("categoria") == $("#selectCategoriaProd").val()) {
+                                                    $(this).show();
+                                                } else {
+                                                    $(this).hide();
+                                                }
+                                            });
+                                            $('#selectProducto option:eq(0)').prop('selected', true);
                                         });
                                         $("#selectProducto2").change(function () {
                                             $("#txtPrecioNormal2").val($("#selectProducto2 option:selected").attr("precio"));
                                             $("#txtPrecioOferta2").attr("max", $("#txtPrecioNormal2").val());
+//                                            $("#selectCategoriaProd2").val($(this).find("option:selected").attr("categoria"));
                                         });
                                         $("#check").change(function () {
                                             $("#contenedor_contras").collapse('toggle');
@@ -965,14 +977,18 @@
                                             data: {"accion": "listaCategorias"},
                                             dataType: "json",
                                             success: function (data, textStatus, jqXHR) {
+                                                $("#selectCategoriaProd").html('<option selected="selected" disabled="">Seleccione Categoria</option>');
                                                 $("#selectCategoria").html('<option selected="selected" disabled="">Seleccione Categoria</option>');
                                                 $("#selectCategoria2").html("");
+//                                                $("#selectCategoriaProd").html("");
                                                 var options = "";
                                                 $(data).each(function (a, objeto, c) {
                                                     options = options + '<option value="' + objeto.idcat + '">' + objeto.nombre + '</option>';
                                                 });
                                                 $("#selectCategoria2").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
                                                 $("#selectCategoria").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
+                                                $("#selectCategoriaProd").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
+//                                                $("#selectCategoriaProd2").html('<option selected="selected" disabled="">Seleccione Categoria</option>' + options);
 //                                                console.log(options);
                                                 listarProductos();
                                             },
@@ -1010,7 +1026,7 @@
                                                 options = '<option selected="selected" disabled="">Seleccione Producto</option>';
                                                 $(data).each(function (a, objeto, c) {
 //                                                    console.log(objeto);
-                                                    options = options + '<option value="' + objeto.idpro + '" precio="' + objeto.precio + '">' + objeto.nombre + '</option>';
+                                                    options = options + '<option value="' + objeto.idpro + '" precio="' + objeto.precio + '" categoria="' + objeto.idcat + '">' + objeto.nombre + '</option>';
                                                     arrayPrecios.push(objeto.precio);
                                                 });
                                                 $("#selectProducto").html(options);

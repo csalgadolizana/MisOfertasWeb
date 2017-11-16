@@ -39,15 +39,15 @@ import org.json.simple.JSONObject;
  */
 public class ClienteServlet extends HttpServlet {
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/UsuarioService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/UsuarioService.wsdl")
     private UsuarioService_Service service_2;
 
 //    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_17225/WSMisOfertas/UsuarioService.wsdl")
 //    private UsuarioService_Service service_2;
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/ClienteService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl")
     private ClienteService_Service service_1;
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/PersonaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/PersonaService.wsdl")
     private PersonaService_Service service;
     
     String correo, pass1, pass2;

@@ -17,4 +17,11 @@
     <import location="OfertaVisitaService.xml" namespace="http://Servicios/"/>
     <import location="RegionService.xml" namespace="http://Servicios/"/>
     <import location="DetalleOfertaService.xml" namespace="http://Servicios/"/>
+    <import location="CargarPuntosService.xml" namespace="http://Servicios/"/>
+    <import location="DescuentoService.xml" namespace="http://Servicios/"/>
+    <import location="EmpresaService.xml" namespace="http://Servicios/"/>
+    <import location="PuntosService.xml" namespace="http://Servicios/"/>
+    <import location="UsuarioOfertaService.xml" namespace="http://Servicios/"/>
+    <import location="ValoracionService.xml" namespace="http://Servicios/"/>
+    <import location="CargoService.xml" namespace="http://Servicios/"/>
 </definitions>

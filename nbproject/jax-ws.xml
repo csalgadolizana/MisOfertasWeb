@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/CargarPuntosService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/CargarPuntosService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -54,7 +54,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/UsuarioService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/UsuarioService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -86,7 +86,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/CategoriaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/CategoriaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -118,7 +118,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/ClienteService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/ClienteService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -150,7 +150,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/DescuentoService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/DescuentoService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -182,7 +182,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/DetalleOfertaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/DetalleOfertaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -214,7 +214,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/EmpresaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/EmpresaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -246,7 +246,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/LocalService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/LocalService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -278,7 +278,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/OfertaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/OfertaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -310,7 +310,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/OfertaLocalService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/OfertaLocalService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -342,7 +342,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/OfertaVisitaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/OfertaVisitaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -374,7 +374,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/PersonaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/PersonaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -406,7 +406,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/ProductoService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/ProductoService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -438,39 +438,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/PuntosService?wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
-    <client name="ReporteService">
-      <wsdl-url>http://localhost:21823/MisOfertasWebService/ReporteService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_21823/MisOfertasWebService/ReporteService.wsdl</local-wsdl-file>
-      <package-name>servicios</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/ReporteService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/PuntosService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -502,7 +470,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/UsuarioOfertaService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/UsuarioOfertaService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -534,7 +502,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/ValoracionService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/ValoracionService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -566,7 +534,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/CargoService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/CargoService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -598,7 +566,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/CiudadService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/CiudadService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -630,7 +598,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:21823/MisOfertasWebService/RegionService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/MisOfertasWebService/RegionService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>

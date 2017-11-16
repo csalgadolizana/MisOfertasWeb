@@ -1,3 +1,7 @@
 imageness
 /dist/
 /build/
+/nbproject/*
+/nbproject/
+/nbproject
+nbproject

@@ -26,10 +26,10 @@ import servicios.RegionService_Service;
  */
 public class RegionServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/RegionService.wsdl")
     private RegionService_Service service_1;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/RegionService.wsdl")
     private RegionService_Service service;
 
     JSONObject jObj;

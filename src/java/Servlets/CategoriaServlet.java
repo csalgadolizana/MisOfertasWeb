@@ -25,10 +25,10 @@ import servicios.CategoriaService_Service;
  */
 public class CategoriaServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/CategoriaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/CategoriaService.wsdl")
     private CategoriaService_Service service_1;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/CategoriaService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/CategoriaService.wsdl")
     private CategoriaService_Service service;
 
     JSONObject jObj;

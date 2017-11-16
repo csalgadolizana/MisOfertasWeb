@@ -39,7 +39,7 @@ import org.json.simple.JSONObject;
  */
 public class ProductoServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_21823/MisOfertasWebService/ProductoService.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl")
     private ProductoService_Service service;
     JSONObject jObj;
     JSONArray listaJson;
