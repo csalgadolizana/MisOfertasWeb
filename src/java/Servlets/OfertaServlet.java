@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -164,6 +166,9 @@ public class OfertaServlet extends HttpServlet {
                     jObj.put("max_compras", dtof.getOferta().getMaximoCompra());
                     jObj.put("estado", dtof.getOferta().getEstadoIdEstado().getIdEstado());
                     jObj.put("ruta_img", dtof.getProducto().getImagen());
+                    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                    String fechaCupon = sdf.format(new Date()).toString();
+                    jObj.put("fecha", fechaCupon);
                     Ofertalocal oferLoc = listadoOfertaLocal().stream().filter((ofl) -> ofl.getOferta().getIdOferta().intValue() == dtof.getOferta().getIdOferta().intValue()).findFirst().orElse(null);
                     int id_local = oferLoc == null ? 0 : oferLoc.getLocal().getIdLocal().intValue();
                     jObj.put("id_local", id_local);
@@ -378,7 +383,7 @@ public class OfertaServlet extends HttpServlet {
         servicios.DetalleOfertaService port = service_3.getDetalleOfertaServicePort();
         return port.listadoDetalleOferta();
     }
-    
+
     private String modificarOferta(int id, java.lang.String nombre, java.lang.String descripcion, int precioOferta, int minCompras, int maxCompras, javax.xml.datatype.XMLGregorianCalendar fechaActulizacion) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -400,4 +405,4 @@ public class OfertaServlet extends HttpServlet {
         return port.dejarDePublicarOferta(id);
     }
 
-    }
+}

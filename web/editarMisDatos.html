@@ -79,7 +79,7 @@
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarNombreSesion">
-                                    <a class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
                                     <!--<a class="dropdown-item waves-effect waves-light" href="#" > Mis datos  <i class="fa fa-address-card-o"></i></a>-->
                                 </div>
                             </li>
@@ -173,17 +173,27 @@
                                                 <input type="checkbox" id="checAceptaInformativo" name="checAceptaInformativo" class="form-control" value="1">
                                                 <label for="checAceptaInformativo">¿Recibir noticias?</label>
                                             </div>
-                                            <div class="md-form">
+                                            <div class="md-form form-sm">
                                                 <i class="fa fa-map prefix"></i>
-                                                <select name="selectCiudades" id="selectCiudades" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%">
-                                                    <option value="1">Ciudad01</option>
-                                                </select>
-                                                <label for="selectCiudades">Ciudad</label>
+                                                <select name="selectRegion" id="selectRegion" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Region 1</option>
+                                                    <option value="2">Region 2</option></select>
+                                                <label for="selectRegion">Region</label>
                                             </div>
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-map prefix"></i>
+                                                <select name="selectComuna" id="selectComuna" class="browser-default form-control select-izquerdo" style="width: 30%;margin-left: 30%" required="">
+                                                    <option disabled="" selected="">Seleccione</option>
+                                                    <option value="1">Comuna 1</option>
+                                                    <option value="2">Comuna 2</option></select>
+                                                <label for="selectComuna">Comuna</label>
+                                            </div>
+
                                             <div class="text-center">
                                                 <a id="btnCancelar" class="pull-left btn btn-grey waves-effect waves-light" href="index.html">Volver</a>
-                                                <button type="button"  value="btnRegistroFalso" id="btnRegistroFalso" class="pull-right btn btn-default waves-effect waves-float">Registrar</button>
-                                                <button type="submit" name="btnAccion" value="segundoRegistro" id="btnRegistrarse" style="display: none" class="pull-right btn btn-default waves-effect waves-float">Registrar</button>
+                                                <button type="button"  value="btnRegistroFalso" id="btnRegistroFalso" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
+                                                <button type="submit" name="btnAccion" value="segundoRegistro" id="btnRegistrarse" style="display: none" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -212,17 +222,11 @@
                         <div class="text-center d-flex justify-content-center my-4">
 
                             <!--Facebook-->
-                            <a class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
+                            <a target="_blank" href="https://www.facebook.com/Mis-Ofertas-144741596169745/" class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
                             <!--Twitter-->
-                            <a class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>
-                            <!--Google +-->
-                            <a class="icons-sm gplus-ic"><i class="fa fa-google-plus white-text fa-lg pr-md-4"> </i></a>
-                            <!--Linkedin-->
-                            <a class="icons-sm li-ic"><i class="fa fa-linkedin white-text fa-lg pr-md-4"> </i></a>
+                            <a target="_blank" href="https://twitter.com/MisOfertasCl" class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>                           
                             <!--Instagram-->
-                            <a class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>
-                            <!--Pinterest-->
-                            <a class="icons-sm pin-ic"><i class="fa fa-pinterest white-text fa-lg pr-md-4"> </i></a>
+                            <a target="_blank" href="https://www.instagram.com/misofertas.cl/?hl=es" class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>                            
                         </div>
 
                     </div>
@@ -237,6 +241,7 @@
             <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
                 <div class="container-fluid">
                     Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
 
                 </div>
             </div>
@@ -257,85 +262,111 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
 
         <script type="text/javascript" src="js/commons.js"></script>
+        <script type="text/javascript" src="js/control-login-registrer.js"></script>
+
 
 
 
         <script>
-            var param = getParameterByName('d');
-            var idCiudad;
-            $(document).ready(function () {
+                                        var param = getParameterByName('d');
+                                        var idCiudad;
+                                        $(document).ready(function () {
 //                $("#check").click();
-                $("#check").change(function () {
-                    console.log("Entro al cambioo");
-                    $("#contenedor-contras").collapse('toggle');
-                });
-                listarCiudades();
-                getMisDatos();
+                                            $("#check").change(function () {
+                                                console.log("Entro al cambioo");
+                                                $("#contenedor-contras").collapse('toggle');
+                                            });
+                                            listarRegiones();
 
-            });
-            function getMisDatos() {
-                $.ajax({
-                    type: "POST",
-                    url: "UsuarioServlet",
-                    data: {"accion": "getDataSession"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        console.log(" success: getMisDatos()");
-                        console.log(data);
-                        if (data.sesion == 1) {
-                            $("#navbarNombreSesion").text(data.correo);
-                            $("#txtCorreo").val(data.correo);
-                            $("#txtCorreo").focus();
-                            $("#txtNombre").val(data.nombre);
-                            $("#txtNombre").focus();
-                            $("#txtApellido").val(data.apellido);
-                            $("#txtApellido").focus();
-                            $("#txtRut").val(data.rut);
-                            $("#txtRut").focus();
-                            $("#txtFechaNacimiento").val(data.fecha);
-                            $("#txtFechaNacimiento").val(data.fecha);
-                            $("#selectCiudades").val(data.idCiudad);
-                            $("#selectSexo").val(data.sexo);
-                            idCiudad = data.idCiudad;
-                            $("#txtTelefono").val(data.telefono);
-                            $("#txtTelefono").focus();
-                            if (data.aceptaInformativo == 1) {
-                                $("#checAceptaInformativo").click();
-                            }
-                            $("#txtNombre").focus();
-                            $("#txtCorreo").prop("readonly", true);
-                        } else {
-                            location.href = "index.html";
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(" eer getMisDatos()");
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            }
-            function listarCiudades() {
-                $.ajax({
-                    type: "POST",
-                    url: "CiudadesServlet",
-                    data: {"accion": "listaCiudades"},
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        $("#selectCiudades").html("");
-                        var options;
-                        $(data).each(function (a, objeto, c) {
-                            options = options + '<option value="' + objeto.idc + '">' + objeto.nombre + '</option>';
-                        });
-                        $("#selectCiudades").html(options);
-                        $("#selectCiudades").val(idCiudad);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("error");
-                    }
-                });
-            }
+
+                                        });
+                                        function getMisDatos() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "UsuarioServlet",
+                                                data: {"accion": "getDataSession"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    console.log(" success: getMisDatos()");
+                                                    console.log(data);
+                                                    if (data.sesion == 1) {
+                                                        $("#navbarNombreSesion").text(data.correo);
+                                                        $("#txtCorreo").val(data.correo);
+                                                        $("#txtCorreo").focus();
+                                                        $("#txtNombre").val(data.nombre);
+                                                        $("#txtNombre").focus();
+                                                        $("#txtApellido").val(data.apellido);
+                                                        $("#txtApellido").focus();
+                                                        $("#txtRut").val(data.rut);
+                                                        $("#txtRut").focus();
+                                                        $("#txtFechaNacimiento").val(data.fecha);
+//                                                        $('#txtFechaNacimiento').datepicker('setDate', data.fecha);
+                                                        console.log(data.fecha);
+                                                        $("#txtFechaNacimiento").val(data.fecha);
+                                                        $("#selectComuna").val(data.idCiudad);
+                                                        $("#selectRegion").val($("#selectComuna option:selected").attr("idreg"));
+                                                        $("#selectSexo").val(data.sexo);
+                                                        idCiudad = data.idCiudad;
+                                                        $("#txtTelefono").val(data.telefono);
+                                                        $("#txtTelefono").focus();
+                                                        if (data.aceptaInformativo == 1) {
+                                                            $("#checAceptaInformativo").click();
+                                                        }
+                                                        $("#txtNombre").focus();
+                                                        $("#txtCorreo").prop("readonly", true);
+                                                    } else {
+                                                        location.href = "index.html";
+                                                    }
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer getMisDatos()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
+                                        function listarRegiones() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "RegionServlet",
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    $("#selectRegion").html("");
+                                                    var options = '<option value="" >Regiones</option>';
+                                                    $(data).each(function (a, objeto, c) {
+                                                        options = options + '<option value="' + objeto.idreg + '">' + objeto.nombre + '</option>';
+                                                    });
+                                                    $("#selectRegion").html(options);
+                                                    $("#selectComuna").prop("required", true);
+                                                    listarComunas();
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log("error");
+                                                }
+                                            });
+                                        }
+                                        function listarComunas() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "ComunaServlet",
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    $("#selectComuna").html("");
+                                                    var options = '<option value="" >Comunas</option>';
+                                                    $(data).each(function (a, objeto, c) {
+                                                        options = options + '<option idreg="' + objeto.idreg + '" value="' + objeto.idcom + '">' + objeto.nombre + '</option>';
+                                                    });
+                                                    $("#selectComuna").html(options);
+                                                    $("#selectComuna").prop("required", true);
+                                                    getMisDatos();
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log("error");
+                                                    return false;
+                                                }
+                                            });
+                                        }
         </script>
 
     </body>

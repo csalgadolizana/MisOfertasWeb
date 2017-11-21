@@ -6,9 +6,33 @@
 
 
 $(document).ready(function () {
+
+    $("#selectRegion").change(function () {
+        $("#selectComuna").children().each(function (i, div) {
+            if ($(this).attr("idreg") != $("#selectRegion").val()) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+            if (i == 0) {
+                console.log($(this).html());
+                //$("#selectComuna").val(null);
+                $(this).show();
+            }
+        });
+    });
+    $("#selectComuna").change(function () {
+        if ($(this).val() != -1) {
+            $("#selectRegion").val($(this).find("option:selected").attr("idreg"));
+        } else {
+            $("#selectRegion").val(-1);
+        }
+        $("#selectRegion").change();
+    });
+
     pedirDatosDeRegistro();
-    listarCiudades();
     comprobarSiCorreoExiste();
+
     $('#centralModalError').on('hidden.bs.modal', function (e) {
         $("#txtCorreo").focus();
     });
@@ -96,6 +120,7 @@ function pedirDatosDeRegistro() {
                 $("#txtPasswd2").val(data.password2);
                 $("#navbarNombreSesion").text(data.correo);
             }
+            listarRegiones();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("error");
@@ -106,22 +131,44 @@ function pedirDatosDeRegistro() {
     });
     $("#txtNombre").focus();
 }
-function listarCiudades() {
+function listarRegiones() {
     $.ajax({
         type: "POST",
-        url: "CiudadesServlet",
-        data: {"accion": "listaCiudades"},
+        url: "RegionServlet",
         dataType: "json",
         success: function (data, textStatus, jqXHR) {
-            $("#selectCiudades").html("");
-            var options;
+            $("#selectRegion").html("");
+            var options = '<option value="" >Regiones</option>';
             $(data).each(function (a, objeto, c) {
-                options = options + '<option value="' + objeto.idc + '">' + objeto.nombre + '</option>';
+                options = options + '<option value="' + objeto.idreg + '">' + objeto.nombre + '</option>';
             });
-            $("#selectCiudades").html(options);
+            $("#selectRegion").html(options);
+            $("#selectComuna").prop("required", true);
+            listarComunas();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("error");
+        }
+    });
+}
+function listarComunas() {
+    $.ajax({
+        type: "POST",
+        url: "ComunaServlet",
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            $("#selectComuna").html("");
+            var options = '<option value="" >Comunas</option>';
+            $(data).each(function (a, objeto, c) {
+                options = options + '<option idreg="' + objeto.idreg + '" value="' + objeto.idcom + '">' + objeto.nombre + '</option>';
+            });
+            $("#selectComuna").html(options);
+            $("#selectComuna").prop("required", true);
+            return true;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("error");
+            return false;
         }
     });
 }

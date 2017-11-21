@@ -83,8 +83,10 @@ public class UsuarioServlet extends HttpServlet {
             jObj.put("aceptaInformativo", cliente.getAceptaInformativo());
             System.out.println("aceptaInformativo " + cliente.getAceptaInformativo());
             jObj.put("idCiudad", cliente.getCiudadIdCiudad().getIdCiudad().intValue());
-            DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = cliente.getFechaNacimiento().toGregorianCalendar().getTime();
+            System.err.println("sdf.format(fecha) " + cliente.getFechaNacimiento().getYear());
+            System.err.println("sdf.format(fecha) " + sdf.format(fecha));
             jObj.put("fecha", sdf.format(fecha));
         } else {
             if (usuario != null) {

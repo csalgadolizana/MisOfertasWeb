@@ -48,7 +48,7 @@ public class ProductoServlet extends HttpServlet {
     private String rutaForDB;
 
     private final String rutaForDBDefaul = "img\\productos\\";
-    private final String rutaDefaulRaiz = "C:\\Users\\PC-Cristopher\\Documents\\NetBeansProjects\\MisOfertasWeb\\web\\";
+    private final String rutaDefaulRaiz = "C:\\Users\\PC-Cristopher\\Desktop\\Portafolio\\MisOfertasWeb\\web\\";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

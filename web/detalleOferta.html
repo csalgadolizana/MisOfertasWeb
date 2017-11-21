@@ -293,6 +293,7 @@
             <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
                 <div class="container-fluid">
                     Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
 
                 </div>
             </div>
@@ -387,7 +388,7 @@
                                         btn = '<a data-toggle="modal" data-target="#modalLoginForm" class="btn btn-info btn-lg" href="#">Obtener descuento &raquo;</a>';
                                     }
                                     $("#pAcupon").html(btn);
-                                    caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >' + img + titulo + texto + btn + '</div>';
+                                    caja = caja + '<div id="' + objeto.idof + '" class="col-lg-4" tienda="' + objeto.id_local + '" categoria="' + objeto.idcat + '" >'  + texto  + '</div>';
                                 } else {
                                     alert("Oferta no disponible");
                                 }
