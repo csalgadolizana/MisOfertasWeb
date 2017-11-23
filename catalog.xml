@@ -112,7 +112,6 @@
     <system systemId="http://localhost:8080/MisOfertasWebService/LocalService?WSDL" uri="src/conf/xml-resources/web-service-references/LocalService/wsdl/localhost_8080/MisOfertasWebService/LocalService.wsdl"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/LocalService?xsd=1" uri="src/conf/xml-resources/web-service-references/LocalService/wsdl/localhost_8080/MisOfertasWebService/LocalService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?WSDL" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl"/>
-    <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?xsd=1" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.xsd_1.xsd"/>
     <system systemId="http://localhost:21823/MisOfertasWebService/CargarPuntosService?wsdl" uri="src/conf/xml-resources/web-service-references/CargarPuntosService/wsdl/localhost_21823/MisOfertasWebService/CargarPuntosService.wsdl"/>
     <system systemId="http://localhost:21823/MisOfertasWebService/CargarPuntosService?xsd=1" uri="src/conf/xml-resources/web-service-references/CargarPuntosService/wsdl/localhost_21823/MisOfertasWebService/CargarPuntosService.xsd_1.xsd"/>
     <system systemId="http://localhost:21823/MisOfertasWebService/UsuarioService?wsdl" uri="src/conf/xml-resources/web-service-references/UsuarioService/wsdl/localhost_21823/MisOfertasWebService/UsuarioService.wsdl"/>
@@ -153,4 +152,6 @@
     <system systemId="http://localhost:21823/MisOfertasWebService/CiudadService?xsd=1" uri="src/conf/xml-resources/web-service-references/CiudadService/wsdl/localhost_21823/MisOfertasWebService/CiudadService.xsd_1.xsd"/>
     <system systemId="http://localhost:21823/MisOfertasWebService/RegionService?wsdl" uri="src/conf/xml-resources/web-service-references/RegionService/wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl"/>
     <system systemId="http://localhost:21823/MisOfertasWebService/RegionService?xsd=1" uri="src/conf/xml-resources/web-service-references/RegionService/wsdl/localhost_21823/MisOfertasWebService/RegionService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?wsdl" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?xsd=1" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.xsd_1.xsd"/>
 </catalog>

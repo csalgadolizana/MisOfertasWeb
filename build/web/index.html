@@ -56,12 +56,14 @@
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
-                                    <a data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#" data-toggle="modal" data-target="#modalSubscriptionForm">Registrate</a>
+                                    <a id="aCerrarSesion" onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <a id="aIniciarSesion" data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
+                                    <a id="aRegistrate" class="dropdown-item waves-effect waves-light" href="#" data-toggle="modal" data-target="#modalSubscriptionForm">Registrate</a>
                                 </div>
                             </li>
                         </ul>
@@ -189,20 +191,20 @@
                                 <!--Post data-->
                                 <div class="card-body text-center">
                                     <h2><a><strong>El mejor sitio web de Ofertas</strong></a></h2>
-                                    <p>Creado por <a href="https://github.com/csalgadolizana/">Cristopher Salgado</a></p>
 
                                     <!--Social shares-->
                                     <div class="social-counters ">
 
                                         <!--Facebook-->
-                                        <a class="btn btn-git " href="https://github.com/csalgadolizana/" >
-                                            <i class="fa fa-github left "></i>
-                                            <span class="hidden-md-down ">GitHub</span>
-                                        </a>
-                                        <span class="counter ">46</span>
+                                        <!--                                        <a class="btn btn-git " href="https://github.com/csalgadolizana/" >
+                                                                                    <i class="fa fa-github left "></i>
+                                                                                    <span class="hidden-md-down ">GitHub</span>
+                                                                                </a>
+                                                                                <span class="counter ">46</span>-->
 
                                         <!--Twitter-->
-                                        <a class="btn btn-fb " href="https://www.facebook.com/cristopher.a.salgado">
+                                        <!--<a class="btn btn-fb " target="_blank" href="https://www.facebook.com/cristopher.a.salgado">-->
+                                        <a class="btn btn-fb " target="_blank" href="https://www.facebook.com/Mis-Ofertas-144741596169745/">
                                             <i class="fa fa-facebook left "></i>
                                             <span class="hidden-md-down ">Facebook</span>
                                         </a>
@@ -464,6 +466,7 @@
             <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
                 <div class="container-fluid">
                     Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
 
                 </div>
             </div>
@@ -617,6 +620,42 @@
             </div>
             <!-- Modal Medium Danger-->
 
+            <div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-success" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--<form action="OfertaServlet" method="POST">-->
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p id="titulo" class="heading lead">Realmente desea dejar de publicar la oferta</p>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center" id="divTextoAlerta">
+                                <i id="liBien" class="fa fa-check  fa-4x mb-3 animated rotateIn"></i>
+                                <i id="liMal" class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+                                <!--<p id="pIdOfertadej"></p>-->
+                                <!--<input id="inputIdOfertadej" name="inputIdOfertadej" type="number" style="display: none">-->
+                            </div>
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">
+                            <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
+                            <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Entendido <i class="fa fa-hand-paper-o  ml-1"></i></a>
+                            <!--<button name="accion" value="btnDejarDePublicar" type="submit" class="btn btn-outline-secondary-modal waves-effect">Dejar de publicar <i class="fa fa-hand-paper-o  ml-1"></i></button>-->
+                        </div>
+                        <!--</form>-->
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+
         </div>
         <!--fin caja modals-->
 
@@ -632,6 +671,73 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
 
         <script type="text/javascript" src="js/control-login-registrer.js"></script>
+        <script type="text/javascript" src="js/commons.js"></script>
+        <script>
+                                        $(document).ready(function () {
+                                            modalRespuesta();
+                                            getMisDatos();
+                                        });
+                                        function modalRespuesta() {
+                                            var operacion = getParameterByName("ope");
+                                            var estado = getParameterByName("sta");
+                                            var tipo = getParameterByName("tipo");
+                                            var texOper = "";
+                                            var texTipo = "";
+                                            if (operacion != null) {
+                                                switch (operacion) {
+                                                    case "reg":
+                                                        texOper = "Registro de usuario";
+                                                        break;
+                                                }
+                                                if (estado == "true") {
+                                                    $("#liBien").show();
+                                                    $("#liMal").hide();
+                                                    $("#modalMensaje > div ").addClass("modal-success");
+                                                    $("#modalMensaje > div ").removeClass("modal-warning");
+                                                } else {
+                                                    $("#modalMensaje > div ").addClass("modal-warning");
+                                                    $("#modalMensaje > div ").removeClass("modal-success");
+                                                    $("#liMal").show();
+                                                    $("#liBien").hide();
+                                                }
+//                                                if (tipo == "prod") {
+//                                                    $("#liAdminProductos").click();
+//                                                    $("#aAdminProductos").click();
+//                                                    texTipo = "producto";
+//                                                } else {
+//                                                    texTipo = "oferta";
+//                                                }
+                                                $("#titulo").html(texOper + texTipo);
+                                                $("#modalMensaje").modal("show");
+                                            }
+                                        }
+                                        function getMisDatos() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "UsuarioServlet",
+                                                data: {"accion": "getDataSession"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    if (data.sesion == 1) {
+                                                        console.log(" success: getMisDatos()");
+                                                        console.log(data);
+                                                        $("#navbarNombreSesion").text(data.correo);
+                                                        $("#aRegistrate").hide();
+                                                        $("#aIniciarSesion").hide();
+                                                    } else {
+                                                        $("#aCerrarSesion").hide();
+                                                        $("#toEditarMisDatos").hide();
+                                                    }
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer getMisDatos()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
+        </script>
     </body>
 
 </html>

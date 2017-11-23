@@ -81,6 +81,9 @@
                             <li id="liAdminProductos" class="nav-item">
                                 <a id="aAdminProductos" class="nav-link"  href="#">Productos</a>
                             </li>
+                            <li id="liVistaCliente" class="nav-item">
+                                <a id="aVistaCliente" class="nav-link"  href="accesoCliente.html">Vista cliente</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
@@ -89,7 +92,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
                                     <a onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
-                                    <a class="dropdown-item waves-effect waves-light" href="#" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                    <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
                                 </div>
                             </li>
                         </ul>
@@ -552,7 +555,7 @@
             <!--Fin Modal Administrar Productos-->
 
             <div class="modal fade" id="modalPublicarOferta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-warning" role="document">
+                <div class="modal-dialog modal-notify modal-info" role="document">
                     <!--Content-->
                     <div class="modal-content">
                         <form action="OfertaServlet" method="POST">
@@ -568,8 +571,8 @@
                             <!--Body-->
                             <div class="modal-body">
                                 <div class="text-center" id="divTextoAlerta">
-                                    <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
-                                    <p id="pIdOferta"></p>
+                                    <i class="fa fa-question-circle fa-4x mb-3 animated rotateIn"></i>
+                                    <p id="pIdOferta" style="display: none"></p>
                                     <input id="inputIdOferta" name="inputIdOferta" type="number" style="display: none">
                                 </div>
                             </div>
@@ -602,8 +605,8 @@
                             <!--Body-->
                             <div class="modal-body">
                                 <div class="text-center" id="divTextoAlerta">
-                                    <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
-                                    <p id="pIdOfertadej"></p>
+                                    <i class="fa fa-exclamation-circle fa-4x mb-3 animated rotateIn"></i>
+                                    <p id="pIdOfertadej" style="display: none"></p>
                                     <input id="inputIdOfertadej" name="inputIdOfertadej" type="number" style="display: none">
                                 </div>
                             </div>
@@ -615,6 +618,41 @@
                                 <button name="accion" value="btnDejarDePublicar" type="submit" class="btn btn-outline-secondary-modal waves-effect">Dejar de publicar <i class="fa fa-hand-paper-o  ml-1"></i></button>
                             </div>
                         </form>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--<form action="OfertaServlet" method="POST">-->
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p id="titulo" class="heading lead">Realmente desea dejar de publicar la oferta</p>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center" id="divTextoAlerta">
+                                <i id="liBien" class="fa fa-check  fa-4x mb-3 animated rotateIn"></i>
+                                <i id="liMal" class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+                                <!--<p id="pIdOfertadej"></p>-->
+                                <!--<input id="inputIdOfertadej" name="inputIdOfertadej" type="number" style="display: none">-->
+                            </div>
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">
+                            <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
+                            <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Entendido <i class="fa fa-hand-paper-o  ml-1"></i></a>
+                            <!--<button name="accion" value="btnDejarDePublicar" type="submit" class="btn btn-outline-secondary-modal waves-effect">Dejar de publicar <i class="fa fa-hand-paper-o  ml-1"></i></button>-->
+                        </div>
+                        <!--</form>-->
                     </div>
                     <!--/.Content-->
                 </div>
@@ -654,6 +692,7 @@
             <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
                 <div class="container-fluid">
                     Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
 
                 </div>
             </div>
@@ -672,6 +711,7 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script type="text/javascript" src="js/commons.js"></script>
 
 
 
@@ -816,8 +856,46 @@
                                         clickOnCheckFoto();
                                         getMisDatos();
                                         comprobarSiCorreoExiste();
-
+                                        modalRespuesta();
                                     });
+                                    function modalRespuesta() {
+                                        var operacion = getParameterByName("ope");
+                                        var estado = getParameterByName("sta");
+                                        var tipo = getParameterByName("tipo");
+                                        var texOper = "";
+                                        var texTipo = "";
+                                        if (operacion != null) {
+                                            switch (operacion) {
+                                                case "mod":
+                                                    texOper = "Modificacion de ";
+                                                    break;
+                                                case "add":
+                                                    texOper = "Creacion de ";
+                                                    break;
+                                            }
+                                            if (estado == "true") {
+                                                $("#liBien").show();
+                                                $("#liMal").hide();
+                                                $("#modalMensaje > div ").addClass("modal-success");
+                                                $("#modalMensaje > div ").removeClass("modal-warning");
+                                            } else {
+                                                $("#modalMensaje > div ").addClass("modal-warning");
+                                                $("#modalMensaje > div ").removeClass("modal-success");
+                                                $("#liMal").show();
+                                                $("#liBien").hide();
+                                            }
+                                            if (tipo == "prod") {
+                                                $("#liAdminProductos").click();
+                                                $("#aAdminProductos").click();
+                                                texTipo = "producto";
+                                            } else {
+                                                texTipo = "oferta";
+                                            }
+                                            $("#titulo").html(texOper + texTipo);
+                                            $("#modalMensaje").modal("show");
+                                        }
+                                    }
+
                                     function getMisDatos() {
                                         $.ajax({
                                             type: "POST",
@@ -957,7 +1035,7 @@
                                             success: function (data, textStatus, jqXHR) {
                                                 $("#selectTiendas").html("");
                                                 $("#selectTiendas2").html("");
-                                                var options = '<option selected="selected" value="-1">Local</option>';
+                                                var options = '<option selected="selected" >Local</option>';
                                                 $(data).each(function (a, objeto, c) {
                                                     options = options + '<option idreg="' + objeto.idl + '"  idcom="' + objeto.idcom + '"  value="' + objeto.idl + '">' + objeto.nombre + '</option>';
                                                 });
@@ -1042,8 +1120,7 @@
 //                                                    var tag = td.estado == 2 ? icono_equis : icono_check;
                                                     var callFuncEdiOferta = "'" + td.idpro + "','" + td.nombre + "','" + td.desc + "','" + td.precio + "','" + td.imagen + "','" + td.idcat + "'";
                                                     var accion = '\
-                                            <a><i class="fa fa-share-alt fa-2x mb-3" aria-hidden="true" style="color: #33b5e5"></i></a>   \n\
-\n                                          <a style="margin-left:2px" onclick="editarProductoModal(' + callFuncEdiOferta + ')"><i class="fa fa fa-cog fa-2x mb-3" aria-hidden="true" style="color: #c2c4b8"></i></a>';
+                                            <a style="margin-left:2px" onclick="editarProductoModal(' + callFuncEdiOferta + ')"><i class="fa fa fa-cog fa-2x mb-3" aria-hidden="true" style="color: #c2c4b8"></i></a>';
                                                     TRs = TRs + "<tr>";
                                                     TRs = TRs +
                                                             '<td>' + td.idpro + '</td>' +

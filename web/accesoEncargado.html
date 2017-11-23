@@ -555,7 +555,7 @@
             <!--Fin Modal Administrar Productos-->
 
             <div class="modal fade" id="modalPublicarOferta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-warning" role="document">
+                <div class="modal-dialog modal-notify modal-info" role="document">
                     <!--Content-->
                     <div class="modal-content">
                         <form action="OfertaServlet" method="POST">
@@ -571,8 +571,8 @@
                             <!--Body-->
                             <div class="modal-body">
                                 <div class="text-center" id="divTextoAlerta">
-                                    <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
-                                    <p id="pIdOferta"></p>
+                                    <i class="fa fa-question-circle fa-4x mb-3 animated rotateIn"></i>
+                                    <p id="pIdOferta" style="display: none"></p>
                                     <input id="inputIdOferta" name="inputIdOferta" type="number" style="display: none">
                                 </div>
                             </div>
@@ -605,8 +605,8 @@
                             <!--Body-->
                             <div class="modal-body">
                                 <div class="text-center" id="divTextoAlerta">
-                                    <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
-                                    <p id="pIdOfertadej"></p>
+                                    <i class="fa fa-exclamation-circle fa-4x mb-3 animated rotateIn"></i>
+                                    <p id="pIdOfertadej" style="display: none"></p>
                                     <input id="inputIdOfertadej" name="inputIdOfertadej" type="number" style="display: none">
                                 </div>
                             </div>
@@ -876,7 +876,11 @@
                                             if (estado == "true") {
                                                 $("#liBien").show();
                                                 $("#liMal").hide();
+                                                $("#modalMensaje > div ").addClass("modal-success");
+                                                $("#modalMensaje > div ").removeClass("modal-warning");
                                             } else {
+                                                $("#modalMensaje > div ").addClass("modal-warning");
+                                                $("#modalMensaje > div ").removeClass("modal-success");
                                                 $("#liMal").show();
                                                 $("#liBien").hide();
                                             }
@@ -1031,7 +1035,7 @@
                                             success: function (data, textStatus, jqXHR) {
                                                 $("#selectTiendas").html("");
                                                 $("#selectTiendas2").html("");
-                                                var options = '<option selected="selected" value="-1">Local</option>';
+                                                var options = '<option selected="selected" >Local</option>';
                                                 $(data).each(function (a, objeto, c) {
                                                     options = options + '<option idreg="' + objeto.idl + '"  idcom="' + objeto.idcom + '"  value="' + objeto.idl + '">' + objeto.nombre + '</option>';
                                                 });

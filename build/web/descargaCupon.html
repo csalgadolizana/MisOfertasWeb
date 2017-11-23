@@ -16,6 +16,10 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/compiled.min.css" rel="stylesheet">
         <style>
+            th > p{
+                font-size:0.5rem;
+                margin: 0;
+            }
             .mi-select{
                 font-size: 18px;
                 font-family: inherit;
@@ -118,7 +122,7 @@
                                             <div id="divCupon" class="row col-md-12 offset-3"  style="border: 1px solid red;padding: 3px;display: none" >
                                                 <div class="row" style="padding: 3px">
                                                     <!--<center>-->
-                                                    <div class="col-md-9">
+                                                    <div class="col-md-9" style="/*margin-right:0;padding-right:0;*/">
                                                         <table id="tabla-tabla" >
                                                             <tr>
                                                                 <td colspan="3"><h1 class="h1">Cupon MisOfertass</h1></td>
@@ -139,10 +143,18 @@
                                                             </center>
                                                             </td>
                                                             </tr>
+                                                            <tfoot>
+                                                            <th colspan="3" style="">
+                                                                <p>*El cupón solo se puede utilizar una vez excepto con los cupones especificados.</p>
+                                                                <p>*Los cupones no son acumulables con otros en curso.</p>
+                                                                <p>*Los cupones no se pueden cambiar por dinero en efectivo en el establecimiento o empresa.</p>
+                                                                <p>*Los cupones son validos solo por 5 dias habiles a partir de la fecha de emision. <span id="etiquetaFecha"></span></p>
+                                                            </th>
+                                                            </tfoot>
                                                         </table>
                                                     </div>
                                                     <!--</center>-->
-                                                    <div class="col-md-1 ">
+                                                    <div class="col-md-1 "  style="">
                                                         <img id="imgCupon" class="img-circle" src="img/productos/note-lenovo.jpg" alt="Generic placeholder image" width="130" height="140">
                                                     </div>
                                                 </div>
@@ -179,6 +191,8 @@
 
         <!--Footer-->
         <footer class="page-footer indigo center-on-small-only pt-0">
+
+            <!--Footer Links-->
             <div class="container">
 
                 <!--First row-->
@@ -190,17 +204,11 @@
                         <div class="text-center d-flex justify-content-center my-4">
 
                             <!--Facebook-->
-                            <a class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
+                            <a target="_blank" href="https://www.facebook.com/Mis-Ofertas-144741596169745/" class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
                             <!--Twitter-->
-                            <a class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>
-                            <!--Google +-->
-                            <a class="icons-sm gplus-ic"><i class="fa fa-google-plus white-text fa-lg pr-md-4"> </i></a>
-                            <!--Linkedin-->
-                            <a class="icons-sm li-ic"><i class="fa fa-linkedin white-text fa-lg pr-md-4"> </i></a>
+                            <a target="_blank" href="https://twitter.com/MisOfertasCl" class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>                           
                             <!--Instagram-->
-                            <a class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>
-                            <!--Pinterest-->
-                            <a class="icons-sm pin-ic"><i class="fa fa-pinterest white-text fa-lg pr-md-4"> </i></a>
+                            <a target="_blank" href="https://www.instagram.com/misofertas.cl/?hl=es" class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>                            
                         </div>
 
                     </div>
@@ -211,10 +219,12 @@
 
             </div>
             <!--/Footer Links-->
+
             <!--Copyright-->
             <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
                 <div class="container-fluid">
                     Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
 
                 </div>
             </div>
@@ -291,7 +301,7 @@
                                                         $(data).each(function (a, objeto, c) {
                                                             if (objeto.idof == param) {
                                                                 if (objeto.estado == 1) {
-
+                                                                    $("#etiquetaFecha").html(objeto.fecha);
                                                                     var porcentajeDecuento = '<span style="color: #000000;font-size:1.1rem"> Ahorras &raquo; $' + (objeto.precio_normal - objeto.precio_oferta).toLocaleString() + '</>';
                                                                     var texto = '<p>' + objeto.desc + '</p><p style="font-size:1rem">Antes :  $ ' + objeto.precio_normal.toLocaleString() + '</p><p style="color: #e4022d;" >Ahora :  $ ' + objeto.precio_oferta.toLocaleString() + "  " + porcentajeDecuento + ' </p>';
 

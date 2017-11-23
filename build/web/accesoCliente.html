@@ -99,13 +99,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contacto</a>
                             </li>
+                            <li id="liPanelAdmin" class="nav-item" style="display: none">
+                                <a id="aPanelAdmin" class="nav-link"  href="accesoEncargado.html">Panel de admin.</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false"><i class="fa fa-user"></i> Sesion 
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarNombreSesion">
+                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
                                     <a id="aCerrarSesion" onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
                                     <a id="toEditarMisDatos" class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
                                     <a id="aIniciarSesion" data-toggle="modal" data-target="#modalLoginForm" class="dropdown-item waves-effect waves-light" href="#">Iniciar Sesion</a>
@@ -315,6 +318,7 @@
             <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
                 <div class="container-fluid">
                     Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
 
                 </div>
             </div>
@@ -375,10 +379,12 @@
                                                         console.log(" success: getMisDatos()");
                                                         console.log(data);
                                                         $("#navbarNombreSesion").text(data.correo);
-                                                        $("#toEditarMisDatos").hide();
+                                                        $("#aRegistrate").hide();
                                                         $("#aIniciarSesion").hide();
+                                                        if (data.telefono == null) {
+                                                            $("#liPanelAdmin").show();
+                                                        }
                                                     } else {
-//                            $("#modalLoginForm").modal('show');
                                                         $("#aCerrarSesion").hide();
                                                         $("#toEditarMisDatos").hide();
                                                     }

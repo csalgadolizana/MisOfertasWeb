@@ -31,6 +31,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.simple.JSONObject;
 
 /**
@@ -99,8 +100,12 @@ public class ClienteServlet extends HttpServlet {
         System.out.println("correo " + correo);
         System.out.println("pass1 " + pass1);
 
+        pass1 = DigestUtils.sha1Hex(pass1.trim());
+
+        System.out.println("pass -> " + pass1);
+
 //        Cliente cli = listadoClientes().stream().filter((x) -> x.getCorreo().equals(correo) && x.getContrasena().equals(pass1)).findFirst().orElse(null);
-        Cliente cli = autenticacion(correo, pass1);
+        Cliente cli = (Cliente) autenticacion(correo, pass1);
         jObj = new JSONObject();
 //        En el caso de no encontrar nada retornará 0 en estado
         int idCliente = cli.getIdCliente().intValue();
@@ -118,13 +123,15 @@ public class ClienteServlet extends HttpServlet {
                 session.setAttribute("trabajador", us);
             }
         } else {
+            iniciaSesionCliente(idCliente);
             jObj.put("estado", idCliente);
             PrintWriter out = response.getWriter();
             response.setContentType("Content-Type: application/json");
             out.println(jObj);
             session.setAttribute("cliente", cli);
         }
-        session.setMaxInactiveInterval(1000);
+        System.out.println("´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´");
+        session.setMaxInactiveInterval(30);
     }
 
     public void returnClient(HttpServletRequest request, HttpServletResponse response)
@@ -219,15 +226,15 @@ public class ClienteServlet extends HttpServlet {
 
         Cliente cli = Collections.max(listadoClientes(), Comparator.comparing(Cliente::getIdCliente));
         System.err.println(ret);
-        jObj = new JSONObject();
-        if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
-            jObj.put("id", correo.trim());
-            jObj.put("correo", correo);
-            jObj.put("nombre", nombre);
-        }
+//        jObj = new JSONObject();
+//        if (correo.trim() != "" && pass1.trim() != "" && pass2.trim() != "") {
+//            jObj.put("id", correo.trim());
+//            jObj.put("correo", correo);
+//            jObj.put("nombre", nombre);
+//        }
         HttpSession session = request.getSession(true);
         session.setAttribute("cliente", cli);
-        response.sendRedirect("accesoCliente.html?d=" + cli.getIdCliente().toString());
+        response.sendRedirect("index.html?ope=reg&sta=true&tipo=cli");
     }
 
     public void returnRegister(HttpServletRequest request, HttpServletResponse response)
@@ -336,11 +343,18 @@ public class ClienteServlet extends HttpServlet {
         return port.listadoUsuarios();
     }
 
-    private Cliente autenticacion(java.lang.String correo, java.lang.String contrasena) {
+    private Object autenticacion(java.lang.String correo, java.lang.String contrasena) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         servicios.ClienteService port = service_1.getClienteServicePort();
         return port.autenticacion(correo, contrasena);
+    }
+
+    private int iniciaSesionCliente(int id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        servicios.ClienteService port = service_1.getClienteServicePort();
+        return port.iniciaSesionCliente(id);
     }
 
 }

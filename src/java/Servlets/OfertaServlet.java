@@ -274,9 +274,9 @@ public class OfertaServlet extends HttpServlet {
             crearOfertaLocal(0, desOfert, lastOferta.getIdOferta().intValue(), idTienda);
             crearDetalleOferta(0, idProducto, lastOferta.getIdOferta().intValue());
 
-            response.sendRedirect("accesoEncargado.html?ope=add&sta=false&tipo=offer");
-        } catch (Exception e) {
             response.sendRedirect("accesoEncargado.html?ope=add&sta=true&tipo=offer");
+        } catch (Exception e) {
+            response.sendRedirect("accesoEncargado.html?ope=add&sta=false&tipo=offer");
             System.err.println("Error en OfertaServlet -> crearOferta() " + e.getMessage());
         }
     }

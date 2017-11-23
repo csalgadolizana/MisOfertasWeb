@@ -4,23 +4,11 @@
 <xsd:import namespace="http://Servicios/" schemaLocation="http://localhost:8080/MisOfertasWebService/ClienteService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="Listado_clientes">
-<part name="parameters" element="tns:Listado_clientes"/>
+<message name="Modificar_cliente">
+<part name="parameters" element="tns:Modificar_cliente"/>
 </message>
-<message name="Listado_clientesResponse">
-<part name="parameters" element="tns:Listado_clientesResponse"/>
-</message>
-<message name="Eliminar_cliente">
-<part name="parameters" element="tns:Eliminar_cliente"/>
-</message>
-<message name="Eliminar_clienteResponse">
-<part name="parameters" element="tns:Eliminar_clienteResponse"/>
-</message>
-<message name="Autenticacion">
-<part name="parameters" element="tns:Autenticacion"/>
-</message>
-<message name="AutenticacionResponse">
-<part name="parameters" element="tns:AutenticacionResponse"/>
+<message name="Modificar_clienteResponse">
+<part name="parameters" element="tns:Modificar_clienteResponse"/>
 </message>
 <message name="Crear_cliente">
 <part name="parameters" element="tns:Crear_cliente"/>
@@ -28,55 +16,69 @@
 <message name="Crear_clienteResponse">
 <part name="parameters" element="tns:Crear_clienteResponse"/>
 </message>
-<message name="Modificar_cliente">
-<part name="parameters" element="tns:Modificar_cliente"/>
+<message name="Listado_clientes">
+<part name="parameters" element="tns:Listado_clientes"/>
 </message>
-<message name="Modificar_clienteResponse">
-<part name="parameters" element="tns:Modificar_clienteResponse"/>
+<message name="Listado_clientesResponse">
+<part name="parameters" element="tns:Listado_clientesResponse"/>
+</message>
+<message name="Autenticacion">
+<part name="parameters" element="tns:Autenticacion"/>
+</message>
+<message name="AutenticacionResponse">
+<part name="parameters" element="tns:AutenticacionResponse"/>
+</message>
+<message name="Eliminar_cliente">
+<part name="parameters" element="tns:Eliminar_cliente"/>
+</message>
+<message name="Eliminar_clienteResponse">
+<part name="parameters" element="tns:Eliminar_clienteResponse"/>
+</message>
+<message name="inicia_sesion_cliente">
+<part name="parameters" element="tns:inicia_sesion_cliente"/>
+</message>
+<message name="inicia_sesion_clienteResponse">
+<part name="parameters" element="tns:inicia_sesion_clienteResponse"/>
+</message>
+<message name="cerrar_sesion_cliente">
+<part name="parameters" element="tns:cerrar_sesion_cliente"/>
+</message>
+<message name="cerrar_sesion_clienteResponse">
+<part name="parameters" element="tns:cerrar_sesion_clienteResponse"/>
 </message>
 <portType name="ClienteService">
-<operation name="Listado_clientes">
-<input wsam:Action="http://Servicios/ClienteService/Listado_clientesRequest" message="tns:Listado_clientes"/>
-<output wsam:Action="http://Servicios/ClienteService/Listado_clientesResponse" message="tns:Listado_clientesResponse"/>
-</operation>
-<operation name="Eliminar_cliente">
-<input wsam:Action="http://Servicios/ClienteService/Eliminar_clienteRequest" message="tns:Eliminar_cliente"/>
-<output wsam:Action="http://Servicios/ClienteService/Eliminar_clienteResponse" message="tns:Eliminar_clienteResponse"/>
-</operation>
-<operation name="Autenticacion">
-<input wsam:Action="http://Servicios/ClienteService/AutenticacionRequest" message="tns:Autenticacion"/>
-<output wsam:Action="http://Servicios/ClienteService/AutenticacionResponse" message="tns:AutenticacionResponse"/>
+<operation name="Modificar_cliente">
+<input wsam:Action="http://Servicios/ClienteService/Modificar_clienteRequest" message="tns:Modificar_cliente"/>
+<output wsam:Action="http://Servicios/ClienteService/Modificar_clienteResponse" message="tns:Modificar_clienteResponse"/>
 </operation>
 <operation name="Crear_cliente">
 <input wsam:Action="http://Servicios/ClienteService/Crear_clienteRequest" message="tns:Crear_cliente"/>
 <output wsam:Action="http://Servicios/ClienteService/Crear_clienteResponse" message="tns:Crear_clienteResponse"/>
 </operation>
-<operation name="Modificar_cliente">
-<input wsam:Action="http://Servicios/ClienteService/Modificar_clienteRequest" message="tns:Modificar_cliente"/>
-<output wsam:Action="http://Servicios/ClienteService/Modificar_clienteResponse" message="tns:Modificar_clienteResponse"/>
+<operation name="Listado_clientes">
+<input wsam:Action="http://Servicios/ClienteService/Listado_clientesRequest" message="tns:Listado_clientes"/>
+<output wsam:Action="http://Servicios/ClienteService/Listado_clientesResponse" message="tns:Listado_clientesResponse"/>
+</operation>
+<operation name="Autenticacion">
+<input wsam:Action="http://Servicios/ClienteService/AutenticacionRequest" message="tns:Autenticacion"/>
+<output wsam:Action="http://Servicios/ClienteService/AutenticacionResponse" message="tns:AutenticacionResponse"/>
+</operation>
+<operation name="Eliminar_cliente">
+<input wsam:Action="http://Servicios/ClienteService/Eliminar_clienteRequest" message="tns:Eliminar_cliente"/>
+<output wsam:Action="http://Servicios/ClienteService/Eliminar_clienteResponse" message="tns:Eliminar_clienteResponse"/>
+</operation>
+<operation name="inicia_sesion_cliente">
+<input wsam:Action="http://Servicios/ClienteService/inicia_sesion_clienteRequest" message="tns:inicia_sesion_cliente"/>
+<output wsam:Action="http://Servicios/ClienteService/inicia_sesion_clienteResponse" message="tns:inicia_sesion_clienteResponse"/>
+</operation>
+<operation name="cerrar_sesion_cliente">
+<input wsam:Action="http://Servicios/ClienteService/cerrar_sesion_clienteRequest" message="tns:cerrar_sesion_cliente"/>
+<output wsam:Action="http://Servicios/ClienteService/cerrar_sesion_clienteResponse" message="tns:cerrar_sesion_clienteResponse"/>
 </operation>
 </portType>
 <binding name="ClienteServicePortBinding" type="tns:ClienteService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="Listado_clientes">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="Eliminar_cliente">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="Autenticacion">
+<operation name="Modificar_cliente">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -94,7 +96,43 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="Modificar_cliente">
+<operation name="Listado_clientes">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="Autenticacion">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="Eliminar_cliente">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="inicia_sesion_cliente">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cerrar_sesion_cliente">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -9,7 +9,10 @@ import servicios.Ciudad;
 import servicios.CiudadService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +26,10 @@ import org.json.simple.JSONObject;
  * @author PC-Cristopher
  */
 public class ComunaServlet extends HttpServlet {
-
+    
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/CiudadService.wsdl")
     private CiudadService_Service service;
-
+    
     JSONObject jObj;
     JSONArray listaJson;
 
@@ -54,13 +57,14 @@ public class ComunaServlet extends HttpServlet {
 //        }
         returnListComunas(request, response);
     }
-
+    
     private void returnListComunas(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
 //        response.setContentType("Content-Type: application/json");
         response.setContentType("text/html;charset=UTF-8");
         listaJson = new JSONArray();
-        List<Ciudad> list = listadoCiudades();
+        Comparator<Ciudad> comp = (c1, c2) -> c1.getNombre().compareToIgnoreCase(c2.getNombre());
+        List<Ciudad> list = listadoCiudades().stream().sorted(comp).collect(Collectors.toList());
         if (list != null) {
             for (Ciudad cat : list) {
                 if (cat != null) {
@@ -120,5 +124,5 @@ public class ComunaServlet extends HttpServlet {
         servicios.CiudadService port = service.getCiudadServicePort();
         return port.listadoCiudades();
     }
-
+    
 }
