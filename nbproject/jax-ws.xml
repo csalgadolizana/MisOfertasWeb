@@ -163,8 +163,8 @@
       </wsimport-options>
     </client>
     <client name="EmpresaService">
-      <wsdl-url>http://localhost:21823/MisOfertasWebService/EmpresaService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_21823/MisOfertasWebService/EmpresaService.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:8080/MisOfertasWebService/EmpresaService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/MisOfertasWebService/EmpresaService.wsdl</local-wsdl-file>
       <package-name>servicios</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>

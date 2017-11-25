@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Mis Ofertas</title>
+        <!-- Font Awesome -->
+        <link rel="icon" type="image/png" href="img/IconoMisOfertas.png">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/compiled.min.css" rel="stylesheet">
+        <style>
+            th > p{
+                font-size:0.5rem;
+                margin: 0;
+            }
+            .mi-select{
+                font-size: 18px;
+                font-family: inherit;
+                padding: 10px 16px;
+                border-radius:6px;
+                width: auto;
+                background-color: #fff;
+                border: 1px solid #ccc;
+            }
+            @media (max-width : 776px) {
+                .select-derecho{
+                    margin: auto!important;
+                    float: none !important;
+                    margin-bottom: 1rem!important;
+                }
+                .select-izquerdo{
+                    /*margin-top: 2rem;*/
+                    margin: auto!important;
+                    float: none !important;
+                }
+                h2{
+                    padding: 1rem!important;
+                }
+            }
+        </style>
+
+
+    </head>
+
+
+    <body>
+
+        <header style="padding-bottom: 55px">
+            <!--<header >-->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-red scrolling-navbar">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img src="img/IconoMisOfertas.png" style="height: 2rem" /><strong>Mis Ofertas</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="accesoCliente.html">Ofertas</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="#">Nosotros</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto nav-flex-icons">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarNombreSesion" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false"><i class="fa fa-user"></i> Sesion 
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                                    <a onclick="cerrarSesion()" class="dropdown-item waves-effect waves-light" href="index.html"> Cerrar Sesion  <i class="fa fa-window-close-o"></i></a>
+                                    <a class="dropdown-item waves-effect waves-light" href="editarMisDatos.html" > Mis datos  <i class="fa fa-address-card-o"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+
+        </header>
+        <!--Main Layout-->
+        <main>
+            <hr class="featurette-divider" style="margin-bottom: 2rem">
+
+            <!-- Marketing messaging and featurettes
+              ================================================== -->
+            <!-- Wrap the rest of the page in another container to center all the content. -->
+
+            <section>
+                <div class="row">
+                    <!--<center>-->
+                    <div class="col-lg-12 text-center">
+                        <div class="text-center">
+                            <h2>Nosotros</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="font-size: 20px; padding-left: 10rem; padding-right:  10rem">
+                                <p>Somos una empresa constituida por un gran equipo de trabajo de estudiantes de ingenieria en informatica de DuocUC
+                                    con el fin de ayudar a la gente en la busqueda de promociones o descuentos en la web de multiples retails.
+                                    Ademas de ayudar a las grandes empresas a disminuir sus perdidas por productos que se encuentren fuera de 
+                                    temporada o algun otro motivo.
+                                    Tambien se podran registrar en el newletter para poder recibir las promociones nuevas a su correo para 
+                                    poder estar con las promociones actualizadas.
+                                    Otra forma de estar informado de las promociones es siguiendonos en nuestras redes sociales las cuales 
+                                    se mantendran con las promociones activas con el fin de tener mas de una forma de estar siempre 
+                                    actualizado con las promociones de MisOfertas.</p>
+                                </br>
+                                <!--<a onclick="printPDF()" href="#" role="button">Descargar</a>-->
+                            </div>
+                            <div class="col-md-12">
+                                <center>
+                                    <a>
+                                        <!--<img class="img-responsive" src="https://image.prntscr.com/image/eaSJ_oT1SZSGNaXT0BDbRQ.jpg" alt="Generic placeholder image" width="750" height="300">-->
+                                        <img class="img-responsive" src="img/IconoMisOfertas.png" alt="Generic placeholder image" width="210" height="210">
+                                    </a>
+                                </center>
+                            </div>
+                            </br>
+                            <div class="col-md-12">
+                                <center>
+                                    <span>Comunicate con nosotros a través del correo<a href="mailto:misofertasretail@gmail.com?subject=Contacto"> misofertasretail@gmail.com</a> o con nuestra redes sociales.</span>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</center>-->
+                </div>
+
+            </section>
+
+
+            <!--<hr class="featurette-divider" style="margin-bottom: 120px">-->
+        </main>
+
+
+
+
+        <!--Footer-->
+        <footer class="page-footer indigo center-on-small-only pt-0">
+
+            <!--Footer Links-->
+            <div class="container">
+
+                <!--First row-->
+                <div class="row">
+
+                    <!--First column-->
+                    <div class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
+
+                        <div class="text-center d-flex justify-content-center my-4">
+
+                            <!--Facebook-->
+                            <a target="_blank" href="https://www.facebook.com/Mis-Ofertas-144741596169745/" class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg pr-md-4"> </i></a>
+                            <!--Twitter-->
+                            <a target="_blank" href="https://twitter.com/MisOfertasCl" class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg pr-md-4"> </i></a>                           
+                            <!--Instagram-->
+                            <a target="_blank" href="https://www.instagram.com/misofertas.cl/?hl=es" class="icons-sm ins-ic"><i class="fa fa-instagram white-text fa-lg pr-md-4"> </i></a>                            
+                        </div>
+
+                    </div>
+                    <!--/First column-->
+
+                </div>
+                <!--/First row-->
+
+            </div>
+            <!--/Footer Links-->
+
+            <!--Copyright-->
+            <div class="footer-copyright wow fadeIn" data-wow-delay="0.3s">
+                <div class="container-fluid">
+                    Copyright © 2017 <a href="#"> MisOfertas.cl</a>
+                    <span class="pull-right">Sito web creado por <a target="_blank" href="https://github.com/csalgadolizana/">Cristopher Salgado</a></span>
+
+                </div>
+            </div>
+            <!--/Copyright-->
+
+        </footer>
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+
+        <script type="text/javascript" src="js/commons.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+        <script src='jsPDF/dist/jspdf.debug.js'></script>
+        <script src='jsPDF/libs/html2pdf.js'></script>
+
+        <script>
+                                        var param = getParameterByName('idof');
+                                        $(document).ready(function () {
+                                            getMisDatos();
+                                        });
+                                        function getMisDatos() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "UsuarioServlet",
+                                                data: {"accion": "getDataSession"},
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    if (data.sesion == 1) {
+                                                        console.log(" success: getMisDatos()");
+                                                        console.log(data);
+                                                        $("#navbarNombreSesion").text(data.correo);
+                                                        crearCatalogo();
+                                                    } else {
+                                                        //                            $("#modalLoginForm").modal('show');
+//                                                    location.href = "accesoCliente.html";
+                                                    }
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer getMisDatos()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
+        </script>
+
+    </body>
+</html>

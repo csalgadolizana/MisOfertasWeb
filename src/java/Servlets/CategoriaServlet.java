@@ -9,7 +9,9 @@ import servicios.Categoria;
 //import services.CategoriaService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -103,7 +105,8 @@ public class CategoriaServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("Content-Type: application/json");
         listaJson = new JSONArray();
-        List<Categoria> list = listadoCategorias();
+        Comparator<Categoria> comparator = (o1, o2) -> o1.getDescripcion().compareToIgnoreCase(o2.getDescripcion());
+        List<Categoria> list = listadoCategorias().stream().sorted(comparator).collect(Collectors.toList());
         if (list != null) {
             for (Categoria cat : list) {
                 if (cat != null) {

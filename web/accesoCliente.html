@@ -84,7 +84,7 @@
             <!--<header >-->
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-red scrolling-navbar">
                 <div class="container">
-                    <a class="navbar-brand" href="#"><strong>Mis Ofertas</strong></a>
+                    <a class="navbar-brand" href="#"><img src="img/IconoMisOfertas.png" style="height: 2rem" /><strong>Mis Ofertas</strong></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -97,7 +97,7 @@
                                 <a class="nav-link" href="#">Ofertas <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contacto</a>
+                                <a class="nav-link" href="nosotros.html">Nosotros</a>
                             </li>
                             <li id="liPanelAdmin" class="nav-item" style="display: none">
                                 <a id="aPanelAdmin" class="nav-link"  href="accesoEncargado.html">Panel de admin.</a>
@@ -433,7 +433,7 @@
                                                     $("#selectTienda").html("");
                                                     var options = '<option selected="selected" disabled="">Tiendas</option>';
                                                     $(data).each(function (a, objeto, c) {
-                                                        options = options + '<option value="' + objeto.idl + '">' + objeto.nombre + '</option>';
+                                                        options = options + '<option value="' + objeto.idl + '" idreg="' + objeto.idreg + '" idcom="' + objeto.idcom + '">' + objeto.nombre + '</option>';
                                                     });
                                                     $("#selectTienda").html(options);
                                                 },

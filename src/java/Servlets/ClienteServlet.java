@@ -123,6 +123,7 @@ public class ClienteServlet extends HttpServlet {
                 session.setAttribute("trabajador", us);
             }
         } else {
+            jObj.put("isonline", cli.getIsonline().intValue());
             iniciaSesionCliente(idCliente);
             jObj.put("estado", idCliente);
             PrintWriter out = response.getWriter();
@@ -131,7 +132,7 @@ public class ClienteServlet extends HttpServlet {
             session.setAttribute("cliente", cli);
         }
         System.out.println("´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´");
-        session.setMaxInactiveInterval(30);
+        session.setMaxInactiveInterval(300);//poner 30
     }
 
     public void returnClient(HttpServletRequest request, HttpServletResponse response)
@@ -355,6 +356,13 @@ public class ClienteServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         servicios.ClienteService port = service_1.getClienteServicePort();
         return port.iniciaSesionCliente(id);
+    }
+
+    private Cliente buscarCliente(int id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        servicios.ClienteService port = service_1.getClienteServicePort();
+        return port.buscarCliente(id);
     }
 
 }

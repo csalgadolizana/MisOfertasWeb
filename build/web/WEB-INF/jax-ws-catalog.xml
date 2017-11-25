@@ -153,4 +153,6 @@
     <system systemId="http://localhost:21823/MisOfertasWebService/RegionService?wsdl" uri="wsdl/localhost_21823/MisOfertasWebService/RegionService.wsdl"/>
     <system systemId="http://localhost:21823/MisOfertasWebService/RegionService?xsd=1" uri="wsdl/localhost_21823/MisOfertasWebService/RegionService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?wsdl" uri="wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/EmpresaService?wsdl" uri="wsdl/localhost_8080/MisOfertasWebService/EmpresaService.wsdl"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/EmpresaService?xsd=1" uri="wsdl/localhost_8080/MisOfertasWebService/EmpresaService.xsd_1.xsd"/>
 </catalog>

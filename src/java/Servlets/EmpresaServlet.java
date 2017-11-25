@@ -5,12 +5,8 @@
  */
 package Servlets;
 
-import servicios.Cliente;
-import servicios.Local;
-import servicios.LocalService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.ServletException;
@@ -20,15 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import servicios.Empresa;
+import servicios.EmpresaService_Service;
 
 /**
  *
  * @author PC-Cristopher
  */
-public class LocalServlet extends HttpServlet {
+public class EmpresaServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/LocalService.wsdl")
-    private LocalService_Service service;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/MisOfertasWebService/EmpresaService.wsdl")
+    private EmpresaService_Service service;
 
     JSONObject jObj;
     JSONArray listaJson;
@@ -45,18 +43,27 @@ public class LocalServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        String accion = request.getParameter("accion");
-////        System.err.println(accion);
-//        switch (accion) {
-//            case "listaLocales":
-//                returnListLocales(request, response);
-//                break;
-//            default:
-//                System.err.println("Fue al Defaul en LocalServlet");
-////                existeCorreo(request, response);
-//                break;
-//        }
         returnListLocales(request, response);
+    }
+
+    private void returnListLocales(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        response.setContentType("Content-Type: application/json");
+        List<Empresa> list = listadoEmpresa().stream().filter((x) -> x.getEstadoIdEstado().getIdEstado().intValue() == 1).collect(Collectors.toList());
+//        List<Empresa> list = listadoEmpresa();
+        listaJson = new JSONArray();
+        if (list != null) {
+            for (Empresa em : list) {
+                if (em != null) {
+                    jObj = new JSONObject();
+                    jObj.put("idemp", em.getIdEmpresa().toString());
+                    jObj.put("nombre", em.getNombre());
+                    listaJson.add(jObj);
+                }
+            }
+        }
+        response.setContentType("text/html;charset=UTF-8");
+        out.println(listaJson);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -98,33 +105,11 @@ public class LocalServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void returnListLocales(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
-        response.setContentType("Content-Type: application/json");
-        Comparator<Local> comparator = (o1, o2) -> o1.getNombre().compareToIgnoreCase(o2.getNombre());
-        List<Local> list = listadoLocal().stream().sorted(comparator).collect(Collectors.toList());
-        listaJson = new JSONArray();
-        if (list != null) {
-            for (Local loc : list) {
-                if (loc != null) {
-                    jObj = new JSONObject();
-                    jObj.put("nombre", loc.getNombre());
-                    jObj.put("idl", loc.getIdLocal().toString());
-                    jObj.put("idcom", loc.getCiudadIdCiudad().getIdCiudad().intValue());
-                    jObj.put("idreg", loc.getCiudadIdCiudad().getRegionIdRegion().getIdRegion().intValue());
-                    listaJson.add(jObj);
-                }
-            }
-        }
-        response.setContentType("text/html;charset=UTF-8");
-        out.println(listaJson);
-    }
-
-    private java.util.List<servicios.Local> listadoLocal() {
+    private java.util.List<servicios.Empresa> listadoEmpresa() {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        servicios.LocalService port = service.getLocalServicePort();
-        return port.listadoLocal();
+        servicios.EmpresaService port = service.getEmpresaServicePort();
+        return port.listadoEmpresa();
     }
 
 }

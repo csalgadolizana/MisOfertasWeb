@@ -52,16 +52,23 @@ $(document).ready(function () {
 
                             console.log("Entro al segundo success!!!!");
                             console.log(dataa);
+                            console.log("ssss " + dataa.isonline);
+                            console.log("ssss " + dataa.estado);
                             if (dataa.redirect != null) {
 //                                alert("http://localhost:17225/MisOfertasWeb" + dataa.redirect);
                                 location.href = dataa.redirect;
                             } else {
-                                if (dataa.estado != 0) {
+                                if (dataa.isonline == 2) {
+                                    if (dataa.estado != 0) {
 //                                    location.href = "accesoCliente.html?d=" + dataa.estado;
-                                    location.reload();
+                                        location.reload();
+                                    } else {
+                                        $("#centralModalError").modal('show');
+                                        $("#divTextoAlerta").find("p").html("<strong>Su Correo o Contraseña no estan correctas!!.</strong> <br>");
+                                    }
                                 } else {
                                     $("#centralModalError").modal('show');
-                                    $("#divTextoAlerta").find("p").html("<strong>Su Correo o Contraseña no estan correctas!!.</strong> <br>");
+                                    $("#divTextoAlerta").find("p").html("<strong>Su usuario ya está logueado!!.</strong> <br>");
                                 }
                             }
                         },

@@ -20,6 +20,10 @@
 
 <xs:element name="Modificar_clienteResponse" type="tns:Modificar_clienteResponse"/>
 
+<xs:element name="buscar_cliente" type="tns:buscar_cliente"/>
+
+<xs:element name="buscar_clienteResponse" type="tns:buscar_clienteResponse"/>
+
 <xs:element name="cerrar_sesion_cliente" type="tns:cerrar_sesion_cliente"/>
 
 <xs:element name="cerrar_sesion_clienteResponse" type="tns:cerrar_sesion_clienteResponse"/>
@@ -98,7 +102,7 @@
 
 <xs:complexType name="cliente">
 <xs:sequence>
-<xs:element name="aceptaInformativo" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="aceptaInformativo" type="xs:integer" minOccurs="0"/>
 <xs:element name="actualizacion" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="ciudadIdCiudad" type="tns:ciudad" minOccurs="0"/>
 <xs:element name="contrasena" type="xs:string" minOccurs="0"/>
@@ -107,7 +111,7 @@
 <xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="idCliente" type="xs:decimal" minOccurs="0"/>
 <xs:element name="inicio" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="isonline" type="xs:short" minOccurs="0"/>
+<xs:element name="isonline" type="xs:integer" minOccurs="0"/>
 <xs:element name="personaIdpersona" type="tns:persona" minOccurs="0"/>
 <xs:element name="telefono" type="xs:integer" minOccurs="0"/>
 </xs:sequence>
@@ -162,7 +166,19 @@
 
 <xs:complexType name="AutenticacionResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:anyType" minOccurs="0"/>
+<xs:element name="return" type="tns:cliente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscar_cliente">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscar_clienteResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cliente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
