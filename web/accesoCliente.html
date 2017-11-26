@@ -134,19 +134,22 @@
             <section class="text-center">
                 <h3 >Filtro por : </h3>
                 <div class="row text-center" style="margin-bottom: 100px">
-                    <div class="col-md-6"  style="">
+                    <div class="col-md-6"  style="display: none">
                         <select id="selectTienda" name="selectTienda" class="pull-right browser-default mi-select select-derecho" >
                             <option selected="selected" disabled>Tiendas</option>
                             <option>Sucursal Puente Alto</option>
                             <option>Sucursal La Florida</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
-                        <select id="selectCategoria" name="selectCategoria" class="pull-left browser-default mi-select select-izquerdo" >
-                            <option selected="selected" disabled>Categorias</option>
-                            <option>Ropa</option>
-                            <option>Electrodomesticos</option>
-                        </select>
+                    <div class="col-md-12">
+                        <!--<select id="selectCategoria" name="selectCategoria" class="pull-left browser-default mi-select select-izquerdo" >-->
+                        <center>
+                            <select id="selectCategoria" name="selectCategoria" class="browser-default mi-select" >
+                                <option selected="selected" disabled>Categorias</option>
+                                <option>Ropa</option>
+                                <option>Electrodomesticos</option>
+                            </select>
+                        </center>
                     </div>
                 </div>
             </section>
@@ -268,13 +271,94 @@
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
                                 <button type="button" id="btnRegistrarForm" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
-                                <button type="submit" id="btnRealRegistrarForm" name="btnAccion" value="primerRegistro" style="display: none" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
+                                <button type="submit" id="btnRealRegistrarForm" name="btnAccion" value="primerRegistro" style="" class="btn btn-indigo">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <!--Fin Modal registrate-->
+
+            <section>
+                <!-- Modal Medium Danger -->
+                <div class="modal fade" id="centralModalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div id="modalErrorEstilo" class="modal-dialog modal-notify modal-warning" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <p class="heading lead">Upps!</p>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                </button>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="text-center" id="divTextoAlerta">
+                                    <i id="iconoNormal" class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+
+                                    <div id="icoLoading" style="display: none" class="preloader-wrapper big active">
+                                        <div class="spinner-layer spinner-blue">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spinner-layer spinner-red">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spinner-layer spinner-yellow">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spinner-layer spinner-green">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>  
+
+
+
+
+                                    <p>Debe ingresar dos veces la misma contraseña.</p>
+                                </div>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
+                                <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Entendido! <i class="fa fa-hand-paper-o  ml-1"></i></a>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!-- Modal Medium Danger-->
+            </section>
 
 
             <hr class="featurette-divider">

@@ -114,19 +114,19 @@
                                             </div>
                                             <div class="md-form">
                                                 <i class="fa fa-calendar prefix"></i>
-                                                <input id="check" class="form-control" value="21" type="checkbox">
+                                                <input id="check" name="check" class="form-control" value="21" type="checkbox">
                                                 <label for="check">¿Cambiar contraseña?</label>
                                             </div>
                                             <div id="contenedor-contras" class="collapse">
                                                 <div class="md-form">
                                                     <i class="fa fa-lock prefix"></i>
-                                                    <input type="password" id="txtPasswdActual" name="txtPasswdActual" class="form-control" value=""  required="">
+                                                    <input type="password" id="txtPasswdActual" name="txtPasswdActual" class="form-control" value="" >
                                                     <label for="txtPasswdActual">Tu contraseña</label>
                                                 </div>
                                                 <div class="md-form">
                                                     <i class="fa fa-lock prefix"></i>
                                                     <input type="password" id="txtPasswd" name="txtPasswd" class="form-control" value=""  required="">
-                                                    <label for="txtPasswd">Tu contraseña</label>
+                                                    <label for="txtPasswd">Tu nueva contraseña</label>
                                                 </div>
                                                 <div class="md-form">
                                                     <i class="fa fa-lock prefix"></i>
@@ -192,8 +192,8 @@
 
                                             <div class="text-center">
                                                 <a id="btnCancelar" class="pull-left btn btn-grey waves-effect waves-light" href="index.html">Volver</a>
-                                                <button type="button"  value="btnRegistroFalso" id="btnRegistroFalso" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
-                                                <button type="submit" name="btnAccion" value="segundoRegistro" id="btnRegistrarse" style="display: none" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
+                                                <button type="button"  value="btnModificarFalso" id="btnModificarFalso" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
+                                                <button type="submit" name="btnAccion" value="modificarMisDatos" id="btnModificar" style="display: none" class="pull-right btn btn-default waves-effect waves-float">Modificar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -207,6 +207,89 @@
 
             <hr class="featurette-divider" style="margin-bottom: 120px">
         </main>
+        <!--Section of Modal-->
+        <section>
+            <!-- Modal Medium Danger -->
+            <div class="modal fade" id="centralModalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div id="modalErrorEstilo" class="modal-dialog modal-notify modal-warning" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p id="headerModal" class="heading lead">Upps!</p>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center" id="divTextoAlerta">
+                                <i id="iconoError" class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+                                <i id="iconoCorrecto" class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+
+                                <div id="icoLoading" style="display: none" class="preloader-wrapper big active">
+                                    <div class="spinner-layer spinner-blue">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-red">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-yellow">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-green">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>  
+
+
+
+
+                                <p>Debe ingresar dos veces la misma contraseña.</p>
+                            </div>
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">
+                            <!--<a type="button" class="btn btn-primary-modal">Get it now <i class="fa fa-diamond ml-1"></i></a>-->
+                            <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Entendido! <i class="fa fa-hand-paper-o  ml-1"></i></a>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <!-- Modal Medium Danger-->
+        </section>
+        <!--Fin Section of Modal-->
         <!--Fin Main-->
 
         <!--Footer-->
@@ -263,23 +346,107 @@
 
         <script type="text/javascript" src="js/commons.js"></script>
         <script type="text/javascript" src="js/control-login-registrer.js"></script>
-
-
-
+        <script type="text/javascript" src="js/jquery.rut.js"></script>
+        <script type="text/javascript" src="js/cliente/editarCliente.js"></script>
 
         <script>
-                                        var param = getParameterByName('d');
+                                        var rutValido = false;
+//                                        var param = getParameterByName('d');
                                         var idCiudad;
                                         $(document).ready(function () {
-//                $("#check").click();
+                                            $("#txtPasswdActual").on("blur", function () {
+                                                buscarPassCorrecta();
+                                            });
+                                            $("#txtPasswdActual").attr("disabled", false);
+                                            $("#txtPasswd").attr("disabled", true);
+                                            $("#txtPasswd2").attr("disabled", true);
+                                            $("input#txtRut").rut({validateOn: 'change blur'});
+                                            $("input#txtRut").on('rutValido', function (e, rut, dv) {
+                                                rutValido = true;
+                                            });
+//                                            $("#formEditarDatos").on('submit', function (e) {
+//                                                mensajeModalEspera();
+//                                            });
                                             $("#check").change(function () {
                                                 console.log("Entro al cambioo");
                                                 $("#contenedor-contras").collapse('toggle');
                                             });
                                             listarRegiones();
-
-
+                                            $("#btnModificarFalso").click(function (evt) {
+                                                if (rutValido) {
+                                                    if ($("#check").prop('checked')) {
+                                                        if ($("#txtPasswd").val().trim() != $("#txtPasswd2").val().trim()) {
+                                                            mensajeModal(false, "Usted debe ingresar 2 veces la misma contraseña", "verifique que escribe lo mismo");
+                                                        } else {
+                                                            $("#btnModificar").click();
+                                                        }
+                                                    } else {
+                                                        $("#btnModificar").click();
+                                                    }
+                                                } else {
+                                                    mensajeModal(false, "Su rut no esta bien", "Verifique que su rut sea el correcto");
+                                                }
+                                            });
                                         });
+                                        function mensajeModal(esBueno, texTittulo, subTitulo) {
+                                            $("#divTextoAlerta").find("p").html("<strong>" + texTittulo + "</strong> <br>" + subTitulo);
+                                            var header = "Upps!";
+                                            if (esBueno) {
+                                                header = "Aviso!"
+                                                $("#modalErrorEstilo").addClass("modal-info");
+                                                $("#modalErrorEstilo").removeClass("modal-warning");
+                                                $("#iconoCorrecto").show();
+                                                $("#iconoError").hide();//malo
+                                            } else {
+                                                $("#modalErrorEstilo").addClass("modal-warning");
+                                                $("#modalErrorEstilo").removeClass("modal-info");
+                                                $("#iconoCorrecto").hide();
+                                                $("#iconoError").show();//malo
+                                            }
+                                            $("#headerModal").html(header);
+                                            $("#centralModalError").modal('show');
+                                        }
+                                        function mensajeModalEspera() {
+                                            $("#headerModal").html("Tenga paciencia")
+                                            $("#centralModalError").modal('show');
+                                            $("#modalErrorEstilo").addClass("modal-info");
+                                            $("#iconoNormal").hide();
+                                            $("#icoLoading").show();
+                                            $("#divTextoAlerta").find("p").html("<strong>Espere un momento</strong> <br>");
+                                            $("#modalErrorEstilo").removeClass("modal-warning");
+                                        }
+                                        function buscarPassCorrecta() {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "ClienteServlet",
+                                                data: {
+                                                    "btnAccion": "getMyPass",
+                                                    "mail": $("#txtCorreo").val().trim(),
+                                                    "pass": $("#txtPasswdActual").val().trim()
+                                                },
+                                                dataType: "json",
+                                                success: function (data, textStatus, jqXHR) {
+                                                    console.log(" success: getMisDatos()");
+                                                    console.log(data);
+                                                    if (data.estado == 1) {
+                                                        mensajeModal(true, "Ahora ingrese su nueva contraseña", "");
+                                                        $("#txtCorreo").parent().find("label").addClass("active");
+                                                        $("#txtPasswdActual").attr("disabled", true);
+                                                        $("#txtPasswd").attr("disabled", false);
+                                                        $("#txtPasswd2").attr("disabled", false);
+                                                    } else {
+                                                        mensajeModal(false, "Su contraseña no esta bien", "Vuelva a ingresarla");
+                                                        $("#txtCorreo").parent().find("label").addClass("active");
+                                                    }
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    console.log(" eer getMisDatos()");
+                                                    console.log(jqXHR);
+                                                    console.log(textStatus);
+                                                    console.log(errorThrown);
+                                                }
+                                            });
+                                        }
                                         function getMisDatos() {
                                             $.ajax({
                                                 type: "POST",

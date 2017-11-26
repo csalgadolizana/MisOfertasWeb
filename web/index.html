@@ -515,7 +515,7 @@
                                             <p>Sin cuenta? <a href="#" data-toggle="modal" data-target="#modalSubscriptionForm"> Registrate aqui</a></p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" style="display: none">
                                         <div class="pull-right">
                                             <p>Olvidaste tu <a href="#">contraseña?</a></p>
                                         </div>
@@ -687,6 +687,9 @@
                                                 switch (operacion) {
                                                     case "reg":
                                                         texOper = "Registro de usuario";
+                                                        break;
+                                                    case "mod":
+                                                        texOper = "Modificacion de sus datos";
                                                         break;
                                                 }
                                                 if (estado == "true") {

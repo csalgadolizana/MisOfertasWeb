@@ -13,6 +13,7 @@ import servicios.Usuario;
 import servicios.UsuarioService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -87,6 +88,12 @@ public class ClienteServlet extends HttpServlet {
             case "getDataClient":
                 returnClient(request, response);
                 break;
+            case "getMyPass":
+                miIsMyPassCorrect(request, response);
+                break;
+            case "modificarMisDatos":
+                modificarClienteSesion(request, response);
+                break;
             default:
                 existeCorreo(request, response);
                 break;
@@ -121,6 +128,11 @@ public class ClienteServlet extends HttpServlet {
                 response.setContentType("Content-Type: application/json");
                 out.println(jObj);
                 session.setAttribute("trabajador", us);
+            } else {
+                PrintWriter out = response.getWriter();
+                jObj.put("estado", idCliente);
+                jObj.put("isonline", 2);
+                out.println(jObj);
             }
         } else {
             jObj.put("isonline", cli.getIsonline().intValue());
@@ -133,6 +145,24 @@ public class ClienteServlet extends HttpServlet {
         }
         System.out.println("´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´");
         session.setMaxInactiveInterval(300);//poner 30
+    }
+
+    public void miIsMyPassCorrect(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("DSfbhdsifidshfi");
+
+        System.out.println(request.getParameter("pass"));
+        correo = request.getParameter("mail");
+        pass1 = request.getParameter("pass");
+        pass1 = DigestUtils.sha1Hex(pass1.trim());
+        Cliente cli = (Cliente) autenticacion(correo, pass1);
+        jObj = new JSONObject();
+        int res = (cli.getIdCliente().intValue() == 0) ? 2 : 1;
+        jObj.put("estado", res);
+        PrintWriter out = response.getWriter();
+        response.setContentType("Content-Type: application/json");
+        out.println(jObj);
+
     }
 
     public void returnClient(HttpServletRequest request, HttpServletResponse response)
@@ -222,6 +252,7 @@ public class ClienteServlet extends HttpServlet {
 
         Persona p = Collections.max(listadoPersonas(), Comparator.comparing(Persona::getIdpersona));
         Cliente clitemp = Collections.max(listadoClientes(), Comparator.comparing(Cliente::getIdCliente));
+        pass1 = DigestUtils.sha1Hex(pass1.trim());
 
         String ret = crearCliente(clitemp.getIdCliente().intValue() + 1, fecha, correo, pass1, telefono, recibirNoticias + "", fechaHoyXml, fechaHoyXml, ciudad, 1, p.getIdpersona().intValue());
 
@@ -235,7 +266,61 @@ public class ClienteServlet extends HttpServlet {
 //        }
         HttpSession session = request.getSession(true);
         session.setAttribute("cliente", cli);
+        session.setMaxInactiveInterval(300);//poner 30
         response.sendRedirect("index.html?ope=reg&sta=true&tipo=cli");
+    }
+
+    public void modificarClienteSesion(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, DatatypeConfigurationException, ParseException {
+        HttpSession session = request.getSession(true);
+        Cliente cliente = (Cliente) session.getAttribute("cliente");
+        String nombre, apellidos, rut;
+        Date fechaNac;
+        int sexo, telefono, cambiaPass, aceptaInfor, ciudad;
+
+        correo = request.getParameter("txtCorreo").trim().toLowerCase();
+        pass1 = request.getParameter("txtPasswd");
+        pass2 = request.getParameter("txtPasswd2");
+        nombre = request.getParameter("txtNombre");
+        apellidos = request.getParameter("txtApellido");
+        rut = request.getParameter("txtRut");
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        fechaNac = sdf.parse(request.getParameter("txtFechaNacimiento"));
+        sexo = Integer.parseInt(request.getParameter("selectSexo"));
+        telefono = Integer.parseInt(request.getParameter("txtTelefono"));
+        aceptaInfor = (request.getParameter("checAceptaInformativo") == null) ? 0 : 1;
+        ciudad = Integer.parseInt(request.getParameter("selectComuna"));
+        GregorianCalendar c = new GregorianCalendar();
+        GregorianCalendar fechaHoy = new GregorianCalendar();
+        GregorianCalendar fechaNacimine = new GregorianCalendar();
+        try {
+            fechaHoy.setTime(new Date());
+            c.setTime(fechaNac);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            c.setTime(new Date());
+        }
+        fechaNacimine.setTime(fechaNac);
+        XMLGregorianCalendar fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+        XMLGregorianCalendar fechaNaci = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+        XMLGregorianCalendar fechaHoyXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaHoy);
+        System.out.println("Pass1 " + pass1);
+        System.out.println("Pass2 " + pass2);
+        if (request.getParameter("check") == null) {
+            pass1 = cliente.getContrasena();
+        } else {
+            pass1 = DigestUtils.sha1Hex(pass2.trim());
+        }
+        System.out.println("El rutttt = " + rut);
+        String respuestaWS = modificarCliente(cliente.getIdCliente().intValue(), fecha, correo, pass1, telefono, aceptaInfor + "", cliente.getInicio(), ciudad, 1, cliente.getPersonaIdpersona().getIdpersona().intValue());
+        String respuestaWSPersona = modificarPersona(cliente.getPersonaIdpersona().getIdpersona().intValue(), nombre, apellidos, rut, sexo);
+        int idcliente = cliente.getIdCliente().intValue();
+        cliente = listadoClientes().stream().filter((x) -> x.getIdCliente().intValue() == idcliente).findFirst().orElse(null);
+        session.setAttribute("cliente", cliente);
+        session.setMaxInactiveInterval(300);//poner 30
+        System.out.println("La respuesta fue " + respuestaWS);
+        System.out.println("La respuesta fue " + respuestaWSPersona);
+        response.sendRedirect("index.html?ope=mod&sta=true&tipo=cli");
     }
 
     public void returnRegister(HttpServletRequest request, HttpServletResponse response)
@@ -259,10 +344,14 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+
         } catch (DatatypeConfigurationException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (ParseException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -279,10 +368,14 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+
         } catch (DatatypeConfigurationException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (ParseException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -363,6 +456,20 @@ public class ClienteServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         servicios.ClienteService port = service_1.getClienteServicePort();
         return port.buscarCliente(id);
+    }
+
+    private String modificarCliente(int id, javax.xml.datatype.XMLGregorianCalendar fechaNacimiento, java.lang.String correo, java.lang.String password, int telefono, java.lang.String aceptaInformativo, javax.xml.datatype.XMLGregorianCalendar fechaInicio, int idCiudad, int idEstado, int idPersona) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        servicios.ClienteService port = service_1.getClienteServicePort();
+        return port.modificarCliente(id, fechaNacimiento, correo, password, telefono, aceptaInformativo, fechaInicio, idCiudad, idEstado, idPersona);
+    }
+
+    private String modificarPersona(int id, java.lang.String nombre, java.lang.String apellido, java.lang.String rut, int sexo) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        servicios.PersonaService port = service.getPersonaServicePort();
+        return port.modificarPersona(id, nombre, apellido, rut, sexo);
     }
 
 }

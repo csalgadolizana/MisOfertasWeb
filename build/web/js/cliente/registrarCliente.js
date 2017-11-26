@@ -3,9 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var rutValido = false;
 
 
 $(document).ready(function () {
+
+    $(document).ready(function () {
+        $("input#txtRut").rut({validateOn: 'change blur'});
+    });
+    $("input#txtRut").on('rutValido', function (e, rut, dv) {
+//        alert("ruhughds");
+        rutValido = true;
+    });
 
     $("#selectRegion").change(function () {
         $("#selectComuna").children().each(function (i, div) {
@@ -88,11 +97,18 @@ function comprobarSiCorreoExiste() {
                         $("#centralModalError").modal('show');
                         $("#divTextoAlerta").find("p").html("<strong>Debe ingresar 2 veces la misma contraseña.</strong> <br>" +
                                 "ingrese con uno nuevo o inicie sesion");
-                        $("#txtPasswd").parent().find("label").addClass("active");
-                        $("#txtPasswd2").parent().find("label").addClass("active");
-                        $("#txtPasswd").focus();
+                        $("#txtRut").parent().find("label").addClass("active");
+                        $("#txtRut").focus();
                     } else {
-                        $("#btnRegistrarse").click();
+                        if (!rutValido) {
+                            $("#centralModalError").modal('show');
+                            $("#divTextoAlerta").find("p").html("<strong>Su rut no esta bien</strong> <br>" +
+                                    "Verifique que su rut sea el correcto");
+                            $("#txtCorreo").parent().find("label").addClass("active");
+                        } else {
+                            $("#btnRegistrarse").click();
+                        }
+
                     }
                 }
             },

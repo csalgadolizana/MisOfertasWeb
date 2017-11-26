@@ -176,7 +176,7 @@
                                                     <option value="2">Comuna 2</option></select>
                                                 <label for="selectComuna">Comuna</label>
                                             </div>
-                                            
+
                                             <div class="text-center">
                                                 <a id="btnCancelar" class="pull-left btn btn-grey waves-effect waves-light" href="index.html">Volver</a>
                                                 <button type="button"  value="btnRegistroFalso" id="btnRegistroFalso" class="pull-right btn btn-default waves-effect waves-float">Registrar</button>
@@ -200,7 +200,7 @@
         <section>
             <!-- Modal Medium Danger -->
             <div class="modal fade" id="centralModalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-warning" role="document">
+                <div id="modalErrorEstilo" class="modal-dialog modal-notify modal-warning" role="document">
                     <!--Content-->
                     <div class="modal-content">
                         <!--Header-->
@@ -215,7 +215,53 @@
                         <!--Body-->
                         <div class="modal-body">
                             <div class="text-center" id="divTextoAlerta">
-                                <i class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+                                <i id="iconoNormal" class="fa fa-times fa-4x mb-3 animated rotateIn"></i>
+
+                                <div id="icoLoading" style="display: none" class="preloader-wrapper big active">
+                                    <div class="spinner-layer spinner-blue">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-red">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-yellow">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-green">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>  
+
+
+
+
                                 <p>Debe ingresar dos veces la misma contraseña.</p>
                             </div>
                         </div>
@@ -284,9 +330,23 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
-        
-        
-        <script type="text/javascript" src="js/cliente/registrarCliente.js"></script>
 
+
+        <script type="text/javascript" src="js/cliente/registrarCliente.js"></script>
+        <script type="text/javascript" src="js/jquery.rut.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#formRegistrarse").on('submit', function (e) {
+                    $("#centralModalError").modal('show');
+                    $("#modalErrorEstilo").addClass("modal-info");
+                    $("#iconoNormal").hide();
+                    $("#icoLoading").show();
+                    $("#divTextoAlerta").find("p").html("<strong>Espere un momento</strong> <br>" +
+                            "");
+                    $("#modalErrorEstilo").removeClass("modal-warning");
+                });
+            });
+        </script>
     </body>
 </html>
