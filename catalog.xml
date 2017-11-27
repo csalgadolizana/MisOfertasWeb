@@ -98,7 +98,6 @@
     <system systemId="http://localhost:8080/MisOfertasWebService/ProductoService?WSDL" uri="src/conf/xml-resources/web-service-references/ProductoService/wsdl/localhost_8080/MisOfertasWebService/ProductoService.wsdl"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/ProductoService?xsd=1" uri="src/conf/xml-resources/web-service-references/ProductoService/wsdl/localhost_8080/MisOfertasWebService/ProductoService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/OfertaService?WSDL" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl"/>
-    <system systemId="http://localhost:8080/MisOfertasWebService/OfertaService?xsd=1" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/OfertaLocalService?WSDL" uri="src/conf/xml-resources/web-service-references/OfertaLocalService/wsdl/localhost_8080/MisOfertasWebService/OfertaLocalService.wsdl"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/OfertaLocalService?xsd=1" uri="src/conf/xml-resources/web-service-references/OfertaLocalService/wsdl/localhost_8080/MisOfertasWebService/OfertaLocalService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/DetalleOfertaService?WSDL" uri="src/conf/xml-resources/web-service-references/DetalleOfertaService/wsdl/localhost_8080/MisOfertasWebService/DetalleOfertaService.wsdl"/>
@@ -155,6 +154,8 @@
     <system systemId="http://localhost:8080/MisOfertasWebService/EmpresaService?WSDL" uri="src/conf/xml-resources/web-service-references/EmpresaService_1/wsdl/localhost_8080/MisOfertasWebService/EmpresaService.wsdl"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/EmpresaService?wsdl" uri="src/conf/xml-resources/web-service-references/EmpresaService/wsdl/localhost_8080/MisOfertasWebService/EmpresaService.wsdl"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/EmpresaService?xsd=1" uri="src/conf/xml-resources/web-service-references/EmpresaService/wsdl/localhost_8080/MisOfertasWebService/EmpresaService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/OfertaService?wsdl" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl"/>
+    <system systemId="http://localhost:8080/MisOfertasWebService/OfertaService?xsd=1" uri="src/conf/xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?wsdl" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.wsdl"/>
     <system systemId="http://localhost:8080/MisOfertasWebService/ClienteService?xsd=1" uri="src/conf/xml-resources/web-service-references/ClienteService/wsdl/localhost_8080/MisOfertasWebService/ClienteService.xsd_1.xsd"/>
 </catalog>

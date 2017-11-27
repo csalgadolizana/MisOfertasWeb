@@ -39,6 +39,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import servicios.EnviarNewsPaper;
 
 /**
  *
@@ -126,6 +127,7 @@ public class OfertaServlet extends HttpServlet {
             DetalleOferta detalleOferta = listadoDetalleOferta().stream().filter((x) -> x.getDetalleOfertaPK().getIdDetOferta().intValue() == idOferta).findFirst().orElse(null);
             dejarDePublicarOfertaServ(detalleOferta.getOferta().getIdOferta().intValue());
             response.sendRedirect("accesoEncargado.html?ope=nopub&sta=true&tipo=offer");
+            enviarNewsPaper();
         } catch (Exception e) {
             response.sendRedirect("accesoEncargado.html?ope=nopub&sta=false&tipo=offer");
             System.err.println("Error en OfertaServlet -> publicarOferta() " + e.getMessage());
@@ -403,6 +405,13 @@ public class OfertaServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         servicios.OfertaService port = service_1.getOfertaServicePort();
         return port.dejarDePublicarOferta(id);
+    }
+
+    private String enviarNewsPaper() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        servicios.OfertaService port = service_1.getOfertaServicePort();
+        return port.enviarNewsPaper();
     }
 
 }

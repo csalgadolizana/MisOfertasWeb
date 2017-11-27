@@ -20,6 +20,10 @@
 
 <xs:element name="dejar_de_publicar_ofertaResponse" type="tns:dejar_de_publicar_ofertaResponse"/>
 
+<xs:element name="enviar_news_paper" type="tns:enviar_news_paper"/>
+
+<xs:element name="enviar_news_paperResponse" type="tns:enviar_news_paperResponse"/>
+
 <xs:element name="estado" type="tns:estado"/>
 
 <xs:element name="oferta" type="tns:oferta"/>
@@ -27,6 +31,16 @@
 <xs:element name="publicar_oferta" type="tns:publicar_oferta"/>
 
 <xs:element name="publicar_ofertaResponse" type="tns:publicar_ofertaResponse"/>
+
+<xs:complexType name="enviar_news_paper">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="enviar_news_paperResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="Modificar_oferta">
 <xs:sequence>

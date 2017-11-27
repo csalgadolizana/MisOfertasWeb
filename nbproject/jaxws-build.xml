@@ -140,8 +140,8 @@
     </target>
     <target name="wsimport-client-OfertaService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaService" destdir="${build.generated.dir}/jax-wsCache/OfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_21823/MisOfertasWebService/OfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/OfertaService?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_21823/MisOfertasWebService/OfertaService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OfertaService" destdir="${build.generated.dir}/jax-wsCache/OfertaService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MisOfertasWebService/OfertaService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OfertaService/wsdl/localhost_8080/MisOfertasWebService/OfertaService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/OfertaService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
